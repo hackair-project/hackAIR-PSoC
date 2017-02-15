@@ -1,0 +1,8 @@
+C:\Users\TTSS\Dropbox\Projects\hackAIR\AirQualityBeacons\DualPulseLedSensor.cydsn\DualPulseLedSensor.cyprj|5c3fad4e-48fa-4c12-87c1-0e4a75fe8ad3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e9eaa3e4-a5c4-4176-b09f-5c4d35dd024f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|222a0ff7-d94b-4eb4-b604-78377ed9651d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|7156b241-fa40-430b-ba04-471af8d6f3b6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|5aeb53e6-da86-4758-a3cf-d238085ea25a
+C:\Users\TTSS\Dropbox\Projects\hackAIR\AirQualityBeacons\PwmLedSensor.cydsn\PwmLedSensor.cyprj|b8536352-9035-4562-8f3f-ee860a517d8f
+C:\Users\TTSS\Dropbox\Projects\hackAIR\AirQualityBeacons\SerialLaserSensor.cydsn\SerialLaserSensor.cyprj|d24a4131-fcd6-418b-b4a1-c183557ef8f3
+C:\Users\TTSS\Dropbox\Projects\hackAIR\AirQualityBeacons\AnalogLedSensor.cydsn\AnalogLedSensor.cyprj|46e7a8e0-87ac-49c7-b089-ed6535ae2392
