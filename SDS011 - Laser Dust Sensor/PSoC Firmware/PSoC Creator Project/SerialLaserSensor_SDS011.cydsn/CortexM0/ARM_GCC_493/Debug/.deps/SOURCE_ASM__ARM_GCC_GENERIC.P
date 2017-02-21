@@ -1,0 +1,8 @@
+C:/Users/TTSS/Dropbox/Projects/hackAIR/AirQualityBeacons/SerialLaserSensor_SDS011.cydsn/CortexM0/ARM_GCC_493/Debug/CyBootAsmGnu.o : C:/Users/TTSS/Dropbox/Projects/hackAIR/AirQualityBeacons/SerialLaserSensor_SDS011.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s C:/Users/TTSS/Dropbox/Projects/hackAIR/AirQualityBeacons/SerialLaserSensor_SDS011.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc C:/Users/TTSS/Dropbox/Projects/hackAIR/AirQualityBeacons/SerialLaserSensor_SDS011.cydsn/Generated_Source/PSoC4/cyfittergnu.inc 
+
+C:/Users/TTSS/Dropbox/Projects/hackAIR/AirQualityBeacons/SerialLaserSensor_SDS011.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
+
+C:/Users/TTSS/Dropbox/Projects/hackAIR/AirQualityBeacons/SerialLaserSensor_SDS011.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
+
+C:/Users/TTSS/Dropbox/Projects/hackAIR/AirQualityBeacons/SerialLaserSensor_SDS011.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
+

@@ -1,0 +1,1625 @@
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Serial.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	Serial_initVar
+  18              		.bss
+  19              		.type	Serial_initVar, %object
+  20              		.size	Serial_initVar, 1
+  21              	Serial_initVar:
+  22 0000 00       		.space	1
+  23              		.global	Serial_customIntrHandler
+  24 0001 000000   		.align	2
+  25              		.type	Serial_customIntrHandler, %object
+  26              		.size	Serial_customIntrHandler, 4
+  27              	Serial_customIntrHandler:
+  28 0004 00000000 		.space	4
+  29              		.section	.text.Serial_Init,"ax",%progbits
+  30              		.align	2
+  31              		.global	Serial_Init
+  32              		.code	16
+  33              		.thumb_func
+  34              		.type	Serial_Init, %function
+  35              	Serial_Init:
+  36              	.LFB2:
+  37              		.file 1 "Generated_Source\\PSoC4\\Serial.c"
+   1:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/Serial.c **** * File Name: Serial.c
+   3:Generated_Source\PSoC4/Serial.c **** * Version 3.10
+   4:Generated_Source\PSoC4/Serial.c **** *
+   5:Generated_Source\PSoC4/Serial.c **** * Description:
+   6:Generated_Source\PSoC4/Serial.c **** *  This file provides the source code to the API for the SCB Component.
+   7:Generated_Source\PSoC4/Serial.c **** *
+   8:Generated_Source\PSoC4/Serial.c **** * Note:
+   9:Generated_Source\PSoC4/Serial.c **** *
+  10:Generated_Source\PSoC4/Serial.c **** *******************************************************************************
+  11:Generated_Source\PSoC4/Serial.c **** * Copyright 2013-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC4/Serial.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:Generated_Source\PSoC4/Serial.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:Generated_Source\PSoC4/Serial.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+  16:Generated_Source\PSoC4/Serial.c **** 
+  17:Generated_Source\PSoC4/Serial.c **** #include "Serial_PVT.h"
+  18:Generated_Source\PSoC4/Serial.c **** 
+  19:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_MODE_I2C_INC)
+  20:Generated_Source\PSoC4/Serial.c ****     #include "Serial_I2C_PVT.h"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 2
+
+
+  21:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_MODE_I2C_INC) */
+  22:Generated_Source\PSoC4/Serial.c **** 
+  23:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_MODE_EZI2C_INC)
+  24:Generated_Source\PSoC4/Serial.c ****     #include "Serial_EZI2C_PVT.h"
+  25:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_MODE_EZI2C_INC) */
+  26:Generated_Source\PSoC4/Serial.c **** 
+  27:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_MODE_SPI_INC || Serial_SCB_MODE_UART_INC)
+  28:Generated_Source\PSoC4/Serial.c ****     #include "Serial_SPI_UART_PVT.h"
+  29:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_MODE_SPI_INC || Serial_SCB_MODE_UART_INC) */
+  30:Generated_Source\PSoC4/Serial.c **** 
+  31:Generated_Source\PSoC4/Serial.c **** 
+  32:Generated_Source\PSoC4/Serial.c **** /***************************************
+  33:Generated_Source\PSoC4/Serial.c **** *    Run Time Configuration Vars
+  34:Generated_Source\PSoC4/Serial.c **** ***************************************/
+  35:Generated_Source\PSoC4/Serial.c **** 
+  36:Generated_Source\PSoC4/Serial.c **** /* Stores internal component configuration for Unconfigured mode */
+  37:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_MODE_UNCONFIG_CONST_CFG)
+  38:Generated_Source\PSoC4/Serial.c ****     /* Common configuration variables */
+  39:Generated_Source\PSoC4/Serial.c ****     uint8 Serial_scbMode = Serial_SCB_MODE_UNCONFIG;
+  40:Generated_Source\PSoC4/Serial.c ****     uint8 Serial_scbEnableWake;
+  41:Generated_Source\PSoC4/Serial.c ****     uint8 Serial_scbEnableIntr;
+  42:Generated_Source\PSoC4/Serial.c **** 
+  43:Generated_Source\PSoC4/Serial.c ****     /* I2C configuration variables */
+  44:Generated_Source\PSoC4/Serial.c ****     uint8 Serial_mode;
+  45:Generated_Source\PSoC4/Serial.c ****     uint8 Serial_acceptAddr;
+  46:Generated_Source\PSoC4/Serial.c **** 
+  47:Generated_Source\PSoC4/Serial.c ****     /* SPI/UART configuration variables */
+  48:Generated_Source\PSoC4/Serial.c ****     volatile uint8 * Serial_rxBuffer;
+  49:Generated_Source\PSoC4/Serial.c ****     uint8  Serial_rxDataBits;
+  50:Generated_Source\PSoC4/Serial.c ****     uint32 Serial_rxBufferSize;
+  51:Generated_Source\PSoC4/Serial.c **** 
+  52:Generated_Source\PSoC4/Serial.c ****     volatile uint8 * Serial_txBuffer;
+  53:Generated_Source\PSoC4/Serial.c ****     uint8  Serial_txDataBits;
+  54:Generated_Source\PSoC4/Serial.c ****     uint32 Serial_txBufferSize;
+  55:Generated_Source\PSoC4/Serial.c **** 
+  56:Generated_Source\PSoC4/Serial.c ****     /* EZI2C configuration variables */
+  57:Generated_Source\PSoC4/Serial.c ****     uint8 Serial_numberOfAddr;
+  58:Generated_Source\PSoC4/Serial.c ****     uint8 Serial_subAddrSize;
+  59:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_MODE_UNCONFIG_CONST_CFG) */
+  60:Generated_Source\PSoC4/Serial.c **** 
+  61:Generated_Source\PSoC4/Serial.c **** 
+  62:Generated_Source\PSoC4/Serial.c **** /***************************************
+  63:Generated_Source\PSoC4/Serial.c **** *     Common SCB Vars
+  64:Generated_Source\PSoC4/Serial.c **** ***************************************/
+  65:Generated_Source\PSoC4/Serial.c **** 
+  66:Generated_Source\PSoC4/Serial.c **** uint8 Serial_initVar = 0u;
+  67:Generated_Source\PSoC4/Serial.c **** 
+  68:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_IRQ_INTERNAL)
+  69:Generated_Source\PSoC4/Serial.c **** #if !defined (CY_REMOVE_Serial_CUSTOM_INTR_HANDLER)
+  70:Generated_Source\PSoC4/Serial.c ****     void (*Serial_customIntrHandler)(void) = NULL;
+  71:Generated_Source\PSoC4/Serial.c **** #endif /* !defined (CY_REMOVE_Serial_CUSTOM_INTR_HANDLER) */
+  72:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_IRQ_INTERNAL) */
+  73:Generated_Source\PSoC4/Serial.c **** 
+  74:Generated_Source\PSoC4/Serial.c **** 
+  75:Generated_Source\PSoC4/Serial.c **** /***************************************
+  76:Generated_Source\PSoC4/Serial.c **** *    Private Function Prototypes
+  77:Generated_Source\PSoC4/Serial.c **** ***************************************/
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 3
+
+
+  78:Generated_Source\PSoC4/Serial.c **** 
+  79:Generated_Source\PSoC4/Serial.c **** static void Serial_ScbEnableIntr(void);
+  80:Generated_Source\PSoC4/Serial.c **** static void Serial_ScbModeStop(void);
+  81:Generated_Source\PSoC4/Serial.c **** static void Serial_ScbModePostEnable(void);
+  82:Generated_Source\PSoC4/Serial.c **** 
+  83:Generated_Source\PSoC4/Serial.c **** 
+  84:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+  85:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_Init
+  86:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+  87:Generated_Source\PSoC4/Serial.c **** *
+  88:Generated_Source\PSoC4/Serial.c **** * Summary:
+  89:Generated_Source\PSoC4/Serial.c **** *  Initializes the SCB component to operate in one of the selected
+  90:Generated_Source\PSoC4/Serial.c **** *  configurations: I2C, SPI, UART or EZI2C.
+  91:Generated_Source\PSoC4/Serial.c **** *  When the configuration is set to "Unconfigured SCB", this function does
+  92:Generated_Source\PSoC4/Serial.c **** *  not do any initialization. Use mode-specific initialization APIs instead:
+  93:Generated_Source\PSoC4/Serial.c **** *  SCB_I2CInit, SCB_SpiInit, SCB_UartInit or SCB_EzI2CInit.
+  94:Generated_Source\PSoC4/Serial.c **** *
+  95:Generated_Source\PSoC4/Serial.c **** * Parameters:
+  96:Generated_Source\PSoC4/Serial.c **** *  None
+  97:Generated_Source\PSoC4/Serial.c **** *
+  98:Generated_Source\PSoC4/Serial.c **** * Return:
+  99:Generated_Source\PSoC4/Serial.c **** *  None
+ 100:Generated_Source\PSoC4/Serial.c **** *
+ 101:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ 102:Generated_Source\PSoC4/Serial.c **** void Serial_Init(void)
+ 103:Generated_Source\PSoC4/Serial.c **** {
+  38              		.loc 1 103 0
+  39              		.cfi_startproc
+  40 0000 80B5     		push	{r7, lr}
+  41              		.cfi_def_cfa_offset 8
+  42              		.cfi_offset 7, -8
+  43              		.cfi_offset 14, -4
+  44 0002 00AF     		add	r7, sp, #0
+  45              		.cfi_def_cfa_register 7
+ 104:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_MODE_UNCONFIG_CONST_CFG)
+ 105:Generated_Source\PSoC4/Serial.c ****     if (Serial_SCB_MODE_UNCONFIG_RUNTM_CFG)
+ 106:Generated_Source\PSoC4/Serial.c ****     {
+ 107:Generated_Source\PSoC4/Serial.c ****         Serial_initVar = 0u;
+ 108:Generated_Source\PSoC4/Serial.c ****     }
+ 109:Generated_Source\PSoC4/Serial.c ****     else
+ 110:Generated_Source\PSoC4/Serial.c ****     {
+ 111:Generated_Source\PSoC4/Serial.c ****         /* Initialization was done before this function call */
+ 112:Generated_Source\PSoC4/Serial.c ****     }
+ 113:Generated_Source\PSoC4/Serial.c **** 
+ 114:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_I2C_CONST_CFG)
+ 115:Generated_Source\PSoC4/Serial.c ****     Serial_I2CInit();
+ 116:Generated_Source\PSoC4/Serial.c **** 
+ 117:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_SPI_CONST_CFG)
+ 118:Generated_Source\PSoC4/Serial.c ****     Serial_SpiInit();
+ 119:Generated_Source\PSoC4/Serial.c **** 
+ 120:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_UART_CONST_CFG)
+ 121:Generated_Source\PSoC4/Serial.c ****     Serial_UartInit();
+  46              		.loc 1 121 0
+  47 0004 FFF7FEFF 		bl	Serial_UartInit
+ 122:Generated_Source\PSoC4/Serial.c **** 
+ 123:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_EZI2C_CONST_CFG)
+ 124:Generated_Source\PSoC4/Serial.c ****     Serial_EzI2CInit();
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 4
+
+
+ 125:Generated_Source\PSoC4/Serial.c **** 
+ 126:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 127:Generated_Source\PSoC4/Serial.c **** }
+  48              		.loc 1 127 0
+  49 0008 BD46     		mov	sp, r7
+  50              		@ sp needed
+  51 000a 80BD     		pop	{r7, pc}
+  52              		.cfi_endproc
+  53              	.LFE2:
+  54              		.size	Serial_Init, .-Serial_Init
+  55              		.section	.text.Serial_Enable,"ax",%progbits
+  56              		.align	2
+  57              		.global	Serial_Enable
+  58              		.code	16
+  59              		.thumb_func
+  60              		.type	Serial_Enable, %function
+  61              	Serial_Enable:
+  62              	.LFB3:
+ 128:Generated_Source\PSoC4/Serial.c **** 
+ 129:Generated_Source\PSoC4/Serial.c **** 
+ 130:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+ 131:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_Enable
+ 132:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+ 133:Generated_Source\PSoC4/Serial.c **** *
+ 134:Generated_Source\PSoC4/Serial.c **** * Summary:
+ 135:Generated_Source\PSoC4/Serial.c **** *  Enables the SCB component operation.
+ 136:Generated_Source\PSoC4/Serial.c **** *  The SCB configuration should be not changed when the component is enabled.
+ 137:Generated_Source\PSoC4/Serial.c **** *  Any configuration changes should be made after disabling the component.
+ 138:Generated_Source\PSoC4/Serial.c **** *
+ 139:Generated_Source\PSoC4/Serial.c **** * Parameters:
+ 140:Generated_Source\PSoC4/Serial.c **** *  None
+ 141:Generated_Source\PSoC4/Serial.c **** *
+ 142:Generated_Source\PSoC4/Serial.c **** * Return:
+ 143:Generated_Source\PSoC4/Serial.c **** *  None
+ 144:Generated_Source\PSoC4/Serial.c **** *
+ 145:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ 146:Generated_Source\PSoC4/Serial.c **** void Serial_Enable(void)
+ 147:Generated_Source\PSoC4/Serial.c **** {
+  63              		.loc 1 147 0
+  64              		.cfi_startproc
+  65 0000 80B5     		push	{r7, lr}
+  66              		.cfi_def_cfa_offset 8
+  67              		.cfi_offset 7, -8
+  68              		.cfi_offset 14, -4
+  69 0002 00AF     		add	r7, sp, #0
+  70              		.cfi_def_cfa_register 7
+ 148:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_MODE_UNCONFIG_CONST_CFG)
+ 149:Generated_Source\PSoC4/Serial.c ****     /* Enable SCB block, only if it is already configured */
+ 150:Generated_Source\PSoC4/Serial.c ****     if (!Serial_SCB_MODE_UNCONFIG_RUNTM_CFG)
+ 151:Generated_Source\PSoC4/Serial.c ****     {
+ 152:Generated_Source\PSoC4/Serial.c ****         Serial_CTRL_REG |= Serial_CTRL_ENABLED;
+ 153:Generated_Source\PSoC4/Serial.c **** 
+ 154:Generated_Source\PSoC4/Serial.c ****         Serial_ScbEnableIntr();
+ 155:Generated_Source\PSoC4/Serial.c **** 
+ 156:Generated_Source\PSoC4/Serial.c ****         /* Call PostEnable function specific to current operation mode */
+ 157:Generated_Source\PSoC4/Serial.c ****         Serial_ScbModePostEnable();
+ 158:Generated_Source\PSoC4/Serial.c ****     }
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 5
+
+
+ 159:Generated_Source\PSoC4/Serial.c **** #else
+ 160:Generated_Source\PSoC4/Serial.c ****     Serial_CTRL_REG |= Serial_CTRL_ENABLED;
+  71              		.loc 1 160 0
+  72 0004 064B     		ldr	r3, .L3
+  73 0006 064A     		ldr	r2, .L3
+  74 0008 1268     		ldr	r2, [r2]
+  75 000a 8021     		mov	r1, #128
+  76 000c 0906     		lsl	r1, r1, #24
+  77 000e 0A43     		orr	r2, r1
+  78 0010 1A60     		str	r2, [r3]
+ 161:Generated_Source\PSoC4/Serial.c **** 
+ 162:Generated_Source\PSoC4/Serial.c ****     Serial_ScbEnableIntr();
+  79              		.loc 1 162 0
+  80 0012 FFF7FEFF 		bl	Serial_ScbEnableIntr
+ 163:Generated_Source\PSoC4/Serial.c **** 
+ 164:Generated_Source\PSoC4/Serial.c ****     /* Call PostEnable function specific to current operation mode */
+ 165:Generated_Source\PSoC4/Serial.c ****     Serial_ScbModePostEnable();
+  81              		.loc 1 165 0
+  82 0016 FFF7FEFF 		bl	Serial_ScbModePostEnable
+ 166:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 167:Generated_Source\PSoC4/Serial.c **** }
+  83              		.loc 1 167 0
+  84 001a BD46     		mov	sp, r7
+  85              		@ sp needed
+  86 001c 80BD     		pop	{r7, pc}
+  87              	.L4:
+  88 001e C046     		.align	2
+  89              	.L3:
+  90 0020 00002440 		.word	1076101120
+  91              		.cfi_endproc
+  92              	.LFE3:
+  93              		.size	Serial_Enable, .-Serial_Enable
+  94              		.section	.text.Serial_Start,"ax",%progbits
+  95              		.align	2
+  96              		.global	Serial_Start
+  97              		.code	16
+  98              		.thumb_func
+  99              		.type	Serial_Start, %function
+ 100              	Serial_Start:
+ 101              	.LFB4:
+ 168:Generated_Source\PSoC4/Serial.c **** 
+ 169:Generated_Source\PSoC4/Serial.c **** 
+ 170:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+ 171:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_Start
+ 172:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+ 173:Generated_Source\PSoC4/Serial.c **** *
+ 174:Generated_Source\PSoC4/Serial.c **** * Summary:
+ 175:Generated_Source\PSoC4/Serial.c **** *  Invokes SCB_Init() and SCB_Enable().
+ 176:Generated_Source\PSoC4/Serial.c **** *  After this function call, the component is enabled and ready for operation.
+ 177:Generated_Source\PSoC4/Serial.c **** *  When configuration is set to "Unconfigured SCB", the component must first be
+ 178:Generated_Source\PSoC4/Serial.c **** *  initialized to operate in one of the following configurations: I2C, SPI, UART
+ 179:Generated_Source\PSoC4/Serial.c **** *  or EZ I2C. Otherwise this function does not enable the component.
+ 180:Generated_Source\PSoC4/Serial.c **** *
+ 181:Generated_Source\PSoC4/Serial.c **** * Parameters:
+ 182:Generated_Source\PSoC4/Serial.c **** *  None
+ 183:Generated_Source\PSoC4/Serial.c **** *
+ 184:Generated_Source\PSoC4/Serial.c **** * Return:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 6
+
+
+ 185:Generated_Source\PSoC4/Serial.c **** *  None
+ 186:Generated_Source\PSoC4/Serial.c **** *
+ 187:Generated_Source\PSoC4/Serial.c **** * Global variables:
+ 188:Generated_Source\PSoC4/Serial.c **** *  Serial_initVar - used to check initial configuration, modified
+ 189:Generated_Source\PSoC4/Serial.c **** *  on first function call.
+ 190:Generated_Source\PSoC4/Serial.c **** *
+ 191:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ 192:Generated_Source\PSoC4/Serial.c **** void Serial_Start(void)
+ 193:Generated_Source\PSoC4/Serial.c **** {
+ 102              		.loc 1 193 0
+ 103              		.cfi_startproc
+ 104 0000 80B5     		push	{r7, lr}
+ 105              		.cfi_def_cfa_offset 8
+ 106              		.cfi_offset 7, -8
+ 107              		.cfi_offset 14, -4
+ 108 0002 00AF     		add	r7, sp, #0
+ 109              		.cfi_def_cfa_register 7
+ 194:Generated_Source\PSoC4/Serial.c ****     if (0u == Serial_initVar)
+ 110              		.loc 1 194 0
+ 111 0004 064B     		ldr	r3, .L7
+ 112 0006 1B78     		ldrb	r3, [r3]
+ 113 0008 002B     		cmp	r3, #0
+ 114 000a 04D1     		bne	.L6
+ 195:Generated_Source\PSoC4/Serial.c ****     {
+ 196:Generated_Source\PSoC4/Serial.c ****         Serial_Init();
+ 115              		.loc 1 196 0
+ 116 000c FFF7FEFF 		bl	Serial_Init
+ 197:Generated_Source\PSoC4/Serial.c ****         Serial_initVar = 1u; /* Component was initialized */
+ 117              		.loc 1 197 0
+ 118 0010 034B     		ldr	r3, .L7
+ 119 0012 0122     		mov	r2, #1
+ 120 0014 1A70     		strb	r2, [r3]
+ 121              	.L6:
+ 198:Generated_Source\PSoC4/Serial.c ****     }
+ 199:Generated_Source\PSoC4/Serial.c **** 
+ 200:Generated_Source\PSoC4/Serial.c ****     Serial_Enable();
+ 122              		.loc 1 200 0
+ 123 0016 FFF7FEFF 		bl	Serial_Enable
+ 201:Generated_Source\PSoC4/Serial.c **** }
+ 124              		.loc 1 201 0
+ 125 001a BD46     		mov	sp, r7
+ 126              		@ sp needed
+ 127 001c 80BD     		pop	{r7, pc}
+ 128              	.L8:
+ 129 001e C046     		.align	2
+ 130              	.L7:
+ 131 0020 00000000 		.word	Serial_initVar
+ 132              		.cfi_endproc
+ 133              	.LFE4:
+ 134              		.size	Serial_Start, .-Serial_Start
+ 135              		.section	.text.Serial_Stop,"ax",%progbits
+ 136              		.align	2
+ 137              		.global	Serial_Stop
+ 138              		.code	16
+ 139              		.thumb_func
+ 140              		.type	Serial_Stop, %function
+ 141              	Serial_Stop:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 7
+
+
+ 142              	.LFB5:
+ 202:Generated_Source\PSoC4/Serial.c **** 
+ 203:Generated_Source\PSoC4/Serial.c **** 
+ 204:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+ 205:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_Stop
+ 206:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+ 207:Generated_Source\PSoC4/Serial.c **** *
+ 208:Generated_Source\PSoC4/Serial.c **** * Summary:
+ 209:Generated_Source\PSoC4/Serial.c **** *  Disables the SCB component and its interrupt.
+ 210:Generated_Source\PSoC4/Serial.c **** *  It also disables all TX interrupt sources so as not to cause an unexpected
+ 211:Generated_Source\PSoC4/Serial.c **** *  interrupt trigger because after the component is enabled, the TX FIFO 
+ 212:Generated_Source\PSoC4/Serial.c **** *  is empty.
+ 213:Generated_Source\PSoC4/Serial.c **** *
+ 214:Generated_Source\PSoC4/Serial.c **** * Parameters:
+ 215:Generated_Source\PSoC4/Serial.c **** *  None
+ 216:Generated_Source\PSoC4/Serial.c **** *
+ 217:Generated_Source\PSoC4/Serial.c **** * Return:
+ 218:Generated_Source\PSoC4/Serial.c **** *  None
+ 219:Generated_Source\PSoC4/Serial.c **** * 
+ 220:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ 221:Generated_Source\PSoC4/Serial.c **** void Serial_Stop(void)
+ 222:Generated_Source\PSoC4/Serial.c **** {
+ 143              		.loc 1 222 0
+ 144              		.cfi_startproc
+ 145 0000 80B5     		push	{r7, lr}
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 7, -8
+ 148              		.cfi_offset 14, -4
+ 149 0002 00AF     		add	r7, sp, #0
+ 150              		.cfi_def_cfa_register 7
+ 223:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_IRQ_INTERNAL)
+ 224:Generated_Source\PSoC4/Serial.c ****     Serial_DisableInt();
+ 151              		.loc 1 224 0
+ 152 0004 0920     		mov	r0, #9
+ 153 0006 FFF7FEFF 		bl	CyIntDisable
+ 225:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_IRQ_INTERNAL) */
+ 226:Generated_Source\PSoC4/Serial.c **** 
+ 227:Generated_Source\PSoC4/Serial.c ****     /* Call Stop function specific to current operation mode */
+ 228:Generated_Source\PSoC4/Serial.c ****     Serial_ScbModeStop();
+ 154              		.loc 1 228 0
+ 155 000a FFF7FEFF 		bl	Serial_ScbModeStop
+ 229:Generated_Source\PSoC4/Serial.c **** 
+ 230:Generated_Source\PSoC4/Serial.c ****     /* Disable SCB IP */
+ 231:Generated_Source\PSoC4/Serial.c ****     Serial_CTRL_REG &= (uint32) ~Serial_CTRL_ENABLED;
+ 156              		.loc 1 231 0
+ 157 000e 074B     		ldr	r3, .L10
+ 158 0010 064A     		ldr	r2, .L10
+ 159 0012 1268     		ldr	r2, [r2]
+ 160 0014 5200     		lsl	r2, r2, #1
+ 161 0016 5208     		lsr	r2, r2, #1
+ 162 0018 1A60     		str	r2, [r3]
+ 232:Generated_Source\PSoC4/Serial.c **** 
+ 233:Generated_Source\PSoC4/Serial.c ****     /* Disable all TX interrupt sources so as not to cause an unexpected
+ 234:Generated_Source\PSoC4/Serial.c ****     * interrupt trigger because after the component is enabled, the TX FIFO
+ 235:Generated_Source\PSoC4/Serial.c ****     * is empty.
+ 236:Generated_Source\PSoC4/Serial.c ****     * For SCB IP v0, it is critical as it does not mask-out interrupt
+ 237:Generated_Source\PSoC4/Serial.c ****     * sources when they are disabled. This can cause a code lock-up in the
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 8
+
+
+ 238:Generated_Source\PSoC4/Serial.c ****     * interrupt handler because TX FIFO cannot be loaded after the block
+ 239:Generated_Source\PSoC4/Serial.c ****     * is disabled.
+ 240:Generated_Source\PSoC4/Serial.c ****     */
+ 241:Generated_Source\PSoC4/Serial.c ****     Serial_SetTxInterruptMode(Serial_NO_INTR_SOURCES);
+ 163              		.loc 1 241 0
+ 164 001a 054B     		ldr	r3, .L10+4
+ 165 001c 0022     		mov	r2, #0
+ 166 001e 1A60     		str	r2, [r3]
+ 242:Generated_Source\PSoC4/Serial.c **** 
+ 243:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_IRQ_INTERNAL)
+ 244:Generated_Source\PSoC4/Serial.c ****     Serial_ClearPendingInt();
+ 167              		.loc 1 244 0
+ 168 0020 0920     		mov	r0, #9
+ 169 0022 FFF7FEFF 		bl	CyIntClearPending
+ 245:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_IRQ_INTERNAL) */
+ 246:Generated_Source\PSoC4/Serial.c **** }
+ 170              		.loc 1 246 0
+ 171 0026 BD46     		mov	sp, r7
+ 172              		@ sp needed
+ 173 0028 80BD     		pop	{r7, pc}
+ 174              	.L11:
+ 175 002a C046     		.align	2
+ 176              	.L10:
+ 177 002c 00002440 		.word	1076101120
+ 178 0030 880F2440 		.word	1076105096
+ 179              		.cfi_endproc
+ 180              	.LFE5:
+ 181              		.size	Serial_Stop, .-Serial_Stop
+ 182              		.section	.text.Serial_SetRxFifoLevel,"ax",%progbits
+ 183              		.align	2
+ 184              		.global	Serial_SetRxFifoLevel
+ 185              		.code	16
+ 186              		.thumb_func
+ 187              		.type	Serial_SetRxFifoLevel, %function
+ 188              	Serial_SetRxFifoLevel:
+ 189              	.LFB6:
+ 247:Generated_Source\PSoC4/Serial.c **** 
+ 248:Generated_Source\PSoC4/Serial.c **** 
+ 249:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+ 250:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_SetRxFifoLevel
+ 251:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+ 252:Generated_Source\PSoC4/Serial.c **** *
+ 253:Generated_Source\PSoC4/Serial.c **** * Summary:
+ 254:Generated_Source\PSoC4/Serial.c **** *  Sets level in the RX FIFO to generate a RX level interrupt.
+ 255:Generated_Source\PSoC4/Serial.c **** *  When the RX FIFO has more entries than the RX FIFO level an RX level
+ 256:Generated_Source\PSoC4/Serial.c **** *  interrupt request is generated.
+ 257:Generated_Source\PSoC4/Serial.c **** *
+ 258:Generated_Source\PSoC4/Serial.c **** * Parameters:
+ 259:Generated_Source\PSoC4/Serial.c **** *  level: Level in the RX FIFO to generate RX level interrupt.
+ 260:Generated_Source\PSoC4/Serial.c **** *         The range of valid level values is between 0 and RX FIFO depth - 1.
+ 261:Generated_Source\PSoC4/Serial.c **** *
+ 262:Generated_Source\PSoC4/Serial.c **** * Return:
+ 263:Generated_Source\PSoC4/Serial.c **** *  None
+ 264:Generated_Source\PSoC4/Serial.c **** *
+ 265:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ 266:Generated_Source\PSoC4/Serial.c **** void Serial_SetRxFifoLevel(uint32 level)
+ 267:Generated_Source\PSoC4/Serial.c **** {
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 9
+
+
+ 190              		.loc 1 267 0
+ 191              		.cfi_startproc
+ 192 0000 80B5     		push	{r7, lr}
+ 193              		.cfi_def_cfa_offset 8
+ 194              		.cfi_offset 7, -8
+ 195              		.cfi_offset 14, -4
+ 196 0002 84B0     		sub	sp, sp, #16
+ 197              		.cfi_def_cfa_offset 24
+ 198 0004 00AF     		add	r7, sp, #0
+ 199              		.cfi_def_cfa_register 7
+ 200 0006 7860     		str	r0, [r7, #4]
+ 268:Generated_Source\PSoC4/Serial.c ****     uint32 rxFifoCtrl;
+ 269:Generated_Source\PSoC4/Serial.c **** 
+ 270:Generated_Source\PSoC4/Serial.c ****     rxFifoCtrl = Serial_RX_FIFO_CTRL_REG;
+ 201              		.loc 1 270 0
+ 202 0008 094B     		ldr	r3, .L13
+ 203 000a 1B68     		ldr	r3, [r3]
+ 204 000c FB60     		str	r3, [r7, #12]
+ 271:Generated_Source\PSoC4/Serial.c **** 
+ 272:Generated_Source\PSoC4/Serial.c ****     rxFifoCtrl &= ((uint32) ~Serial_RX_FIFO_CTRL_TRIGGER_LEVEL_MASK); /* Clear level mask bits */
+ 205              		.loc 1 272 0
+ 206 000e FB68     		ldr	r3, [r7, #12]
+ 207 0010 0F22     		mov	r2, #15
+ 208 0012 9343     		bic	r3, r2
+ 209 0014 FB60     		str	r3, [r7, #12]
+ 273:Generated_Source\PSoC4/Serial.c ****     rxFifoCtrl |= ((uint32) (Serial_RX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 210              		.loc 1 273 0
+ 211 0016 7B68     		ldr	r3, [r7, #4]
+ 212 0018 0F22     		mov	r2, #15
+ 213 001a 1340     		and	r3, r2
+ 214 001c FA68     		ldr	r2, [r7, #12]
+ 215 001e 1343     		orr	r3, r2
+ 216 0020 FB60     		str	r3, [r7, #12]
+ 274:Generated_Source\PSoC4/Serial.c **** 
+ 275:Generated_Source\PSoC4/Serial.c ****     Serial_RX_FIFO_CTRL_REG = rxFifoCtrl;
+ 217              		.loc 1 275 0
+ 218 0022 034B     		ldr	r3, .L13
+ 219 0024 FA68     		ldr	r2, [r7, #12]
+ 220 0026 1A60     		str	r2, [r3]
+ 276:Generated_Source\PSoC4/Serial.c **** }
+ 221              		.loc 1 276 0
+ 222 0028 BD46     		mov	sp, r7
+ 223 002a 04B0     		add	sp, sp, #16
+ 224              		@ sp needed
+ 225 002c 80BD     		pop	{r7, pc}
+ 226              	.L14:
+ 227 002e C046     		.align	2
+ 228              	.L13:
+ 229 0030 04032440 		.word	1076101892
+ 230              		.cfi_endproc
+ 231              	.LFE6:
+ 232              		.size	Serial_SetRxFifoLevel, .-Serial_SetRxFifoLevel
+ 233              		.section	.text.Serial_SetTxFifoLevel,"ax",%progbits
+ 234              		.align	2
+ 235              		.global	Serial_SetTxFifoLevel
+ 236              		.code	16
+ 237              		.thumb_func
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 10
+
+
+ 238              		.type	Serial_SetTxFifoLevel, %function
+ 239              	Serial_SetTxFifoLevel:
+ 240              	.LFB7:
+ 277:Generated_Source\PSoC4/Serial.c **** 
+ 278:Generated_Source\PSoC4/Serial.c **** 
+ 279:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+ 280:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_SetTxFifoLevel
+ 281:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+ 282:Generated_Source\PSoC4/Serial.c **** *
+ 283:Generated_Source\PSoC4/Serial.c **** * Summary:
+ 284:Generated_Source\PSoC4/Serial.c **** *  Sets level in the TX FIFO to generate a TX level interrupt.
+ 285:Generated_Source\PSoC4/Serial.c **** *  When the TX FIFO has more entries than the TX FIFO level an TX level
+ 286:Generated_Source\PSoC4/Serial.c **** *  interrupt request is generated.
+ 287:Generated_Source\PSoC4/Serial.c **** *
+ 288:Generated_Source\PSoC4/Serial.c **** * Parameters:
+ 289:Generated_Source\PSoC4/Serial.c **** *  level: Level in the TX FIFO to generate TX level interrupt.
+ 290:Generated_Source\PSoC4/Serial.c **** *         The range of valid level values is between 0 and TX FIFO depth - 1.
+ 291:Generated_Source\PSoC4/Serial.c **** *
+ 292:Generated_Source\PSoC4/Serial.c **** * Return:
+ 293:Generated_Source\PSoC4/Serial.c **** *  None
+ 294:Generated_Source\PSoC4/Serial.c **** *
+ 295:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ 296:Generated_Source\PSoC4/Serial.c **** void Serial_SetTxFifoLevel(uint32 level)
+ 297:Generated_Source\PSoC4/Serial.c **** {
+ 241              		.loc 1 297 0
+ 242              		.cfi_startproc
+ 243 0000 80B5     		push	{r7, lr}
+ 244              		.cfi_def_cfa_offset 8
+ 245              		.cfi_offset 7, -8
+ 246              		.cfi_offset 14, -4
+ 247 0002 84B0     		sub	sp, sp, #16
+ 248              		.cfi_def_cfa_offset 24
+ 249 0004 00AF     		add	r7, sp, #0
+ 250              		.cfi_def_cfa_register 7
+ 251 0006 7860     		str	r0, [r7, #4]
+ 298:Generated_Source\PSoC4/Serial.c ****     uint32 txFifoCtrl;
+ 299:Generated_Source\PSoC4/Serial.c **** 
+ 300:Generated_Source\PSoC4/Serial.c ****     txFifoCtrl = Serial_TX_FIFO_CTRL_REG;
+ 252              		.loc 1 300 0
+ 253 0008 094B     		ldr	r3, .L16
+ 254 000a 1B68     		ldr	r3, [r3]
+ 255 000c FB60     		str	r3, [r7, #12]
+ 301:Generated_Source\PSoC4/Serial.c **** 
+ 302:Generated_Source\PSoC4/Serial.c ****     txFifoCtrl &= ((uint32) ~Serial_TX_FIFO_CTRL_TRIGGER_LEVEL_MASK); /* Clear level mask bits */
+ 256              		.loc 1 302 0
+ 257 000e FB68     		ldr	r3, [r7, #12]
+ 258 0010 0F22     		mov	r2, #15
+ 259 0012 9343     		bic	r3, r2
+ 260 0014 FB60     		str	r3, [r7, #12]
+ 303:Generated_Source\PSoC4/Serial.c ****     txFifoCtrl |= ((uint32) (Serial_TX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 261              		.loc 1 303 0
+ 262 0016 7B68     		ldr	r3, [r7, #4]
+ 263 0018 0F22     		mov	r2, #15
+ 264 001a 1340     		and	r3, r2
+ 265 001c FA68     		ldr	r2, [r7, #12]
+ 266 001e 1343     		orr	r3, r2
+ 267 0020 FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 11
+
+
+ 304:Generated_Source\PSoC4/Serial.c **** 
+ 305:Generated_Source\PSoC4/Serial.c ****     Serial_TX_FIFO_CTRL_REG = txFifoCtrl;
+ 268              		.loc 1 305 0
+ 269 0022 034B     		ldr	r3, .L16
+ 270 0024 FA68     		ldr	r2, [r7, #12]
+ 271 0026 1A60     		str	r2, [r3]
+ 306:Generated_Source\PSoC4/Serial.c **** }
+ 272              		.loc 1 306 0
+ 273 0028 BD46     		mov	sp, r7
+ 274 002a 04B0     		add	sp, sp, #16
+ 275              		@ sp needed
+ 276 002c 80BD     		pop	{r7, pc}
+ 277              	.L17:
+ 278 002e C046     		.align	2
+ 279              	.L16:
+ 280 0030 04022440 		.word	1076101636
+ 281              		.cfi_endproc
+ 282              	.LFE7:
+ 283              		.size	Serial_SetTxFifoLevel, .-Serial_SetTxFifoLevel
+ 284              		.section	.text.Serial_SetCustomInterruptHandler,"ax",%progbits
+ 285              		.align	2
+ 286              		.global	Serial_SetCustomInterruptHandler
+ 287              		.code	16
+ 288              		.thumb_func
+ 289              		.type	Serial_SetCustomInterruptHandler, %function
+ 290              	Serial_SetCustomInterruptHandler:
+ 291              	.LFB8:
+ 307:Generated_Source\PSoC4/Serial.c **** 
+ 308:Generated_Source\PSoC4/Serial.c **** 
+ 309:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_IRQ_INTERNAL)
+ 310:Generated_Source\PSoC4/Serial.c ****     /*******************************************************************************
+ 311:Generated_Source\PSoC4/Serial.c ****     * Function Name: Serial_SetCustomInterruptHandler
+ 312:Generated_Source\PSoC4/Serial.c ****     ********************************************************************************
+ 313:Generated_Source\PSoC4/Serial.c ****     *
+ 314:Generated_Source\PSoC4/Serial.c ****     * Summary:
+ 315:Generated_Source\PSoC4/Serial.c ****     *  Registers a function to be called by the internal interrupt handler.
+ 316:Generated_Source\PSoC4/Serial.c ****     *  First the function that is registered is called, then the internal interrupt
+ 317:Generated_Source\PSoC4/Serial.c ****     *  handler performs any operation such as software buffer management functions
+ 318:Generated_Source\PSoC4/Serial.c ****     *  before the interrupt returns.  It is the user's responsibility not to break
+ 319:Generated_Source\PSoC4/Serial.c ****     *  the software buffer operations. Only one custom handler is supported, which
+ 320:Generated_Source\PSoC4/Serial.c ****     *  is the function provided by the most recent call.
+ 321:Generated_Source\PSoC4/Serial.c ****     *  At the initialization time no custom handler is registered.
+ 322:Generated_Source\PSoC4/Serial.c ****     *
+ 323:Generated_Source\PSoC4/Serial.c ****     * Parameters:
+ 324:Generated_Source\PSoC4/Serial.c ****     *  func: Pointer to the function to register.
+ 325:Generated_Source\PSoC4/Serial.c ****     *        The value NULL indicates to remove the current custom interrupt
+ 326:Generated_Source\PSoC4/Serial.c ****     *        handler.
+ 327:Generated_Source\PSoC4/Serial.c ****     *
+ 328:Generated_Source\PSoC4/Serial.c ****     * Return:
+ 329:Generated_Source\PSoC4/Serial.c ****     *  None
+ 330:Generated_Source\PSoC4/Serial.c ****     *
+ 331:Generated_Source\PSoC4/Serial.c ****     *******************************************************************************/
+ 332:Generated_Source\PSoC4/Serial.c ****     void Serial_SetCustomInterruptHandler(void (*func)(void))
+ 333:Generated_Source\PSoC4/Serial.c ****     {
+ 292              		.loc 1 333 0
+ 293              		.cfi_startproc
+ 294 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 12
+
+
+ 295              		.cfi_def_cfa_offset 8
+ 296              		.cfi_offset 7, -8
+ 297              		.cfi_offset 14, -4
+ 298 0002 82B0     		sub	sp, sp, #8
+ 299              		.cfi_def_cfa_offset 16
+ 300 0004 00AF     		add	r7, sp, #0
+ 301              		.cfi_def_cfa_register 7
+ 302 0006 7860     		str	r0, [r7, #4]
+ 334:Generated_Source\PSoC4/Serial.c ****     #if !defined (CY_REMOVE_Serial_CUSTOM_INTR_HANDLER)
+ 335:Generated_Source\PSoC4/Serial.c ****         Serial_customIntrHandler = func; /* Register interrupt handler */
+ 303              		.loc 1 335 0
+ 304 0008 024B     		ldr	r3, .L19
+ 305 000a 7A68     		ldr	r2, [r7, #4]
+ 306 000c 1A60     		str	r2, [r3]
+ 336:Generated_Source\PSoC4/Serial.c ****     #else
+ 337:Generated_Source\PSoC4/Serial.c ****         if (NULL != func)
+ 338:Generated_Source\PSoC4/Serial.c ****         {
+ 339:Generated_Source\PSoC4/Serial.c ****             /* Suppress compiler warning */
+ 340:Generated_Source\PSoC4/Serial.c ****         }
+ 341:Generated_Source\PSoC4/Serial.c ****     #endif /* !defined (CY_REMOVE_Serial_CUSTOM_INTR_HANDLER) */
+ 342:Generated_Source\PSoC4/Serial.c ****     }
+ 307              		.loc 1 342 0
+ 308 000e BD46     		mov	sp, r7
+ 309 0010 02B0     		add	sp, sp, #8
+ 310              		@ sp needed
+ 311 0012 80BD     		pop	{r7, pc}
+ 312              	.L20:
+ 313              		.align	2
+ 314              	.L19:
+ 315 0014 00000000 		.word	Serial_customIntrHandler
+ 316              		.cfi_endproc
+ 317              	.LFE8:
+ 318              		.size	Serial_SetCustomInterruptHandler, .-Serial_SetCustomInterruptHandler
+ 319              		.section	.text.Serial_ScbEnableIntr,"ax",%progbits
+ 320              		.align	2
+ 321              		.code	16
+ 322              		.thumb_func
+ 323              		.type	Serial_ScbEnableIntr, %function
+ 324              	Serial_ScbEnableIntr:
+ 325              	.LFB9:
+ 343:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_IRQ_INTERNAL) */
+ 344:Generated_Source\PSoC4/Serial.c **** 
+ 345:Generated_Source\PSoC4/Serial.c **** 
+ 346:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+ 347:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_ScbModeEnableIntr
+ 348:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+ 349:Generated_Source\PSoC4/Serial.c **** *
+ 350:Generated_Source\PSoC4/Serial.c **** * Summary:
+ 351:Generated_Source\PSoC4/Serial.c **** *  Enables an interrupt for a specific mode.
+ 352:Generated_Source\PSoC4/Serial.c **** *
+ 353:Generated_Source\PSoC4/Serial.c **** * Parameters:
+ 354:Generated_Source\PSoC4/Serial.c **** *  None
+ 355:Generated_Source\PSoC4/Serial.c **** *
+ 356:Generated_Source\PSoC4/Serial.c **** * Return:
+ 357:Generated_Source\PSoC4/Serial.c **** *  None
+ 358:Generated_Source\PSoC4/Serial.c **** *
+ 359:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 13
+
+
+ 360:Generated_Source\PSoC4/Serial.c **** static void Serial_ScbEnableIntr(void)
+ 361:Generated_Source\PSoC4/Serial.c **** {
+ 326              		.loc 1 361 0
+ 327              		.cfi_startproc
+ 328 0000 80B5     		push	{r7, lr}
+ 329              		.cfi_def_cfa_offset 8
+ 330              		.cfi_offset 7, -8
+ 331              		.cfi_offset 14, -4
+ 332 0002 00AF     		add	r7, sp, #0
+ 333              		.cfi_def_cfa_register 7
+ 362:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_IRQ_INTERNAL)
+ 363:Generated_Source\PSoC4/Serial.c ****     /* Enable interrupt in NVIC */
+ 364:Generated_Source\PSoC4/Serial.c ****     #if (Serial_SCB_MODE_UNCONFIG_CONST_CFG)
+ 365:Generated_Source\PSoC4/Serial.c ****         if (0u != Serial_scbEnableIntr)
+ 366:Generated_Source\PSoC4/Serial.c ****         {
+ 367:Generated_Source\PSoC4/Serial.c ****             Serial_EnableInt();
+ 368:Generated_Source\PSoC4/Serial.c ****         }
+ 369:Generated_Source\PSoC4/Serial.c **** 
+ 370:Generated_Source\PSoC4/Serial.c ****     #else
+ 371:Generated_Source\PSoC4/Serial.c ****         Serial_EnableInt();
+ 334              		.loc 1 371 0
+ 335 0004 0920     		mov	r0, #9
+ 336 0006 FFF7FEFF 		bl	CyIntEnable
+ 372:Generated_Source\PSoC4/Serial.c **** 
+ 373:Generated_Source\PSoC4/Serial.c ****     #endif /* (Serial_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 374:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_IRQ_INTERNAL) */
+ 375:Generated_Source\PSoC4/Serial.c **** }
+ 337              		.loc 1 375 0
+ 338 000a BD46     		mov	sp, r7
+ 339              		@ sp needed
+ 340 000c 80BD     		pop	{r7, pc}
+ 341              		.cfi_endproc
+ 342              	.LFE9:
+ 343              		.size	Serial_ScbEnableIntr, .-Serial_ScbEnableIntr
+ 344              		.section	.text.Serial_ScbModePostEnable,"ax",%progbits
+ 345              		.align	2
+ 346              		.code	16
+ 347              		.thumb_func
+ 348              		.type	Serial_ScbModePostEnable, %function
+ 349              	Serial_ScbModePostEnable:
+ 350              	.LFB10:
+ 376:Generated_Source\PSoC4/Serial.c **** 
+ 377:Generated_Source\PSoC4/Serial.c **** 
+ 378:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+ 379:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_ScbModePostEnable
+ 380:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+ 381:Generated_Source\PSoC4/Serial.c **** *
+ 382:Generated_Source\PSoC4/Serial.c **** * Summary:
+ 383:Generated_Source\PSoC4/Serial.c **** *  Calls the PostEnable function for a specific operation mode.
+ 384:Generated_Source\PSoC4/Serial.c **** *
+ 385:Generated_Source\PSoC4/Serial.c **** * Parameters:
+ 386:Generated_Source\PSoC4/Serial.c **** *  None
+ 387:Generated_Source\PSoC4/Serial.c **** *
+ 388:Generated_Source\PSoC4/Serial.c **** * Return:
+ 389:Generated_Source\PSoC4/Serial.c **** *  None
+ 390:Generated_Source\PSoC4/Serial.c **** *
+ 391:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 14
+
+
+ 392:Generated_Source\PSoC4/Serial.c **** static void Serial_ScbModePostEnable(void)
+ 393:Generated_Source\PSoC4/Serial.c **** {
+ 351              		.loc 1 393 0
+ 352              		.cfi_startproc
+ 353 0000 80B5     		push	{r7, lr}
+ 354              		.cfi_def_cfa_offset 8
+ 355              		.cfi_offset 7, -8
+ 356              		.cfi_offset 14, -4
+ 357 0002 00AF     		add	r7, sp, #0
+ 358              		.cfi_def_cfa_register 7
+ 394:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_MODE_UNCONFIG_CONST_CFG)
+ 395:Generated_Source\PSoC4/Serial.c **** #if (!Serial_CY_SCBIP_V1)
+ 396:Generated_Source\PSoC4/Serial.c ****     if (Serial_SCB_MODE_SPI_RUNTM_CFG)
+ 397:Generated_Source\PSoC4/Serial.c ****     {
+ 398:Generated_Source\PSoC4/Serial.c ****         Serial_SpiPostEnable();
+ 399:Generated_Source\PSoC4/Serial.c ****     }
+ 400:Generated_Source\PSoC4/Serial.c ****     else if (Serial_SCB_MODE_UART_RUNTM_CFG)
+ 401:Generated_Source\PSoC4/Serial.c ****     {
+ 402:Generated_Source\PSoC4/Serial.c ****         Serial_UartPostEnable();
+ 403:Generated_Source\PSoC4/Serial.c ****     }
+ 404:Generated_Source\PSoC4/Serial.c ****     else
+ 405:Generated_Source\PSoC4/Serial.c ****     {
+ 406:Generated_Source\PSoC4/Serial.c ****         /* Unknown mode: do nothing */
+ 407:Generated_Source\PSoC4/Serial.c ****     }
+ 408:Generated_Source\PSoC4/Serial.c **** #endif /* (!Serial_CY_SCBIP_V1) */
+ 409:Generated_Source\PSoC4/Serial.c **** 
+ 410:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_SPI_CONST_CFG)
+ 411:Generated_Source\PSoC4/Serial.c ****     Serial_SpiPostEnable();
+ 412:Generated_Source\PSoC4/Serial.c **** 
+ 413:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_UART_CONST_CFG)
+ 414:Generated_Source\PSoC4/Serial.c ****     Serial_UartPostEnable();
+ 359              		.loc 1 414 0
+ 360 0004 FFF7FEFF 		bl	Serial_UartPostEnable
+ 415:Generated_Source\PSoC4/Serial.c **** 
+ 416:Generated_Source\PSoC4/Serial.c **** #else
+ 417:Generated_Source\PSoC4/Serial.c ****     /* Unknown mode: do nothing */
+ 418:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 419:Generated_Source\PSoC4/Serial.c **** }
+ 361              		.loc 1 419 0
+ 362 0008 BD46     		mov	sp, r7
+ 363              		@ sp needed
+ 364 000a 80BD     		pop	{r7, pc}
+ 365              		.cfi_endproc
+ 366              	.LFE10:
+ 367              		.size	Serial_ScbModePostEnable, .-Serial_ScbModePostEnable
+ 368              		.section	.text.Serial_ScbModeStop,"ax",%progbits
+ 369              		.align	2
+ 370              		.code	16
+ 371              		.thumb_func
+ 372              		.type	Serial_ScbModeStop, %function
+ 373              	Serial_ScbModeStop:
+ 374              	.LFB11:
+ 420:Generated_Source\PSoC4/Serial.c **** 
+ 421:Generated_Source\PSoC4/Serial.c **** 
+ 422:Generated_Source\PSoC4/Serial.c **** /*******************************************************************************
+ 423:Generated_Source\PSoC4/Serial.c **** * Function Name: Serial_ScbModeStop
+ 424:Generated_Source\PSoC4/Serial.c **** ********************************************************************************
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 15
+
+
+ 425:Generated_Source\PSoC4/Serial.c **** *
+ 426:Generated_Source\PSoC4/Serial.c **** * Summary:
+ 427:Generated_Source\PSoC4/Serial.c **** *  Calls the Stop function for a specific operation mode.
+ 428:Generated_Source\PSoC4/Serial.c **** *
+ 429:Generated_Source\PSoC4/Serial.c **** * Parameters:
+ 430:Generated_Source\PSoC4/Serial.c **** *  None
+ 431:Generated_Source\PSoC4/Serial.c **** *
+ 432:Generated_Source\PSoC4/Serial.c **** * Return:
+ 433:Generated_Source\PSoC4/Serial.c **** *  None
+ 434:Generated_Source\PSoC4/Serial.c **** *
+ 435:Generated_Source\PSoC4/Serial.c **** *******************************************************************************/
+ 436:Generated_Source\PSoC4/Serial.c **** static void Serial_ScbModeStop(void)
+ 437:Generated_Source\PSoC4/Serial.c **** {
+ 375              		.loc 1 437 0
+ 376              		.cfi_startproc
+ 377 0000 80B5     		push	{r7, lr}
+ 378              		.cfi_def_cfa_offset 8
+ 379              		.cfi_offset 7, -8
+ 380              		.cfi_offset 14, -4
+ 381 0002 00AF     		add	r7, sp, #0
+ 382              		.cfi_def_cfa_register 7
+ 438:Generated_Source\PSoC4/Serial.c **** #if (Serial_SCB_MODE_UNCONFIG_CONST_CFG)
+ 439:Generated_Source\PSoC4/Serial.c ****     if (Serial_SCB_MODE_I2C_RUNTM_CFG)
+ 440:Generated_Source\PSoC4/Serial.c ****     {
+ 441:Generated_Source\PSoC4/Serial.c ****         Serial_I2CStop();
+ 442:Generated_Source\PSoC4/Serial.c ****     }
+ 443:Generated_Source\PSoC4/Serial.c ****     else if (Serial_SCB_MODE_EZI2C_RUNTM_CFG)
+ 444:Generated_Source\PSoC4/Serial.c ****     {
+ 445:Generated_Source\PSoC4/Serial.c ****         Serial_EzI2CStop();
+ 446:Generated_Source\PSoC4/Serial.c ****     }
+ 447:Generated_Source\PSoC4/Serial.c **** #if (!Serial_CY_SCBIP_V1)
+ 448:Generated_Source\PSoC4/Serial.c ****     else if (Serial_SCB_MODE_SPI_RUNTM_CFG)
+ 449:Generated_Source\PSoC4/Serial.c ****     {
+ 450:Generated_Source\PSoC4/Serial.c ****         Serial_SpiStop();
+ 451:Generated_Source\PSoC4/Serial.c ****     }
+ 452:Generated_Source\PSoC4/Serial.c ****     else if (Serial_SCB_MODE_UART_RUNTM_CFG)
+ 453:Generated_Source\PSoC4/Serial.c ****     {
+ 454:Generated_Source\PSoC4/Serial.c ****         Serial_UartStop();
+ 455:Generated_Source\PSoC4/Serial.c ****     }
+ 456:Generated_Source\PSoC4/Serial.c **** #endif /* (!Serial_CY_SCBIP_V1) */
+ 457:Generated_Source\PSoC4/Serial.c ****     else
+ 458:Generated_Source\PSoC4/Serial.c ****     {
+ 459:Generated_Source\PSoC4/Serial.c ****         /* Unknown mode: do nothing */
+ 460:Generated_Source\PSoC4/Serial.c ****     }
+ 461:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_I2C_CONST_CFG)
+ 462:Generated_Source\PSoC4/Serial.c ****     Serial_I2CStop();
+ 463:Generated_Source\PSoC4/Serial.c **** 
+ 464:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_EZI2C_CONST_CFG)
+ 465:Generated_Source\PSoC4/Serial.c ****     Serial_EzI2CStop();
+ 466:Generated_Source\PSoC4/Serial.c **** 
+ 467:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_SPI_CONST_CFG)
+ 468:Generated_Source\PSoC4/Serial.c ****     Serial_SpiStop();
+ 469:Generated_Source\PSoC4/Serial.c **** 
+ 470:Generated_Source\PSoC4/Serial.c **** #elif (Serial_SCB_MODE_UART_CONST_CFG)
+ 471:Generated_Source\PSoC4/Serial.c ****     Serial_UartStop();
+ 383              		.loc 1 471 0
+ 384 0004 FFF7FEFF 		bl	Serial_UartStop
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 16
+
+
+ 472:Generated_Source\PSoC4/Serial.c **** 
+ 473:Generated_Source\PSoC4/Serial.c **** #else
+ 474:Generated_Source\PSoC4/Serial.c ****     /* Unknown mode: do nothing */
+ 475:Generated_Source\PSoC4/Serial.c **** #endif /* (Serial_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 476:Generated_Source\PSoC4/Serial.c **** }
+ 385              		.loc 1 476 0
+ 386 0008 BD46     		mov	sp, r7
+ 387              		@ sp needed
+ 388 000a 80BD     		pop	{r7, pc}
+ 389              		.cfi_endproc
+ 390              	.LFE11:
+ 391              		.size	Serial_ScbModeStop, .-Serial_ScbModeStop
+ 392              		.text
+ 393              	.Letext0:
+ 394              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 395              		.section	.debug_info,"",%progbits
+ 396              	.Ldebug_info0:
+ 397 0000 E0010000 		.4byte	0x1e0
+ 398 0004 0400     		.2byte	0x4
+ 399 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 400 000a 04       		.byte	0x4
+ 401 000b 01       		.uleb128 0x1
+ 402 000c 64010000 		.4byte	.LASF32
+ 403 0010 01       		.byte	0x1
+ 404 0011 5F000000 		.4byte	.LASF33
+ 405 0015 DA000000 		.4byte	.LASF34
+ 406 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 407 001d 00000000 		.4byte	0
+ 408 0021 00000000 		.4byte	.Ldebug_line0
+ 409 0025 02       		.uleb128 0x2
+ 410 0026 01       		.byte	0x1
+ 411 0027 06       		.byte	0x6
+ 412 0028 9D020000 		.4byte	.LASF0
+ 413 002c 02       		.uleb128 0x2
+ 414 002d 01       		.byte	0x1
+ 415 002e 08       		.byte	0x8
+ 416 002f CC000000 		.4byte	.LASF1
+ 417 0033 02       		.uleb128 0x2
+ 418 0034 02       		.byte	0x2
+ 419 0035 05       		.byte	0x5
+ 420 0036 6A020000 		.4byte	.LASF2
+ 421 003a 02       		.uleb128 0x2
+ 422 003b 02       		.byte	0x2
+ 423 003c 07       		.byte	0x7
+ 424 003d 4C000000 		.4byte	.LASF3
+ 425 0041 02       		.uleb128 0x2
+ 426 0042 04       		.byte	0x4
+ 427 0043 05       		.byte	0x5
+ 428 0044 94020000 		.4byte	.LASF4
+ 429 0048 02       		.uleb128 0x2
+ 430 0049 04       		.byte	0x4
+ 431 004a 07       		.byte	0x7
+ 432 004b 32010000 		.4byte	.LASF5
+ 433 004f 02       		.uleb128 0x2
+ 434 0050 08       		.byte	0x8
+ 435 0051 05       		.byte	0x5
+ 436 0052 57020000 		.4byte	.LASF6
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 17
+
+
+ 437 0056 02       		.uleb128 0x2
+ 438 0057 08       		.byte	0x8
+ 439 0058 07       		.byte	0x7
+ 440 0059 1C020000 		.4byte	.LASF7
+ 441 005d 03       		.uleb128 0x3
+ 442 005e 04       		.byte	0x4
+ 443 005f 05       		.byte	0x5
+ 444 0060 696E7400 		.ascii	"int\000"
+ 445 0064 02       		.uleb128 0x2
+ 446 0065 04       		.byte	0x4
+ 447 0066 07       		.byte	0x7
+ 448 0067 0F020000 		.4byte	.LASF8
+ 449 006b 04       		.uleb128 0x4
+ 450 006c 44010000 		.4byte	.LASF9
+ 451 0070 02       		.byte	0x2
+ 452 0071 3801     		.2byte	0x138
+ 453 0073 2C000000 		.4byte	0x2c
+ 454 0077 04       		.uleb128 0x4
+ 455 0078 F2010000 		.4byte	.LASF10
+ 456 007c 02       		.byte	0x2
+ 457 007d 3A01     		.2byte	0x13a
+ 458 007f 48000000 		.4byte	0x48
+ 459 0083 02       		.uleb128 0x2
+ 460 0084 04       		.byte	0x4
+ 461 0085 04       		.byte	0x4
+ 462 0086 C6000000 		.4byte	.LASF11
+ 463 008a 02       		.uleb128 0x2
+ 464 008b 08       		.byte	0x8
+ 465 008c 04       		.byte	0x4
+ 466 008d 58010000 		.4byte	.LASF12
+ 467 0091 02       		.uleb128 0x2
+ 468 0092 01       		.byte	0x1
+ 469 0093 08       		.byte	0x8
+ 470 0094 65020000 		.4byte	.LASF13
+ 471 0098 04       		.uleb128 0x4
+ 472 0099 00000000 		.4byte	.LASF14
+ 473 009d 02       		.byte	0x2
+ 474 009e E401     		.2byte	0x1e4
+ 475 00a0 A4000000 		.4byte	0xa4
+ 476 00a4 05       		.uleb128 0x5
+ 477 00a5 77000000 		.4byte	0x77
+ 478 00a9 06       		.uleb128 0x6
+ 479 00aa 04       		.byte	0x4
+ 480 00ab AF000000 		.4byte	0xaf
+ 481 00af 07       		.uleb128 0x7
+ 482 00b0 02       		.uleb128 0x2
+ 483 00b1 04       		.byte	0x4
+ 484 00b2 07       		.byte	0x7
+ 485 00b3 4E020000 		.4byte	.LASF15
+ 486 00b7 08       		.uleb128 0x8
+ 487 00b8 42020000 		.4byte	.LASF16
+ 488 00bc 01       		.byte	0x1
+ 489 00bd 66       		.byte	0x66
+ 490 00be 00000000 		.4byte	.LFB2
+ 491 00c2 0C000000 		.4byte	.LFE2-.LFB2
+ 492 00c6 01       		.uleb128 0x1
+ 493 00c7 9C       		.byte	0x9c
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 18
+
+
+ 494 00c8 08       		.uleb128 0x8
+ 495 00c9 4A010000 		.4byte	.LASF17
+ 496 00cd 01       		.byte	0x1
+ 497 00ce 92       		.byte	0x92
+ 498 00cf 00000000 		.4byte	.LFB3
+ 499 00d3 24000000 		.4byte	.LFE3-.LFB3
+ 500 00d7 01       		.uleb128 0x1
+ 501 00d8 9C       		.byte	0x9c
+ 502 00d9 08       		.uleb128 0x8
+ 503 00da 7F000000 		.4byte	.LASF18
+ 504 00de 01       		.byte	0x1
+ 505 00df C0       		.byte	0xc0
+ 506 00e0 00000000 		.4byte	.LFB4
+ 507 00e4 24000000 		.4byte	.LFE4-.LFB4
+ 508 00e8 01       		.uleb128 0x1
+ 509 00e9 9C       		.byte	0x9c
+ 510 00ea 08       		.uleb128 0x8
+ 511 00eb 06000000 		.4byte	.LASF19
+ 512 00ef 01       		.byte	0x1
+ 513 00f0 DD       		.byte	0xdd
+ 514 00f1 00000000 		.4byte	.LFB5
+ 515 00f5 34000000 		.4byte	.LFE5-.LFB5
+ 516 00f9 01       		.uleb128 0x1
+ 517 00fa 9C       		.byte	0x9c
+ 518 00fb 09       		.uleb128 0x9
+ 519 00fc 23000000 		.4byte	.LASF20
+ 520 0100 01       		.byte	0x1
+ 521 0101 0A01     		.2byte	0x10a
+ 522 0103 00000000 		.4byte	.LFB6
+ 523 0107 34000000 		.4byte	.LFE6-.LFB6
+ 524 010b 01       		.uleb128 0x1
+ 525 010c 9C       		.byte	0x9c
+ 526 010d 30010000 		.4byte	0x130
+ 527 0111 0A       		.uleb128 0xa
+ 528 0112 1D000000 		.4byte	.LASF22
+ 529 0116 01       		.byte	0x1
+ 530 0117 0A01     		.2byte	0x10a
+ 531 0119 77000000 		.4byte	0x77
+ 532 011d 02       		.uleb128 0x2
+ 533 011e 91       		.byte	0x91
+ 534 011f 6C       		.sleb128 -20
+ 535 0120 0B       		.uleb128 0xb
+ 536 0121 89020000 		.4byte	.LASF23
+ 537 0125 01       		.byte	0x1
+ 538 0126 0C01     		.2byte	0x10c
+ 539 0128 77000000 		.4byte	0x77
+ 540 012c 02       		.uleb128 0x2
+ 541 012d 91       		.byte	0x91
+ 542 012e 74       		.sleb128 -12
+ 543 012f 00       		.byte	0
+ 544 0130 09       		.uleb128 0x9
+ 545 0131 F9010000 		.4byte	.LASF21
+ 546 0135 01       		.byte	0x1
+ 547 0136 2801     		.2byte	0x128
+ 548 0138 00000000 		.4byte	.LFB7
+ 549 013c 34000000 		.4byte	.LFE7-.LFB7
+ 550 0140 01       		.uleb128 0x1
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 19
+
+
+ 551 0141 9C       		.byte	0x9c
+ 552 0142 65010000 		.4byte	0x165
+ 553 0146 0A       		.uleb128 0xa
+ 554 0147 1D000000 		.4byte	.LASF22
+ 555 014b 01       		.byte	0x1
+ 556 014c 2801     		.2byte	0x128
+ 557 014e 77000000 		.4byte	0x77
+ 558 0152 02       		.uleb128 0x2
+ 559 0153 91       		.byte	0x91
+ 560 0154 6C       		.sleb128 -20
+ 561 0155 0B       		.uleb128 0xb
+ 562 0156 12000000 		.4byte	.LASF24
+ 563 015a 01       		.byte	0x1
+ 564 015b 2A01     		.2byte	0x12a
+ 565 015d 77000000 		.4byte	0x77
+ 566 0161 02       		.uleb128 0x2
+ 567 0162 91       		.byte	0x91
+ 568 0163 74       		.sleb128 -12
+ 569 0164 00       		.byte	0
+ 570 0165 09       		.uleb128 0x9
+ 571 0166 A5000000 		.4byte	.LASF25
+ 572 016a 01       		.byte	0x1
+ 573 016b 4C01     		.2byte	0x14c
+ 574 016d 00000000 		.4byte	.LFB8
+ 575 0171 18000000 		.4byte	.LFE8-.LFB8
+ 576 0175 01       		.uleb128 0x1
+ 577 0176 9C       		.byte	0x9c
+ 578 0177 8B010000 		.4byte	0x18b
+ 579 017b 0A       		.uleb128 0xa
+ 580 017c 5F010000 		.4byte	.LASF26
+ 581 0180 01       		.byte	0x1
+ 582 0181 4C01     		.2byte	0x14c
+ 583 0183 A9000000 		.4byte	0xa9
+ 584 0187 02       		.uleb128 0x2
+ 585 0188 91       		.byte	0x91
+ 586 0189 74       		.sleb128 -12
+ 587 018a 00       		.byte	0
+ 588 018b 0C       		.uleb128 0xc
+ 589 018c 74020000 		.4byte	.LASF27
+ 590 0190 01       		.byte	0x1
+ 591 0191 6801     		.2byte	0x168
+ 592 0193 00000000 		.4byte	.LFB9
+ 593 0197 0E000000 		.4byte	.LFE9-.LFB9
+ 594 019b 01       		.uleb128 0x1
+ 595 019c 9C       		.byte	0x9c
+ 596 019d 0C       		.uleb128 0xc
+ 597 019e 8C000000 		.4byte	.LASF28
+ 598 01a2 01       		.byte	0x1
+ 599 01a3 8801     		.2byte	0x188
+ 600 01a5 00000000 		.4byte	.LFB10
+ 601 01a9 0C000000 		.4byte	.LFE10-.LFB10
+ 602 01ad 01       		.uleb128 0x1
+ 603 01ae 9C       		.byte	0x9c
+ 604 01af 0C       		.uleb128 0xc
+ 605 01b0 39000000 		.4byte	.LASF29
+ 606 01b4 01       		.byte	0x1
+ 607 01b5 B401     		.2byte	0x1b4
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 20
+
+
+ 608 01b7 00000000 		.4byte	.LFB11
+ 609 01bb 0C000000 		.4byte	.LFE11-.LFB11
+ 610 01bf 01       		.uleb128 0x1
+ 611 01c0 9C       		.byte	0x9c
+ 612 01c1 0D       		.uleb128 0xd
+ 613 01c2 33020000 		.4byte	.LASF30
+ 614 01c6 01       		.byte	0x1
+ 615 01c7 42       		.byte	0x42
+ 616 01c8 6B000000 		.4byte	0x6b
+ 617 01cc 05       		.uleb128 0x5
+ 618 01cd 03       		.byte	0x3
+ 619 01ce 00000000 		.4byte	Serial_initVar
+ 620 01d2 0D       		.uleb128 0xd
+ 621 01d3 A9020000 		.4byte	.LASF31
+ 622 01d7 01       		.byte	0x1
+ 623 01d8 46       		.byte	0x46
+ 624 01d9 A9000000 		.4byte	0xa9
+ 625 01dd 05       		.uleb128 0x5
+ 626 01de 03       		.byte	0x3
+ 627 01df 00000000 		.4byte	Serial_customIntrHandler
+ 628 01e3 00       		.byte	0
+ 629              		.section	.debug_abbrev,"",%progbits
+ 630              	.Ldebug_abbrev0:
+ 631 0000 01       		.uleb128 0x1
+ 632 0001 11       		.uleb128 0x11
+ 633 0002 01       		.byte	0x1
+ 634 0003 25       		.uleb128 0x25
+ 635 0004 0E       		.uleb128 0xe
+ 636 0005 13       		.uleb128 0x13
+ 637 0006 0B       		.uleb128 0xb
+ 638 0007 03       		.uleb128 0x3
+ 639 0008 0E       		.uleb128 0xe
+ 640 0009 1B       		.uleb128 0x1b
+ 641 000a 0E       		.uleb128 0xe
+ 642 000b 55       		.uleb128 0x55
+ 643 000c 17       		.uleb128 0x17
+ 644 000d 11       		.uleb128 0x11
+ 645 000e 01       		.uleb128 0x1
+ 646 000f 10       		.uleb128 0x10
+ 647 0010 17       		.uleb128 0x17
+ 648 0011 00       		.byte	0
+ 649 0012 00       		.byte	0
+ 650 0013 02       		.uleb128 0x2
+ 651 0014 24       		.uleb128 0x24
+ 652 0015 00       		.byte	0
+ 653 0016 0B       		.uleb128 0xb
+ 654 0017 0B       		.uleb128 0xb
+ 655 0018 3E       		.uleb128 0x3e
+ 656 0019 0B       		.uleb128 0xb
+ 657 001a 03       		.uleb128 0x3
+ 658 001b 0E       		.uleb128 0xe
+ 659 001c 00       		.byte	0
+ 660 001d 00       		.byte	0
+ 661 001e 03       		.uleb128 0x3
+ 662 001f 24       		.uleb128 0x24
+ 663 0020 00       		.byte	0
+ 664 0021 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 21
+
+
+ 665 0022 0B       		.uleb128 0xb
+ 666 0023 3E       		.uleb128 0x3e
+ 667 0024 0B       		.uleb128 0xb
+ 668 0025 03       		.uleb128 0x3
+ 669 0026 08       		.uleb128 0x8
+ 670 0027 00       		.byte	0
+ 671 0028 00       		.byte	0
+ 672 0029 04       		.uleb128 0x4
+ 673 002a 16       		.uleb128 0x16
+ 674 002b 00       		.byte	0
+ 675 002c 03       		.uleb128 0x3
+ 676 002d 0E       		.uleb128 0xe
+ 677 002e 3A       		.uleb128 0x3a
+ 678 002f 0B       		.uleb128 0xb
+ 679 0030 3B       		.uleb128 0x3b
+ 680 0031 05       		.uleb128 0x5
+ 681 0032 49       		.uleb128 0x49
+ 682 0033 13       		.uleb128 0x13
+ 683 0034 00       		.byte	0
+ 684 0035 00       		.byte	0
+ 685 0036 05       		.uleb128 0x5
+ 686 0037 35       		.uleb128 0x35
+ 687 0038 00       		.byte	0
+ 688 0039 49       		.uleb128 0x49
+ 689 003a 13       		.uleb128 0x13
+ 690 003b 00       		.byte	0
+ 691 003c 00       		.byte	0
+ 692 003d 06       		.uleb128 0x6
+ 693 003e 0F       		.uleb128 0xf
+ 694 003f 00       		.byte	0
+ 695 0040 0B       		.uleb128 0xb
+ 696 0041 0B       		.uleb128 0xb
+ 697 0042 49       		.uleb128 0x49
+ 698 0043 13       		.uleb128 0x13
+ 699 0044 00       		.byte	0
+ 700 0045 00       		.byte	0
+ 701 0046 07       		.uleb128 0x7
+ 702 0047 15       		.uleb128 0x15
+ 703 0048 00       		.byte	0
+ 704 0049 27       		.uleb128 0x27
+ 705 004a 19       		.uleb128 0x19
+ 706 004b 00       		.byte	0
+ 707 004c 00       		.byte	0
+ 708 004d 08       		.uleb128 0x8
+ 709 004e 2E       		.uleb128 0x2e
+ 710 004f 00       		.byte	0
+ 711 0050 3F       		.uleb128 0x3f
+ 712 0051 19       		.uleb128 0x19
+ 713 0052 03       		.uleb128 0x3
+ 714 0053 0E       		.uleb128 0xe
+ 715 0054 3A       		.uleb128 0x3a
+ 716 0055 0B       		.uleb128 0xb
+ 717 0056 3B       		.uleb128 0x3b
+ 718 0057 0B       		.uleb128 0xb
+ 719 0058 27       		.uleb128 0x27
+ 720 0059 19       		.uleb128 0x19
+ 721 005a 11       		.uleb128 0x11
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 22
+
+
+ 722 005b 01       		.uleb128 0x1
+ 723 005c 12       		.uleb128 0x12
+ 724 005d 06       		.uleb128 0x6
+ 725 005e 40       		.uleb128 0x40
+ 726 005f 18       		.uleb128 0x18
+ 727 0060 9642     		.uleb128 0x2116
+ 728 0062 19       		.uleb128 0x19
+ 729 0063 00       		.byte	0
+ 730 0064 00       		.byte	0
+ 731 0065 09       		.uleb128 0x9
+ 732 0066 2E       		.uleb128 0x2e
+ 733 0067 01       		.byte	0x1
+ 734 0068 3F       		.uleb128 0x3f
+ 735 0069 19       		.uleb128 0x19
+ 736 006a 03       		.uleb128 0x3
+ 737 006b 0E       		.uleb128 0xe
+ 738 006c 3A       		.uleb128 0x3a
+ 739 006d 0B       		.uleb128 0xb
+ 740 006e 3B       		.uleb128 0x3b
+ 741 006f 05       		.uleb128 0x5
+ 742 0070 27       		.uleb128 0x27
+ 743 0071 19       		.uleb128 0x19
+ 744 0072 11       		.uleb128 0x11
+ 745 0073 01       		.uleb128 0x1
+ 746 0074 12       		.uleb128 0x12
+ 747 0075 06       		.uleb128 0x6
+ 748 0076 40       		.uleb128 0x40
+ 749 0077 18       		.uleb128 0x18
+ 750 0078 9742     		.uleb128 0x2117
+ 751 007a 19       		.uleb128 0x19
+ 752 007b 01       		.uleb128 0x1
+ 753 007c 13       		.uleb128 0x13
+ 754 007d 00       		.byte	0
+ 755 007e 00       		.byte	0
+ 756 007f 0A       		.uleb128 0xa
+ 757 0080 05       		.uleb128 0x5
+ 758 0081 00       		.byte	0
+ 759 0082 03       		.uleb128 0x3
+ 760 0083 0E       		.uleb128 0xe
+ 761 0084 3A       		.uleb128 0x3a
+ 762 0085 0B       		.uleb128 0xb
+ 763 0086 3B       		.uleb128 0x3b
+ 764 0087 05       		.uleb128 0x5
+ 765 0088 49       		.uleb128 0x49
+ 766 0089 13       		.uleb128 0x13
+ 767 008a 02       		.uleb128 0x2
+ 768 008b 18       		.uleb128 0x18
+ 769 008c 00       		.byte	0
+ 770 008d 00       		.byte	0
+ 771 008e 0B       		.uleb128 0xb
+ 772 008f 34       		.uleb128 0x34
+ 773 0090 00       		.byte	0
+ 774 0091 03       		.uleb128 0x3
+ 775 0092 0E       		.uleb128 0xe
+ 776 0093 3A       		.uleb128 0x3a
+ 777 0094 0B       		.uleb128 0xb
+ 778 0095 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 23
+
+
+ 779 0096 05       		.uleb128 0x5
+ 780 0097 49       		.uleb128 0x49
+ 781 0098 13       		.uleb128 0x13
+ 782 0099 02       		.uleb128 0x2
+ 783 009a 18       		.uleb128 0x18
+ 784 009b 00       		.byte	0
+ 785 009c 00       		.byte	0
+ 786 009d 0C       		.uleb128 0xc
+ 787 009e 2E       		.uleb128 0x2e
+ 788 009f 00       		.byte	0
+ 789 00a0 03       		.uleb128 0x3
+ 790 00a1 0E       		.uleb128 0xe
+ 791 00a2 3A       		.uleb128 0x3a
+ 792 00a3 0B       		.uleb128 0xb
+ 793 00a4 3B       		.uleb128 0x3b
+ 794 00a5 05       		.uleb128 0x5
+ 795 00a6 27       		.uleb128 0x27
+ 796 00a7 19       		.uleb128 0x19
+ 797 00a8 11       		.uleb128 0x11
+ 798 00a9 01       		.uleb128 0x1
+ 799 00aa 12       		.uleb128 0x12
+ 800 00ab 06       		.uleb128 0x6
+ 801 00ac 40       		.uleb128 0x40
+ 802 00ad 18       		.uleb128 0x18
+ 803 00ae 9642     		.uleb128 0x2116
+ 804 00b0 19       		.uleb128 0x19
+ 805 00b1 00       		.byte	0
+ 806 00b2 00       		.byte	0
+ 807 00b3 0D       		.uleb128 0xd
+ 808 00b4 34       		.uleb128 0x34
+ 809 00b5 00       		.byte	0
+ 810 00b6 03       		.uleb128 0x3
+ 811 00b7 0E       		.uleb128 0xe
+ 812 00b8 3A       		.uleb128 0x3a
+ 813 00b9 0B       		.uleb128 0xb
+ 814 00ba 3B       		.uleb128 0x3b
+ 815 00bb 0B       		.uleb128 0xb
+ 816 00bc 49       		.uleb128 0x49
+ 817 00bd 13       		.uleb128 0x13
+ 818 00be 3F       		.uleb128 0x3f
+ 819 00bf 19       		.uleb128 0x19
+ 820 00c0 02       		.uleb128 0x2
+ 821 00c1 18       		.uleb128 0x18
+ 822 00c2 00       		.byte	0
+ 823 00c3 00       		.byte	0
+ 824 00c4 00       		.byte	0
+ 825              		.section	.debug_aranges,"",%progbits
+ 826 0000 64000000 		.4byte	0x64
+ 827 0004 0200     		.2byte	0x2
+ 828 0006 00000000 		.4byte	.Ldebug_info0
+ 829 000a 04       		.byte	0x4
+ 830 000b 00       		.byte	0
+ 831 000c 0000     		.2byte	0
+ 832 000e 0000     		.2byte	0
+ 833 0010 00000000 		.4byte	.LFB2
+ 834 0014 0C000000 		.4byte	.LFE2-.LFB2
+ 835 0018 00000000 		.4byte	.LFB3
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 24
+
+
+ 836 001c 24000000 		.4byte	.LFE3-.LFB3
+ 837 0020 00000000 		.4byte	.LFB4
+ 838 0024 24000000 		.4byte	.LFE4-.LFB4
+ 839 0028 00000000 		.4byte	.LFB5
+ 840 002c 34000000 		.4byte	.LFE5-.LFB5
+ 841 0030 00000000 		.4byte	.LFB6
+ 842 0034 34000000 		.4byte	.LFE6-.LFB6
+ 843 0038 00000000 		.4byte	.LFB7
+ 844 003c 34000000 		.4byte	.LFE7-.LFB7
+ 845 0040 00000000 		.4byte	.LFB8
+ 846 0044 18000000 		.4byte	.LFE8-.LFB8
+ 847 0048 00000000 		.4byte	.LFB9
+ 848 004c 0E000000 		.4byte	.LFE9-.LFB9
+ 849 0050 00000000 		.4byte	.LFB10
+ 850 0054 0C000000 		.4byte	.LFE10-.LFB10
+ 851 0058 00000000 		.4byte	.LFB11
+ 852 005c 0C000000 		.4byte	.LFE11-.LFB11
+ 853 0060 00000000 		.4byte	0
+ 854 0064 00000000 		.4byte	0
+ 855              		.section	.debug_ranges,"",%progbits
+ 856              	.Ldebug_ranges0:
+ 857 0000 00000000 		.4byte	.LFB2
+ 858 0004 0C000000 		.4byte	.LFE2
+ 859 0008 00000000 		.4byte	.LFB3
+ 860 000c 24000000 		.4byte	.LFE3
+ 861 0010 00000000 		.4byte	.LFB4
+ 862 0014 24000000 		.4byte	.LFE4
+ 863 0018 00000000 		.4byte	.LFB5
+ 864 001c 34000000 		.4byte	.LFE5
+ 865 0020 00000000 		.4byte	.LFB6
+ 866 0024 34000000 		.4byte	.LFE6
+ 867 0028 00000000 		.4byte	.LFB7
+ 868 002c 34000000 		.4byte	.LFE7
+ 869 0030 00000000 		.4byte	.LFB8
+ 870 0034 18000000 		.4byte	.LFE8
+ 871 0038 00000000 		.4byte	.LFB9
+ 872 003c 0E000000 		.4byte	.LFE9
+ 873 0040 00000000 		.4byte	.LFB10
+ 874 0044 0C000000 		.4byte	.LFE10
+ 875 0048 00000000 		.4byte	.LFB11
+ 876 004c 0C000000 		.4byte	.LFE11
+ 877 0050 00000000 		.4byte	0
+ 878 0054 00000000 		.4byte	0
+ 879              		.section	.debug_line,"",%progbits
+ 880              	.Ldebug_line0:
+ 881 0000 18010000 		.section	.debug_str,"MS",%progbits,1
+ 881      02004300 
+ 881      00000201 
+ 881      FB0E0D00 
+ 881      01010101 
+ 882              	.LASF14:
+ 883 0000 72656733 		.ascii	"reg32\000"
+ 883      3200
+ 884              	.LASF19:
+ 885 0006 53657269 		.ascii	"Serial_Stop\000"
+ 885      616C5F53 
+ 885      746F7000 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 25
+
+
+ 886              	.LASF24:
+ 887 0012 74784669 		.ascii	"txFifoCtrl\000"
+ 887      666F4374 
+ 887      726C00
+ 888              	.LASF22:
+ 889 001d 6C657665 		.ascii	"level\000"
+ 889      6C00
+ 890              	.LASF20:
+ 891 0023 53657269 		.ascii	"Serial_SetRxFifoLevel\000"
+ 891      616C5F53 
+ 891      65745278 
+ 891      4669666F 
+ 891      4C657665 
+ 892              	.LASF29:
+ 893 0039 53657269 		.ascii	"Serial_ScbModeStop\000"
+ 893      616C5F53 
+ 893      63624D6F 
+ 893      64655374 
+ 893      6F7000
+ 894              	.LASF3:
+ 895 004c 73686F72 		.ascii	"short unsigned int\000"
+ 895      7420756E 
+ 895      7369676E 
+ 895      65642069 
+ 895      6E7400
+ 896              	.LASF33:
+ 897 005f 47656E65 		.ascii	"Generated_Source\\PSoC4\\Serial.c\000"
+ 897      72617465 
+ 897      645F536F 
+ 897      75726365 
+ 897      5C50536F 
+ 898              	.LASF18:
+ 899 007f 53657269 		.ascii	"Serial_Start\000"
+ 899      616C5F53 
+ 899      74617274 
+ 899      00
+ 900              	.LASF28:
+ 901 008c 53657269 		.ascii	"Serial_ScbModePostEnable\000"
+ 901      616C5F53 
+ 901      63624D6F 
+ 901      6465506F 
+ 901      7374456E 
+ 902              	.LASF25:
+ 903 00a5 53657269 		.ascii	"Serial_SetCustomInterruptHandler\000"
+ 903      616C5F53 
+ 903      65744375 
+ 903      73746F6D 
+ 903      496E7465 
+ 904              	.LASF11:
+ 905 00c6 666C6F61 		.ascii	"float\000"
+ 905      7400
+ 906              	.LASF1:
+ 907 00cc 756E7369 		.ascii	"unsigned char\000"
+ 907      676E6564 
+ 907      20636861 
+ 907      7200
+ 908              	.LASF34:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 26
+
+
+ 909 00da 433A5C55 		.ascii	"C:\\Users\\TTSS\\Dropbox\\Projects\\hackAIR\\AirQua"
+ 909      73657273 
+ 909      5C545453 
+ 909      535C4472 
+ 909      6F70626F 
+ 910 0107 6C697479 		.ascii	"lityBeacons\\SerialLaserSensor_SDS011.cydsn\000"
+ 910      42656163 
+ 910      6F6E735C 
+ 910      53657269 
+ 910      616C4C61 
+ 911              	.LASF5:
+ 912 0132 6C6F6E67 		.ascii	"long unsigned int\000"
+ 912      20756E73 
+ 912      69676E65 
+ 912      6420696E 
+ 912      7400
+ 913              	.LASF9:
+ 914 0144 75696E74 		.ascii	"uint8\000"
+ 914      3800
+ 915              	.LASF17:
+ 916 014a 53657269 		.ascii	"Serial_Enable\000"
+ 916      616C5F45 
+ 916      6E61626C 
+ 916      6500
+ 917              	.LASF12:
+ 918 0158 646F7562 		.ascii	"double\000"
+ 918      6C6500
+ 919              	.LASF26:
+ 920 015f 66756E63 		.ascii	"func\000"
+ 920      00
+ 921              	.LASF32:
+ 922 0164 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 922      4320342E 
+ 922      392E3320 
+ 922      32303135 
+ 922      30333033 
+ 923 0197 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 923      20726576 
+ 923      6973696F 
+ 923      6E203232 
+ 923      31323230 
+ 924 01ca 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 924      66756E63 
+ 924      74696F6E 
+ 924      2D736563 
+ 924      74696F6E 
+ 925              	.LASF10:
+ 926 01f2 75696E74 		.ascii	"uint32\000"
+ 926      333200
+ 927              	.LASF21:
+ 928 01f9 53657269 		.ascii	"Serial_SetTxFifoLevel\000"
+ 928      616C5F53 
+ 928      65745478 
+ 928      4669666F 
+ 928      4C657665 
+ 929              	.LASF8:
+ 930 020f 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 27
+
+
+ 930      676E6564 
+ 930      20696E74 
+ 930      00
+ 931              	.LASF7:
+ 932 021c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 932      206C6F6E 
+ 932      6720756E 
+ 932      7369676E 
+ 932      65642069 
+ 933              	.LASF30:
+ 934 0233 53657269 		.ascii	"Serial_initVar\000"
+ 934      616C5F69 
+ 934      6E697456 
+ 934      617200
+ 935              	.LASF16:
+ 936 0242 53657269 		.ascii	"Serial_Init\000"
+ 936      616C5F49 
+ 936      6E697400 
+ 937              	.LASF15:
+ 938 024e 73697A65 		.ascii	"sizetype\000"
+ 938      74797065 
+ 938      00
+ 939              	.LASF6:
+ 940 0257 6C6F6E67 		.ascii	"long long int\000"
+ 940      206C6F6E 
+ 940      6720696E 
+ 940      7400
+ 941              	.LASF13:
+ 942 0265 63686172 		.ascii	"char\000"
+ 942      00
+ 943              	.LASF2:
+ 944 026a 73686F72 		.ascii	"short int\000"
+ 944      7420696E 
+ 944      7400
+ 945              	.LASF27:
+ 946 0274 53657269 		.ascii	"Serial_ScbEnableIntr\000"
+ 946      616C5F53 
+ 946      6362456E 
+ 946      61626C65 
+ 946      496E7472 
+ 947              	.LASF23:
+ 948 0289 72784669 		.ascii	"rxFifoCtrl\000"
+ 948      666F4374 
+ 948      726C00
+ 949              	.LASF4:
+ 950 0294 6C6F6E67 		.ascii	"long int\000"
+ 950      20696E74 
+ 950      00
+ 951              	.LASF0:
+ 952 029d 7369676E 		.ascii	"signed char\000"
+ 952      65642063 
+ 952      68617200 
+ 953              	.LASF31:
+ 954 02a9 53657269 		.ascii	"Serial_customIntrHandler\000"
+ 954      616C5F63 
+ 954      7573746F 
+ 954      6D496E74 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccE9ouGi.s 			page 28
+
+
+ 954      7248616E 
+ 955              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
