@@ -1,0 +1,5595 @@
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"BLE_gatt.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	cyBle_state,1,1
+  18              		.global	cyBle_gatts
+  19              		.section	.rodata
+  20              		.align	2
+  21              		.type	cyBle_gatts, %object
+  22              		.size	cyBle_gatts, 6
+  23              	cyBle_gatts:
+  24 0000 0600     		.short	6
+  25 0002 0800     		.short	8
+  26 0004 0900     		.short	9
+  27              		.data
+  28              		.align	2
+  29              		.type	cyBle_attValues, %object
+  30              		.size	cyBle_attValues, 34
+  31              	cyBle_attValues:
+  32 0000 41       		.byte	65
+  33 0001 69       		.byte	105
+  34 0002 72       		.byte	114
+  35 0003 20       		.byte	32
+  36 0004 42       		.byte	66
+  37 0005 65       		.byte	101
+  38 0006 61       		.byte	97
+  39 0007 63       		.byte	99
+  40 0008 6F       		.byte	111
+  41 0009 6E       		.byte	110
+  42 000a 00       		.byte	0
+  43 000b 00       		.byte	0
+  44 000c 00       		.byte	0
+  45 000d 00       		.byte	0
+  46 000e 00       		.byte	0
+  47 000f 00       		.byte	0
+  48 0010 00       		.byte	0
+  49 0011 00       		.byte	0
+  50 0012 FB       		.byte	-5
+  51 0013 34       		.byte	52
+  52 0014 9B       		.byte	-101
+  53 0015 5F       		.byte	95
+  54 0016 80       		.byte	-128
+  55 0017 00       		.byte	0
+  56 0018 00       		.byte	0
+  57 0019 80       		.byte	-128
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 2
+
+
+  58 001a 00       		.byte	0
+  59 001b 10       		.byte	16
+  60 001c 00       		.byte	0
+  61 001d 00       		.byte	0
+  62 001e 00       		.byte	0
+  63 001f 00       		.byte	0
+  64 0020 00       		.byte	0
+  65 0021 00       		.byte	0
+  66              		.global	cyBle_attValuesCCCDFlashMemory
+  67              		.section	.rodata
+  68 0006 00000000 		.align	7
+  68      00000000 
+  68      00000000 
+  68      00000000 
+  68      00000000 
+  69              		.type	cyBle_attValuesCCCDFlashMemory, %object
+  70              		.size	cyBle_attValuesCCCDFlashMemory, 10
+  71              	cyBle_attValuesCCCDFlashMemory:
+  72 0080 00000000 		.space	10
+  72      00000000 
+  72      0000
+  73              		.comm	cyBle_attValuesCCCD,2,4
+  74              		.global	cyBle_attUuid128
+  75 008a 0000     		.align	2
+  76              		.type	cyBle_attUuid128, %object
+  77              		.size	cyBle_attUuid128, 32
+  78              	cyBle_attUuid128:
+  79 008c FB       		.byte	-5
+  80 008d 34       		.byte	52
+  81 008e 9B       		.byte	-101
+  82 008f 5F       		.byte	95
+  83 0090 80       		.byte	-128
+  84 0091 00       		.byte	0
+  85 0092 00       		.byte	0
+  86 0093 80       		.byte	-128
+  87 0094 00       		.byte	0
+  88 0095 10       		.byte	16
+  89 0096 00       		.byte	0
+  90 0097 00       		.byte	0
+  91 0098 00       		.byte	0
+  92 0099 00       		.byte	0
+  93 009a 00       		.byte	0
+  94 009b 00       		.byte	0
+  95 009c FB       		.byte	-5
+  96 009d 34       		.byte	52
+  97 009e 9B       		.byte	-101
+  98 009f 5F       		.byte	95
+  99 00a0 80       		.byte	-128
+ 100 00a1 00       		.byte	0
+ 101 00a2 00       		.byte	0
+ 102 00a3 80       		.byte	-128
+ 103 00a4 00       		.byte	0
+ 104 00a5 10       		.byte	16
+ 105 00a6 00       		.byte	0
+ 106 00a7 00       		.byte	0
+ 107 00a8 00       		.byte	0
+ 108 00a9 00       		.byte	0
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 3
+
+
+ 109 00aa 00       		.byte	0
+ 110 00ab 00       		.byte	0
+ 111              		.global	cyBle_attValuesLen
+ 112              		.data
+ 113 0022 0000     		.align	2
+ 114              		.type	cyBle_attValuesLen, %object
+ 115              		.size	cyBle_attValuesLen, 64
+ 116              	cyBle_attValuesLen:
+ 117 0024 0A00     		.short	10
+ 118 0026 0000     		.space	2
+ 119 0028 00000000 		.word	cyBle_attValues
+ 120 002c 0200     		.short	2
+ 121 002e 0000     		.space	2
+ 122 0030 0A000000 		.word	cyBle_attValues+10
+ 123 0034 0400     		.short	4
+ 124 0036 0000     		.space	2
+ 125 0038 0C000000 		.word	cyBle_attValues+12
+ 126 003c 0200     		.short	2
+ 127 003e 0000     		.space	2
+ 128 0040 00000000 		.word	cyBle_attValuesCCCD
+ 129 0044 1000     		.short	16
+ 130 0046 0000     		.space	2
+ 131 0048 00000000 		.word	cyBle_attUuid128
+ 132 004c 1000     		.short	16
+ 133 004e 0000     		.space	2
+ 134 0050 10000000 		.word	cyBle_attUuid128+16
+ 135 0054 0100     		.short	1
+ 136 0056 0000     		.space	2
+ 137 0058 10000000 		.word	cyBle_attValues+16
+ 138 005c 1100     		.short	17
+ 139 005e 0000     		.space	2
+ 140 0060 11000000 		.word	cyBle_attValues+17
+ 141              		.global	cyBle_gattDB
+ 142              		.section	.rodata
+ 143              		.align	2
+ 144              		.type	cyBle_gattDB, %object
+ 145              		.size	cyBle_gattDB, 260
+ 146              	cyBle_gattDB:
+ 147 00ac 0100     		.short	1
+ 148 00ae 0028     		.short	10240
+ 149 00b0 01000000 		.word	1
+ 150 00b4 0500     		.short	5
+ 151 00b6 0000     		.space	2
+ 152 00b8 0018     		.short	6144
+ 153 00ba 0000     		.space	2
+ 154 00bc 00000000 		.word	0
+ 155 00c0 0200     		.short	2
+ 156 00c2 0328     		.short	10243
+ 157 00c4 01020000 		.word	513
+ 158 00c8 0300     		.short	3
+ 159 00ca 0000     		.space	2
+ 160 00cc 002A     		.short	10752
+ 161 00ce 0000     		.space	2
+ 162 00d0 00000000 		.word	0
+ 163 00d4 0300     		.short	3
+ 164 00d6 002A     		.short	10752
+ 165 00d8 01020000 		.word	513
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 4
+
+
+ 166 00dc 0300     		.short	3
+ 167 00de 0000     		.space	2
+ 168 00e0 0A00     		.short	10
+ 169 00e2 0000     		.space	2
+ 170 00e4 00000000 		.word	cyBle_attValuesLen
+ 171 00e8 0400     		.short	4
+ 172 00ea 0328     		.short	10243
+ 173 00ec 01020000 		.word	513
+ 174 00f0 0500     		.short	5
+ 175 00f2 0000     		.space	2
+ 176 00f4 012A     		.short	10753
+ 177 00f6 0000     		.space	2
+ 178 00f8 00000000 		.word	0
+ 179 00fc 0500     		.short	5
+ 180 00fe 012A     		.short	10753
+ 181 0100 01020000 		.word	513
+ 182 0104 0500     		.short	5
+ 183 0106 0000     		.space	2
+ 184 0108 0200     		.short	2
+ 185 010a 0000     		.space	2
+ 186 010c 08000000 		.word	cyBle_attValuesLen+8
+ 187 0110 0600     		.short	6
+ 188 0112 0028     		.short	10240
+ 189 0114 01000000 		.word	1
+ 190 0118 0900     		.short	9
+ 191 011a 0000     		.space	2
+ 192 011c 0118     		.short	6145
+ 193 011e 0000     		.space	2
+ 194 0120 00000000 		.word	0
+ 195 0124 0700     		.short	7
+ 196 0126 0328     		.short	10243
+ 197 0128 01220000 		.word	8705
+ 198 012c 0900     		.short	9
+ 199 012e 0000     		.space	2
+ 200 0130 052A     		.short	10757
+ 201 0132 0000     		.space	2
+ 202 0134 00000000 		.word	0
+ 203 0138 0800     		.short	8
+ 204 013a 052A     		.short	10757
+ 205 013c 01220000 		.word	8705
+ 206 0140 0900     		.short	9
+ 207 0142 0000     		.space	2
+ 208 0144 0400     		.short	4
+ 209 0146 0000     		.space	2
+ 210 0148 10000000 		.word	cyBle_attValuesLen+16
+ 211 014c 0900     		.short	9
+ 212 014e 0229     		.short	10498
+ 213 0150 040A0000 		.word	2564
+ 214 0154 0900     		.short	9
+ 215 0156 0000     		.space	2
+ 216 0158 0200     		.short	2
+ 217 015a 0000     		.space	2
+ 218 015c 18000000 		.word	cyBle_attValuesLen+24
+ 219 0160 0A00     		.short	10
+ 220 0162 0028     		.short	10240
+ 221 0164 01000800 		.word	524289
+ 222 0168 0D00     		.short	13
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 5
+
+
+ 223 016a 0000     		.space	2
+ 224 016c 1000     		.short	16
+ 225 016e 0000     		.space	2
+ 226 0170 20000000 		.word	cyBle_attValuesLen+32
+ 227 0174 0B00     		.short	11
+ 228 0176 0328     		.short	10243
+ 229 0178 01000000 		.word	1
+ 230 017c 0D00     		.short	13
+ 231 017e 0000     		.space	2
+ 232 0180 1000     		.short	16
+ 233 0182 0000     		.space	2
+ 234 0184 28000000 		.word	cyBle_attValuesLen+40
+ 235 0188 0C00     		.short	12
+ 236 018a 0000     		.short	0
+ 237 018c 00000800 		.word	524288
+ 238 0190 0D00     		.short	13
+ 239 0192 0000     		.space	2
+ 240 0194 0100     		.short	1
+ 241 0196 0000     		.space	2
+ 242 0198 30000000 		.word	cyBle_attValuesLen+48
+ 243 019c 0D00     		.short	13
+ 244 019e 0000     		.short	0
+ 245 01a0 01000800 		.word	524289
+ 246 01a4 0D00     		.short	13
+ 247 01a6 0000     		.space	2
+ 248 01a8 0100     		.short	1
+ 249 01aa 0000     		.space	2
+ 250 01ac 38000000 		.word	cyBle_attValuesLen+56
+ 251 01b0 00000000 		.section	.text.CyBle_GattsReInitGattDb,"ax",%progbits
+ 251      00000000 
+ 251      00000000 
+ 251      00000000 
+ 251      00000000 
+ 252              		.align	2
+ 253              		.global	CyBle_GattsReInitGattDb
+ 254              		.code	16
+ 255              		.thumb_func
+ 256              		.type	CyBle_GattsReInitGattDb, %function
+ 257              	CyBle_GattsReInitGattDb:
+ 258              	.LFB2:
+ 259              		.file 1 "Generated_Source\\PSoC4\\BLE_gatt.c"
+   1:Generated_Source\PSoC4/BLE_gatt.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/BLE_gatt.c **** File Name: CYBLE_gatt.c
+   3:Generated_Source\PSoC4/BLE_gatt.c **** Version 2.0
+   4:Generated_Source\PSoC4/BLE_gatt.c **** 
+   5:Generated_Source\PSoC4/BLE_gatt.c **** Description:
+   6:Generated_Source\PSoC4/BLE_gatt.c ****  This file contains the source code for the GATT API of the BLE Component.
+   7:Generated_Source\PSoC4/BLE_gatt.c **** 
+   8:Generated_Source\PSoC4/BLE_gatt.c **** ********************************************************************************
+   9:Generated_Source\PSoC4/BLE_gatt.c **** Copyright 2014-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC4/BLE_gatt.c **** You may use this file only in accordance with the license, terms, conditions,
+  11:Generated_Source\PSoC4/BLE_gatt.c **** disclaimers, and limitations in the end user license agreement accompanying
+  12:Generated_Source\PSoC4/BLE_gatt.c **** the software package with which this file was provided.
+  13:Generated_Source\PSoC4/BLE_gatt.c **** *******************************************************************************/
+  14:Generated_Source\PSoC4/BLE_gatt.c **** 
+  15:Generated_Source\PSoC4/BLE_gatt.c **** 
+  16:Generated_Source\PSoC4/BLE_gatt.c **** #include "BLE_eventHandler.h"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 6
+
+
+  17:Generated_Source\PSoC4/BLE_gatt.c **** 
+  18:Generated_Source\PSoC4/BLE_gatt.c **** 
+  19:Generated_Source\PSoC4/BLE_gatt.c **** /***************************************
+  20:Generated_Source\PSoC4/BLE_gatt.c **** ##Global variables
+  21:Generated_Source\PSoC4/BLE_gatt.c **** ***************************************/
+  22:Generated_Source\PSoC4/BLE_gatt.c **** 
+  23:Generated_Source\PSoC4/BLE_gatt.c **** CYBLE_STATE_T cyBle_state;
+  24:Generated_Source\PSoC4/BLE_gatt.c **** 
+  25:Generated_Source\PSoC4/BLE_gatt.c **** 
+  26:Generated_Source\PSoC4/BLE_gatt.c **** #if(CYBLE_GATT_ROLE_SERVER)
+  27:Generated_Source\PSoC4/BLE_gatt.c ****     
+  28:Generated_Source\PSoC4/BLE_gatt.c ****     const CYBLE_GATTS_T cyBle_gatts =
+  29:Generated_Source\PSoC4/BLE_gatt.c **** {
+  30:Generated_Source\PSoC4/BLE_gatt.c ****     0x0006u,    /* Handle of the GATT service */
+  31:Generated_Source\PSoC4/BLE_gatt.c ****     0x0008u,    /* Handle of the Service Changed characteristic */
+  32:Generated_Source\PSoC4/BLE_gatt.c ****     0x0009u,    /* Handle of the Client Characteristic Configuration descriptor */
+  33:Generated_Source\PSoC4/BLE_gatt.c **** };
+  34:Generated_Source\PSoC4/BLE_gatt.c ****     
+  35:Generated_Source\PSoC4/BLE_gatt.c ****     static uint8 cyBle_attValues[0x22u] = {
+  36:Generated_Source\PSoC4/BLE_gatt.c ****     /* Device Name */
+  37:Generated_Source\PSoC4/BLE_gatt.c ****     (uint8)'A', (uint8)'i', (uint8)'r', (uint8)' ', (uint8)'B', (uint8)'e', (uint8)'a', (uint8)'c',
+  38:Generated_Source\PSoC4/BLE_gatt.c **** 
+  39:Generated_Source\PSoC4/BLE_gatt.c ****     /* Appearance */
+  40:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 0x00u, 
+  41:Generated_Source\PSoC4/BLE_gatt.c **** 
+  42:Generated_Source\PSoC4/BLE_gatt.c ****     /* Service Changed */
+  43:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 0x00u, 0x00u, 0x00u, 
+  44:Generated_Source\PSoC4/BLE_gatt.c **** 
+  45:Generated_Source\PSoC4/BLE_gatt.c ****     /* Custom Characteristic */
+  46:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 
+  47:Generated_Source\PSoC4/BLE_gatt.c **** 
+  48:Generated_Source\PSoC4/BLE_gatt.c ****     /* Custom Descriptor */
+  49:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 0xFBu, 0x34u, 0x9Bu, 0x5Fu, 0x80u, 0x00u, 0x00u, 0x80u, 0x00u, 0x10u, 0x00u, 0x00u, 0x00
+  50:Generated_Source\PSoC4/BLE_gatt.c **** 
+  51:Generated_Source\PSoC4/BLE_gatt.c **** };
+  52:Generated_Source\PSoC4/BLE_gatt.c **** 
+  53:Generated_Source\PSoC4/BLE_gatt.c **** #if defined(__GNUC__) || defined(__ARMCC_VERSION)
+  54:Generated_Source\PSoC4/BLE_gatt.c **** const uint8 cyBle_attValuesCCCDFlashMemory[CYBLE_GAP_MAX_BONDED_DEVICE + 1u][CYBLE_GATT_DB_CCCD_COU
+  55:Generated_Source\PSoC4/BLE_gatt.c **** #elif defined(__ICCARM__)
+  56:Generated_Source\PSoC4/BLE_gatt.c **** /* The cyBle_attValuesCCCDFlashMemory[] should be aligned to the size of a Flash row */
+  57:Generated_Source\PSoC4/BLE_gatt.c **** #pragma data_alignment=CY_FLASH_SIZEOF_ROW
+  58:Generated_Source\PSoC4/BLE_gatt.c **** const uint8 cyBle_attValuesCCCDFlashMemory[CYBLE_GAP_MAX_BONDED_DEVICE + 1u][CYBLE_GATT_DB_CCCD_COU
+  59:Generated_Source\PSoC4/BLE_gatt.c **** #endif /* defined(__GNUC__) || defined(__ARMCC_VERSION) */
+  60:Generated_Source\PSoC4/BLE_gatt.c **** {
+  61:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 0x00u, 
+  62:Generated_Source\PSoC4/BLE_gatt.c **** },
+  63:Generated_Source\PSoC4/BLE_gatt.c **** {
+  64:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 0x00u, 
+  65:Generated_Source\PSoC4/BLE_gatt.c **** },
+  66:Generated_Source\PSoC4/BLE_gatt.c **** {
+  67:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 0x00u, 
+  68:Generated_Source\PSoC4/BLE_gatt.c **** },
+  69:Generated_Source\PSoC4/BLE_gatt.c **** {
+  70:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 0x00u, 
+  71:Generated_Source\PSoC4/BLE_gatt.c **** },
+  72:Generated_Source\PSoC4/BLE_gatt.c **** {
+  73:Generated_Source\PSoC4/BLE_gatt.c ****     0x00u, 0x00u, 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 7
+
+
+  74:Generated_Source\PSoC4/BLE_gatt.c **** },
+  75:Generated_Source\PSoC4/BLE_gatt.c **** };
+  76:Generated_Source\PSoC4/BLE_gatt.c **** uint8 cyBle_attValuesCCCD[CYBLE_GATT_DB_CCCD_COUNT];
+  77:Generated_Source\PSoC4/BLE_gatt.c **** 
+  78:Generated_Source\PSoC4/BLE_gatt.c **** const uint8 cyBle_attUuid128[][16u] = {
+  79:Generated_Source\PSoC4/BLE_gatt.c ****     /* Custom Service */
+  80:Generated_Source\PSoC4/BLE_gatt.c ****     { 0xFBu, 0x34u, 0x9Bu, 0x5Fu, 0x80u, 0x00u, 0x00u, 0x80u, 0x00u, 0x10u, 0x00u, 0x00u, 0x00u, 0x
+  81:Generated_Source\PSoC4/BLE_gatt.c ****     /* Custom Characteristic */
+  82:Generated_Source\PSoC4/BLE_gatt.c ****     { 0xFBu, 0x34u, 0x9Bu, 0x5Fu, 0x80u, 0x00u, 0x00u, 0x80u, 0x00u, 0x10u, 0x00u, 0x00u, 0x00u, 0x
+  83:Generated_Source\PSoC4/BLE_gatt.c **** };
+  84:Generated_Source\PSoC4/BLE_gatt.c **** 
+  85:Generated_Source\PSoC4/BLE_gatt.c **** CYBLE_GATTS_ATT_GEN_VAL_LEN_T cyBle_attValuesLen[CYBLE_GATT_DB_ATT_VAL_COUNT] = {
+  86:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x000Au, (void *)&cyBle_attValues[0] }, /* Device Name */
+  87:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0002u, (void *)&cyBle_attValues[10] }, /* Appearance */
+  88:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0004u, (void *)&cyBle_attValues[12] }, /* Service Changed */
+  89:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0002u, (void *)&cyBle_attValuesCCCD[0] }, /* Client Characteristic Configuration */
+  90:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0010u, (void *)&cyBle_attUuid128[0] }, /* Custom Service UUID */
+  91:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0010u, (void *)&cyBle_attUuid128[1] }, /* Custom Characteristic UUID */
+  92:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0001u, (void *)&cyBle_attValues[16] }, /* Custom Characteristic */
+  93:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0011u, (void *)&cyBle_attValues[17] }, /* Custom Descriptor */
+  94:Generated_Source\PSoC4/BLE_gatt.c **** };
+  95:Generated_Source\PSoC4/BLE_gatt.c **** 
+  96:Generated_Source\PSoC4/BLE_gatt.c **** const CYBLE_GATTS_DB_T cyBle_gattDB[0x0Du] = {
+  97:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0001u, 0x2800u /* Primary service                     */, 0x00000001u /*        */, 0x0005u
+  98:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0002u, 0x2803u /* Characteristic                      */, 0x00000201u /* rd     */, 0x0003u
+  99:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0003u, 0x2A00u /* Device Name                         */, 0x00000201u /* rd     */, 0x0003u
+ 100:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0004u, 0x2803u /* Characteristic                      */, 0x00000201u /* rd     */, 0x0005u
+ 101:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0005u, 0x2A01u /* Appearance                          */, 0x00000201u /* rd     */, 0x0005u
+ 102:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0006u, 0x2800u /* Primary service                     */, 0x00000001u /*        */, 0x0009u
+ 103:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0007u, 0x2803u /* Characteristic                      */, 0x00002201u /* rd,ind */, 0x0009u
+ 104:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0008u, 0x2A05u /* Service Changed                     */, 0x00002201u /* rd,ind */, 0x0009u
+ 105:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x0009u, 0x2902u /* Client Characteristic Configuration */, 0x00000A04u /* rd,wr  */, 0x0009u
+ 106:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x000Au, 0x2800u /* Primary service                     */, 0x00080001u /*        */, 0x000Du
+ 107:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x000Bu, 0x2803u /* Characteristic                      */, 0x00000001u /*        */, 0x000Du
+ 108:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x000Cu, 0x0000u /* Custom Characteristic               */, 0x00080000u /*        */, 0x000Du
+ 109:Generated_Source\PSoC4/BLE_gatt.c ****     { 0x000Du, 0x0000u /* Custom Descriptor                   */, 0x00080001u /*        */, 0x000Du
+ 110:Generated_Source\PSoC4/BLE_gatt.c **** };
+ 111:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 112:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 113:Generated_Source\PSoC4/BLE_gatt.c **** #endif /* (CYBLE_GATT_ROLE_SERVER) */
+ 114:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 115:Generated_Source\PSoC4/BLE_gatt.c **** #if(CYBLE_GATT_ROLE_CLIENT)
+ 116:Generated_Source\PSoC4/BLE_gatt.c ****     
+ 117:Generated_Source\PSoC4/BLE_gatt.c **** CYBLE_CLIENT_STATE_T cyBle_clientState;
+ 118:Generated_Source\PSoC4/BLE_gatt.c **** CYBLE_GATTC_T cyBle_gattc;
+ 119:Generated_Source\PSoC4/BLE_gatt.c ****     
+ 120:Generated_Source\PSoC4/BLE_gatt.c **** #endif /* (CYBLE_GATT_ROLE_CLIENT) */
+ 121:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 122:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 123:Generated_Source\PSoC4/BLE_gatt.c **** #if(CYBLE_GATT_ROLE_SERVER)
+ 124:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 125:Generated_Source\PSoC4/BLE_gatt.c **** /****************************************************************************** 
+ 126:Generated_Source\PSoC4/BLE_gatt.c **** ##Function Name: CyBle_GattsReInitGattDb
+ 127:Generated_Source\PSoC4/BLE_gatt.c **** *******************************************************************************
+ 128:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 129:Generated_Source\PSoC4/BLE_gatt.c **** Summary:
+ 130:Generated_Source\PSoC4/BLE_gatt.c ****  Reinitializes the GATT database.
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 8
+
+
+ 131:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 132:Generated_Source\PSoC4/BLE_gatt.c **** Parameters:
+ 133:Generated_Source\PSoC4/BLE_gatt.c ****  None
+ 134:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 135:Generated_Source\PSoC4/BLE_gatt.c **** Return:
+ 136:Generated_Source\PSoC4/BLE_gatt.c ****  CYBLE_API_RESULT_T: An API result states if the API succeeded or failed with
+ 137:Generated_Source\PSoC4/BLE_gatt.c ****  error codes:
+ 138:Generated_Source\PSoC4/BLE_gatt.c ****   * CYBLE_ERROR_OK: GATT database was reinitialized successfully
+ 139:Generated_Source\PSoC4/BLE_gatt.c ****   * CYBLE_ERROR_INVALID_STATE: If the function is called in any state except
+ 140:Generated_Source\PSoC4/BLE_gatt.c ****                                 CYBLE_STATE_DISCONNECTED.
+ 141:Generated_Source\PSoC4/BLE_gatt.c ****   * Any of the CyBle_GattsDbRegister() stack API function return values.
+ 142:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 143:Generated_Source\PSoC4/BLE_gatt.c **** ******************************************************************************/
+ 144:Generated_Source\PSoC4/BLE_gatt.c **** CYBLE_API_RESULT_T CyBle_GattsReInitGattDb(void)
+ 145:Generated_Source\PSoC4/BLE_gatt.c **** {
+ 260              		.loc 1 145 0
+ 261              		.cfi_startproc
+ 262 0000 90B5     		push	{r4, r7, lr}
+ 263              		.cfi_def_cfa_offset 12
+ 264              		.cfi_offset 4, -12
+ 265              		.cfi_offset 7, -8
+ 266              		.cfi_offset 14, -4
+ 267 0002 83B0     		sub	sp, sp, #12
+ 268              		.cfi_def_cfa_offset 24
+ 269 0004 00AF     		add	r7, sp, #0
+ 270              		.cfi_def_cfa_register 7
+ 146:Generated_Source\PSoC4/BLE_gatt.c ****     CYBLE_API_RESULT_T apiResult;
+ 147:Generated_Source\PSoC4/BLE_gatt.c ****     
+ 148:Generated_Source\PSoC4/BLE_gatt.c ****     if(CYBLE_STATE_DISCONNECTED == CyBle_GetState())
+ 271              		.loc 1 148 0
+ 272 0006 0C4B     		ldr	r3, .L5
+ 273 0008 1B78     		ldrb	r3, [r3]
+ 274 000a 042B     		cmp	r3, #4
+ 275 000c 09D1     		bne	.L2
+ 149:Generated_Source\PSoC4/BLE_gatt.c ****     {
+ 150:Generated_Source\PSoC4/BLE_gatt.c ****         apiResult = CyBle_GattsDbRegister(cyBle_gattDB, CYBLE_GATT_DB_INDEX_COUNT, CYBLE_GATT_DB_MA
+ 276              		.loc 1 150 0
+ 277 000e BC1D     		add	r4, r7, #6
+ 278 0010 0A4B     		ldr	r3, .L5+4
+ 279 0012 181C     		mov	r0, r3
+ 280 0014 0D21     		mov	r1, #13
+ 281 0016 0A22     		mov	r2, #10
+ 282 0018 FFF7FEFF 		bl	CyBle_GattsDbRegister
+ 283 001c 031C     		mov	r3, r0
+ 284 001e 2380     		strh	r3, [r4]
+ 285 0020 03E0     		b	.L3
+ 286              	.L2:
+ 151:Generated_Source\PSoC4/BLE_gatt.c ****     }
+ 152:Generated_Source\PSoC4/BLE_gatt.c ****     else
+ 153:Generated_Source\PSoC4/BLE_gatt.c ****     {
+ 154:Generated_Source\PSoC4/BLE_gatt.c ****         apiResult = CYBLE_ERROR_INVALID_STATE;
+ 287              		.loc 1 154 0
+ 288 0022 BB1D     		add	r3, r7, #6
+ 289 0024 0422     		mov	r2, #4
+ 290 0026 FF32     		add	r2, r2, #255
+ 291 0028 1A80     		strh	r2, [r3]
+ 292              	.L3:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 9
+
+
+ 155:Generated_Source\PSoC4/BLE_gatt.c ****     }
+ 156:Generated_Source\PSoC4/BLE_gatt.c ****     
+ 157:Generated_Source\PSoC4/BLE_gatt.c ****     return(apiResult);
+ 293              		.loc 1 157 0
+ 294 002a BB1D     		add	r3, r7, #6
+ 295 002c 1B88     		ldrh	r3, [r3]
+ 158:Generated_Source\PSoC4/BLE_gatt.c **** }
+ 296              		.loc 1 158 0
+ 297 002e 181C     		mov	r0, r3
+ 298 0030 BD46     		mov	sp, r7
+ 299 0032 03B0     		add	sp, sp, #12
+ 300              		@ sp needed
+ 301 0034 90BD     		pop	{r4, r7, pc}
+ 302              	.L6:
+ 303 0036 C046     		.align	2
+ 304              	.L5:
+ 305 0038 00000000 		.word	cyBle_state
+ 306 003c 00000000 		.word	cyBle_gattDB
+ 307              		.cfi_endproc
+ 308              	.LFE2:
+ 309              		.size	CyBle_GattsReInitGattDb, .-CyBle_GattsReInitGattDb
+ 310              		.section	.text.CyBle_GattsWriteEventHandler,"ax",%progbits
+ 311              		.align	2
+ 312              		.global	CyBle_GattsWriteEventHandler
+ 313              		.code	16
+ 314              		.thumb_func
+ 315              		.type	CyBle_GattsWriteEventHandler, %function
+ 316              	CyBle_GattsWriteEventHandler:
+ 317              	.LFB3:
+ 159:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 160:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 161:Generated_Source\PSoC4/BLE_gatt.c **** /****************************************************************************** 
+ 162:Generated_Source\PSoC4/BLE_gatt.c **** ##Function Name: CyBle_GattsWriteEventHandler
+ 163:Generated_Source\PSoC4/BLE_gatt.c **** *******************************************************************************
+ 164:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 165:Generated_Source\PSoC4/BLE_gatt.c **** Summary:
+ 166:Generated_Source\PSoC4/BLE_gatt.c ****  Handles the Write Request Event for GATT service.
+ 167:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 168:Generated_Source\PSoC4/BLE_gatt.c **** Parameters:
+ 169:Generated_Source\PSoC4/BLE_gatt.c ****  *eventParam: The pointer to the data structure specified by the event.
+ 170:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 171:Generated_Source\PSoC4/BLE_gatt.c **** Return:
+ 172:Generated_Source\PSoC4/BLE_gatt.c ****  * CYBLE_GATT_ERR_CODE_T: An API result returns one of the following status 
+ 173:Generated_Source\PSoC4/BLE_gatt.c ****     values
+ 174:Generated_Source\PSoC4/BLE_gatt.c ****  * CYBLE_GATT_ERR_NONE - Write is successful.
+ 175:Generated_Source\PSoC4/BLE_gatt.c **** 
+ 176:Generated_Source\PSoC4/BLE_gatt.c **** ******************************************************************************/
+ 177:Generated_Source\PSoC4/BLE_gatt.c **** CYBLE_GATT_ERR_CODE_T CyBle_GattsWriteEventHandler(CYBLE_GATTS_WRITE_REQ_PARAM_T *eventParam)
+ 178:Generated_Source\PSoC4/BLE_gatt.c **** {
+ 318              		.loc 1 178 0
+ 319              		.cfi_startproc
+ 320 0000 90B5     		push	{r4, r7, lr}
+ 321              		.cfi_def_cfa_offset 12
+ 322              		.cfi_offset 4, -12
+ 323              		.cfi_offset 7, -8
+ 324              		.cfi_offset 14, -4
+ 325 0002 85B0     		sub	sp, sp, #20
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 10
+
+
+ 326              		.cfi_def_cfa_offset 32
+ 327 0004 00AF     		add	r7, sp, #0
+ 328              		.cfi_def_cfa_register 7
+ 329 0006 7860     		str	r0, [r7, #4]
+ 179:Generated_Source\PSoC4/BLE_gatt.c ****     CYBLE_GATT_ERR_CODE_T gattErr = CYBLE_GATT_ERR_NONE;
+ 330              		.loc 1 179 0
+ 331 0008 0F23     		mov	r3, #15
+ 332 000a FB18     		add	r3, r7, r3
+ 333 000c 0022     		mov	r2, #0
+ 334 000e 1A70     		strb	r2, [r3]
+ 180:Generated_Source\PSoC4/BLE_gatt.c ****     
+ 181:Generated_Source\PSoC4/BLE_gatt.c ****     /* Client Characteristic Configuration descriptor write request */
+ 182:Generated_Source\PSoC4/BLE_gatt.c ****     if(eventParam->handleValPair.attrHandle == cyBle_gatts.cccdHandle)
+ 335              		.loc 1 182 0
+ 336 0010 7B68     		ldr	r3, [r7, #4]
+ 337 0012 9B89     		ldrh	r3, [r3, #12]
+ 338 0014 0922     		mov	r2, #9
+ 339 0016 9342     		cmp	r3, r2
+ 340 0018 37D1     		bne	.L8
+ 183:Generated_Source\PSoC4/BLE_gatt.c ****     {
+ 184:Generated_Source\PSoC4/BLE_gatt.c ****         /* Store value to database */
+ 185:Generated_Source\PSoC4/BLE_gatt.c ****         gattErr = CyBle_GattsWriteAttributeValue(&eventParam->handleValPair, 0u, 
+ 341              		.loc 1 185 0
+ 342 001a 7B68     		ldr	r3, [r7, #4]
+ 343 001c 1A1D     		add	r2, r3, #4
+ 344 001e 7B68     		ldr	r3, [r7, #4]
+ 345 0020 0F21     		mov	r1, #15
+ 346 0022 7C18     		add	r4, r7, r1
+ 347 0024 101C     		mov	r0, r2
+ 348 0026 0021     		mov	r1, #0
+ 349 0028 1A1C     		mov	r2, r3
+ 350 002a 4023     		mov	r3, #64
+ 351 002c FFF7FEFF 		bl	CyBle_GattsWriteAttributeValue
+ 352 0030 031C     		mov	r3, r0
+ 353 0032 2370     		strb	r3, [r4]
+ 186:Generated_Source\PSoC4/BLE_gatt.c ****                         &eventParam->connHandle, CYBLE_GATT_DB_PEER_INITIATED);
+ 187:Generated_Source\PSoC4/BLE_gatt.c ****         
+ 188:Generated_Source\PSoC4/BLE_gatt.c ****         if(CYBLE_GATT_ERR_NONE == gattErr)
+ 354              		.loc 1 188 0
+ 355 0034 0F23     		mov	r3, #15
+ 356 0036 FB18     		add	r3, r7, r3
+ 357 0038 1B78     		ldrb	r3, [r3]
+ 358 003a 002B     		cmp	r3, #0
+ 359 003c 1DD1     		bne	.L9
+ 189:Generated_Source\PSoC4/BLE_gatt.c ****         {
+ 190:Generated_Source\PSoC4/BLE_gatt.c ****             if(CYBLE_IS_INDICATION_ENABLED_IN_PTR(eventParam->handleValPair.value.val))
+ 360              		.loc 1 190 0
+ 361 003e 7B68     		ldr	r3, [r7, #4]
+ 362 0040 5B68     		ldr	r3, [r3, #4]
+ 363 0042 181C     		mov	r0, r3
+ 364 0044 FFF7FEFF 		bl	CyBle_Get16ByPtr
+ 365 0048 031C     		mov	r3, r0
+ 366 004a 1A1C     		mov	r2, r3
+ 367 004c 0223     		mov	r3, #2
+ 368 004e 1340     		and	r3, r2
+ 369 0050 9BB2     		uxth	r3, r3
+ 370 0052 002B     		cmp	r3, #0
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 11
+
+
+ 371 0054 08D0     		beq	.L10
+ 191:Generated_Source\PSoC4/BLE_gatt.c ****             {
+ 192:Generated_Source\PSoC4/BLE_gatt.c ****                 CyBle_ApplCallback((uint32)CYBLE_EVT_GATTS_INDICATION_ENABLED, eventParam);
+ 372              		.loc 1 192 0
+ 373 0056 104B     		ldr	r3, .L12
+ 374 0058 1B68     		ldr	r3, [r3]
+ 375 005a 8222     		mov	r2, #130
+ 376 005c 5100     		lsl	r1, r2, #1
+ 377 005e 7A68     		ldr	r2, [r7, #4]
+ 378 0060 081C     		mov	r0, r1
+ 379 0062 111C     		mov	r1, r2
+ 380 0064 9847     		blx	r3
+ 381 0066 08E0     		b	.L9
+ 382              	.L10:
+ 193:Generated_Source\PSoC4/BLE_gatt.c ****             }
+ 194:Generated_Source\PSoC4/BLE_gatt.c ****             else
+ 195:Generated_Source\PSoC4/BLE_gatt.c ****             {
+ 196:Generated_Source\PSoC4/BLE_gatt.c ****                 CyBle_ApplCallback((uint32)CYBLE_EVT_GATTS_INDICATION_DISABLED, eventParam);
+ 383              		.loc 1 196 0
+ 384 0068 0B4B     		ldr	r3, .L12
+ 385 006a 1B68     		ldr	r3, [r3]
+ 386 006c 0622     		mov	r2, #6
+ 387 006e FF32     		add	r2, r2, #255
+ 388 0070 111C     		mov	r1, r2
+ 389 0072 7A68     		ldr	r2, [r7, #4]
+ 390 0074 081C     		mov	r0, r1
+ 391 0076 111C     		mov	r1, r2
+ 392 0078 9847     		blx	r3
+ 393              	.L9:
+ 197:Generated_Source\PSoC4/BLE_gatt.c ****             }
+ 198:Generated_Source\PSoC4/BLE_gatt.c ****         }
+ 199:Generated_Source\PSoC4/BLE_gatt.c ****         cyBle_eventHandlerFlag &= (uint8)~CYBLE_CALLBACK;
+ 394              		.loc 1 199 0
+ 395 007a 084B     		ldr	r3, .L12+4
+ 396 007c 1B78     		ldrb	r3, [r3]
+ 397 007e DBB2     		uxtb	r3, r3
+ 398 0080 0122     		mov	r2, #1
+ 399 0082 9343     		bic	r3, r2
+ 400 0084 DAB2     		uxtb	r2, r3
+ 401 0086 054B     		ldr	r3, .L12+4
+ 402 0088 1A70     		strb	r2, [r3]
+ 403              	.L8:
+ 200:Generated_Source\PSoC4/BLE_gatt.c ****     }
+ 201:Generated_Source\PSoC4/BLE_gatt.c ****     return (gattErr);
+ 404              		.loc 1 201 0
+ 405 008a 0F23     		mov	r3, #15
+ 406 008c FB18     		add	r3, r7, r3
+ 407 008e 1B78     		ldrb	r3, [r3]
+ 202:Generated_Source\PSoC4/BLE_gatt.c **** }
+ 408              		.loc 1 202 0
+ 409 0090 181C     		mov	r0, r3
+ 410 0092 BD46     		mov	sp, r7
+ 411 0094 05B0     		add	sp, sp, #20
+ 412              		@ sp needed
+ 413 0096 90BD     		pop	{r4, r7, pc}
+ 414              	.L13:
+ 415              		.align	2
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 12
+
+
+ 416              	.L12:
+ 417 0098 00000000 		.word	CyBle_ApplCallback
+ 418 009c 00000000 		.word	cyBle_eventHandlerFlag
+ 419              		.cfi_endproc
+ 420              	.LFE3:
+ 421              		.size	CyBle_GattsWriteEventHandler, .-CyBle_GattsWriteEventHandler
+ 422              		.text
+ 423              	.Letext0:
+ 424              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 425              		.file 3 "Generated_Source\\PSoC4\\BLE_Stack.h"
+ 426              		.file 4 "Generated_Source\\PSoC4\\BLE_StackGatt.h"
+ 427              		.file 5 "Generated_Source\\PSoC4\\BLE_StackGattServer.h"
+ 428              		.file 6 "Generated_Source\\PSoC4\\BLE_StackGattDb.h"
+ 429              		.file 7 "Generated_Source\\PSoC4\\BLE.h"
+ 430              		.file 8 "Generated_Source\\PSoC4\\BLE_gatt.h"
+ 431              		.file 9 "Generated_Source\\PSoC4\\BLE_eventHandler.h"
+ 432              		.section	.debug_info,"",%progbits
+ 433              	.Ldebug_info0:
+ 434 0000 880E0000 		.4byte	0xe88
+ 435 0004 0400     		.2byte	0x4
+ 436 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 437 000a 04       		.byte	0x4
+ 438 000b 01       		.uleb128 0x1
+ 439 000c CD260000 		.4byte	.LASF438
+ 440 0010 01       		.byte	0x1
+ 441 0011 0B320000 		.4byte	.LASF439
+ 442 0015 E2270000 		.4byte	.LASF440
+ 443 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 444 001d 00000000 		.4byte	0
+ 445 0021 00000000 		.4byte	.Ldebug_line0
+ 446 0025 02       		.uleb128 0x2
+ 447 0026 01       		.byte	0x1
+ 448 0027 06       		.byte	0x6
+ 449 0028 E30A0000 		.4byte	.LASF0
+ 450 002c 02       		.uleb128 0x2
+ 451 002d 01       		.byte	0x1
+ 452 002e 08       		.byte	0x8
+ 453 002f 020C0000 		.4byte	.LASF1
+ 454 0033 02       		.uleb128 0x2
+ 455 0034 02       		.byte	0x2
+ 456 0035 05       		.byte	0x5
+ 457 0036 762B0000 		.4byte	.LASF2
+ 458 003a 02       		.uleb128 0x2
+ 459 003b 02       		.byte	0x2
+ 460 003c 07       		.byte	0x7
+ 461 003d 8E310000 		.4byte	.LASF3
+ 462 0041 02       		.uleb128 0x2
+ 463 0042 04       		.byte	0x4
+ 464 0043 05       		.byte	0x5
+ 465 0044 83080000 		.4byte	.LASF4
+ 466 0048 02       		.uleb128 0x2
+ 467 0049 04       		.byte	0x4
+ 468 004a 07       		.byte	0x7
+ 469 004b 63160000 		.4byte	.LASF5
+ 470 004f 02       		.uleb128 0x2
+ 471 0050 08       		.byte	0x8
+ 472 0051 05       		.byte	0x5
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 13
+
+
+ 473 0052 B0190000 		.4byte	.LASF6
+ 474 0056 02       		.uleb128 0x2
+ 475 0057 08       		.byte	0x8
+ 476 0058 07       		.byte	0x7
+ 477 0059 B5240000 		.4byte	.LASF7
+ 478 005d 03       		.uleb128 0x3
+ 479 005e 04       		.byte	0x4
+ 480 005f 05       		.byte	0x5
+ 481 0060 696E7400 		.ascii	"int\000"
+ 482 0064 02       		.uleb128 0x2
+ 483 0065 04       		.byte	0x4
+ 484 0066 07       		.byte	0x7
+ 485 0067 481E0000 		.4byte	.LASF8
+ 486 006b 04       		.uleb128 0x4
+ 487 006c 292B0000 		.4byte	.LASF9
+ 488 0070 02       		.byte	0x2
+ 489 0071 3801     		.2byte	0x138
+ 490 0073 2C000000 		.4byte	0x2c
+ 491 0077 04       		.uleb128 0x4
+ 492 0078 3B340000 		.4byte	.LASF10
+ 493 007c 02       		.byte	0x2
+ 494 007d 3901     		.2byte	0x139
+ 495 007f 3A000000 		.4byte	0x3a
+ 496 0083 04       		.uleb128 0x4
+ 497 0084 8B020000 		.4byte	.LASF11
+ 498 0088 02       		.byte	0x2
+ 499 0089 3A01     		.2byte	0x13a
+ 500 008b 48000000 		.4byte	0x48
+ 501 008f 02       		.uleb128 0x2
+ 502 0090 04       		.byte	0x4
+ 503 0091 04       		.byte	0x4
+ 504 0092 B01C0000 		.4byte	.LASF12
+ 505 0096 02       		.uleb128 0x2
+ 506 0097 08       		.byte	0x8
+ 507 0098 04       		.byte	0x4
+ 508 0099 B31A0000 		.4byte	.LASF13
+ 509 009d 02       		.uleb128 0x2
+ 510 009e 01       		.byte	0x1
+ 511 009f 08       		.byte	0x8
+ 512 00a0 D80D0000 		.4byte	.LASF14
+ 513 00a4 05       		.uleb128 0x5
+ 514 00a5 6B000000 		.4byte	0x6b
+ 515 00a9 02       		.uleb128 0x2
+ 516 00aa 04       		.byte	0x4
+ 517 00ab 07       		.byte	0x7
+ 518 00ac 62000000 		.4byte	.LASF15
+ 519 00b0 06       		.uleb128 0x6
+ 520 00b1 04       		.byte	0x4
+ 521 00b2 07       		.uleb128 0x7
+ 522 00b3 01       		.byte	0x1
+ 523 00b4 03       		.byte	0x3
+ 524 00b5 7A       		.byte	0x7a
+ 525 00b6 37020000 		.4byte	0x237
+ 526 00ba 08       		.uleb128 0x8
+ 527 00bb 5F0E0000 		.4byte	.LASF16
+ 528 00bf 00       		.sleb128 0
+ 529 00c0 08       		.uleb128 0x8
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 14
+
+
+ 530 00c1 19090000 		.4byte	.LASF17
+ 531 00c5 01       		.sleb128 1
+ 532 00c6 08       		.uleb128 0x8
+ 533 00c7 EA240000 		.4byte	.LASF18
+ 534 00cb 02       		.sleb128 2
+ 535 00cc 08       		.uleb128 0x8
+ 536 00cd 590B0000 		.4byte	.LASF19
+ 537 00d1 03       		.sleb128 3
+ 538 00d2 08       		.uleb128 0x8
+ 539 00d3 B3320000 		.4byte	.LASF20
+ 540 00d7 04       		.sleb128 4
+ 541 00d8 08       		.uleb128 0x8
+ 542 00d9 68300000 		.4byte	.LASF21
+ 543 00dd 05       		.sleb128 5
+ 544 00de 08       		.uleb128 0x8
+ 545 00df 372D0000 		.4byte	.LASF22
+ 546 00e3 20       		.sleb128 32
+ 547 00e4 08       		.uleb128 0x8
+ 548 00e5 80060000 		.4byte	.LASF23
+ 549 00e9 21       		.sleb128 33
+ 550 00ea 08       		.uleb128 0x8
+ 551 00eb 08190000 		.4byte	.LASF24
+ 552 00ef 22       		.sleb128 34
+ 553 00f0 08       		.uleb128 0x8
+ 554 00f1 EE200000 		.4byte	.LASF25
+ 555 00f5 23       		.sleb128 35
+ 556 00f6 08       		.uleb128 0x8
+ 557 00f7 0D150000 		.4byte	.LASF26
+ 558 00fb 24       		.sleb128 36
+ 559 00fc 08       		.uleb128 0x8
+ 560 00fd 70150000 		.4byte	.LASF27
+ 561 0101 25       		.sleb128 37
+ 562 0102 08       		.uleb128 0x8
+ 563 0103 6A2A0000 		.4byte	.LASF28
+ 564 0107 26       		.sleb128 38
+ 565 0108 08       		.uleb128 0x8
+ 566 0109 0B020000 		.4byte	.LASF29
+ 567 010d 27       		.sleb128 39
+ 568 010e 08       		.uleb128 0x8
+ 569 010f B4330000 		.4byte	.LASF30
+ 570 0113 28       		.sleb128 40
+ 571 0114 08       		.uleb128 0x8
+ 572 0115 17230000 		.4byte	.LASF31
+ 573 0119 29       		.sleb128 41
+ 574 011a 08       		.uleb128 0x8
+ 575 011b EF170000 		.4byte	.LASF32
+ 576 011f 2A       		.sleb128 42
+ 577 0120 08       		.uleb128 0x8
+ 578 0121 53200000 		.4byte	.LASF33
+ 579 0125 2B       		.sleb128 43
+ 580 0126 08       		.uleb128 0x8
+ 581 0127 A8300000 		.4byte	.LASF34
+ 582 012b 2C       		.sleb128 44
+ 583 012c 08       		.uleb128 0x8
+ 584 012d 412C0000 		.4byte	.LASF35
+ 585 0131 C000     		.sleb128 64
+ 586 0133 08       		.uleb128 0x8
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 15
+
+
+ 587 0134 4D020000 		.4byte	.LASF36
+ 588 0138 C100     		.sleb128 65
+ 589 013a 08       		.uleb128 0x8
+ 590 013b C8320000 		.4byte	.LASF37
+ 591 013f C200     		.sleb128 66
+ 592 0141 08       		.uleb128 0x8
+ 593 0142 91230000 		.4byte	.LASF38
+ 594 0146 C300     		.sleb128 67
+ 595 0148 08       		.uleb128 0x8
+ 596 0149 100C0000 		.4byte	.LASF39
+ 597 014d C400     		.sleb128 68
+ 598 014f 08       		.uleb128 0x8
+ 599 0150 810B0000 		.4byte	.LASF40
+ 600 0154 C500     		.sleb128 69
+ 601 0156 08       		.uleb128 0x8
+ 602 0157 59280000 		.4byte	.LASF41
+ 603 015b C600     		.sleb128 70
+ 604 015d 08       		.uleb128 0x8
+ 605 015e 3B280000 		.4byte	.LASF42
+ 606 0162 C700     		.sleb128 71
+ 607 0164 08       		.uleb128 0x8
+ 608 0165 670D0000 		.4byte	.LASF43
+ 609 0169 C800     		.sleb128 72
+ 610 016b 08       		.uleb128 0x8
+ 611 016c 46210000 		.4byte	.LASF44
+ 612 0170 C900     		.sleb128 73
+ 613 0172 08       		.uleb128 0x8
+ 614 0173 D40E0000 		.4byte	.LASF45
+ 615 0177 CA00     		.sleb128 74
+ 616 0179 08       		.uleb128 0x8
+ 617 017a 400E0000 		.4byte	.LASF46
+ 618 017e CB00     		.sleb128 75
+ 619 0180 08       		.uleb128 0x8
+ 620 0181 96200000 		.4byte	.LASF47
+ 621 0185 CC00     		.sleb128 76
+ 622 0187 08       		.uleb128 0x8
+ 623 0188 BF290000 		.4byte	.LASF48
+ 624 018c CD00     		.sleb128 77
+ 625 018e 08       		.uleb128 0x8
+ 626 018f 41080000 		.4byte	.LASF49
+ 627 0193 CE00     		.sleb128 78
+ 628 0195 08       		.uleb128 0x8
+ 629 0196 551E0000 		.4byte	.LASF50
+ 630 019a CF00     		.sleb128 79
+ 631 019c 08       		.uleb128 0x8
+ 632 019d 182D0000 		.4byte	.LASF51
+ 633 01a1 D000     		.sleb128 80
+ 634 01a3 08       		.uleb128 0x8
+ 635 01a4 380F0000 		.4byte	.LASF52
+ 636 01a8 D100     		.sleb128 81
+ 637 01aa 08       		.uleb128 0x8
+ 638 01ab 5F060000 		.4byte	.LASF53
+ 639 01af D200     		.sleb128 82
+ 640 01b1 08       		.uleb128 0x8
+ 641 01b2 E82F0000 		.4byte	.LASF54
+ 642 01b6 D300     		.sleb128 83
+ 643 01b8 08       		.uleb128 0x8
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 16
+
+
+ 644 01b9 F6330000 		.4byte	.LASF55
+ 645 01bd D400     		.sleb128 84
+ 646 01bf 08       		.uleb128 0x8
+ 647 01c0 30050000 		.4byte	.LASF56
+ 648 01c4 D500     		.sleb128 85
+ 649 01c6 08       		.uleb128 0x8
+ 650 01c7 1A100000 		.4byte	.LASF57
+ 651 01cb D600     		.sleb128 86
+ 652 01cd 08       		.uleb128 0x8
+ 653 01ce 5C1D0000 		.4byte	.LASF58
+ 654 01d2 D700     		.sleb128 87
+ 655 01d4 08       		.uleb128 0x8
+ 656 01d5 F1300000 		.4byte	.LASF59
+ 657 01d9 F000     		.sleb128 112
+ 658 01db 08       		.uleb128 0x8
+ 659 01dc EB130000 		.4byte	.LASF60
+ 660 01e0 F100     		.sleb128 113
+ 661 01e2 08       		.uleb128 0x8
+ 662 01e3 620A0000 		.4byte	.LASF61
+ 663 01e7 F200     		.sleb128 114
+ 664 01e9 08       		.uleb128 0x8
+ 665 01ea FA2C0000 		.4byte	.LASF62
+ 666 01ee F300     		.sleb128 115
+ 667 01f0 08       		.uleb128 0x8
+ 668 01f1 B9210000 		.4byte	.LASF63
+ 669 01f5 F400     		.sleb128 116
+ 670 01f7 08       		.uleb128 0x8
+ 671 01f8 8B180000 		.4byte	.LASF64
+ 672 01fc F500     		.sleb128 117
+ 673 01fe 08       		.uleb128 0x8
+ 674 01ff 460D0000 		.4byte	.LASF65
+ 675 0203 F600     		.sleb128 118
+ 676 0205 08       		.uleb128 0x8
+ 677 0206 70250000 		.4byte	.LASF66
+ 678 020a F700     		.sleb128 119
+ 679 020c 08       		.uleb128 0x8
+ 680 020d 54050000 		.4byte	.LASF67
+ 681 0211 F800     		.sleb128 120
+ 682 0213 08       		.uleb128 0x8
+ 683 0214 D90C0000 		.4byte	.LASF68
+ 684 0218 F900     		.sleb128 121
+ 685 021a 08       		.uleb128 0x8
+ 686 021b 0C330000 		.4byte	.LASF69
+ 687 021f FA00     		.sleb128 122
+ 688 0221 08       		.uleb128 0x8
+ 689 0222 FF1A0000 		.4byte	.LASF70
+ 690 0226 FA01     		.sleb128 250
+ 691 0228 08       		.uleb128 0x8
+ 692 0229 1C2F0000 		.4byte	.LASF71
+ 693 022d FB01     		.sleb128 251
+ 694 022f 08       		.uleb128 0x8
+ 695 0230 45200000 		.4byte	.LASF72
+ 696 0234 FF01     		.sleb128 255
+ 697 0236 00       		.byte	0
+ 698 0237 09       		.uleb128 0x9
+ 699 0238 02       		.byte	0x2
+ 700 0239 03       		.byte	0x3
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 17
+
+
+ 701 023a D201     		.2byte	0x1d2
+ 702 023c EE020000 		.4byte	0x2ee
+ 703 0240 08       		.uleb128 0x8
+ 704 0241 720B0000 		.4byte	.LASF73
+ 705 0245 00       		.sleb128 0
+ 706 0246 08       		.uleb128 0x8
+ 707 0247 36110000 		.4byte	.LASF74
+ 708 024b 01       		.sleb128 1
+ 709 024c 08       		.uleb128 0x8
+ 710 024d 95320000 		.4byte	.LASF75
+ 711 0251 02       		.sleb128 2
+ 712 0252 08       		.uleb128 0x8
+ 713 0253 9F120000 		.4byte	.LASF76
+ 714 0257 03       		.sleb128 3
+ 715 0258 08       		.uleb128 0x8
+ 716 0259 D1150000 		.4byte	.LASF77
+ 717 025d 04       		.sleb128 4
+ 718 025e 08       		.uleb128 0x8
+ 719 025f 721A0000 		.4byte	.LASF78
+ 720 0263 05       		.sleb128 5
+ 721 0264 08       		.uleb128 0x8
+ 722 0265 BB2E0000 		.4byte	.LASF79
+ 723 0269 06       		.sleb128 6
+ 724 026a 08       		.uleb128 0x8
+ 725 026b B70E0000 		.4byte	.LASF80
+ 726 026f 07       		.sleb128 7
+ 727 0270 08       		.uleb128 0x8
+ 728 0271 371C0000 		.4byte	.LASF81
+ 729 0275 08       		.sleb128 8
+ 730 0276 08       		.uleb128 0x8
+ 731 0277 972D0000 		.4byte	.LASF82
+ 732 027b 09       		.sleb128 9
+ 733 027c 08       		.uleb128 0x8
+ 734 027d 66340000 		.4byte	.LASF83
+ 735 0281 0A       		.sleb128 10
+ 736 0282 08       		.uleb128 0x8
+ 737 0283 F6060000 		.4byte	.LASF84
+ 738 0287 0B       		.sleb128 11
+ 739 0288 08       		.uleb128 0x8
+ 740 0289 51300000 		.4byte	.LASF85
+ 741 028d 0C       		.sleb128 12
+ 742 028e 08       		.uleb128 0x8
+ 743 028f B51F0000 		.4byte	.LASF86
+ 744 0293 0D       		.sleb128 13
+ 745 0294 08       		.uleb128 0x8
+ 746 0295 1A170000 		.4byte	.LASF87
+ 747 0299 0E       		.sleb128 14
+ 748 029a 08       		.uleb128 0x8
+ 749 029b 4D1A0000 		.4byte	.LASF88
+ 750 029f 0F       		.sleb128 15
+ 751 02a0 08       		.uleb128 0x8
+ 752 02a1 C0040000 		.4byte	.LASF89
+ 753 02a5 10       		.sleb128 16
+ 754 02a6 08       		.uleb128 0x8
+ 755 02a7 061C0000 		.4byte	.LASF90
+ 756 02ab 11       		.sleb128 17
+ 757 02ac 08       		.uleb128 0x8
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 18
+
+
+ 758 02ad 2C090000 		.4byte	.LASF91
+ 759 02b1 12       		.sleb128 18
+ 760 02b2 08       		.uleb128 0x8
+ 761 02b3 BB0A0000 		.4byte	.LASF92
+ 762 02b7 13       		.sleb128 19
+ 763 02b8 08       		.uleb128 0x8
+ 764 02b9 BA1A0000 		.4byte	.LASF93
+ 765 02bd 27       		.sleb128 39
+ 766 02be 08       		.uleb128 0x8
+ 767 02bf 111D0000 		.4byte	.LASF94
+ 768 02c3 28       		.sleb128 40
+ 769 02c4 08       		.uleb128 0x8
+ 770 02c5 EE040000 		.4byte	.LASF95
+ 771 02c9 29       		.sleb128 41
+ 772 02ca 08       		.uleb128 0x8
+ 773 02cb B8130000 		.4byte	.LASF96
+ 774 02cf FF01     		.sleb128 255
+ 775 02d1 08       		.uleb128 0x8
+ 776 02d2 2D210000 		.4byte	.LASF97
+ 777 02d6 8002     		.sleb128 256
+ 778 02d8 08       		.uleb128 0x8
+ 779 02d9 14210000 		.4byte	.LASF98
+ 780 02dd 8102     		.sleb128 257
+ 781 02df 08       		.uleb128 0x8
+ 782 02e0 C0090000 		.4byte	.LASF99
+ 783 02e4 8202     		.sleb128 258
+ 784 02e6 08       		.uleb128 0x8
+ 785 02e7 3A250000 		.4byte	.LASF100
+ 786 02eb 8302     		.sleb128 259
+ 787 02ed 00       		.byte	0
+ 788 02ee 04       		.uleb128 0x4
+ 789 02ef 3B2F0000 		.4byte	.LASF101
+ 790 02f3 03       		.byte	0x3
+ 791 02f4 2F02     		.2byte	0x22f
+ 792 02f6 37020000 		.4byte	0x237
+ 793 02fa 0A       		.uleb128 0xa
+ 794 02fb 04       		.byte	0x4
+ 795 02fc 6B000000 		.4byte	0x6b
+ 796 0300 07       		.uleb128 0x7
+ 797 0301 01       		.byte	0x1
+ 798 0302 04       		.byte	0x4
+ 799 0303 A4       		.byte	0xa4
+ 800 0304 D7030000 		.4byte	0x3d7
+ 801 0308 08       		.uleb128 0x8
+ 802 0309 8F250000 		.4byte	.LASF102
+ 803 030d 00       		.sleb128 0
+ 804 030e 08       		.uleb128 0x8
+ 805 030f CC240000 		.4byte	.LASF103
+ 806 0313 01       		.sleb128 1
+ 807 0314 08       		.uleb128 0x8
+ 808 0315 53040000 		.4byte	.LASF104
+ 809 0319 02       		.sleb128 2
+ 810 031a 08       		.uleb128 0x8
+ 811 031b 6B310000 		.4byte	.LASF105
+ 812 031f 03       		.sleb128 3
+ 813 0320 08       		.uleb128 0x8
+ 814 0321 A5090000 		.4byte	.LASF106
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 19
+
+
+ 815 0325 04       		.sleb128 4
+ 816 0326 08       		.uleb128 0x8
+ 817 0327 811E0000 		.4byte	.LASF107
+ 818 032b 05       		.sleb128 5
+ 819 032c 08       		.uleb128 0x8
+ 820 032d 1C2C0000 		.4byte	.LASF108
+ 821 0331 06       		.sleb128 6
+ 822 0332 08       		.uleb128 0x8
+ 823 0333 79210000 		.4byte	.LASF109
+ 824 0337 07       		.sleb128 7
+ 825 0338 08       		.uleb128 0x8
+ 826 0339 B51D0000 		.4byte	.LASF110
+ 827 033d 08       		.sleb128 8
+ 828 033e 08       		.uleb128 0x8
+ 829 033f 251A0000 		.4byte	.LASF111
+ 830 0343 09       		.sleb128 9
+ 831 0344 08       		.uleb128 0x8
+ 832 0345 FF1F0000 		.4byte	.LASF112
+ 833 0349 0A       		.sleb128 10
+ 834 034a 08       		.uleb128 0x8
+ 835 034b B10F0000 		.4byte	.LASF113
+ 836 034f 0B       		.sleb128 11
+ 837 0350 08       		.uleb128 0x8
+ 838 0351 1D1B0000 		.4byte	.LASF114
+ 839 0355 0C       		.sleb128 12
+ 840 0356 08       		.uleb128 0x8
+ 841 0357 7E0A0000 		.4byte	.LASF115
+ 842 035b 0D       		.sleb128 13
+ 843 035c 08       		.uleb128 0x8
+ 844 035d 760E0000 		.4byte	.LASF116
+ 845 0361 0E       		.sleb128 14
+ 846 0362 08       		.uleb128 0x8
+ 847 0363 A1310000 		.4byte	.LASF117
+ 848 0367 0F       		.sleb128 15
+ 849 0368 08       		.uleb128 0x8
+ 850 0369 9A040000 		.4byte	.LASF118
+ 851 036d 10       		.sleb128 16
+ 852 036e 08       		.uleb128 0x8
+ 853 036f 75040000 		.4byte	.LASF119
+ 854 0373 11       		.sleb128 17
+ 855 0374 08       		.uleb128 0x8
+ 856 0375 570F0000 		.4byte	.LASF120
+ 857 0379 8001     		.sleb128 128
+ 858 037b 08       		.uleb128 0x8
+ 859 037c DF140000 		.4byte	.LASF121
+ 860 0380 8001     		.sleb128 128
+ 861 0382 08       		.uleb128 0x8
+ 862 0383 C82B0000 		.4byte	.LASF122
+ 863 0387 8001     		.sleb128 128
+ 864 0389 08       		.uleb128 0x8
+ 865 038a 76260000 		.4byte	.LASF123
+ 866 038e 8001     		.sleb128 128
+ 867 0390 08       		.uleb128 0x8
+ 868 0391 641F0000 		.4byte	.LASF124
+ 869 0395 8001     		.sleb128 128
+ 870 0397 08       		.uleb128 0x8
+ 871 0398 1A160000 		.4byte	.LASF125
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 20
+
+
+ 872 039c 8001     		.sleb128 128
+ 873 039e 08       		.uleb128 0x8
+ 874 039f 1F250000 		.4byte	.LASF126
+ 875 03a3 8001     		.sleb128 128
+ 876 03a5 08       		.uleb128 0x8
+ 877 03a6 6A130000 		.4byte	.LASF127
+ 878 03aa 8101     		.sleb128 129
+ 879 03ac 08       		.uleb128 0x8
+ 880 03ad E7280000 		.4byte	.LASF128
+ 881 03b1 8101     		.sleb128 129
+ 882 03b3 08       		.uleb128 0x8
+ 883 03b4 47000000 		.4byte	.LASF129
+ 884 03b8 8101     		.sleb128 129
+ 885 03ba 08       		.uleb128 0x8
+ 886 03bb 2F2E0000 		.4byte	.LASF130
+ 887 03bf A001     		.sleb128 160
+ 888 03c1 08       		.uleb128 0x8
+ 889 03c2 A7150000 		.4byte	.LASF131
+ 890 03c6 FD01     		.sleb128 253
+ 891 03c8 08       		.uleb128 0x8
+ 892 03c9 6B1B0000 		.4byte	.LASF132
+ 893 03cd FE01     		.sleb128 254
+ 894 03cf 08       		.uleb128 0x8
+ 895 03d0 32220000 		.4byte	.LASF133
+ 896 03d4 FF01     		.sleb128 255
+ 897 03d6 00       		.byte	0
+ 898 03d7 04       		.uleb128 0x4
+ 899 03d8 3D260000 		.4byte	.LASF134
+ 900 03dc 04       		.byte	0x4
+ 901 03dd 4001     		.2byte	0x140
+ 902 03df 00030000 		.4byte	0x300
+ 903 03e3 04       		.uleb128 0x4
+ 904 03e4 54250000 		.4byte	.LASF135
+ 905 03e8 04       		.byte	0x4
+ 906 03e9 6201     		.2byte	0x162
+ 907 03eb 77000000 		.4byte	0x77
+ 908 03ef 0B       		.uleb128 0xb
+ 909 03f0 02       		.byte	0x2
+ 910 03f1 04       		.byte	0x4
+ 911 03f2 6501     		.2byte	0x165
+ 912 03f4 13040000 		.4byte	0x413
+ 913 03f8 0C       		.uleb128 0xc
+ 914 03f9 87070000 		.4byte	.LASF136
+ 915 03fd 04       		.byte	0x4
+ 916 03fe 6C01     		.2byte	0x16c
+ 917 0400 6B000000 		.4byte	0x6b
+ 918 0404 00       		.byte	0
+ 919 0405 0C       		.uleb128 0xc
+ 920 0406 8F320000 		.4byte	.LASF137
+ 921 040a 04       		.byte	0x4
+ 922 040b 7201     		.2byte	0x172
+ 923 040d 6B000000 		.4byte	0x6b
+ 924 0411 01       		.byte	0x1
+ 925 0412 00       		.byte	0
+ 926 0413 04       		.uleb128 0x4
+ 927 0414 BF060000 		.4byte	.LASF138
+ 928 0418 04       		.byte	0x4
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 21
+
+
+ 929 0419 7401     		.2byte	0x174
+ 930 041b EF030000 		.4byte	0x3ef
+ 931 041f 0B       		.uleb128 0xb
+ 932 0420 08       		.byte	0x8
+ 933 0421 04       		.byte	0x4
+ 934 0422 8901     		.2byte	0x189
+ 935 0424 50040000 		.4byte	0x450
+ 936 0428 0D       		.uleb128 0xd
+ 937 0429 76616C00 		.ascii	"val\000"
+ 938 042d 04       		.byte	0x4
+ 939 042e 8C01     		.2byte	0x18c
+ 940 0430 FA020000 		.4byte	0x2fa
+ 941 0434 00       		.byte	0
+ 942 0435 0D       		.uleb128 0xd
+ 943 0436 6C656E00 		.ascii	"len\000"
+ 944 043a 04       		.byte	0x4
+ 945 043b 8F01     		.2byte	0x18f
+ 946 043d 77000000 		.4byte	0x77
+ 947 0441 04       		.byte	0x4
+ 948 0442 0C       		.uleb128 0xc
+ 949 0443 01320000 		.4byte	.LASF139
+ 950 0447 04       		.byte	0x4
+ 951 0448 9601     		.2byte	0x196
+ 952 044a 77000000 		.4byte	0x77
+ 953 044e 06       		.byte	0x6
+ 954 044f 00       		.byte	0
+ 955 0450 04       		.uleb128 0x4
+ 956 0451 77050000 		.4byte	.LASF140
+ 957 0455 04       		.byte	0x4
+ 958 0456 9801     		.2byte	0x198
+ 959 0458 1F040000 		.4byte	0x41f
+ 960 045c 0B       		.uleb128 0xb
+ 961 045d 0C       		.byte	0xc
+ 962 045e 04       		.byte	0x4
+ 963 045f 9B01     		.2byte	0x19b
+ 964 0461 80040000 		.4byte	0x480
+ 965 0465 0C       		.uleb128 0xc
+ 966 0466 A3250000 		.4byte	.LASF141
+ 967 046a 04       		.byte	0x4
+ 968 046b 9E01     		.2byte	0x19e
+ 969 046d 50040000 		.4byte	0x450
+ 970 0471 00       		.byte	0
+ 971 0472 0C       		.uleb128 0xc
+ 972 0473 DF1D0000 		.4byte	.LASF142
+ 973 0477 04       		.byte	0x4
+ 974 0478 A101     		.2byte	0x1a1
+ 975 047a E3030000 		.4byte	0x3e3
+ 976 047e 08       		.byte	0x8
+ 977 047f 00       		.byte	0
+ 978 0480 04       		.uleb128 0x4
+ 979 0481 FC090000 		.4byte	.LASF143
+ 980 0485 04       		.byte	0x4
+ 981 0486 A301     		.2byte	0x1a3
+ 982 0488 5C040000 		.4byte	0x45c
+ 983 048c 0E       		.uleb128 0xe
+ 984 048d 10       		.byte	0x10
+ 985 048e 05       		.byte	0x5
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 22
+
+
+ 986 048f 83       		.byte	0x83
+ 987 0490 AD040000 		.4byte	0x4ad
+ 988 0494 0F       		.uleb128 0xf
+ 989 0495 81270000 		.4byte	.LASF144
+ 990 0499 05       		.byte	0x5
+ 991 049a 86       		.byte	0x86
+ 992 049b 13040000 		.4byte	0x413
+ 993 049f 00       		.byte	0
+ 994 04a0 0F       		.uleb128 0xf
+ 995 04a1 802B0000 		.4byte	.LASF145
+ 996 04a5 05       		.byte	0x5
+ 997 04a6 89       		.byte	0x89
+ 998 04a7 80040000 		.4byte	0x480
+ 999 04ab 04       		.byte	0x4
+ 1000 04ac 00       		.byte	0
+ 1001 04ad 10       		.uleb128 0x10
+ 1002 04ae 2A1E0000 		.4byte	.LASF146
+ 1003 04b2 05       		.byte	0x5
+ 1004 04b3 8B       		.byte	0x8b
+ 1005 04b4 8C040000 		.4byte	0x48c
+ 1006 04b8 0E       		.uleb128 0xe
+ 1007 04b9 08       		.byte	0x8
+ 1008 04ba 06       		.byte	0x6
+ 1009 04bb BC       		.byte	0xbc
+ 1010 04bc D9040000 		.4byte	0x4d9
+ 1011 04c0 0F       		.uleb128 0xf
+ 1012 04c1 8C270000 		.4byte	.LASF147
+ 1013 04c5 06       		.byte	0x6
+ 1014 04c6 BF       		.byte	0xbf
+ 1015 04c7 77000000 		.4byte	0x77
+ 1016 04cb 00       		.byte	0
+ 1017 04cc 0F       		.uleb128 0xf
+ 1018 04cd F72A0000 		.4byte	.LASF148
+ 1019 04d1 06       		.byte	0x6
+ 1020 04d2 C4       		.byte	0xc4
+ 1021 04d3 B0000000 		.4byte	0xb0
+ 1022 04d7 04       		.byte	0x4
+ 1023 04d8 00       		.byte	0
+ 1024 04d9 10       		.uleb128 0x10
+ 1025 04da D7210000 		.4byte	.LASF149
+ 1026 04de 06       		.byte	0x6
+ 1027 04df C6       		.byte	0xc6
+ 1028 04e0 B8040000 		.4byte	0x4b8
+ 1029 04e4 0E       		.uleb128 0xe
+ 1030 04e5 08       		.byte	0x8
+ 1031 04e6 06       		.byte	0x6
+ 1032 04e7 C9       		.byte	0xc9
+ 1033 04e8 05050000 		.4byte	0x505
+ 1034 04ec 0F       		.uleb128 0xf
+ 1035 04ed EE0D0000 		.4byte	.LASF150
+ 1036 04f1 06       		.byte	0x6
+ 1037 04f2 CC       		.byte	0xcc
+ 1038 04f3 77000000 		.4byte	0x77
+ 1039 04f7 00       		.byte	0
+ 1040 04f8 0F       		.uleb128 0xf
+ 1041 04f9 A82B0000 		.4byte	.LASF151
+ 1042 04fd 06       		.byte	0x6
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 23
+
+
+ 1043 04fe D1       		.byte	0xd1
+ 1044 04ff 05050000 		.4byte	0x505
+ 1045 0503 04       		.byte	0x4
+ 1046 0504 00       		.byte	0
+ 1047 0505 0A       		.uleb128 0xa
+ 1048 0506 04       		.byte	0x4
+ 1049 0507 D9040000 		.4byte	0x4d9
+ 1050 050b 10       		.uleb128 0x10
+ 1051 050c 4B2A0000 		.4byte	.LASF152
+ 1052 0510 06       		.byte	0x6
+ 1053 0511 D3       		.byte	0xd3
+ 1054 0512 E4040000 		.4byte	0x4e4
+ 1055 0516 11       		.uleb128 0x11
+ 1056 0517 08       		.byte	0x8
+ 1057 0518 06       		.byte	0x6
+ 1058 0519 D6       		.byte	0xd6
+ 1059 051a 35050000 		.4byte	0x535
+ 1060 051e 12       		.uleb128 0x12
+ 1061 051f B92B0000 		.4byte	.LASF153
+ 1062 0523 06       		.byte	0x6
+ 1063 0524 DD       		.byte	0xdd
+ 1064 0525 0B050000 		.4byte	0x50b
+ 1065 0529 12       		.uleb128 0x12
+ 1066 052a 5D170000 		.4byte	.LASF154
+ 1067 052e 06       		.byte	0x6
+ 1068 052f E0       		.byte	0xe0
+ 1069 0530 77000000 		.4byte	0x77
+ 1070 0534 00       		.byte	0
+ 1071 0535 10       		.uleb128 0x10
+ 1072 0536 162A0000 		.4byte	.LASF155
+ 1073 053a 06       		.byte	0x6
+ 1074 053b E2       		.byte	0xe2
+ 1075 053c 16050000 		.4byte	0x516
+ 1076 0540 0E       		.uleb128 0xe
+ 1077 0541 14       		.byte	0x14
+ 1078 0542 06       		.byte	0x6
+ 1079 0543 E5       		.byte	0xe5
+ 1080 0544 86050000 		.4byte	0x586
+ 1081 0548 0F       		.uleb128 0xf
+ 1082 0549 FC0C0000 		.4byte	.LASF156
+ 1083 054d 06       		.byte	0x6
+ 1084 054e E8       		.byte	0xe8
+ 1085 054f 77000000 		.4byte	0x77
+ 1086 0553 00       		.byte	0
+ 1087 0554 0F       		.uleb128 0xf
+ 1088 0555 1B0A0000 		.4byte	.LASF157
+ 1089 0559 06       		.byte	0x6
+ 1090 055a EE       		.byte	0xee
+ 1091 055b 77000000 		.4byte	0x77
+ 1092 055f 02       		.byte	0x2
+ 1093 0560 0F       		.uleb128 0xf
+ 1094 0561 AD050000 		.4byte	.LASF158
+ 1095 0565 06       		.byte	0x6
+ 1096 0566 F8       		.byte	0xf8
+ 1097 0567 83000000 		.4byte	0x83
+ 1098 056b 04       		.byte	0x4
+ 1099 056c 0F       		.uleb128 0xf
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 24
+
+
+ 1100 056d 741E0000 		.4byte	.LASF159
+ 1101 0571 06       		.byte	0x6
+ 1102 0572 FB       		.byte	0xfb
+ 1103 0573 77000000 		.4byte	0x77
+ 1104 0577 08       		.byte	0x8
+ 1105 0578 0C       		.uleb128 0xc
+ 1106 0579 E9250000 		.4byte	.LASF160
+ 1107 057d 06       		.byte	0x6
+ 1108 057e 0401     		.2byte	0x104
+ 1109 0580 35050000 		.4byte	0x535
+ 1110 0584 0C       		.byte	0xc
+ 1111 0585 00       		.byte	0
+ 1112 0586 04       		.uleb128 0x4
+ 1113 0587 A0100000 		.4byte	.LASF161
+ 1114 058b 06       		.byte	0x6
+ 1115 058c 0501     		.2byte	0x105
+ 1116 058e 40050000 		.4byte	0x540
+ 1117 0592 04       		.uleb128 0x4
+ 1118 0593 33060000 		.4byte	.LASF162
+ 1119 0597 07       		.byte	0x7
+ 1120 0598 2301     		.2byte	0x123
+ 1121 059a 9E050000 		.4byte	0x59e
+ 1122 059e 0A       		.uleb128 0xa
+ 1123 059f 04       		.byte	0x4
+ 1124 05a0 A4050000 		.4byte	0x5a4
+ 1125 05a4 13       		.uleb128 0x13
+ 1126 05a5 B4050000 		.4byte	0x5b4
+ 1127 05a9 14       		.uleb128 0x14
+ 1128 05aa 83000000 		.4byte	0x83
+ 1129 05ae 14       		.uleb128 0x14
+ 1130 05af B0000000 		.4byte	0xb0
+ 1131 05b3 00       		.byte	0
+ 1132 05b4 0E       		.uleb128 0xe
+ 1133 05b5 06       		.byte	0x6
+ 1134 05b6 08       		.byte	0x8
+ 1135 05b7 77       		.byte	0x77
+ 1136 05b8 E1050000 		.4byte	0x5e1
+ 1137 05bc 0F       		.uleb128 0xf
+ 1138 05bd 73090000 		.4byte	.LASF163
+ 1139 05c1 08       		.byte	0x8
+ 1140 05c2 79       		.byte	0x79
+ 1141 05c3 E3030000 		.4byte	0x3e3
+ 1142 05c7 00       		.byte	0
+ 1143 05c8 0F       		.uleb128 0xf
+ 1144 05c9 96260000 		.4byte	.LASF164
+ 1145 05cd 08       		.byte	0x8
+ 1146 05ce 7A       		.byte	0x7a
+ 1147 05cf E3030000 		.4byte	0x3e3
+ 1148 05d3 02       		.byte	0x2
+ 1149 05d4 0F       		.uleb128 0xf
+ 1150 05d5 2D320000 		.4byte	.LASF165
+ 1151 05d9 08       		.byte	0x8
+ 1152 05da 7B       		.byte	0x7b
+ 1153 05db E3030000 		.4byte	0x3e3
+ 1154 05df 04       		.byte	0x4
+ 1155 05e0 00       		.byte	0
+ 1156 05e1 10       		.uleb128 0x10
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 25
+
+
+ 1157 05e2 D7180000 		.4byte	.LASF166
+ 1158 05e6 08       		.byte	0x8
+ 1159 05e7 7C       		.byte	0x7c
+ 1160 05e8 B4050000 		.4byte	0x5b4
+ 1161 05ec 07       		.uleb128 0x7
+ 1162 05ed 02       		.byte	0x2
+ 1163 05ee 09       		.byte	0x9
+ 1164 05ef 93       		.byte	0x93
+ 1165 05f0 D30C0000 		.4byte	0xcd3
+ 1166 05f4 08       		.uleb128 0x8
+ 1167 05f5 921F0000 		.4byte	.LASF167
+ 1168 05f9 8002     		.sleb128 256
+ 1169 05fb 08       		.uleb128 0x8
+ 1170 05fc 30330000 		.4byte	.LASF168
+ 1171 0600 8102     		.sleb128 257
+ 1172 0602 08       		.uleb128 0x8
+ 1173 0603 F7080000 		.4byte	.LASF169
+ 1174 0607 8202     		.sleb128 258
+ 1175 0609 08       		.uleb128 0x8
+ 1176 060a E6320000 		.4byte	.LASF170
+ 1177 060e 8302     		.sleb128 259
+ 1178 0610 08       		.uleb128 0x8
+ 1179 0611 92240000 		.4byte	.LASF171
+ 1180 0615 8402     		.sleb128 260
+ 1181 0617 08       		.uleb128 0x8
+ 1182 0618 972E0000 		.4byte	.LASF172
+ 1183 061c 8502     		.sleb128 261
+ 1184 061e 08       		.uleb128 0x8
+ 1185 061f 060D0000 		.4byte	.LASF173
+ 1186 0623 8602     		.sleb128 262
+ 1187 0625 08       		.uleb128 0x8
+ 1188 0626 EA000000 		.4byte	.LASF174
+ 1189 062a 8702     		.sleb128 263
+ 1190 062c 08       		.uleb128 0x8
+ 1191 062d 45310000 		.4byte	.LASF175
+ 1192 0631 8802     		.sleb128 264
+ 1193 0633 08       		.uleb128 0x8
+ 1194 0634 0A050000 		.4byte	.LASF176
+ 1195 0638 8902     		.sleb128 265
+ 1196 063a 08       		.uleb128 0x8
+ 1197 063b 92020000 		.4byte	.LASF177
+ 1198 063f 8A02     		.sleb128 266
+ 1199 0641 08       		.uleb128 0x8
+ 1200 0642 15110000 		.4byte	.LASF178
+ 1201 0646 8B02     		.sleb128 267
+ 1202 0648 08       		.uleb128 0x8
+ 1203 0649 E0190000 		.4byte	.LASF179
+ 1204 064d 8C02     		.sleb128 268
+ 1205 064f 08       		.uleb128 0x8
+ 1206 0650 57230000 		.4byte	.LASF180
+ 1207 0654 8D02     		.sleb128 269
+ 1208 0656 08       		.uleb128 0x8
+ 1209 0657 61030000 		.4byte	.LASF181
+ 1210 065b 8E02     		.sleb128 270
+ 1211 065d 08       		.uleb128 0x8
+ 1212 065e 180E0000 		.4byte	.LASF182
+ 1213 0662 8F02     		.sleb128 271
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 26
+
+
+ 1214 0664 08       		.uleb128 0x8
+ 1215 0665 97060000 		.4byte	.LASF183
+ 1216 0669 9002     		.sleb128 272
+ 1217 066b 08       		.uleb128 0x8
+ 1218 066c 862F0000 		.4byte	.LASF184
+ 1219 0670 9102     		.sleb128 273
+ 1220 0672 08       		.uleb128 0x8
+ 1221 0673 8E0D0000 		.4byte	.LASF185
+ 1222 0677 9202     		.sleb128 274
+ 1223 0679 08       		.uleb128 0x8
+ 1224 067a 5B270000 		.4byte	.LASF186
+ 1225 067e 9302     		.sleb128 275
+ 1226 0680 08       		.uleb128 0x8
+ 1227 0681 38320000 		.4byte	.LASF187
+ 1228 0685 9402     		.sleb128 276
+ 1229 0687 08       		.uleb128 0x8
+ 1230 0688 DA2A0000 		.4byte	.LASF188
+ 1231 068c 9502     		.sleb128 277
+ 1232 068e 08       		.uleb128 0x8
+ 1233 068f 8C080000 		.4byte	.LASF189
+ 1234 0693 9602     		.sleb128 278
+ 1235 0695 08       		.uleb128 0x8
+ 1236 0696 42340000 		.4byte	.LASF190
+ 1237 069a 9702     		.sleb128 279
+ 1238 069c 08       		.uleb128 0x8
+ 1239 069d 851D0000 		.4byte	.LASF191
+ 1240 06a1 9802     		.sleb128 280
+ 1241 06a3 08       		.uleb128 0x8
+ 1242 06a4 6E110000 		.4byte	.LASF192
+ 1243 06a8 9902     		.sleb128 281
+ 1244 06aa 08       		.uleb128 0x8
+ 1245 06ab 72200000 		.4byte	.LASF193
+ 1246 06af 9A02     		.sleb128 282
+ 1247 06b1 08       		.uleb128 0x8
+ 1248 06b2 A5340000 		.4byte	.LASF194
+ 1249 06b6 9B02     		.sleb128 283
+ 1250 06b8 08       		.uleb128 0x8
+ 1251 06b9 E02C0000 		.4byte	.LASF195
+ 1252 06bd 9C02     		.sleb128 284
+ 1253 06bf 08       		.uleb128 0x8
+ 1254 06c0 98330000 		.4byte	.LASF196
+ 1255 06c4 9D02     		.sleb128 285
+ 1256 06c6 08       		.uleb128 0x8
+ 1257 06c7 F8160000 		.4byte	.LASF197
+ 1258 06cb 9E02     		.sleb128 286
+ 1259 06cd 08       		.uleb128 0x8
+ 1260 06ce 11140000 		.4byte	.LASF198
+ 1261 06d2 9F02     		.sleb128 287
+ 1262 06d4 08       		.uleb128 0x8
+ 1263 06d5 30040000 		.4byte	.LASF199
+ 1264 06d9 A002     		.sleb128 288
+ 1265 06db 08       		.uleb128 0x8
+ 1266 06dc 1A240000 		.4byte	.LASF200
+ 1267 06e0 A102     		.sleb128 289
+ 1268 06e2 08       		.uleb128 0x8
+ 1269 06e3 6A170000 		.4byte	.LASF201
+ 1270 06e7 A202     		.sleb128 290
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 27
+
+
+ 1271 06e9 08       		.uleb128 0x8
+ 1272 06ea 99270000 		.4byte	.LASF202
+ 1273 06ee A302     		.sleb128 291
+ 1274 06f0 08       		.uleb128 0x8
+ 1275 06f1 7E2C0000 		.4byte	.LASF203
+ 1276 06f5 A402     		.sleb128 292
+ 1277 06f7 08       		.uleb128 0x8
+ 1278 06f8 F12D0000 		.4byte	.LASF204
+ 1279 06fc A502     		.sleb128 293
+ 1280 06fe 08       		.uleb128 0x8
+ 1281 06ff 360B0000 		.4byte	.LASF205
+ 1282 0703 A602     		.sleb128 294
+ 1283 0705 08       		.uleb128 0x8
+ 1284 0706 9A2C0000 		.4byte	.LASF206
+ 1285 070a A702     		.sleb128 295
+ 1286 070c 08       		.uleb128 0x8
+ 1287 070d 48130000 		.4byte	.LASF207
+ 1288 0711 A802     		.sleb128 296
+ 1289 0713 08       		.uleb128 0x8
+ 1290 0714 98140000 		.4byte	.LASF208
+ 1291 0718 A902     		.sleb128 297
+ 1292 071a 08       		.uleb128 0x8
+ 1293 071b DE020000 		.4byte	.LASF209
+ 1294 071f AA02     		.sleb128 298
+ 1295 0721 08       		.uleb128 0x8
+ 1296 0722 02030000 		.4byte	.LASF210
+ 1297 0726 AB02     		.sleb128 299
+ 1298 0728 08       		.uleb128 0x8
+ 1299 0729 6B000000 		.4byte	.LASF211
+ 1300 072d AC02     		.sleb128 300
+ 1301 072f 08       		.uleb128 0x8
+ 1302 0730 EF0A0000 		.4byte	.LASF212
+ 1303 0734 AD02     		.sleb128 301
+ 1304 0736 08       		.uleb128 0x8
+ 1305 0737 52330000 		.4byte	.LASF213
+ 1306 073b AE02     		.sleb128 302
+ 1307 073d 08       		.uleb128 0x8
+ 1308 073e F5050000 		.4byte	.LASF214
+ 1309 0742 AF02     		.sleb128 303
+ 1310 0744 08       		.uleb128 0x8
+ 1311 0745 F41E0000 		.4byte	.LASF215
+ 1312 0749 B002     		.sleb128 304
+ 1313 074b 08       		.uleb128 0x8
+ 1314 074c 922A0000 		.4byte	.LASF216
+ 1315 0750 B102     		.sleb128 305
+ 1316 0752 08       		.uleb128 0x8
+ 1317 0753 D7100000 		.4byte	.LASF217
+ 1318 0757 B202     		.sleb128 306
+ 1319 0759 08       		.uleb128 0x8
+ 1320 075a DA1F0000 		.4byte	.LASF218
+ 1321 075e B302     		.sleb128 307
+ 1322 0760 08       		.uleb128 0x8
+ 1323 0761 0C130000 		.4byte	.LASF219
+ 1324 0765 B402     		.sleb128 308
+ 1325 0767 08       		.uleb128 0x8
+ 1326 0768 17060000 		.4byte	.LASF220
+ 1327 076c B502     		.sleb128 309
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 28
+
+
+ 1328 076e 08       		.uleb128 0x8
+ 1329 076f E9010000 		.4byte	.LASF221
+ 1330 0773 B602     		.sleb128 310
+ 1331 0775 08       		.uleb128 0x8
+ 1332 0776 B5070000 		.4byte	.LASF222
+ 1333 077a B702     		.sleb128 311
+ 1334 077c 08       		.uleb128 0x8
+ 1335 077d C5250000 		.4byte	.LASF223
+ 1336 0781 B802     		.sleb128 312
+ 1337 0783 08       		.uleb128 0x8
+ 1338 0784 8E2B0000 		.4byte	.LASF224
+ 1339 0788 B902     		.sleb128 313
+ 1340 078a 08       		.uleb128 0x8
+ 1341 078b 4D070000 		.4byte	.LASF225
+ 1342 078f BA02     		.sleb128 314
+ 1343 0791 08       		.uleb128 0x8
+ 1344 0792 AC1E0000 		.4byte	.LASF226
+ 1345 0796 BB02     		.sleb128 315
+ 1346 0798 08       		.uleb128 0x8
+ 1347 0799 F92E0000 		.4byte	.LASF227
+ 1348 079d BC02     		.sleb128 316
+ 1349 079f 08       		.uleb128 0x8
+ 1350 07a0 901A0000 		.4byte	.LASF228
+ 1351 07a4 BD02     		.sleb128 317
+ 1352 07a6 08       		.uleb128 0x8
+ 1353 07a7 4E2F0000 		.4byte	.LASF229
+ 1354 07ab BE02     		.sleb128 318
+ 1355 07ad 08       		.uleb128 0x8
+ 1356 07ae 90070000 		.4byte	.LASF230
+ 1357 07b2 BF02     		.sleb128 319
+ 1358 07b4 08       		.uleb128 0x8
+ 1359 07b5 68220000 		.4byte	.LASF231
+ 1360 07b9 C002     		.sleb128 320
+ 1361 07bb 08       		.uleb128 0x8
+ 1362 07bc 17310000 		.4byte	.LASF232
+ 1363 07c0 C102     		.sleb128 321
+ 1364 07c2 08       		.uleb128 0x8
+ 1365 07c3 A92F0000 		.4byte	.LASF233
+ 1366 07c7 C202     		.sleb128 322
+ 1367 07c9 08       		.uleb128 0x8
+ 1368 07ca 8D000000 		.4byte	.LASF234
+ 1369 07ce C302     		.sleb128 323
+ 1370 07d0 08       		.uleb128 0x8
+ 1371 07d1 FF2B0000 		.4byte	.LASF235
+ 1372 07d5 C402     		.sleb128 324
+ 1373 07d7 08       		.uleb128 0x8
+ 1374 07d8 18180000 		.4byte	.LASF236
+ 1375 07dc C502     		.sleb128 325
+ 1376 07de 08       		.uleb128 0x8
+ 1377 07df 052B0000 		.4byte	.LASF237
+ 1378 07e3 C602     		.sleb128 326
+ 1379 07e5 08       		.uleb128 0x8
+ 1380 07e6 A0280000 		.4byte	.LASF238
+ 1381 07ea C702     		.sleb128 327
+ 1382 07ec 08       		.uleb128 0x8
+ 1383 07ed 94010000 		.4byte	.LASF239
+ 1384 07f1 C802     		.sleb128 328
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 29
+
+
+ 1385 07f3 08       		.uleb128 0x8
+ 1386 07f4 BE270000 		.4byte	.LASF240
+ 1387 07f8 C902     		.sleb128 329
+ 1388 07fa 08       		.uleb128 0x8
+ 1389 07fb 520C0000 		.4byte	.LASF241
+ 1390 07ff CA02     		.sleb128 330
+ 1391 0801 08       		.uleb128 0x8
+ 1392 0802 FB070000 		.4byte	.LASF242
+ 1393 0806 CB02     		.sleb128 331
+ 1394 0808 08       		.uleb128 0x8
+ 1395 0809 D8070000 		.4byte	.LASF243
+ 1396 080d CC02     		.sleb128 332
+ 1397 080f 08       		.uleb128 0x8
+ 1398 0810 2E0C0000 		.4byte	.LASF244
+ 1399 0814 CD02     		.sleb128 333
+ 1400 0816 08       		.uleb128 0x8
+ 1401 0817 51190000 		.4byte	.LASF245
+ 1402 081b CE02     		.sleb128 334
+ 1403 081d 08       		.uleb128 0x8
+ 1404 081e 6D320000 		.4byte	.LASF246
+ 1405 0822 CF02     		.sleb128 335
+ 1406 0824 08       		.uleb128 0x8
+ 1407 0825 3C100000 		.4byte	.LASF247
+ 1408 0829 D002     		.sleb128 336
+ 1409 082b 08       		.uleb128 0x8
+ 1410 082c A9250000 		.4byte	.LASF248
+ 1411 0830 D102     		.sleb128 337
+ 1412 0832 08       		.uleb128 0x8
+ 1413 0833 5F210000 		.4byte	.LASF249
+ 1414 0837 D202     		.sleb128 338
+ 1415 0839 08       		.uleb128 0x8
+ 1416 083a 4F010000 		.4byte	.LASF250
+ 1417 083e D302     		.sleb128 339
+ 1418 0840 08       		.uleb128 0x8
+ 1419 0841 CC170000 		.4byte	.LASF251
+ 1420 0845 D402     		.sleb128 340
+ 1421 0847 08       		.uleb128 0x8
+ 1422 0848 A8000000 		.4byte	.LASF252
+ 1423 084c D502     		.sleb128 341
+ 1424 084e 08       		.uleb128 0x8
+ 1425 084f 5F080000 		.4byte	.LASF253
+ 1426 0853 D602     		.sleb128 342
+ 1427 0855 08       		.uleb128 0x8
+ 1428 0856 09300000 		.4byte	.LASF254
+ 1429 085a D702     		.sleb128 343
+ 1430 085c 08       		.uleb128 0x8
+ 1431 085d E7120000 		.4byte	.LASF255
+ 1432 0861 D802     		.sleb128 344
+ 1433 0863 08       		.uleb128 0x8
+ 1434 0864 DB110000 		.4byte	.LASF256
+ 1435 0868 D902     		.sleb128 345
+ 1436 086a 08       		.uleb128 0x8
+ 1437 086b 8A050000 		.4byte	.LASF257
+ 1438 086f DA02     		.sleb128 346
+ 1439 0871 08       		.uleb128 0x8
+ 1440 0872 D52E0000 		.4byte	.LASF258
+ 1441 0876 DB02     		.sleb128 347
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 30
+
+
+ 1442 0878 08       		.uleb128 0x8
+ 1443 0879 DE1B0000 		.4byte	.LASF259
+ 1444 087d DC02     		.sleb128 348
+ 1445 087f 08       		.uleb128 0x8
+ 1446 0880 BC180000 		.4byte	.LASF260
+ 1447 0884 DD02     		.sleb128 349
+ 1448 0886 08       		.uleb128 0x8
+ 1449 0887 16070000 		.4byte	.LASF261
+ 1450 088b DE02     		.sleb128 350
+ 1451 088d 08       		.uleb128 0x8
+ 1452 088e 44060000 		.4byte	.LASF262
+ 1453 0892 DF02     		.sleb128 351
+ 1454 0894 08       		.uleb128 0x8
+ 1455 0895 71010000 		.4byte	.LASF263
+ 1456 0899 E002     		.sleb128 352
+ 1457 089b 08       		.uleb128 0x8
+ 1458 089c 67180000 		.4byte	.LASF264
+ 1459 08a0 E102     		.sleb128 353
+ 1460 08a2 08       		.uleb128 0x8
+ 1461 08a3 17340000 		.4byte	.LASF265
+ 1462 08a7 E202     		.sleb128 354
+ 1463 08a9 08       		.uleb128 0x8
+ 1464 08aa 59140000 		.4byte	.LASF266
+ 1465 08ae E302     		.sleb128 355
+ 1466 08b0 08       		.uleb128 0x8
+ 1467 08b1 01120000 		.4byte	.LASF267
+ 1468 08b5 E402     		.sleb128 356
+ 1469 08b7 08       		.uleb128 0x8
+ 1470 08b8 CF1E0000 		.4byte	.LASF268
+ 1471 08bc E502     		.sleb128 357
+ 1472 08be 08       		.uleb128 0x8
+ 1473 08bf 5B2D0000 		.4byte	.LASF269
+ 1474 08c3 E602     		.sleb128 358
+ 1475 08c5 08       		.uleb128 0x8
+ 1476 08c6 21260000 		.4byte	.LASF270
+ 1477 08ca E702     		.sleb128 359
+ 1478 08cc 08       		.uleb128 0x8
+ 1479 08cd 3F030000 		.4byte	.LASF271
+ 1480 08d1 E802     		.sleb128 360
+ 1481 08d3 08       		.uleb128 0x8
+ 1482 08d4 FC240000 		.4byte	.LASF272
+ 1483 08d8 E902     		.sleb128 361
+ 1484 08da 08       		.uleb128 0x8
+ 1485 08db D30F0000 		.4byte	.LASF273
+ 1486 08df EA02     		.sleb128 362
+ 1487 08e1 08       		.uleb128 0x8
+ 1488 08e2 8E170000 		.4byte	.LASF274
+ 1489 08e6 EB02     		.sleb128 363
+ 1490 08e8 08       		.uleb128 0x8
+ 1491 08e9 97210000 		.4byte	.LASF275
+ 1492 08ed EC02     		.sleb128 364
+ 1493 08ef 08       		.uleb128 0x8
+ 1494 08f0 D9290000 		.4byte	.LASF276
+ 1495 08f4 ED02     		.sleb128 365
+ 1496 08f6 08       		.uleb128 0x8
+ 1497 08f7 7B100000 		.4byte	.LASF277
+ 1498 08fb EE02     		.sleb128 366
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 31
+
+
+ 1499 08fd 08       		.uleb128 0x8
+ 1500 08fe 701C0000 		.4byte	.LASF278
+ 1501 0902 EF02     		.sleb128 367
+ 1502 0904 08       		.uleb128 0x8
+ 1503 0905 DC1A0000 		.4byte	.LASF279
+ 1504 0909 F002     		.sleb128 368
+ 1505 090b 08       		.uleb128 0x8
+ 1506 090c 3D1F0000 		.4byte	.LASF280
+ 1507 0910 F102     		.sleb128 369
+ 1508 0912 08       		.uleb128 0x8
+ 1509 0913 A5290000 		.4byte	.LASF281
+ 1510 0917 F202     		.sleb128 370
+ 1511 0919 08       		.uleb128 0x8
+ 1512 091a 921C0000 		.4byte	.LASF282
+ 1513 091e F302     		.sleb128 371
+ 1514 0920 08       		.uleb128 0x8
+ 1515 0921 551C0000 		.4byte	.LASF283
+ 1516 0925 F402     		.sleb128 372
+ 1517 0927 08       		.uleb128 0x8
+ 1518 0928 F51C0000 		.4byte	.LASF284
+ 1519 092c F502     		.sleb128 373
+ 1520 092e 08       		.uleb128 0x8
+ 1521 092f 54110000 		.4byte	.LASF285
+ 1522 0933 F602     		.sleb128 374
+ 1523 0935 08       		.uleb128 0x8
+ 1524 0936 230A0000 		.4byte	.LASF286
+ 1525 093a F702     		.sleb128 375
+ 1526 093c 08       		.uleb128 0x8
+ 1527 093d 5B2C0000 		.4byte	.LASF287
+ 1528 0941 F802     		.sleb128 376
+ 1529 0943 08       		.uleb128 0x8
+ 1530 0944 4D150000 		.4byte	.LASF288
+ 1531 0948 F902     		.sleb128 377
+ 1532 094a 08       		.uleb128 0x8
+ 1533 094b 4F090000 		.4byte	.LASF289
+ 1534 094f FA02     		.sleb128 378
+ 1535 0951 08       		.uleb128 0x8
+ 1536 0952 BE2C0000 		.4byte	.LASF290
+ 1537 0956 FB02     		.sleb128 379
+ 1538 0958 08       		.uleb128 0x8
+ 1539 0959 53260000 		.4byte	.LASF291
+ 1540 095d FC02     		.sleb128 380
+ 1541 095f 08       		.uleb128 0x8
+ 1542 0960 60240000 		.4byte	.LASF292
+ 1543 0964 FD02     		.sleb128 381
+ 1544 0966 08       		.uleb128 0x8
+ 1545 0967 011A0000 		.4byte	.LASF293
+ 1546 096b FE02     		.sleb128 382
+ 1547 096d 08       		.uleb128 0x8
+ 1548 096e B9010000 		.4byte	.LASF294
+ 1549 0972 FF02     		.sleb128 383
+ 1550 0974 08       		.uleb128 0x8
+ 1551 0975 4E220000 		.4byte	.LASF295
+ 1552 0979 8003     		.sleb128 384
+ 1553 097b 08       		.uleb128 0x8
+ 1554 097c 53320000 		.4byte	.LASF296
+ 1555 0980 8103     		.sleb128 385
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 32
+
+
+ 1556 0982 08       		.uleb128 0x8
+ 1557 0983 132E0000 		.4byte	.LASF297
+ 1558 0987 8203     		.sleb128 386
+ 1559 0989 08       		.uleb128 0x8
+ 1560 098a 72190000 		.4byte	.LASF298
+ 1561 098e 8303     		.sleb128 387
+ 1562 0990 08       		.uleb128 0x8
+ 1563 0991 68020000 		.4byte	.LASF299
+ 1564 0995 8403     		.sleb128 388
+ 1565 0997 08       		.uleb128 0x8
+ 1566 0998 940E0000 		.4byte	.LASF300
+ 1567 099c 8503     		.sleb128 389
+ 1568 099e 08       		.uleb128 0x8
+ 1569 099f C42F0000 		.4byte	.LASF301
+ 1570 09a3 8603     		.sleb128 390
+ 1571 09a5 08       		.uleb128 0x8
+ 1572 09a6 E4340000 		.4byte	.LASF302
+ 1573 09aa 8703     		.sleb128 391
+ 1574 09ac 08       		.uleb128 0x8
+ 1575 09ad 361D0000 		.4byte	.LASF303
+ 1576 09b1 8803     		.sleb128 392
+ 1577 09b3 08       		.uleb128 0x8
+ 1578 09b4 D6330000 		.4byte	.LASF304
+ 1579 09b8 8903     		.sleb128 393
+ 1580 09ba 08       		.uleb128 0x8
+ 1581 09bb D31C0000 		.4byte	.LASF305
+ 1582 09bf 8A03     		.sleb128 394
+ 1583 09c1 08       		.uleb128 0x8
+ 1584 09c2 A30A0000 		.4byte	.LASF306
+ 1585 09c6 8B03     		.sleb128 395
+ 1586 09c8 08       		.uleb128 0x8
+ 1587 09c9 8A150000 		.4byte	.LASF307
+ 1588 09cd 8C03     		.sleb128 396
+ 1589 09cf 08       		.uleb128 0x8
+ 1590 09d0 26130000 		.4byte	.LASF308
+ 1591 09d4 8D03     		.sleb128 397
+ 1592 09d6 08       		.uleb128 0x8
+ 1593 09d7 450A0000 		.4byte	.LASF309
+ 1594 09db 8E03     		.sleb128 398
+ 1595 09dd 08       		.uleb128 0x8
+ 1596 09de C4280000 		.4byte	.LASF310
+ 1597 09e2 8F03     		.sleb128 399
+ 1598 09e4 08       		.uleb128 0x8
+ 1599 09e5 3F160000 		.4byte	.LASF311
+ 1600 09e9 9003     		.sleb128 400
+ 1601 09eb 08       		.uleb128 0x8
+ 1602 09ec D1220000 		.4byte	.LASF312
+ 1603 09f0 9103     		.sleb128 401
+ 1604 09f2 08       		.uleb128 0x8
+ 1605 09f3 C8030000 		.4byte	.LASF313
+ 1606 09f7 9203     		.sleb128 402
+ 1607 09f9 08       		.uleb128 0x8
+ 1608 09fa 56100000 		.4byte	.LASF314
+ 1609 09fe 9303     		.sleb128 403
+ 1610 0a00 08       		.uleb128 0x8
+ 1611 0a01 BB140000 		.4byte	.LASF315
+ 1612 0a05 9403     		.sleb128 404
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 33
+
+
+ 1613 0a07 08       		.uleb128 0x8
+ 1614 0a08 52350000 		.4byte	.LASF316
+ 1615 0a0c 9503     		.sleb128 405
+ 1616 0a0e 08       		.uleb128 0x8
+ 1617 0a0f 8D220000 		.4byte	.LASF317
+ 1618 0a13 9603     		.sleb128 406
+ 1619 0a15 08       		.uleb128 0x8
+ 1620 0a16 F5220000 		.4byte	.LASF318
+ 1621 0a1a 9703     		.sleb128 407
+ 1622 0a1c 08       		.uleb128 0x8
+ 1623 0a1d D3060000 		.4byte	.LASF319
+ 1624 0a21 9803     		.sleb128 408
+ 1625 0a23 08       		.uleb128 0x8
+ 1626 0a24 C4120000 		.4byte	.LASF320
+ 1627 0a28 9903     		.sleb128 409
+ 1628 0a2a 08       		.uleb128 0x8
+ 1629 0a2b 67290000 		.4byte	.LASF321
+ 1630 0a2f 9A03     		.sleb128 410
+ 1631 0a31 08       		.uleb128 0x8
+ 1632 0a32 81090000 		.4byte	.LASF322
+ 1633 0a36 9B03     		.sleb128 411
+ 1634 0a38 08       		.uleb128 0x8
+ 1635 0a39 22000000 		.4byte	.LASF323
+ 1636 0a3d 9C03     		.sleb128 412
+ 1637 0a3f 08       		.uleb128 0x8
+ 1638 0a40 AC2D0000 		.4byte	.LASF324
+ 1639 0a44 9D03     		.sleb128 413
+ 1640 0a46 08       		.uleb128 0x8
+ 1641 0a47 F20E0000 		.4byte	.LASF325
+ 1642 0a4b 9E03     		.sleb128 414
+ 1643 0a4d 08       		.uleb128 0x8
+ 1644 0a4e 09350000 		.4byte	.LASF326
+ 1645 0a52 9F03     		.sleb128 415
+ 1646 0a54 08       		.uleb128 0x8
+ 1647 0a55 43170000 		.4byte	.LASF327
+ 1648 0a59 A003     		.sleb128 416
+ 1649 0a5b 08       		.uleb128 0x8
+ 1650 0a5c 94190000 		.4byte	.LASF328
+ 1651 0a60 A103     		.sleb128 417
+ 1652 0a62 08       		.uleb128 0x8
+ 1653 0a63 CA340000 		.4byte	.LASF329
+ 1654 0a67 A203     		.sleb128 418
+ 1655 0a69 08       		.uleb128 0x8
+ 1656 0a6a 2F2B0000 		.4byte	.LASF330
+ 1657 0a6e A303     		.sleb128 419
+ 1658 0a70 08       		.uleb128 0x8
+ 1659 0a71 22200000 		.4byte	.LASF331
+ 1660 0a75 A403     		.sleb128 420
+ 1661 0a77 08       		.uleb128 0x8
+ 1662 0a78 F5210000 		.4byte	.LASF332
+ 1663 0a7c A503     		.sleb128 421
+ 1664 0a7e 08       		.uleb128 0x8
+ 1665 0a7f 84300000 		.4byte	.LASF333
+ 1666 0a83 A603     		.sleb128 422
+ 1667 0a85 08       		.uleb128 0x8
+ 1668 0a86 75160000 		.4byte	.LASF334
+ 1669 0a8a A703     		.sleb128 423
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 34
+
+
+ 1670 0a8c 08       		.uleb128 0x8
+ 1671 0a8d 81120000 		.4byte	.LASF335
+ 1672 0a91 A803     		.sleb128 424
+ 1673 0a93 08       		.uleb128 0x8
+ 1674 0a94 BC1B0000 		.4byte	.LASF336
+ 1675 0a98 A903     		.sleb128 425
+ 1676 0a9a 08       		.uleb128 0x8
+ 1677 0a9b 2A020000 		.4byte	.LASF337
+ 1678 0a9f AA03     		.sleb128 426
+ 1679 0aa1 08       		.uleb128 0x8
+ 1680 0aa2 AB260000 		.4byte	.LASF338
+ 1681 0aa6 AB03     		.sleb128 427
+ 1682 0aa8 08       		.uleb128 0x8
+ 1683 0aa9 1C030000 		.4byte	.LASF339
+ 1684 0aad AC03     		.sleb128 428
+ 1685 0aaf 08       		.uleb128 0x8
+ 1686 0ab0 D3230000 		.4byte	.LASF340
+ 1687 0ab4 AD03     		.sleb128 429
+ 1688 0ab6 08       		.uleb128 0x8
+ 1689 0ab7 1D080000 		.4byte	.LASF341
+ 1690 0abb AE03     		.sleb128 430
+ 1691 0abd 08       		.uleb128 0x8
+ 1692 0abe 2C190000 		.4byte	.LASF342
+ 1693 0ac2 AF03     		.sleb128 431
+ 1694 0ac4 08       		.uleb128 0x8
+ 1695 0ac5 8B290000 		.4byte	.LASF343
+ 1696 0ac9 B003     		.sleb128 432
+ 1697 0acb 08       		.uleb128 0x8
+ 1698 0acc B8050000 		.4byte	.LASF344
+ 1699 0ad0 B103     		.sleb128 433
+ 1700 0ad2 08       		.uleb128 0x8
+ 1701 0ad3 F2250000 		.4byte	.LASF345
+ 1702 0ad7 B203     		.sleb128 434
+ 1703 0ad9 08       		.uleb128 0x8
+ 1704 0ada 3E240000 		.4byte	.LASF346
+ 1705 0ade B303     		.sleb128 435
+ 1706 0ae0 08       		.uleb128 0x8
+ 1707 0ae1 C8130000 		.4byte	.LASF347
+ 1708 0ae5 B403     		.sleb128 436
+ 1709 0ae7 08       		.uleb128 0x8
+ 1710 0ae8 C8310000 		.4byte	.LASF348
+ 1711 0aec B503     		.sleb128 437
+ 1712 0aee 08       		.uleb128 0x8
+ 1713 0aef 981B0000 		.4byte	.LASF349
+ 1714 0af3 B603     		.sleb128 438
+ 1715 0af5 08       		.uleb128 0x8
+ 1716 0af6 34230000 		.4byte	.LASF350
+ 1717 0afa B703     		.sleb128 439
+ 1718 0afc 08       		.uleb128 0x8
+ 1719 0afd 93160000 		.4byte	.LASF351
+ 1720 0b01 B803     		.sleb128 440
+ 1721 0b03 08       		.uleb128 0x8
+ 1722 0b04 7A280000 		.4byte	.LASF352
+ 1723 0b08 B903     		.sleb128 441
+ 1724 0b0a 08       		.uleb128 0x8
+ 1725 0b0b B1170000 		.4byte	.LASF353
+ 1726 0b0f BA03     		.sleb128 442
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 35
+
+
+ 1727 0b11 08       		.uleb128 0x8
+ 1728 0b12 B8160000 		.4byte	.LASF354
+ 1729 0b16 BB03     		.sleb128 443
+ 1730 0b18 08       		.uleb128 0x8
+ 1731 0b19 D2050000 		.4byte	.LASF355
+ 1732 0b1d BC03     		.sleb128 444
+ 1733 0b1f 08       		.uleb128 0x8
+ 1734 0b20 AF080000 		.4byte	.LASF356
+ 1735 0b24 BD03     		.sleb128 445
+ 1736 0b26 08       		.uleb128 0x8
+ 1737 0b27 29150000 		.4byte	.LASF357
+ 1738 0b2b BE03     		.sleb128 446
+ 1739 0b2d 08       		.uleb128 0x8
+ 1740 0b2e 512B0000 		.4byte	.LASF358
+ 1741 0b32 BF03     		.sleb128 447
+ 1742 0b34 08       		.uleb128 0x8
+ 1743 0b35 80340000 		.4byte	.LASF359
+ 1744 0b39 C003     		.sleb128 448
+ 1745 0b3b 08       		.uleb128 0x8
+ 1746 0b3c F4150000 		.4byte	.LASF360
+ 1747 0b40 C103     		.sleb128 449
+ 1748 0b42 08       		.uleb128 0x8
+ 1749 0b43 DF0B0000 		.4byte	.LASF361
+ 1750 0b47 C203     		.sleb128 450
+ 1751 0b49 08       		.uleb128 0x8
+ 1752 0b4a 25120000 		.4byte	.LASF362
+ 1753 0b4e C303     		.sleb128 451
+ 1754 0b50 08       		.uleb128 0x8
+ 1755 0b51 A9220000 		.4byte	.LASF363
+ 1756 0b55 C403     		.sleb128 452
+ 1757 0b57 08       		.uleb128 0x8
+ 1758 0b58 89030000 		.4byte	.LASF364
+ 1759 0b5c C503     		.sleb128 453
+ 1760 0b5e 08       		.uleb128 0x8
+ 1761 0b5f 2E2A0000 		.4byte	.LASF365
+ 1762 0b63 C603     		.sleb128 454
+ 1763 0b65 08       		.uleb128 0x8
+ 1764 0b66 770C0000 		.4byte	.LASF366
+ 1765 0b6a C703     		.sleb128 455
+ 1766 0b6c 08       		.uleb128 0x8
+ 1767 0b6d E5180000 		.4byte	.LASF367
+ 1768 0b71 C803     		.sleb128 456
+ 1769 0b73 08       		.uleb128 0x8
+ 1770 0b74 93110000 		.4byte	.LASF368
+ 1771 0b78 C903     		.sleb128 457
+ 1772 0b7a 08       		.uleb128 0x8
+ 1773 0b7b 2D300000 		.4byte	.LASF369
+ 1774 0b7f CA03     		.sleb128 458
+ 1775 0b81 08       		.uleb128 0x8
+ 1776 0b82 B9020000 		.4byte	.LASF370
+ 1777 0b86 CB03     		.sleb128 459
+ 1778 0b88 08       		.uleb128 0x8
+ 1779 0b89 CB000000 		.4byte	.LASF371
+ 1780 0b8d CC03     		.sleb128 460
+ 1781 0b8f 08       		.uleb128 0x8
+ 1782 0b90 150F0000 		.4byte	.LASF372
+ 1783 0b94 CD03     		.sleb128 461
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 36
+
+
+ 1784 0b96 08       		.uleb128 0x8
+ 1785 0b97 210D0000 		.4byte	.LASF373
+ 1786 0b9b CE03     		.sleb128 462
+ 1787 0b9d 08       		.uleb128 0x8
+ 1788 0b9e 171F0000 		.4byte	.LASF374
+ 1789 0ba2 CF03     		.sleb128 463
+ 1790 0ba4 08       		.uleb128 0x8
+ 1791 0ba5 582E0000 		.4byte	.LASF375
+ 1792 0ba9 D003     		.sleb128 464
+ 1793 0bab 08       		.uleb128 0x8
+ 1794 0bac B61C0000 		.4byte	.LASF376
+ 1795 0bb0 D103     		.sleb128 465
+ 1796 0bb2 08       		.uleb128 0x8
+ 1797 0bb3 43290000 		.4byte	.LASF377
+ 1798 0bb7 D203     		.sleb128 466
+ 1799 0bb9 08       		.uleb128 0x8
+ 1800 0bba B30D0000 		.4byte	.LASF378
+ 1801 0bbe D303     		.sleb128 467
+ 1802 0bc0 08       		.uleb128 0x8
+ 1803 0bc1 0C040000 		.4byte	.LASF379
+ 1804 0bc5 D403     		.sleb128 468
+ 1805 0bc7 08       		.uleb128 0x8
+ 1806 0bc8 1E290000 		.4byte	.LASF380
+ 1807 0bcc D503     		.sleb128 469
+ 1808 0bce 08       		.uleb128 0x8
+ 1809 0bcf FC0D0000 		.4byte	.LASF381
+ 1810 0bd3 D603     		.sleb128 470
+ 1811 0bd5 08       		.uleb128 0x8
+ 1812 0bd6 BE190000 		.4byte	.LASF382
+ 1813 0bda D703     		.sleb128 471
+ 1814 0bdc 08       		.uleb128 0x8
+ 1815 0bdd BC0B0000 		.4byte	.LASF383
+ 1816 0be1 D803     		.sleb128 472
+ 1817 0be3 08       		.uleb128 0x8
+ 1818 0be4 B7110000 		.4byte	.LASF384
+ 1819 0be8 D903     		.sleb128 473
+ 1820 0bea 08       		.uleb128 0x8
+ 1821 0beb 752D0000 		.4byte	.LASF385
+ 1822 0bef DA03     		.sleb128 474
+ 1823 0bf1 08       		.uleb128 0x8
+ 1824 0bf2 F70F0000 		.4byte	.LASF386
+ 1825 0bf6 DB03     		.sleb128 475
+ 1826 0bf8 08       		.uleb128 0x8
+ 1827 0bf9 D3080000 		.4byte	.LASF387
+ 1828 0bfd DC03     		.sleb128 476
+ 1829 0bff 08       		.uleb128 0x8
+ 1830 0c00 AF230000 		.4byte	.LASF388
+ 1831 0c04 DD03     		.sleb128 477
+ 1832 0c06 08       		.uleb128 0x8
+ 1833 0c07 34140000 		.4byte	.LASF389
+ 1834 0c0b DE03     		.sleb128 478
+ 1835 0c0d 08       		.uleb128 0x8
+ 1836 0c0e E3090000 		.4byte	.LASF390
+ 1837 0c12 DF03     		.sleb128 479
+ 1838 0c14 08       		.uleb128 0x8
+ 1839 0c15 7E140000 		.4byte	.LASF391
+ 1840 0c19 E003     		.sleb128 480
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 37
+
+
+ 1841 0c1b 08       		.uleb128 0x8
+ 1842 0c1c 33070000 		.4byte	.LASF392
+ 1843 0c20 E103     		.sleb128 481
+ 1844 0c22 08       		.uleb128 0x8
+ 1845 0c23 EA1D0000 		.4byte	.LASF393
+ 1846 0c27 E203     		.sleb128 482
+ 1847 0c29 08       		.uleb128 0x8
+ 1848 0c2a 00000000 		.4byte	.LASF394
+ 1849 0c2e E303     		.sleb128 483
+ 1850 0c30 08       		.uleb128 0x8
+ 1851 0c31 B0200000 		.4byte	.LASF395
+ 1852 0c35 E403     		.sleb128 484
+ 1853 0c37 08       		.uleb128 0x8
+ 1854 0c38 CE2D0000 		.4byte	.LASF396
+ 1855 0c3c E503     		.sleb128 485
+ 1856 0c3e 08       		.uleb128 0x8
+ 1857 0c3f A4030000 		.4byte	.LASF397
+ 1858 0c43 E603     		.sleb128 486
+ 1859 0c45 08       		.uleb128 0x8
+ 1860 0c46 461B0000 		.4byte	.LASF398
+ 1861 0c4a E703     		.sleb128 487
+ 1862 0c4c 08       		.uleb128 0x8
+ 1863 0c4d B1100000 		.4byte	.LASF399
+ 1864 0c51 E803     		.sleb128 488
+ 1865 0c53 08       		.uleb128 0x8
+ 1866 0c54 D5160000 		.4byte	.LASF400
+ 1867 0c58 E903     		.sleb128 489
+ 1868 0c5a 08       		.uleb128 0x8
+ 1869 0c5b B50C0000 		.4byte	.LASF401
+ 1870 0c5f EA03     		.sleb128 490
+ 1871 0c61 08       		.uleb128 0x8
+ 1872 0c62 2D350000 		.4byte	.LASF402
+ 1873 0c66 EB03     		.sleb128 491
+ 1874 0c68 08       		.uleb128 0x8
+ 1875 0c69 66120000 		.4byte	.LASF403
+ 1876 0c6d EC03     		.sleb128 492
+ 1877 0c6f 08       		.uleb128 0x8
+ 1878 0c70 10010000 		.4byte	.LASF404
+ 1879 0c74 ED03     		.sleb128 493
+ 1880 0c76 08       		.uleb128 0x8
+ 1881 0c77 D3200000 		.4byte	.LASF405
+ 1882 0c7b EE03     		.sleb128 494
+ 1883 0c7d 08       		.uleb128 0x8
+ 1884 0c7e 061E0000 		.4byte	.LASF406
+ 1885 0c82 EF03     		.sleb128 495
+ 1886 0c84 08       		.uleb128 0x8
+ 1887 0c85 95130000 		.4byte	.LASF407
+ 1888 0c89 F003     		.sleb128 496
+ 1889 0c8b 08       		.uleb128 0x8
+ 1890 0c8c B62A0000 		.4byte	.LASF408
+ 1891 0c90 F103     		.sleb128 497
+ 1892 0c92 08       		.uleb128 0x8
+ 1893 0c93 CC300000 		.4byte	.LASF409
+ 1894 0c97 F203     		.sleb128 498
+ 1895 0c99 08       		.uleb128 0x8
+ 1896 0c9a 2D010000 		.4byte	.LASF410
+ 1897 0c9e F303     		.sleb128 499
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 38
+
+
+ 1898 0ca0 08       		.uleb128 0x8
+ 1899 0ca1 F7230000 		.4byte	.LASF411
+ 1900 0ca5 F403     		.sleb128 500
+ 1901 0ca7 08       		.uleb128 0x8
+ 1902 0ca8 8D0F0000 		.4byte	.LASF412
+ 1903 0cac F503     		.sleb128 501
+ 1904 0cae 08       		.uleb128 0x8
+ 1905 0caf FB100000 		.4byte	.LASF413
+ 1906 0cb3 F603     		.sleb128 502
+ 1907 0cb5 08       		.uleb128 0x8
+ 1908 0cb6 76330000 		.4byte	.LASF414
+ 1909 0cba F703     		.sleb128 503
+ 1910 0cbc 08       		.uleb128 0x8
+ 1911 0cbd 920C0000 		.4byte	.LASF415
+ 1912 0cc1 F803     		.sleb128 504
+ 1913 0cc3 08       		.uleb128 0x8
+ 1914 0cc4 120B0000 		.4byte	.LASF416
+ 1915 0cc8 F903     		.sleb128 505
+ 1916 0cca 08       		.uleb128 0x8
+ 1917 0ccb 18220000 		.4byte	.LASF417
+ 1918 0ccf 80C003   		.sleb128 57344
+ 1919 0cd2 00       		.byte	0
+ 1920 0cd3 09       		.uleb128 0x9
+ 1921 0cd4 01       		.byte	0x1
+ 1922 0cd5 09       		.byte	0x9
+ 1923 0cd6 1907     		.2byte	0x719
+ 1924 0cd8 FB0C0000 		.4byte	0xcfb
+ 1925 0cdc 08       		.uleb128 0x8
+ 1926 0cdd A80B0000 		.4byte	.LASF418
+ 1927 0ce1 00       		.sleb128 0
+ 1928 0ce2 08       		.uleb128 0x8
+ 1929 0ce3 3B180000 		.4byte	.LASF419
+ 1930 0ce7 01       		.sleb128 1
+ 1931 0ce8 08       		.uleb128 0x8
+ 1932 0ce9 EB310000 		.4byte	.LASF420
+ 1933 0ced 02       		.sleb128 2
+ 1934 0cee 08       		.uleb128 0x8
+ 1935 0cef 6F070000 		.4byte	.LASF421
+ 1936 0cf3 03       		.sleb128 3
+ 1937 0cf4 08       		.uleb128 0x8
+ 1938 0cf5 FD290000 		.4byte	.LASF422
+ 1939 0cf9 04       		.sleb128 4
+ 1940 0cfa 00       		.byte	0
+ 1941 0cfb 04       		.uleb128 0x4
+ 1942 0cfc 84240000 		.4byte	.LASF423
+ 1943 0d00 09       		.byte	0x9
+ 1944 0d01 2707     		.2byte	0x727
+ 1945 0d03 D30C0000 		.4byte	0xcd3
+ 1946 0d07 15       		.uleb128 0x15
+ 1947 0d08 79230000 		.4byte	.LASF424
+ 1948 0d0c 01       		.byte	0x1
+ 1949 0d0d 90       		.byte	0x90
+ 1950 0d0e EE020000 		.4byte	0x2ee
+ 1951 0d12 00000000 		.4byte	.LFB2
+ 1952 0d16 40000000 		.4byte	.LFE2-.LFB2
+ 1953 0d1a 01       		.uleb128 0x1
+ 1954 0d1b 9C       		.byte	0x9c
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 39
+
+
+ 1955 0d1c 2F0D0000 		.4byte	0xd2f
+ 1956 0d20 16       		.uleb128 0x16
+ 1957 0d21 08290000 		.4byte	.LASF426
+ 1958 0d25 01       		.byte	0x1
+ 1959 0d26 92       		.byte	0x92
+ 1960 0d27 EE020000 		.4byte	0x2ee
+ 1961 0d2b 02       		.uleb128 0x2
+ 1962 0d2c 91       		.byte	0x91
+ 1963 0d2d 6E       		.sleb128 -18
+ 1964 0d2e 00       		.byte	0
+ 1965 0d2f 15       		.uleb128 0x15
+ 1966 0d30 49120000 		.4byte	.LASF425
+ 1967 0d34 01       		.byte	0x1
+ 1968 0d35 B1       		.byte	0xb1
+ 1969 0d36 D7030000 		.4byte	0x3d7
+ 1970 0d3a 00000000 		.4byte	.LFB3
+ 1971 0d3e A0000000 		.4byte	.LFE3-.LFB3
+ 1972 0d42 01       		.uleb128 0x1
+ 1973 0d43 9C       		.byte	0x9c
+ 1974 0d44 650D0000 		.4byte	0xd65
+ 1975 0d48 17       		.uleb128 0x17
+ 1976 0d49 DE010000 		.4byte	.LASF441
+ 1977 0d4d 01       		.byte	0x1
+ 1978 0d4e B1       		.byte	0xb1
+ 1979 0d4f 650D0000 		.4byte	0xd65
+ 1980 0d53 02       		.uleb128 0x2
+ 1981 0d54 91       		.byte	0x91
+ 1982 0d55 64       		.sleb128 -28
+ 1983 0d56 16       		.uleb128 0x16
+ 1984 0d57 3D310000 		.4byte	.LASF427
+ 1985 0d5b 01       		.byte	0x1
+ 1986 0d5c B3       		.byte	0xb3
+ 1987 0d5d D7030000 		.4byte	0x3d7
+ 1988 0d61 02       		.uleb128 0x2
+ 1989 0d62 91       		.byte	0x91
+ 1990 0d63 6F       		.sleb128 -17
+ 1991 0d64 00       		.byte	0
+ 1992 0d65 0A       		.uleb128 0xa
+ 1993 0d66 04       		.byte	0x4
+ 1994 0d67 AD040000 		.4byte	0x4ad
+ 1995 0d6b 18       		.uleb128 0x18
+ 1996 0d6c 6B000000 		.4byte	0x6b
+ 1997 0d70 7B0D0000 		.4byte	0xd7b
+ 1998 0d74 19       		.uleb128 0x19
+ 1999 0d75 A9000000 		.4byte	0xa9
+ 2000 0d79 21       		.byte	0x21
+ 2001 0d7a 00       		.byte	0
+ 2002 0d7b 16       		.uleb128 0x16
+ 2003 0d7c AC180000 		.4byte	.LASF428
+ 2004 0d80 01       		.byte	0x1
+ 2005 0d81 23       		.byte	0x23
+ 2006 0d82 6B0D0000 		.4byte	0xd6b
+ 2007 0d86 05       		.uleb128 0x5
+ 2008 0d87 03       		.byte	0x3
+ 2009 0d88 00000000 		.4byte	cyBle_attValues
+ 2010 0d8c 1A       		.uleb128 0x1a
+ 2011 0d8d 0E260000 		.4byte	.LASF429
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 40
+
+
+ 2012 0d91 07       		.byte	0x7
+ 2013 0d92 9401     		.2byte	0x194
+ 2014 0d94 92050000 		.4byte	0x592
+ 2015 0d98 1A       		.uleb128 0x1a
+ 2016 0d99 802E0000 		.4byte	.LASF430
+ 2017 0d9d 07       		.byte	0x7
+ 2018 0d9e 9701     		.2byte	0x197
+ 2019 0da0 A4000000 		.4byte	0xa4
+ 2020 0da4 1B       		.uleb128 0x1b
+ 2021 0da5 A91D0000 		.4byte	.LASF431
+ 2022 0da9 01       		.byte	0x1
+ 2023 0daa 1C       		.byte	0x1c
+ 2024 0dab B50D0000 		.4byte	0xdb5
+ 2025 0daf 05       		.uleb128 0x5
+ 2026 0db0 03       		.byte	0x3
+ 2027 0db1 00000000 		.4byte	cyBle_gatts
+ 2028 0db5 1C       		.uleb128 0x1c
+ 2029 0db6 E1050000 		.4byte	0x5e1
+ 2030 0dba 18       		.uleb128 0x18
+ 2031 0dbb 86050000 		.4byte	0x586
+ 2032 0dbf CA0D0000 		.4byte	0xdca
+ 2033 0dc3 19       		.uleb128 0x19
+ 2034 0dc4 A9000000 		.4byte	0xa9
+ 2035 0dc8 0C       		.byte	0xc
+ 2036 0dc9 00       		.byte	0
+ 2037 0dca 1B       		.uleb128 0x1b
+ 2038 0dcb 2A1C0000 		.4byte	.LASF432
+ 2039 0dcf 01       		.byte	0x1
+ 2040 0dd0 60       		.byte	0x60
+ 2041 0dd1 DB0D0000 		.4byte	0xddb
+ 2042 0dd5 05       		.uleb128 0x5
+ 2043 0dd6 03       		.byte	0x3
+ 2044 0dd7 00000000 		.4byte	cyBle_gattDB
+ 2045 0ddb 1C       		.uleb128 0x1c
+ 2046 0ddc BA0D0000 		.4byte	0xdba
+ 2047 0de0 18       		.uleb128 0x18
+ 2048 0de1 6B000000 		.4byte	0x6b
+ 2049 0de5 F60D0000 		.4byte	0xdf6
+ 2050 0de9 19       		.uleb128 0x19
+ 2051 0dea A9000000 		.4byte	0xa9
+ 2052 0dee 01       		.byte	0x1
+ 2053 0def 19       		.uleb128 0x19
+ 2054 0df0 A9000000 		.4byte	0xa9
+ 2055 0df4 0F       		.byte	0xf
+ 2056 0df5 00       		.byte	0
+ 2057 0df6 1B       		.uleb128 0x1b
+ 2058 0df7 DD0D0000 		.4byte	.LASF433
+ 2059 0dfb 01       		.byte	0x1
+ 2060 0dfc 4E       		.byte	0x4e
+ 2061 0dfd 070E0000 		.4byte	0xe07
+ 2062 0e01 05       		.uleb128 0x5
+ 2063 0e02 03       		.byte	0x3
+ 2064 0e03 00000000 		.4byte	cyBle_attUuid128
+ 2065 0e07 1C       		.uleb128 0x1c
+ 2066 0e08 E00D0000 		.4byte	0xde0
+ 2067 0e0c 18       		.uleb128 0x18
+ 2068 0e0d 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 41
+
+
+ 2069 0e11 1C0E0000 		.4byte	0xe1c
+ 2070 0e15 19       		.uleb128 0x19
+ 2071 0e16 A9000000 		.4byte	0xa9
+ 2072 0e1a 01       		.byte	0x1
+ 2073 0e1b 00       		.byte	0
+ 2074 0e1c 1B       		.uleb128 0x1b
+ 2075 0e1d 722F0000 		.4byte	.LASF434
+ 2076 0e21 01       		.byte	0x1
+ 2077 0e22 4C       		.byte	0x4c
+ 2078 0e23 0C0E0000 		.4byte	0xe0c
+ 2079 0e27 05       		.uleb128 0x5
+ 2080 0e28 03       		.byte	0x3
+ 2081 0e29 00000000 		.4byte	cyBle_attValuesCCCD
+ 2082 0e2d 18       		.uleb128 0x18
+ 2083 0e2e D9040000 		.4byte	0x4d9
+ 2084 0e32 3D0E0000 		.4byte	0xe3d
+ 2085 0e36 19       		.uleb128 0x19
+ 2086 0e37 A9000000 		.4byte	0xa9
+ 2087 0e3b 07       		.byte	0x7
+ 2088 0e3c 00       		.byte	0
+ 2089 0e3d 1B       		.uleb128 0x1b
+ 2090 0e3e 54180000 		.4byte	.LASF435
+ 2091 0e42 01       		.byte	0x1
+ 2092 0e43 55       		.byte	0x55
+ 2093 0e44 2D0E0000 		.4byte	0xe2d
+ 2094 0e48 05       		.uleb128 0x5
+ 2095 0e49 03       		.byte	0x3
+ 2096 0e4a 00000000 		.4byte	cyBle_attValuesLen
+ 2097 0e4e 18       		.uleb128 0x18
+ 2098 0e4f 6B000000 		.4byte	0x6b
+ 2099 0e53 640E0000 		.4byte	0xe64
+ 2100 0e57 19       		.uleb128 0x19
+ 2101 0e58 A9000000 		.4byte	0xa9
+ 2102 0e5c 04       		.byte	0x4
+ 2103 0e5d 19       		.uleb128 0x19
+ 2104 0e5e A9000000 		.4byte	0xa9
+ 2105 0e62 01       		.byte	0x1
+ 2106 0e63 00       		.byte	0
+ 2107 0e64 1B       		.uleb128 0x1b
+ 2108 0e65 ED030000 		.4byte	.LASF436
+ 2109 0e69 01       		.byte	0x1
+ 2110 0e6a 36       		.byte	0x36
+ 2111 0e6b 750E0000 		.4byte	0xe75
+ 2112 0e6f 05       		.uleb128 0x5
+ 2113 0e70 03       		.byte	0x3
+ 2114 0e71 00000000 		.4byte	cyBle_attValuesCCCDFlashMemory
+ 2115 0e75 1C       		.uleb128 0x1c
+ 2116 0e76 4E0E0000 		.4byte	0xe4e
+ 2117 0e7a 1B       		.uleb128 0x1b
+ 2118 0e7b 12290000 		.4byte	.LASF437
+ 2119 0e7f 01       		.byte	0x1
+ 2120 0e80 17       		.byte	0x17
+ 2121 0e81 FB0C0000 		.4byte	0xcfb
+ 2122 0e85 05       		.uleb128 0x5
+ 2123 0e86 03       		.byte	0x3
+ 2124 0e87 00000000 		.4byte	cyBle_state
+ 2125 0e8b 00       		.byte	0
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 42
+
+
+ 2126              		.section	.debug_abbrev,"",%progbits
+ 2127              	.Ldebug_abbrev0:
+ 2128 0000 01       		.uleb128 0x1
+ 2129 0001 11       		.uleb128 0x11
+ 2130 0002 01       		.byte	0x1
+ 2131 0003 25       		.uleb128 0x25
+ 2132 0004 0E       		.uleb128 0xe
+ 2133 0005 13       		.uleb128 0x13
+ 2134 0006 0B       		.uleb128 0xb
+ 2135 0007 03       		.uleb128 0x3
+ 2136 0008 0E       		.uleb128 0xe
+ 2137 0009 1B       		.uleb128 0x1b
+ 2138 000a 0E       		.uleb128 0xe
+ 2139 000b 55       		.uleb128 0x55
+ 2140 000c 17       		.uleb128 0x17
+ 2141 000d 11       		.uleb128 0x11
+ 2142 000e 01       		.uleb128 0x1
+ 2143 000f 10       		.uleb128 0x10
+ 2144 0010 17       		.uleb128 0x17
+ 2145 0011 00       		.byte	0
+ 2146 0012 00       		.byte	0
+ 2147 0013 02       		.uleb128 0x2
+ 2148 0014 24       		.uleb128 0x24
+ 2149 0015 00       		.byte	0
+ 2150 0016 0B       		.uleb128 0xb
+ 2151 0017 0B       		.uleb128 0xb
+ 2152 0018 3E       		.uleb128 0x3e
+ 2153 0019 0B       		.uleb128 0xb
+ 2154 001a 03       		.uleb128 0x3
+ 2155 001b 0E       		.uleb128 0xe
+ 2156 001c 00       		.byte	0
+ 2157 001d 00       		.byte	0
+ 2158 001e 03       		.uleb128 0x3
+ 2159 001f 24       		.uleb128 0x24
+ 2160 0020 00       		.byte	0
+ 2161 0021 0B       		.uleb128 0xb
+ 2162 0022 0B       		.uleb128 0xb
+ 2163 0023 3E       		.uleb128 0x3e
+ 2164 0024 0B       		.uleb128 0xb
+ 2165 0025 03       		.uleb128 0x3
+ 2166 0026 08       		.uleb128 0x8
+ 2167 0027 00       		.byte	0
+ 2168 0028 00       		.byte	0
+ 2169 0029 04       		.uleb128 0x4
+ 2170 002a 16       		.uleb128 0x16
+ 2171 002b 00       		.byte	0
+ 2172 002c 03       		.uleb128 0x3
+ 2173 002d 0E       		.uleb128 0xe
+ 2174 002e 3A       		.uleb128 0x3a
+ 2175 002f 0B       		.uleb128 0xb
+ 2176 0030 3B       		.uleb128 0x3b
+ 2177 0031 05       		.uleb128 0x5
+ 2178 0032 49       		.uleb128 0x49
+ 2179 0033 13       		.uleb128 0x13
+ 2180 0034 00       		.byte	0
+ 2181 0035 00       		.byte	0
+ 2182 0036 05       		.uleb128 0x5
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 43
+
+
+ 2183 0037 35       		.uleb128 0x35
+ 2184 0038 00       		.byte	0
+ 2185 0039 49       		.uleb128 0x49
+ 2186 003a 13       		.uleb128 0x13
+ 2187 003b 00       		.byte	0
+ 2188 003c 00       		.byte	0
+ 2189 003d 06       		.uleb128 0x6
+ 2190 003e 0F       		.uleb128 0xf
+ 2191 003f 00       		.byte	0
+ 2192 0040 0B       		.uleb128 0xb
+ 2193 0041 0B       		.uleb128 0xb
+ 2194 0042 00       		.byte	0
+ 2195 0043 00       		.byte	0
+ 2196 0044 07       		.uleb128 0x7
+ 2197 0045 04       		.uleb128 0x4
+ 2198 0046 01       		.byte	0x1
+ 2199 0047 0B       		.uleb128 0xb
+ 2200 0048 0B       		.uleb128 0xb
+ 2201 0049 3A       		.uleb128 0x3a
+ 2202 004a 0B       		.uleb128 0xb
+ 2203 004b 3B       		.uleb128 0x3b
+ 2204 004c 0B       		.uleb128 0xb
+ 2205 004d 01       		.uleb128 0x1
+ 2206 004e 13       		.uleb128 0x13
+ 2207 004f 00       		.byte	0
+ 2208 0050 00       		.byte	0
+ 2209 0051 08       		.uleb128 0x8
+ 2210 0052 28       		.uleb128 0x28
+ 2211 0053 00       		.byte	0
+ 2212 0054 03       		.uleb128 0x3
+ 2213 0055 0E       		.uleb128 0xe
+ 2214 0056 1C       		.uleb128 0x1c
+ 2215 0057 0D       		.uleb128 0xd
+ 2216 0058 00       		.byte	0
+ 2217 0059 00       		.byte	0
+ 2218 005a 09       		.uleb128 0x9
+ 2219 005b 04       		.uleb128 0x4
+ 2220 005c 01       		.byte	0x1
+ 2221 005d 0B       		.uleb128 0xb
+ 2222 005e 0B       		.uleb128 0xb
+ 2223 005f 3A       		.uleb128 0x3a
+ 2224 0060 0B       		.uleb128 0xb
+ 2225 0061 3B       		.uleb128 0x3b
+ 2226 0062 05       		.uleb128 0x5
+ 2227 0063 01       		.uleb128 0x1
+ 2228 0064 13       		.uleb128 0x13
+ 2229 0065 00       		.byte	0
+ 2230 0066 00       		.byte	0
+ 2231 0067 0A       		.uleb128 0xa
+ 2232 0068 0F       		.uleb128 0xf
+ 2233 0069 00       		.byte	0
+ 2234 006a 0B       		.uleb128 0xb
+ 2235 006b 0B       		.uleb128 0xb
+ 2236 006c 49       		.uleb128 0x49
+ 2237 006d 13       		.uleb128 0x13
+ 2238 006e 00       		.byte	0
+ 2239 006f 00       		.byte	0
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 44
+
+
+ 2240 0070 0B       		.uleb128 0xb
+ 2241 0071 13       		.uleb128 0x13
+ 2242 0072 01       		.byte	0x1
+ 2243 0073 0B       		.uleb128 0xb
+ 2244 0074 0B       		.uleb128 0xb
+ 2245 0075 3A       		.uleb128 0x3a
+ 2246 0076 0B       		.uleb128 0xb
+ 2247 0077 3B       		.uleb128 0x3b
+ 2248 0078 05       		.uleb128 0x5
+ 2249 0079 01       		.uleb128 0x1
+ 2250 007a 13       		.uleb128 0x13
+ 2251 007b 00       		.byte	0
+ 2252 007c 00       		.byte	0
+ 2253 007d 0C       		.uleb128 0xc
+ 2254 007e 0D       		.uleb128 0xd
+ 2255 007f 00       		.byte	0
+ 2256 0080 03       		.uleb128 0x3
+ 2257 0081 0E       		.uleb128 0xe
+ 2258 0082 3A       		.uleb128 0x3a
+ 2259 0083 0B       		.uleb128 0xb
+ 2260 0084 3B       		.uleb128 0x3b
+ 2261 0085 05       		.uleb128 0x5
+ 2262 0086 49       		.uleb128 0x49
+ 2263 0087 13       		.uleb128 0x13
+ 2264 0088 38       		.uleb128 0x38
+ 2265 0089 0B       		.uleb128 0xb
+ 2266 008a 00       		.byte	0
+ 2267 008b 00       		.byte	0
+ 2268 008c 0D       		.uleb128 0xd
+ 2269 008d 0D       		.uleb128 0xd
+ 2270 008e 00       		.byte	0
+ 2271 008f 03       		.uleb128 0x3
+ 2272 0090 08       		.uleb128 0x8
+ 2273 0091 3A       		.uleb128 0x3a
+ 2274 0092 0B       		.uleb128 0xb
+ 2275 0093 3B       		.uleb128 0x3b
+ 2276 0094 05       		.uleb128 0x5
+ 2277 0095 49       		.uleb128 0x49
+ 2278 0096 13       		.uleb128 0x13
+ 2279 0097 38       		.uleb128 0x38
+ 2280 0098 0B       		.uleb128 0xb
+ 2281 0099 00       		.byte	0
+ 2282 009a 00       		.byte	0
+ 2283 009b 0E       		.uleb128 0xe
+ 2284 009c 13       		.uleb128 0x13
+ 2285 009d 01       		.byte	0x1
+ 2286 009e 0B       		.uleb128 0xb
+ 2287 009f 0B       		.uleb128 0xb
+ 2288 00a0 3A       		.uleb128 0x3a
+ 2289 00a1 0B       		.uleb128 0xb
+ 2290 00a2 3B       		.uleb128 0x3b
+ 2291 00a3 0B       		.uleb128 0xb
+ 2292 00a4 01       		.uleb128 0x1
+ 2293 00a5 13       		.uleb128 0x13
+ 2294 00a6 00       		.byte	0
+ 2295 00a7 00       		.byte	0
+ 2296 00a8 0F       		.uleb128 0xf
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 45
+
+
+ 2297 00a9 0D       		.uleb128 0xd
+ 2298 00aa 00       		.byte	0
+ 2299 00ab 03       		.uleb128 0x3
+ 2300 00ac 0E       		.uleb128 0xe
+ 2301 00ad 3A       		.uleb128 0x3a
+ 2302 00ae 0B       		.uleb128 0xb
+ 2303 00af 3B       		.uleb128 0x3b
+ 2304 00b0 0B       		.uleb128 0xb
+ 2305 00b1 49       		.uleb128 0x49
+ 2306 00b2 13       		.uleb128 0x13
+ 2307 00b3 38       		.uleb128 0x38
+ 2308 00b4 0B       		.uleb128 0xb
+ 2309 00b5 00       		.byte	0
+ 2310 00b6 00       		.byte	0
+ 2311 00b7 10       		.uleb128 0x10
+ 2312 00b8 16       		.uleb128 0x16
+ 2313 00b9 00       		.byte	0
+ 2314 00ba 03       		.uleb128 0x3
+ 2315 00bb 0E       		.uleb128 0xe
+ 2316 00bc 3A       		.uleb128 0x3a
+ 2317 00bd 0B       		.uleb128 0xb
+ 2318 00be 3B       		.uleb128 0x3b
+ 2319 00bf 0B       		.uleb128 0xb
+ 2320 00c0 49       		.uleb128 0x49
+ 2321 00c1 13       		.uleb128 0x13
+ 2322 00c2 00       		.byte	0
+ 2323 00c3 00       		.byte	0
+ 2324 00c4 11       		.uleb128 0x11
+ 2325 00c5 17       		.uleb128 0x17
+ 2326 00c6 01       		.byte	0x1
+ 2327 00c7 0B       		.uleb128 0xb
+ 2328 00c8 0B       		.uleb128 0xb
+ 2329 00c9 3A       		.uleb128 0x3a
+ 2330 00ca 0B       		.uleb128 0xb
+ 2331 00cb 3B       		.uleb128 0x3b
+ 2332 00cc 0B       		.uleb128 0xb
+ 2333 00cd 01       		.uleb128 0x1
+ 2334 00ce 13       		.uleb128 0x13
+ 2335 00cf 00       		.byte	0
+ 2336 00d0 00       		.byte	0
+ 2337 00d1 12       		.uleb128 0x12
+ 2338 00d2 0D       		.uleb128 0xd
+ 2339 00d3 00       		.byte	0
+ 2340 00d4 03       		.uleb128 0x3
+ 2341 00d5 0E       		.uleb128 0xe
+ 2342 00d6 3A       		.uleb128 0x3a
+ 2343 00d7 0B       		.uleb128 0xb
+ 2344 00d8 3B       		.uleb128 0x3b
+ 2345 00d9 0B       		.uleb128 0xb
+ 2346 00da 49       		.uleb128 0x49
+ 2347 00db 13       		.uleb128 0x13
+ 2348 00dc 00       		.byte	0
+ 2349 00dd 00       		.byte	0
+ 2350 00de 13       		.uleb128 0x13
+ 2351 00df 15       		.uleb128 0x15
+ 2352 00e0 01       		.byte	0x1
+ 2353 00e1 27       		.uleb128 0x27
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 46
+
+
+ 2354 00e2 19       		.uleb128 0x19
+ 2355 00e3 01       		.uleb128 0x1
+ 2356 00e4 13       		.uleb128 0x13
+ 2357 00e5 00       		.byte	0
+ 2358 00e6 00       		.byte	0
+ 2359 00e7 14       		.uleb128 0x14
+ 2360 00e8 05       		.uleb128 0x5
+ 2361 00e9 00       		.byte	0
+ 2362 00ea 49       		.uleb128 0x49
+ 2363 00eb 13       		.uleb128 0x13
+ 2364 00ec 00       		.byte	0
+ 2365 00ed 00       		.byte	0
+ 2366 00ee 15       		.uleb128 0x15
+ 2367 00ef 2E       		.uleb128 0x2e
+ 2368 00f0 01       		.byte	0x1
+ 2369 00f1 3F       		.uleb128 0x3f
+ 2370 00f2 19       		.uleb128 0x19
+ 2371 00f3 03       		.uleb128 0x3
+ 2372 00f4 0E       		.uleb128 0xe
+ 2373 00f5 3A       		.uleb128 0x3a
+ 2374 00f6 0B       		.uleb128 0xb
+ 2375 00f7 3B       		.uleb128 0x3b
+ 2376 00f8 0B       		.uleb128 0xb
+ 2377 00f9 27       		.uleb128 0x27
+ 2378 00fa 19       		.uleb128 0x19
+ 2379 00fb 49       		.uleb128 0x49
+ 2380 00fc 13       		.uleb128 0x13
+ 2381 00fd 11       		.uleb128 0x11
+ 2382 00fe 01       		.uleb128 0x1
+ 2383 00ff 12       		.uleb128 0x12
+ 2384 0100 06       		.uleb128 0x6
+ 2385 0101 40       		.uleb128 0x40
+ 2386 0102 18       		.uleb128 0x18
+ 2387 0103 9642     		.uleb128 0x2116
+ 2388 0105 19       		.uleb128 0x19
+ 2389 0106 01       		.uleb128 0x1
+ 2390 0107 13       		.uleb128 0x13
+ 2391 0108 00       		.byte	0
+ 2392 0109 00       		.byte	0
+ 2393 010a 16       		.uleb128 0x16
+ 2394 010b 34       		.uleb128 0x34
+ 2395 010c 00       		.byte	0
+ 2396 010d 03       		.uleb128 0x3
+ 2397 010e 0E       		.uleb128 0xe
+ 2398 010f 3A       		.uleb128 0x3a
+ 2399 0110 0B       		.uleb128 0xb
+ 2400 0111 3B       		.uleb128 0x3b
+ 2401 0112 0B       		.uleb128 0xb
+ 2402 0113 49       		.uleb128 0x49
+ 2403 0114 13       		.uleb128 0x13
+ 2404 0115 02       		.uleb128 0x2
+ 2405 0116 18       		.uleb128 0x18
+ 2406 0117 00       		.byte	0
+ 2407 0118 00       		.byte	0
+ 2408 0119 17       		.uleb128 0x17
+ 2409 011a 05       		.uleb128 0x5
+ 2410 011b 00       		.byte	0
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 47
+
+
+ 2411 011c 03       		.uleb128 0x3
+ 2412 011d 0E       		.uleb128 0xe
+ 2413 011e 3A       		.uleb128 0x3a
+ 2414 011f 0B       		.uleb128 0xb
+ 2415 0120 3B       		.uleb128 0x3b
+ 2416 0121 0B       		.uleb128 0xb
+ 2417 0122 49       		.uleb128 0x49
+ 2418 0123 13       		.uleb128 0x13
+ 2419 0124 02       		.uleb128 0x2
+ 2420 0125 18       		.uleb128 0x18
+ 2421 0126 00       		.byte	0
+ 2422 0127 00       		.byte	0
+ 2423 0128 18       		.uleb128 0x18
+ 2424 0129 01       		.uleb128 0x1
+ 2425 012a 01       		.byte	0x1
+ 2426 012b 49       		.uleb128 0x49
+ 2427 012c 13       		.uleb128 0x13
+ 2428 012d 01       		.uleb128 0x1
+ 2429 012e 13       		.uleb128 0x13
+ 2430 012f 00       		.byte	0
+ 2431 0130 00       		.byte	0
+ 2432 0131 19       		.uleb128 0x19
+ 2433 0132 21       		.uleb128 0x21
+ 2434 0133 00       		.byte	0
+ 2435 0134 49       		.uleb128 0x49
+ 2436 0135 13       		.uleb128 0x13
+ 2437 0136 2F       		.uleb128 0x2f
+ 2438 0137 0B       		.uleb128 0xb
+ 2439 0138 00       		.byte	0
+ 2440 0139 00       		.byte	0
+ 2441 013a 1A       		.uleb128 0x1a
+ 2442 013b 34       		.uleb128 0x34
+ 2443 013c 00       		.byte	0
+ 2444 013d 03       		.uleb128 0x3
+ 2445 013e 0E       		.uleb128 0xe
+ 2446 013f 3A       		.uleb128 0x3a
+ 2447 0140 0B       		.uleb128 0xb
+ 2448 0141 3B       		.uleb128 0x3b
+ 2449 0142 05       		.uleb128 0x5
+ 2450 0143 49       		.uleb128 0x49
+ 2451 0144 13       		.uleb128 0x13
+ 2452 0145 3F       		.uleb128 0x3f
+ 2453 0146 19       		.uleb128 0x19
+ 2454 0147 3C       		.uleb128 0x3c
+ 2455 0148 19       		.uleb128 0x19
+ 2456 0149 00       		.byte	0
+ 2457 014a 00       		.byte	0
+ 2458 014b 1B       		.uleb128 0x1b
+ 2459 014c 34       		.uleb128 0x34
+ 2460 014d 00       		.byte	0
+ 2461 014e 03       		.uleb128 0x3
+ 2462 014f 0E       		.uleb128 0xe
+ 2463 0150 3A       		.uleb128 0x3a
+ 2464 0151 0B       		.uleb128 0xb
+ 2465 0152 3B       		.uleb128 0x3b
+ 2466 0153 0B       		.uleb128 0xb
+ 2467 0154 49       		.uleb128 0x49
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 48
+
+
+ 2468 0155 13       		.uleb128 0x13
+ 2469 0156 3F       		.uleb128 0x3f
+ 2470 0157 19       		.uleb128 0x19
+ 2471 0158 02       		.uleb128 0x2
+ 2472 0159 18       		.uleb128 0x18
+ 2473 015a 00       		.byte	0
+ 2474 015b 00       		.byte	0
+ 2475 015c 1C       		.uleb128 0x1c
+ 2476 015d 26       		.uleb128 0x26
+ 2477 015e 00       		.byte	0
+ 2478 015f 49       		.uleb128 0x49
+ 2479 0160 13       		.uleb128 0x13
+ 2480 0161 00       		.byte	0
+ 2481 0162 00       		.byte	0
+ 2482 0163 00       		.byte	0
+ 2483              		.section	.debug_aranges,"",%progbits
+ 2484 0000 24000000 		.4byte	0x24
+ 2485 0004 0200     		.2byte	0x2
+ 2486 0006 00000000 		.4byte	.Ldebug_info0
+ 2487 000a 04       		.byte	0x4
+ 2488 000b 00       		.byte	0
+ 2489 000c 0000     		.2byte	0
+ 2490 000e 0000     		.2byte	0
+ 2491 0010 00000000 		.4byte	.LFB2
+ 2492 0014 40000000 		.4byte	.LFE2-.LFB2
+ 2493 0018 00000000 		.4byte	.LFB3
+ 2494 001c A0000000 		.4byte	.LFE3-.LFB3
+ 2495 0020 00000000 		.4byte	0
+ 2496 0024 00000000 		.4byte	0
+ 2497              		.section	.debug_ranges,"",%progbits
+ 2498              	.Ldebug_ranges0:
+ 2499 0000 00000000 		.4byte	.LFB2
+ 2500 0004 40000000 		.4byte	.LFE2
+ 2501 0008 00000000 		.4byte	.LFB3
+ 2502 000c A0000000 		.4byte	.LFE3
+ 2503 0010 00000000 		.4byte	0
+ 2504 0014 00000000 		.4byte	0
+ 2505              		.section	.debug_line,"",%progbits
+ 2506              	.Ldebug_line0:
+ 2507 0000 F7000000 		.section	.debug_str,"MS",%progbits,1
+ 2507      0200C200 
+ 2507      00000201 
+ 2507      FB0E0D00 
+ 2507      01010101 
+ 2508              	.LASF394:
+ 2509 0000 4359424C 		.ascii	"CYBLE_EVT_UDSC_READ_CHAR_RESPONSE\000"
+ 2509      455F4556 
+ 2509      545F5544 
+ 2509      53435F52 
+ 2509      4541445F 
+ 2510              	.LASF323:
+ 2511 0022 4359424C 		.ascii	"CYBLE_EVT_HTSS_NOTIFICATION_DISABLED\000"
+ 2511      455F4556 
+ 2511      545F4854 
+ 2511      53535F4E 
+ 2511      4F544946 
+ 2512              	.LASF129:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 49
+
+
+ 2513 0047 4359424C 		.ascii	"CYBLE_GATT_ERR_INVALID_CRC\000"
+ 2513      455F4741 
+ 2513      54545F45 
+ 2513      52525F49 
+ 2513      4E56414C 
+ 2514              	.LASF15:
+ 2515 0062 73697A65 		.ascii	"sizetype\000"
+ 2515      74797065 
+ 2515      00
+ 2516              	.LASF211:
+ 2517 006b 4359424C 		.ascii	"CYBLE_EVT_BCSC_READ_CHAR_RESPONSE\000"
+ 2517      455F4556 
+ 2517      545F4243 
+ 2517      53435F52 
+ 2517      4541445F 
+ 2518              	.LASF234:
+ 2519 008d 4359424C 		.ascii	"CYBLE_EVT_CGMSC_INDICATION\000"
+ 2519      455F4556 
+ 2519      545F4347 
+ 2519      4D53435F 
+ 2519      494E4449 
+ 2520              	.LASF252:
+ 2521 00a8 4359424C 		.ascii	"CYBLE_EVT_CPSC_READ_DESCR_RESPONSE\000"
+ 2521      455F4556 
+ 2521      545F4350 
+ 2521      53435F52 
+ 2521      4541445F 
+ 2522              	.LASF371:
+ 2523 00cb 4359424C 		.ascii	"CYBLE_EVT_RTUSS_WRITE_CHAR_CMD\000"
+ 2523      455F4556 
+ 2523      545F5254 
+ 2523      5553535F 
+ 2523      57524954 
+ 2524              	.LASF174:
+ 2525 00ea 4359424C 		.ascii	"CYBLE_EVT_GATTC_SRVC_DISCOVERY_FAILED\000"
+ 2525      455F4556 
+ 2525      545F4741 
+ 2525      5454435F 
+ 2525      53525643 
+ 2526              	.LASF404:
+ 2527 0110 4359424C 		.ascii	"CYBLE_EVT_WPTSC_NOTIFICATION\000"
+ 2527      455F4556 
+ 2527      545F5750 
+ 2527      5453435F 
+ 2527      4E4F5449 
+ 2528              	.LASF410:
+ 2529 012d 4359424C 		.ascii	"CYBLE_EVT_WSSS_INDICATION_ENABLED\000"
+ 2529      455F4556 
+ 2529      545F5753 
+ 2529      53535F49 
+ 2529      4E444943 
+ 2530              	.LASF250:
+ 2531 014f 4359424C 		.ascii	"CYBLE_EVT_CPSC_READ_CHAR_RESPONSE\000"
+ 2531      455F4556 
+ 2531      545F4350 
+ 2531      53435F52 
+ 2531      4541445F 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 50
+
+
+ 2532              	.LASF263:
+ 2533 0171 4359424C 		.ascii	"CYBLE_EVT_CSCSC_READ_CHAR_RESPONSE\000"
+ 2533      455F4556 
+ 2533      545F4353 
+ 2533      4353435F 
+ 2533      52454144 
+ 2534              	.LASF239:
+ 2535 0194 4359424C 		.ascii	"CYBLE_EVT_CGMSC_WRITE_DESCR_RESPONSE\000"
+ 2535      455F4556 
+ 2535      545F4347 
+ 2535      4D53435F 
+ 2535      57524954 
+ 2536              	.LASF294:
+ 2537 01b9 4359424C 		.ascii	"CYBLE_EVT_GLSS_NOTIFICATION_DISABLED\000"
+ 2537      455F4556 
+ 2537      545F474C 
+ 2537      53535F4E 
+ 2537      4F544946 
+ 2538              	.LASF441:
+ 2539 01de 6576656E 		.ascii	"eventParam\000"
+ 2539      74506172 
+ 2539      616D00
+ 2540              	.LASF221:
+ 2541 01e9 4359424C 		.ascii	"CYBLE_EVT_BLSC_READ_CHAR_RESPONSE\000"
+ 2541      455F4556 
+ 2541      545F424C 
+ 2541      53435F52 
+ 2541      4541445F 
+ 2542              	.LASF29:
+ 2543 020b 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_CONNECTED\000"
+ 2543      455F4556 
+ 2543      545F4741 
+ 2543      505F4445 
+ 2543      56494345 
+ 2544              	.LASF337:
+ 2545 022a 4359424C 		.ascii	"CYBLE_EVT_LLSC_WRITE_CHAR_RESPONSE\000"
+ 2545      455F4556 
+ 2545      545F4C4C 
+ 2545      53435F57 
+ 2545      52495445 
+ 2546              	.LASF36:
+ 2547 024d 4359424C 		.ascii	"CYBLE_EVT_GATT_CONNECT_IND\000"
+ 2547      455F4556 
+ 2547      545F4741 
+ 2547      54545F43 
+ 2547      4F4E4E45 
+ 2548              	.LASF299:
+ 2549 0268 4359424C 		.ascii	"CYBLE_EVT_GLSC_WRITE_CHAR_RESPONSE\000"
+ 2549      455F4556 
+ 2549      545F474C 
+ 2549      53435F57 
+ 2549      52495445 
+ 2550              	.LASF11:
+ 2551 028b 75696E74 		.ascii	"uint32\000"
+ 2551      333200
+ 2552              	.LASF177:
+ 2553 0292 4359424C 		.ascii	"CYBLE_EVT_GATTC_DESCR_DISCOVERY_FAILED\000"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 51
+
+
+ 2553      455F4556 
+ 2553      545F4741 
+ 2553      5454435F 
+ 2553      44455343 
+ 2554              	.LASF370:
+ 2555 02b9 4359424C 		.ascii	"CYBLE_EVT_RSCSC_WRITE_DESCR_RESPONSE\000"
+ 2555      455F4556 
+ 2555      545F5253 
+ 2555      4353435F 
+ 2555      57524954 
+ 2556              	.LASF209:
+ 2557 02de 4359424C 		.ascii	"CYBLE_EVT_BCSS_INDICATION_CONFIRMED\000"
+ 2557      455F4556 
+ 2557      545F4243 
+ 2557      53535F49 
+ 2557      4E444943 
+ 2558              	.LASF210:
+ 2559 0302 4359424C 		.ascii	"CYBLE_EVT_BCSC_INDICATION\000"
+ 2559      455F4556 
+ 2559      545F4243 
+ 2559      53435F49 
+ 2559      4E444943 
+ 2560              	.LASF339:
+ 2561 031c 4359424C 		.ascii	"CYBLE_EVT_LNSS_INDICATION_DISABLED\000"
+ 2561      455F4556 
+ 2561      545F4C4E 
+ 2561      53535F49 
+ 2561      4E444943 
+ 2562              	.LASF271:
+ 2563 033f 4359424C 		.ascii	"CYBLE_EVT_CTSC_READ_CHAR_RESPONSE\000"
+ 2563      455F4556 
+ 2563      545F4354 
+ 2563      53435F52 
+ 2563      4541445F 
+ 2564              	.LASF181:
+ 2565 0361 4359424C 		.ascii	"CYBLE_EVT_GATTC_SRVC_DISCOVERY_COMPLETE\000"
+ 2565      455F4556 
+ 2565      545F4741 
+ 2565      5454435F 
+ 2565      53525643 
+ 2566              	.LASF364:
+ 2567 0389 4359424C 		.ascii	"CYBLE_EVT_RSCSS_CHAR_WRITE\000"
+ 2567      455F4556 
+ 2567      545F5253 
+ 2567      4353535F 
+ 2567      43484152 
+ 2568              	.LASF397:
+ 2569 03a4 4359424C 		.ascii	"CYBLE_EVT_UDSC_WRITE_DESCR_RESPONSE\000"
+ 2569      455F4556 
+ 2569      545F5544 
+ 2569      53435F57 
+ 2569      52495445 
+ 2570              	.LASF313:
+ 2571 03c8 4359424C 		.ascii	"CYBLE_EVT_HIDSC_WRITE_DESCR_RESPONSE\000"
+ 2571      455F4556 
+ 2571      545F4849 
+ 2571      4453435F 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 52
+
+
+ 2571      57524954 
+ 2572              	.LASF436:
+ 2573 03ed 6379426C 		.ascii	"cyBle_attValuesCCCDFlashMemory\000"
+ 2573      655F6174 
+ 2573      7456616C 
+ 2573      75657343 
+ 2573      43434446 
+ 2574              	.LASF379:
+ 2575 040c 4359424C 		.ascii	"CYBLE_EVT_TPSS_NOTIFICATION_ENABLED\000"
+ 2575      455F4556 
+ 2575      545F5450 
+ 2575      53535F4E 
+ 2575      4F544946 
+ 2576              	.LASF199:
+ 2577 0430 4359424C 		.ascii	"CYBLE_EVT_ANSC_READ_DESCR_RESPONSE\000"
+ 2577      455F4556 
+ 2577      545F414E 
+ 2577      53435F52 
+ 2577      4541445F 
+ 2578              	.LASF104:
+ 2579 0453 4359424C 		.ascii	"CYBLE_GATT_ERR_READ_NOT_PERMITTED\000"
+ 2579      455F4741 
+ 2579      54545F45 
+ 2579      52525F52 
+ 2579      4541445F 
+ 2580              	.LASF119:
+ 2581 0475 4359424C 		.ascii	"CYBLE_GATT_ERR_INSUFFICIENT_RESOURCE\000"
+ 2581      455F4741 
+ 2581      54545F45 
+ 2581      52525F49 
+ 2581      4E535546 
+ 2582              	.LASF118:
+ 2583 049a 4359424C 		.ascii	"CYBLE_GATT_ERR_UNSUPPORTED_GROUP_TYPE\000"
+ 2583      455F4741 
+ 2583      54545F45 
+ 2583      52525F55 
+ 2583      4E535550 
+ 2584              	.LASF89:
+ 2585 04c0 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
+ 2585      455F4552 
+ 2585      524F525F 
+ 2585      4C324341 
+ 2585      505F434F 
+ 2586              	.LASF95:
+ 2587 04ee 4359424C 		.ascii	"CYBLE_ERROR_MIC_AUTH_FAILED\000"
+ 2587      455F4552 
+ 2587      524F525F 
+ 2587      4D49435F 
+ 2587      41555448 
+ 2588              	.LASF176:
+ 2589 050a 4359424C 		.ascii	"CYBLE_EVT_GATTC_CHAR_DISCOVERY_FAILED\000"
+ 2589      455F4556 
+ 2589      545F4741 
+ 2589      5454435F 
+ 2589      43484152 
+ 2590              	.LASF56:
+ 2591 0530 4359424C 		.ascii	"CYBLE_EVT_GATTS_DATA_SIGNED_CMD_REQ\000"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 53
+
+
+ 2591      455F4556 
+ 2591      545F4741 
+ 2591      5454535F 
+ 2591      44415441 
+ 2592              	.LASF67:
+ 2593 0554 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_RX_CREDIT_IND\000"
+ 2593      455F4556 
+ 2593      545F4C32 
+ 2593      4341505F 
+ 2593      43424643 
+ 2594              	.LASF140:
+ 2595 0577 4359424C 		.ascii	"CYBLE_GATT_VALUE_T\000"
+ 2595      455F4741 
+ 2595      54545F56 
+ 2595      414C5545 
+ 2595      5F5400
+ 2596              	.LASF257:
+ 2597 058a 4359424C 		.ascii	"CYBLE_EVT_CSCSS_INDICATION_ENABLED\000"
+ 2597      455F4556 
+ 2597      545F4353 
+ 2597      4353535F 
+ 2597      494E4449 
+ 2598              	.LASF158:
+ 2599 05ad 7065726D 		.ascii	"permission\000"
+ 2599      69737369 
+ 2599      6F6E00
+ 2600              	.LASF344:
+ 2601 05b8 4359424C 		.ascii	"CYBLE_EVT_LNSC_INDICATION\000"
+ 2601      455F4556 
+ 2601      545F4C4E 
+ 2601      53435F49 
+ 2601      4E444943 
+ 2602              	.LASF355:
+ 2603 05d2 4359424C 		.ascii	"CYBLE_EVT_PASSC_READ_CHAR_RESPONSE\000"
+ 2603      455F4556 
+ 2603      545F5041 
+ 2603      5353435F 
+ 2603      52454144 
+ 2604              	.LASF214:
+ 2605 05f5 4359424C 		.ascii	"CYBLE_EVT_BLSS_INDICATION_ENABLED\000"
+ 2605      455F4556 
+ 2605      545F424C 
+ 2605      53535F49 
+ 2605      4E444943 
+ 2606              	.LASF220:
+ 2607 0617 4359424C 		.ascii	"CYBLE_EVT_BLSC_NOTIFICATION\000"
+ 2607      455F4556 
+ 2607      545F424C 
+ 2607      53435F4E 
+ 2607      4F544946 
+ 2608              	.LASF162:
+ 2609 0633 4359424C 		.ascii	"CYBLE_CALLBACK_T\000"
+ 2609      455F4341 
+ 2609      4C4C4241 
+ 2609      434B5F54 
+ 2609      00
+ 2610              	.LASF262:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 54
+
+
+ 2611 0644 4359424C 		.ascii	"CYBLE_EVT_CSCSC_INDICATION\000"
+ 2611      455F4556 
+ 2611      545F4353 
+ 2611      4353435F 
+ 2611      494E4449 
+ 2612              	.LASF53:
+ 2613 065f 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_NTF\000"
+ 2613      455F4556 
+ 2613      545F4741 
+ 2613      5454435F 
+ 2613      48414E44 
+ 2614              	.LASF23:
+ 2615 0680 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_REQ\000"
+ 2615      455F4556 
+ 2615      545F4741 
+ 2615      505F4155 
+ 2615      54485F52 
+ 2616              	.LASF183:
+ 2617 0697 4359424C 		.ascii	"CYBLE_EVT_GATTC_CHAR_DISCOVERY_COMPLETE\000"
+ 2617      455F4556 
+ 2617      545F4741 
+ 2617      5454435F 
+ 2617      43484152 
+ 2618              	.LASF138:
+ 2619 06bf 4359424C 		.ascii	"CYBLE_CONN_HANDLE_T\000"
+ 2619      455F434F 
+ 2619      4E4E5F48 
+ 2619      414E444C 
+ 2619      455F5400 
+ 2620              	.LASF319:
+ 2621 06d3 4359424C 		.ascii	"CYBLE_EVT_HRSC_WRITE_CHAR_RESPONSE\000"
+ 2621      455F4556 
+ 2621      545F4852 
+ 2621      53435F57 
+ 2621      52495445 
+ 2622              	.LASF84:
+ 2623 06f6 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
+ 2623      455F4552 
+ 2623      524F525F 
+ 2623      42545F4F 
+ 2623      4E5F4E4F 
+ 2624              	.LASF261:
+ 2625 0716 4359424C 		.ascii	"CYBLE_EVT_CSCSC_NOTIFICATION\000"
+ 2625      455F4556 
+ 2625      545F4353 
+ 2625      4353435F 
+ 2625      4E4F5449 
+ 2626              	.LASF392:
+ 2627 0733 4359424C 		.ascii	"CYBLE_EVT_UDSC_INDICATION\000"
+ 2627      455F4556 
+ 2627      545F5544 
+ 2627      53435F49 
+ 2627      4E444943 
+ 2628              	.LASF225:
+ 2629 074d 4359424C 		.ascii	"CYBLE_EVT_BMSC_READ_CHAR_RESPONSE\000"
+ 2629      455F4556 
+ 2629      545F424D 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 55
+
+
+ 2629      53435F52 
+ 2629      4541445F 
+ 2630              	.LASF421:
+ 2631 076f 4359424C 		.ascii	"CYBLE_STATE_ADVERTISING\000"
+ 2631      455F5354 
+ 2631      4154455F 
+ 2631      41445645 
+ 2631      52544953 
+ 2632              	.LASF136:
+ 2633 0787 62644861 		.ascii	"bdHandle\000"
+ 2633      6E646C65 
+ 2633      00
+ 2634              	.LASF230:
+ 2635 0790 4359424C 		.ascii	"CYBLE_EVT_CGMSS_INDICATION_CONFIRMED\000"
+ 2635      455F4556 
+ 2635      545F4347 
+ 2635      4D53535F 
+ 2635      494E4449 
+ 2636              	.LASF222:
+ 2637 07b5 4359424C 		.ascii	"CYBLE_EVT_BLSC_READ_DESCR_RESPONSE\000"
+ 2637      455F4556 
+ 2637      545F424C 
+ 2637      53435F52 
+ 2637      4541445F 
+ 2638              	.LASF243:
+ 2639 07d8 4359424C 		.ascii	"CYBLE_EVT_CPSS_INDICATION_DISABLED\000"
+ 2639      455F4556 
+ 2639      545F4350 
+ 2639      53535F49 
+ 2639      4E444943 
+ 2640              	.LASF242:
+ 2641 07fb 4359424C 		.ascii	"CYBLE_EVT_CPSS_INDICATION_ENABLED\000"
+ 2641      455F4556 
+ 2641      545F4350 
+ 2641      53535F49 
+ 2641      4E444943 
+ 2642              	.LASF341:
+ 2643 081d 4359424C 		.ascii	"CYBLE_EVT_LNSS_NOTIFICATION_ENABLED\000"
+ 2643      455F4556 
+ 2643      545F4C4E 
+ 2643      53535F4E 
+ 2643      4F544946 
+ 2644              	.LASF49:
+ 2645 0841 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_CMD_REQ\000"
+ 2645      455F4556 
+ 2645      545F4741 
+ 2645      5454535F 
+ 2645      57524954 
+ 2646              	.LASF253:
+ 2647 085f 4359424C 		.ascii	"CYBLE_EVT_CPSC_WRITE_DESCR_RESPONSE\000"
+ 2647      455F4556 
+ 2647      545F4350 
+ 2647      53435F57 
+ 2647      52495445 
+ 2648              	.LASF4:
+ 2649 0883 6C6F6E67 		.ascii	"long int\000"
+ 2649      20696E74 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 56
+
+
+ 2649      00
+ 2650              	.LASF189:
+ 2651 088c 4359424C 		.ascii	"CYBLE_EVT_ANCSC_READ_CHAR_RESPONSE\000"
+ 2651      455F4556 
+ 2651      545F414E 
+ 2651      4353435F 
+ 2651      52454144 
+ 2652              	.LASF356:
+ 2653 08af 4359424C 		.ascii	"CYBLE_EVT_PASSC_WRITE_CHAR_RESPONSE\000"
+ 2653      455F4556 
+ 2653      545F5041 
+ 2653      5353435F 
+ 2653      57524954 
+ 2654              	.LASF387:
+ 2655 08d3 4359424C 		.ascii	"CYBLE_EVT_UDSS_INDICATION_CONFIRMED\000"
+ 2655      455F4556 
+ 2655      545F5544 
+ 2655      53535F49 
+ 2655      4E444943 
+ 2656              	.LASF169:
+ 2657 08f7 4359424C 		.ascii	"CYBLE_LONG_TERM_KEY_REQUEST_REPLY\000"
+ 2657      455F4C4F 
+ 2657      4E475F54 
+ 2657      45524D5F 
+ 2657      4B45595F 
+ 2658              	.LASF17:
+ 2659 0919 4359424C 		.ascii	"CYBLE_EVT_STACK_ON\000"
+ 2659      455F4556 
+ 2659      545F5354 
+ 2659      41434B5F 
+ 2659      4F4E00
+ 2660              	.LASF91:
+ 2661 092c 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_IN_RANGE\000"
+ 2661      455F4552 
+ 2661      524F525F 
+ 2661      4C324341 
+ 2661      505F5053 
+ 2662              	.LASF289:
+ 2663 094f 4359424C 		.ascii	"CYBLE_EVT_ESSC_WRITE_DESCR_RESPONSE\000"
+ 2663      455F4556 
+ 2663      545F4553 
+ 2663      53435F57 
+ 2663      52495445 
+ 2664              	.LASF163:
+ 2665 0973 73657276 		.ascii	"serviceHandle\000"
+ 2665      69636548 
+ 2665      616E646C 
+ 2665      6500
+ 2666              	.LASF322:
+ 2667 0981 4359424C 		.ascii	"CYBLE_EVT_HTSS_NOTIFICATION_ENABLED\000"
+ 2667      455F4556 
+ 2667      545F4854 
+ 2667      53535F4E 
+ 2667      4F544946 
+ 2668              	.LASF106:
+ 2669 09a5 4359424C 		.ascii	"CYBLE_GATT_ERR_INVALID_PDU\000"
+ 2669      455F4741 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 57
+
+
+ 2669      54545F45 
+ 2669      52525F49 
+ 2669      4E56414C 
+ 2670              	.LASF99:
+ 2671 09c0 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
+ 2671      455F4552 
+ 2671      524F525F 
+ 2671      43484152 
+ 2671      5F49535F 
+ 2672              	.LASF390:
+ 2673 09e3 4359424C 		.ascii	"CYBLE_EVT_UDSS_READ_CHAR\000"
+ 2673      455F4556 
+ 2673      545F5544 
+ 2673      53535F52 
+ 2673      4541445F 
+ 2674              	.LASF143:
+ 2675 09fc 4359424C 		.ascii	"CYBLE_GATT_HANDLE_VALUE_PAIR_T\000"
+ 2675      455F4741 
+ 2675      54545F48 
+ 2675      414E444C 
+ 2675      455F5641 
+ 2676              	.LASF157:
+ 2677 0a1b 61747454 		.ascii	"attType\000"
+ 2677      79706500 
+ 2678              	.LASF286:
+ 2679 0a23 4359424C 		.ascii	"CYBLE_EVT_ESSC_READ_CHAR_RESPONSE\000"
+ 2679      455F4556 
+ 2679      545F4553 
+ 2679      53435F52 
+ 2679      4541445F 
+ 2680              	.LASF309:
+ 2681 0a45 4359424C 		.ascii	"CYBLE_EVT_HIDSC_NOTIFICATION\000"
+ 2681      455F4556 
+ 2681      545F4849 
+ 2681      4453435F 
+ 2681      4E4F5449 
+ 2682              	.LASF61:
+ 2683 0a62 4359424C 		.ascii	"CYBLE_EVT_L2CAP_COMMAND_REJ\000"
+ 2683      455F4556 
+ 2683      545F4C32 
+ 2683      4341505F 
+ 2683      434F4D4D 
+ 2684              	.LASF115:
+ 2685 0a7e 4359424C 		.ascii	"CYBLE_GATT_ERR_INVALID_ATTRIBUTE_LEN\000"
+ 2685      455F4741 
+ 2685      54545F45 
+ 2685      52525F49 
+ 2685      4E56414C 
+ 2686              	.LASF306:
+ 2687 0aa3 4359424C 		.ascii	"CYBLE_EVT_HIDSS_SUSPEND\000"
+ 2687      455F4556 
+ 2687      545F4849 
+ 2687      4453535F 
+ 2687      53555350 
+ 2688              	.LASF92:
+ 2689 0abb 4359424C 		.ascii	"CYBLE_ERROR_GATT_DB_INVALID_ATTR_HANDLE\000"
+ 2689      455F4552 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 58
+
+
+ 2689      524F525F 
+ 2689      47415454 
+ 2689      5F44425F 
+ 2690              	.LASF0:
+ 2691 0ae3 7369676E 		.ascii	"signed char\000"
+ 2691      65642063 
+ 2691      68617200 
+ 2692              	.LASF212:
+ 2693 0aef 4359424C 		.ascii	"CYBLE_EVT_BCSC_READ_DESCR_RESPONSE\000"
+ 2693      455F4556 
+ 2693      545F4243 
+ 2693      53435F52 
+ 2693      4541445F 
+ 2694              	.LASF416:
+ 2695 0b12 4359424C 		.ascii	"CYBLE_EVT_WSSC_WRITE_DESCR_RESPONSE\000"
+ 2695      455F4556 
+ 2695      545F5753 
+ 2695      53435F57 
+ 2695      52495445 
+ 2696              	.LASF205:
+ 2697 0b36 4359424C 		.ascii	"CYBLE_EVT_BASC_READ_DESCR_RESPONSE\000"
+ 2697      455F4556 
+ 2697      545F4241 
+ 2697      53435F52 
+ 2697      4541445F 
+ 2698              	.LASF19:
+ 2699 0b59 4359424C 		.ascii	"CYBLE_EVT_HARDWARE_ERROR\000"
+ 2699      455F4556 
+ 2699      545F4841 
+ 2699      52445741 
+ 2699      52455F45 
+ 2700              	.LASF73:
+ 2701 0b72 4359424C 		.ascii	"CYBLE_ERROR_OK\000"
+ 2701      455F4552 
+ 2701      524F525F 
+ 2701      4F4B00
+ 2702              	.LASF40:
+ 2703 0b81 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_GROUP_TYPE_RSP\000"
+ 2703      455F4556 
+ 2703      545F4741 
+ 2703      5454435F 
+ 2703      52454144 
+ 2704              	.LASF418:
+ 2705 0ba8 4359424C 		.ascii	"CYBLE_STATE_STOPPED\000"
+ 2705      455F5354 
+ 2705      4154455F 
+ 2705      53544F50 
+ 2705      50454400 
+ 2706              	.LASF383:
+ 2707 0bbc 4359424C 		.ascii	"CYBLE_EVT_TPSC_READ_DESCR_RESPONSE\000"
+ 2707      455F4556 
+ 2707      545F5450 
+ 2707      53435F52 
+ 2707      4541445F 
+ 2708              	.LASF361:
+ 2709 0bdf 4359424C 		.ascii	"CYBLE_EVT_RSCSS_INDICATION_ENABLED\000"
+ 2709      455F4556 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 59
+
+
+ 2709      545F5253 
+ 2709      4353535F 
+ 2709      494E4449 
+ 2710              	.LASF1:
+ 2711 0c02 756E7369 		.ascii	"unsigned char\000"
+ 2711      676E6564 
+ 2711      20636861 
+ 2711      7200
+ 2712              	.LASF39:
+ 2713 0c10 4359424C 		.ascii	"CYBLE_EVT_GATTC_XCHNG_MTU_RSP\000"
+ 2713      455F4556 
+ 2713      545F4741 
+ 2713      5454435F 
+ 2713      5843484E 
+ 2714              	.LASF244:
+ 2715 0c2e 4359424C 		.ascii	"CYBLE_EVT_CPSS_INDICATION_CONFIRMED\000"
+ 2715      455F4556 
+ 2715      545F4350 
+ 2715      53535F49 
+ 2715      4E444943 
+ 2716              	.LASF241:
+ 2717 0c52 4359424C 		.ascii	"CYBLE_EVT_CPSS_NOTIFICATION_DISABLED\000"
+ 2717      455F4556 
+ 2717      545F4350 
+ 2717      53535F4E 
+ 2717      4F544946 
+ 2718              	.LASF366:
+ 2719 0c77 4359424C 		.ascii	"CYBLE_EVT_RSCSC_INDICATION\000"
+ 2719      455F4556 
+ 2719      545F5253 
+ 2719      4353435F 
+ 2719      494E4449 
+ 2720              	.LASF415:
+ 2721 0c92 4359424C 		.ascii	"CYBLE_EVT_WSSC_READ_DESCR_RESPONSE\000"
+ 2721      455F4556 
+ 2721      545F5753 
+ 2721      53435F52 
+ 2721      4541445F 
+ 2722              	.LASF401:
+ 2723 0cb5 4359424C 		.ascii	"CYBLE_EVT_WPTSS_INDICATION_DISABLED\000"
+ 2723      455F4556 
+ 2723      545F5750 
+ 2723      5453535F 
+ 2723      494E4449 
+ 2724              	.LASF68:
+ 2725 0cd9 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_TX_CREDIT_IND\000"
+ 2725      455F4556 
+ 2725      545F4C32 
+ 2725      4341505F 
+ 2725      43424643 
+ 2726              	.LASF156:
+ 2727 0cfc 61747448 		.ascii	"attHandle\000"
+ 2727      616E646C 
+ 2727      6500
+ 2728              	.LASF173:
+ 2729 0d06 4359424C 		.ascii	"CYBLE_EVT_GATTC_INDICATION\000"
+ 2729      455F4556 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 60
+
+
+ 2729      545F4741 
+ 2729      5454435F 
+ 2729      494E4449 
+ 2730              	.LASF373:
+ 2731 0d21 4359424C 		.ascii	"CYBLE_EVT_SCPSS_NOTIFICATION_ENABLED\000"
+ 2731      455F4556 
+ 2731      545F5343 
+ 2731      5053535F 
+ 2731      4E4F5449 
+ 2732              	.LASF65:
+ 2733 0d46 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_CNF\000"
+ 2733      455F4556 
+ 2733      545F4C32 
+ 2733      4341505F 
+ 2733      43424643 
+ 2734              	.LASF43:
+ 2735 0d67 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_BY_TYPE_VALUE_RSP\000"
+ 2735      455F4556 
+ 2735      545F4741 
+ 2735      5454435F 
+ 2735      46494E44 
+ 2736              	.LASF185:
+ 2737 0d8e 4359424C 		.ascii	"CYBLE_EVT_ANCSS_NOTIFICATION_ENABLED\000"
+ 2737      455F4556 
+ 2737      545F414E 
+ 2737      4353535F 
+ 2737      4E4F5449 
+ 2738              	.LASF378:
+ 2739 0db3 4359424C 		.ascii	"CYBLE_EVT_SCPSC_WRITE_DESCR_RESPONSE\000"
+ 2739      455F4556 
+ 2739      545F5343 
+ 2739      5053435F 
+ 2739      57524954 
+ 2740              	.LASF14:
+ 2741 0dd8 63686172 		.ascii	"char\000"
+ 2741      00
+ 2742              	.LASF433:
+ 2743 0ddd 6379426C 		.ascii	"cyBle_attUuid128\000"
+ 2743      655F6174 
+ 2743      74557569 
+ 2743      64313238 
+ 2743      00
+ 2744              	.LASF150:
+ 2745 0dee 6D617841 		.ascii	"maxAttrLength\000"
+ 2745      7474724C 
+ 2745      656E6774 
+ 2745      6800
+ 2746              	.LASF381:
+ 2747 0dfc 4359424C 		.ascii	"CYBLE_EVT_TPSC_NOTIFICATION\000"
+ 2747      455F4556 
+ 2747      545F5450 
+ 2747      53435F4E 
+ 2747      4F544946 
+ 2748              	.LASF182:
+ 2749 0e18 4359424C 		.ascii	"CYBLE_EVT_GATTC_INCL_DISCOVERY_COMPLETE\000"
+ 2749      455F4556 
+ 2749      545F4741 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 61
+
+
+ 2749      5454435F 
+ 2749      494E434C 
+ 2750              	.LASF46:
+ 2751 0e40 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_MULTI_RSP\000"
+ 2751      455F4556 
+ 2751      545F4741 
+ 2751      5454435F 
+ 2751      52454144 
+ 2752              	.LASF16:
+ 2753 0e5f 4359424C 		.ascii	"CYBLE_EVT_HOST_INVALID\000"
+ 2753      455F4556 
+ 2753      545F484F 
+ 2753      53545F49 
+ 2753      4E56414C 
+ 2754              	.LASF116:
+ 2755 0e76 4359424C 		.ascii	"CYBLE_GATT_ERR_UNLIKELY_ERROR\000"
+ 2755      455F4741 
+ 2755      54545F45 
+ 2755      52525F55 
+ 2755      4E4C494B 
+ 2756              	.LASF300:
+ 2757 0e94 4359424C 		.ascii	"CYBLE_EVT_GLSC_READ_DESCR_RESPONSE\000"
+ 2757      455F4556 
+ 2757      545F474C 
+ 2757      53435F52 
+ 2757      4541445F 
+ 2758              	.LASF80:
+ 2759 0eb7 4359424C 		.ascii	"CYBLE_ERROR_NO_DEVICE_ENTITY\000"
+ 2759      455F4552 
+ 2759      524F525F 
+ 2759      4E4F5F44 
+ 2759      45564943 
+ 2760              	.LASF45:
+ 2761 0ed4 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BLOB_RSP\000"
+ 2761      455F4556 
+ 2761      545F4741 
+ 2761      5454435F 
+ 2761      52454144 
+ 2762              	.LASF325:
+ 2763 0ef2 4359424C 		.ascii	"CYBLE_EVT_HTSS_INDICATION_DISABLED\000"
+ 2763      455F4556 
+ 2763      545F4854 
+ 2763      53535F49 
+ 2763      4E444943 
+ 2764              	.LASF372:
+ 2765 0f15 4359424C 		.ascii	"CYBLE_EVT_RTUSC_READ_CHAR_RESPONSE\000"
+ 2765      455F4556 
+ 2765      545F5254 
+ 2765      5553435F 
+ 2765      52454144 
+ 2766              	.LASF52:
+ 2767 0f38 4359424C 		.ascii	"CYBLE_EVT_GATTC_EXEC_WRITE_RSP\000"
+ 2767      455F4556 
+ 2767      545F4741 
+ 2767      5454435F 
+ 2767      45584543 
+ 2768              	.LASF120:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 62
+
+
+ 2769 0f57 4359424C 		.ascii	"CYBLE_GATT_ERR_HEART_RATE_CONTROL_POINT_NOT_SUPPORT"
+ 2769      455F4741 
+ 2769      54545F45 
+ 2769      52525F48 
+ 2769      45415254 
+ 2770 0f8a 454400   		.ascii	"ED\000"
+ 2771              	.LASF412:
+ 2772 0f8d 4359424C 		.ascii	"CYBLE_EVT_WSSS_INDICATION_CONFIRMED\000"
+ 2772      455F4556 
+ 2772      545F5753 
+ 2772      53535F49 
+ 2772      4E444943 
+ 2773              	.LASF113:
+ 2774 0fb1 4359424C 		.ascii	"CYBLE_GATT_ERR_ATTRIBUTE_NOT_LONG\000"
+ 2774      455F4741 
+ 2774      54545F45 
+ 2774      52525F41 
+ 2774      54545249 
+ 2775              	.LASF273:
+ 2776 0fd3 4359424C 		.ascii	"CYBLE_EVT_CTSC_WRITE_DESCR_RESPONSE\000"
+ 2776      455F4556 
+ 2776      545F4354 
+ 2776      53435F57 
+ 2776      52495445 
+ 2777              	.LASF386:
+ 2778 0ff7 4359424C 		.ascii	"CYBLE_EVT_UDSS_INDICATION_DISABLED\000"
+ 2778      455F4556 
+ 2778      545F5544 
+ 2778      53535F49 
+ 2778      4E444943 
+ 2779              	.LASF57:
+ 2780 101a 4359424C 		.ascii	"CYBLE_EVT_GATTC_STOP_CMD_COMPLETE\000"
+ 2780      455F4556 
+ 2780      545F4741 
+ 2780      5454435F 
+ 2780      53544F50 
+ 2781              	.LASF247:
+ 2782 103c 4359424C 		.ascii	"CYBLE_EVT_CPSS_CHAR_WRITE\000"
+ 2782      455F4556 
+ 2782      545F4350 
+ 2782      53535F43 
+ 2782      4841525F 
+ 2783              	.LASF314:
+ 2784 1056 4359424C 		.ascii	"CYBLE_EVT_HRSS_ENERGY_EXPENDED_RESET\000"
+ 2784      455F4556 
+ 2784      545F4852 
+ 2784      53535F45 
+ 2784      4E455247 
+ 2785              	.LASF277:
+ 2786 107b 4359424C 		.ascii	"CYBLE_EVT_ESSS_NOTIFICATION_DISABLED\000"
+ 2786      455F4556 
+ 2786      545F4553 
+ 2786      53535F4E 
+ 2786      4F544946 
+ 2787              	.LASF161:
+ 2788 10a0 4359424C 		.ascii	"CYBLE_GATTS_DB_T\000"
+ 2788      455F4741 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 63
+
+
+ 2788      5454535F 
+ 2788      44425F54 
+ 2788      00
+ 2789              	.LASF399:
+ 2790 10b1 4359424C 		.ascii	"CYBLE_EVT_WPTSS_NOTIFICATION_DISABLED\000"
+ 2790      455F4556 
+ 2790      545F5750 
+ 2790      5453535F 
+ 2790      4E4F5449 
+ 2791              	.LASF217:
+ 2792 10d7 4359424C 		.ascii	"CYBLE_EVT_BLSS_NOTIFICATION_ENABLED\000"
+ 2792      455F4556 
+ 2792      545F424C 
+ 2792      53535F4E 
+ 2792      4F544946 
+ 2793              	.LASF413:
+ 2794 10fb 4359424C 		.ascii	"CYBLE_EVT_WSSC_INDICATION\000"
+ 2794      455F4556 
+ 2794      545F5753 
+ 2794      53435F49 
+ 2794      4E444943 
+ 2795              	.LASF178:
+ 2796 1115 4359424C 		.ascii	"CYBLE_EVT_GATTC_SRVC_DUPLICATION\000"
+ 2796      455F4556 
+ 2796      545F4741 
+ 2796      5454435F 
+ 2796      53525643 
+ 2797              	.LASF74:
+ 2798 1136 4359424C 		.ascii	"CYBLE_ERROR_INVALID_PARAMETER\000"
+ 2798      455F4552 
+ 2798      524F525F 
+ 2798      494E5641 
+ 2798      4C49445F 
+ 2799              	.LASF285:
+ 2800 1154 4359424C 		.ascii	"CYBLE_EVT_ESSC_INDICATION\000"
+ 2800      455F4556 
+ 2800      545F4553 
+ 2800      53435F49 
+ 2800      4E444943 
+ 2801              	.LASF192:
+ 2802 116e 4359424C 		.ascii	"CYBLE_EVT_ANCSC_WRITE_DESCR_RESPONSE\000"
+ 2802      455F4556 
+ 2802      545F414E 
+ 2802      4353435F 
+ 2802      57524954 
+ 2803              	.LASF368:
+ 2804 1193 4359424C 		.ascii	"CYBLE_EVT_RSCSC_WRITE_CHAR_RESPONSE\000"
+ 2804      455F4556 
+ 2804      545F5253 
+ 2804      4353435F 
+ 2804      57524954 
+ 2805              	.LASF384:
+ 2806 11b7 4359424C 		.ascii	"CYBLE_EVT_TPSC_WRITE_DESCR_RESPONSE\000"
+ 2806      455F4556 
+ 2806      545F5450 
+ 2806      53435F57 
+ 2806      52495445 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 64
+
+
+ 2807              	.LASF256:
+ 2808 11db 4359424C 		.ascii	"CYBLE_EVT_CSCSS_NOTIFICATION_DISABLED\000"
+ 2808      455F4556 
+ 2808      545F4353 
+ 2808      4353535F 
+ 2808      4E4F5449 
+ 2809              	.LASF267:
+ 2810 1201 4359424C 		.ascii	"CYBLE_EVT_CTSS_NOTIFICATION_ENABLED\000"
+ 2810      455F4556 
+ 2810      545F4354 
+ 2810      53535F4E 
+ 2810      4F544946 
+ 2811              	.LASF362:
+ 2812 1225 4359424C 		.ascii	"CYBLE_EVT_RSCSS_INDICATION_DISABLED\000"
+ 2812      455F4556 
+ 2812      545F5253 
+ 2812      4353535F 
+ 2812      494E4449 
+ 2813              	.LASF425:
+ 2814 1249 4379426C 		.ascii	"CyBle_GattsWriteEventHandler\000"
+ 2814      655F4761 
+ 2814      74747357 
+ 2814      72697465 
+ 2814      4576656E 
+ 2815              	.LASF403:
+ 2816 1266 4359424C 		.ascii	"CYBLE_EVT_WPTSS_WRITE_CHAR\000"
+ 2816      455F4556 
+ 2816      545F5750 
+ 2816      5453535F 
+ 2816      57524954 
+ 2817              	.LASF335:
+ 2818 1281 4359424C 		.ascii	"CYBLE_EVT_LLSS_WRITE_CHAR_REQ\000"
+ 2818      455F4556 
+ 2818      545F4C4C 
+ 2818      53535F57 
+ 2818      52495445 
+ 2819              	.LASF76:
+ 2820 129f 4359424C 		.ascii	"CYBLE_ERROR_MEMORY_ALLOCATION_FAILED\000"
+ 2820      455F4552 
+ 2820      524F525F 
+ 2820      4D454D4F 
+ 2820      52595F41 
+ 2821              	.LASF320:
+ 2822 12c4 4359424C 		.ascii	"CYBLE_EVT_HRSC_READ_DESCR_RESPONSE\000"
+ 2822      455F4556 
+ 2822      545F4852 
+ 2822      53435F52 
+ 2822      4541445F 
+ 2823              	.LASF255:
+ 2824 12e7 4359424C 		.ascii	"CYBLE_EVT_CSCSS_NOTIFICATION_ENABLED\000"
+ 2824      455F4556 
+ 2824      545F4353 
+ 2824      4353535F 
+ 2824      4E4F5449 
+ 2825              	.LASF219:
+ 2826 130c 4359424C 		.ascii	"CYBLE_EVT_BLSC_INDICATION\000"
+ 2826      455F4556 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 65
+
+
+ 2826      545F424C 
+ 2826      53435F49 
+ 2826      4E444943 
+ 2827              	.LASF308:
+ 2828 1326 4359424C 		.ascii	"CYBLE_EVT_HIDSS_REPORT_CHAR_WRITE\000"
+ 2828      455F4556 
+ 2828      545F4849 
+ 2828      4453535F 
+ 2828      5245504F 
+ 2829              	.LASF207:
+ 2830 1348 4359424C 		.ascii	"CYBLE_EVT_BCSS_INDICATION_ENABLED\000"
+ 2830      455F4556 
+ 2830      545F4243 
+ 2830      53535F49 
+ 2830      4E444943 
+ 2831              	.LASF127:
+ 2832 136a 4359424C 		.ascii	"CYBLE_GATTS_ERR_CCCD_IMPROPERLY_CONFIGURED\000"
+ 2832      455F4741 
+ 2832      5454535F 
+ 2832      4552525F 
+ 2832      43434344 
+ 2833              	.LASF407:
+ 2834 1395 4359424C 		.ascii	"CYBLE_EVT_WPTSC_READ_CHAR_RESPONSE\000"
+ 2834      455F4556 
+ 2834      545F5750 
+ 2834      5453435F 
+ 2834      52454144 
+ 2835              	.LASF96:
+ 2836 13b8 4359424C 		.ascii	"CYBLE_ERROR_MAX\000"
+ 2836      455F4552 
+ 2836      524F525F 
+ 2836      4D415800 
+ 2837              	.LASF347:
+ 2838 13c8 4359424C 		.ascii	"CYBLE_EVT_LNSC_WRITE_CHAR_RESPONSE\000"
+ 2838      455F4556 
+ 2838      545F4C4E 
+ 2838      53435F57 
+ 2838      52495445 
+ 2839              	.LASF60:
+ 2840 13eb 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_RSP\000"
+ 2840      455F4556 
+ 2840      545F4C32 
+ 2840      4341505F 
+ 2840      434F4E4E 
+ 2841              	.LASF198:
+ 2842 1411 4359424C 		.ascii	"CYBLE_EVT_ANSC_WRITE_CHAR_RESPONSE\000"
+ 2842      455F4556 
+ 2842      545F414E 
+ 2842      53435F57 
+ 2842      52495445 
+ 2843              	.LASF389:
+ 2844 1434 4359424C 		.ascii	"CYBLE_EVT_UDSS_NOTIFICATION_DISABLED\000"
+ 2844      455F4556 
+ 2844      545F5544 
+ 2844      53535F4E 
+ 2844      4F544946 
+ 2845              	.LASF266:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 66
+
+
+ 2846 1459 4359424C 		.ascii	"CYBLE_EVT_CSCSC_WRITE_DESCR_RESPONSE\000"
+ 2846      455F4556 
+ 2846      545F4353 
+ 2846      4353435F 
+ 2846      57524954 
+ 2847              	.LASF391:
+ 2848 147e 4359424C 		.ascii	"CYBLE_EVT_UDSS_WRITE_CHAR\000"
+ 2848      455F4556 
+ 2848      545F5544 
+ 2848      53535F57 
+ 2848      52495445 
+ 2849              	.LASF208:
+ 2850 1498 4359424C 		.ascii	"CYBLE_EVT_BCSS_INDICATION_DISABLED\000"
+ 2850      455F4556 
+ 2850      545F4243 
+ 2850      53535F49 
+ 2850      4E444943 
+ 2851              	.LASF315:
+ 2852 14bb 4359424C 		.ascii	"CYBLE_EVT_HRSS_NOTIFICATION_ENABLED\000"
+ 2852      455F4556 
+ 2852      545F4852 
+ 2852      53535F4E 
+ 2852      4F544946 
+ 2853              	.LASF121:
+ 2854 14df 4359424C 		.ascii	"CYBLE_GATT_ERR_USER_DATA_ACCESS_NOT_PERMITTED\000"
+ 2854      455F4741 
+ 2854      54545F45 
+ 2854      52525F55 
+ 2854      5345525F 
+ 2855              	.LASF26:
+ 2856 150d 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_COMPLETE\000"
+ 2856      455F4556 
+ 2856      545F4741 
+ 2856      505F4155 
+ 2856      54485F43 
+ 2857              	.LASF357:
+ 2858 1529 4359424C 		.ascii	"CYBLE_EVT_PASSC_READ_DESCR_RESPONSE\000"
+ 2858      455F4556 
+ 2858      545F5041 
+ 2858      5353435F 
+ 2858      52454144 
+ 2859              	.LASF288:
+ 2860 154d 4359424C 		.ascii	"CYBLE_EVT_ESSC_READ_DESCR_RESPONSE\000"
+ 2860      455F4556 
+ 2860      545F4553 
+ 2860      53435F52 
+ 2860      4541445F 
+ 2861              	.LASF27:
+ 2862 1570 4359424C 		.ascii	"CYBLE_EVT_GAP_AUTH_FAILED\000"
+ 2862      455F4556 
+ 2862      545F4741 
+ 2862      505F4155 
+ 2862      54485F46 
+ 2863              	.LASF307:
+ 2864 158a 4359424C 		.ascii	"CYBLE_EVT_HIDSS_EXIT_SUSPEND\000"
+ 2864      455F4556 
+ 2864      545F4849 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 67
+
+
+ 2864      4453535F 
+ 2864      45584954 
+ 2865              	.LASF131:
+ 2866 15a7 4359424C 		.ascii	"CYBLE_GATT_ERR_CCCD_IMPROPERLY_CONFIGURED\000"
+ 2866      455F4741 
+ 2866      54545F45 
+ 2866      52525F43 
+ 2866      4343445F 
+ 2867              	.LASF77:
+ 2868 15d1 4359424C 		.ascii	"CYBLE_ERROR_INSUFFICIENT_RESOURCES\000"
+ 2868      455F4552 
+ 2868      524F525F 
+ 2868      494E5355 
+ 2868      46464943 
+ 2869              	.LASF360:
+ 2870 15f4 4359424C 		.ascii	"CYBLE_EVT_RSCSS_NOTIFICATION_DISABLED\000"
+ 2870      455F4556 
+ 2870      545F5253 
+ 2870      4353535F 
+ 2870      4E4F5449 
+ 2871              	.LASF125:
+ 2872 161a 4359424C 		.ascii	"CYBLE_GATT_ERR_OP_CODE_NOT_SUPPORTED\000"
+ 2872      455F4741 
+ 2872      54545F45 
+ 2872      52525F4F 
+ 2872      505F434F 
+ 2873              	.LASF311:
+ 2874 163f 4359424C 		.ascii	"CYBLE_EVT_HIDSC_WRITE_CHAR_RESPONSE\000"
+ 2874      455F4556 
+ 2874      545F4849 
+ 2874      4453435F 
+ 2874      57524954 
+ 2875              	.LASF5:
+ 2876 1663 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2876      20756E73 
+ 2876      69676E65 
+ 2876      6420696E 
+ 2876      7400
+ 2877              	.LASF334:
+ 2878 1675 4359424C 		.ascii	"CYBLE_EVT_IASS_WRITE_CHAR_CMD\000"
+ 2878      455F4556 
+ 2878      545F4941 
+ 2878      53535F57 
+ 2878      52495445 
+ 2879              	.LASF351:
+ 2880 1693 4359424C 		.ascii	"CYBLE_EVT_PASSS_NOTIFICATION_ENABLED\000"
+ 2880      455F4556 
+ 2880      545F5041 
+ 2880      5353535F 
+ 2880      4E4F5449 
+ 2881              	.LASF354:
+ 2882 16b8 4359424C 		.ascii	"CYBLE_EVT_PASSC_NOTIFICATION\000"
+ 2882      455F4556 
+ 2882      545F5041 
+ 2882      5353435F 
+ 2882      4E4F5449 
+ 2883              	.LASF400:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 68
+
+
+ 2884 16d5 4359424C 		.ascii	"CYBLE_EVT_WPTSS_INDICATION_ENABLED\000"
+ 2884      455F4556 
+ 2884      545F5750 
+ 2884      5453535F 
+ 2884      494E4449 
+ 2885              	.LASF197:
+ 2886 16f8 4359424C 		.ascii	"CYBLE_EVT_ANSC_READ_CHAR_RESPONSE\000"
+ 2886      455F4556 
+ 2886      545F414E 
+ 2886      53435F52 
+ 2886      4541445F 
+ 2887              	.LASF87:
+ 2888 171a 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_ALREADY_REGISTERED\000"
+ 2888      455F4552 
+ 2888      524F525F 
+ 2888      4C324341 
+ 2888      505F5053 
+ 2889              	.LASF327:
+ 2890 1743 4359424C 		.ascii	"CYBLE_EVT_HTSS_CHAR_WRITE\000"
+ 2890      455F4556 
+ 2890      545F4854 
+ 2890      53535F43 
+ 2890      4841525F 
+ 2891              	.LASF154:
+ 2892 175d 61747456 		.ascii	"attValueUuid\000"
+ 2892      616C7565 
+ 2892      55756964 
+ 2892      00
+ 2893              	.LASF201:
+ 2894 176a 4359424C 		.ascii	"CYBLE_EVT_BASS_NOTIFICATION_ENABLED\000"
+ 2894      455F4556 
+ 2894      545F4241 
+ 2894      53535F4E 
+ 2894      4F544946 
+ 2895              	.LASF274:
+ 2896 178e 4359424C 		.ascii	"CYBLE_EVT_CTSC_WRITE_CHAR_RESPONSE\000"
+ 2896      455F4556 
+ 2896      545F4354 
+ 2896      53435F57 
+ 2896      52495445 
+ 2897              	.LASF353:
+ 2898 17b1 4359424C 		.ascii	"CYBLE_EVT_PASSS_WRITE_CHAR\000"
+ 2898      455F4556 
+ 2898      545F5041 
+ 2898      5353535F 
+ 2898      57524954 
+ 2899              	.LASF251:
+ 2900 17cc 4359424C 		.ascii	"CYBLE_EVT_CPSC_WRITE_CHAR_RESPONSE\000"
+ 2900      455F4556 
+ 2900      545F4350 
+ 2900      53435F57 
+ 2900      52495445 
+ 2901              	.LASF32:
+ 2902 17ef 4359424C 		.ascii	"CYBLE_EVT_GAP_CONNECTION_UPDATE_COMPLETE\000"
+ 2902      455F4556 
+ 2902      545F4741 
+ 2902      505F434F 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 69
+
+
+ 2902      4E4E4543 
+ 2903              	.LASF236:
+ 2904 1818 4359424C 		.ascii	"CYBLE_EVT_CGMSC_READ_CHAR_RESPONSE\000"
+ 2904      455F4556 
+ 2904      545F4347 
+ 2904      4D53435F 
+ 2904      52454144 
+ 2905              	.LASF419:
+ 2906 183b 4359424C 		.ascii	"CYBLE_STATE_INITIALIZING\000"
+ 2906      455F5354 
+ 2906      4154455F 
+ 2906      494E4954 
+ 2906      49414C49 
+ 2907              	.LASF435:
+ 2908 1854 6379426C 		.ascii	"cyBle_attValuesLen\000"
+ 2908      655F6174 
+ 2908      7456616C 
+ 2908      7565734C 
+ 2908      656E00
+ 2909              	.LASF264:
+ 2910 1867 4359424C 		.ascii	"CYBLE_EVT_CSCSC_WRITE_CHAR_RESPONSE\000"
+ 2910      455F4556 
+ 2910      545F4353 
+ 2910      4353435F 
+ 2910      57524954 
+ 2911              	.LASF64:
+ 2912 188b 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DISCONN_IND\000"
+ 2912      455F4556 
+ 2912      545F4C32 
+ 2912      4341505F 
+ 2912      43424643 
+ 2913              	.LASF428:
+ 2914 18ac 6379426C 		.ascii	"cyBle_attValues\000"
+ 2914      655F6174 
+ 2914      7456616C 
+ 2914      75657300 
+ 2915              	.LASF260:
+ 2916 18bc 4359424C 		.ascii	"CYBLE_EVT_CSCSS_CHAR_WRITE\000"
+ 2916      455F4556 
+ 2916      545F4353 
+ 2916      4353535F 
+ 2916      43484152 
+ 2917              	.LASF166:
+ 2918 18d7 4359424C 		.ascii	"CYBLE_GATTS_T\000"
+ 2918      455F4741 
+ 2918      5454535F 
+ 2918      5400
+ 2919              	.LASF367:
+ 2920 18e5 4359424C 		.ascii	"CYBLE_EVT_RSCSC_READ_CHAR_RESPONSE\000"
+ 2920      455F4556 
+ 2920      545F5253 
+ 2920      4353435F 
+ 2920      52454144 
+ 2921              	.LASF24:
+ 2922 1908 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_ENTRY_REQUEST\000"
+ 2922      455F4556 
+ 2922      545F4741 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 70
+
+
+ 2922      505F5041 
+ 2922      53534B45 
+ 2923              	.LASF342:
+ 2924 192c 4359424C 		.ascii	"CYBLE_EVT_LNSS_NOTIFICATION_DISABLED\000"
+ 2924      455F4556 
+ 2924      545F4C4E 
+ 2924      53535F4E 
+ 2924      4F544946 
+ 2925              	.LASF245:
+ 2926 1951 4359424C 		.ascii	"CYBLE_EVT_CPSS_BROADCAST_ENABLED\000"
+ 2926      455F4556 
+ 2926      545F4350 
+ 2926      53535F42 
+ 2926      524F4144 
+ 2927              	.LASF298:
+ 2928 1972 4359424C 		.ascii	"CYBLE_EVT_GLSC_READ_CHAR_RESPONSE\000"
+ 2928      455F4556 
+ 2928      545F474C 
+ 2928      53435F52 
+ 2928      4541445F 
+ 2929              	.LASF328:
+ 2930 1994 4359424C 		.ascii	"CYBLE_EVT_HTSC_NOTIFICATION\000"
+ 2930      455F4556 
+ 2930      545F4854 
+ 2930      53435F4E 
+ 2930      4F544946 
+ 2931              	.LASF6:
+ 2932 19b0 6C6F6E67 		.ascii	"long long int\000"
+ 2932      206C6F6E 
+ 2932      6720696E 
+ 2932      7400
+ 2933              	.LASF382:
+ 2934 19be 4359424C 		.ascii	"CYBLE_EVT_TPSC_READ_CHAR_RESPONSE\000"
+ 2934      455F4556 
+ 2934      545F5450 
+ 2934      53435F52 
+ 2934      4541445F 
+ 2935              	.LASF179:
+ 2936 19e0 4359424C 		.ascii	"CYBLE_EVT_GATTC_CHAR_DUPLICATION\000"
+ 2936      455F4556 
+ 2936      545F4741 
+ 2936      5454435F 
+ 2936      43484152 
+ 2937              	.LASF293:
+ 2938 1a01 4359424C 		.ascii	"CYBLE_EVT_GLSS_NOTIFICATION_ENABLED\000"
+ 2938      455F4556 
+ 2938      545F474C 
+ 2938      53535F4E 
+ 2938      4F544946 
+ 2939              	.LASF111:
+ 2940 1a25 4359424C 		.ascii	"CYBLE_GATT_ERR_PREPARE_WRITE_QUEUE_FULL\000"
+ 2940      455F4741 
+ 2940      54545F45 
+ 2940      52525F50 
+ 2940      52455041 
+ 2941              	.LASF88:
+ 2942 1a4d 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_REGISTERED\000"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 71
+
+
+ 2942      455F4552 
+ 2942      524F525F 
+ 2942      4C324341 
+ 2942      505F5053 
+ 2943              	.LASF78:
+ 2944 1a72 4359424C 		.ascii	"CYBLE_ERROR_OOB_NOT_AVAILABLE\000"
+ 2944      455F4552 
+ 2944      524F525F 
+ 2944      4F4F425F 
+ 2944      4E4F545F 
+ 2945              	.LASF228:
+ 2946 1a90 4359424C 		.ascii	"CYBLE_EVT_CGMSS_INDICATION_ENABLED\000"
+ 2946      455F4556 
+ 2946      545F4347 
+ 2946      4D53535F 
+ 2946      494E4449 
+ 2947              	.LASF13:
+ 2948 1ab3 646F7562 		.ascii	"double\000"
+ 2948      6C6500
+ 2949              	.LASF93:
+ 2950 1aba 4359424C 		.ascii	"CYBLE_ERROR_DEVICE_ALREADY_EXISTS\000"
+ 2950      455F4552 
+ 2950      524F525F 
+ 2950      44455649 
+ 2950      43455F41 
+ 2951              	.LASF279:
+ 2952 1adc 4359424C 		.ascii	"CYBLE_EVT_ESSS_INDICATION_DISABLED\000"
+ 2952      455F4556 
+ 2952      545F4553 
+ 2952      53535F49 
+ 2952      4E444943 
+ 2953              	.LASF70:
+ 2954 1aff 4359424C 		.ascii	"CYBLE_EVT_PENDING_FLASH_WRITE\000"
+ 2954      455F4556 
+ 2954      545F5045 
+ 2954      4E44494E 
+ 2954      475F464C 
+ 2955              	.LASF114:
+ 2956 1b1d 4359424C 		.ascii	"CYBLE_GATT_ERR_INSUFFICIENT_ENC_KEY_SIZE\000"
+ 2956      455F4741 
+ 2956      54545F45 
+ 2956      52525F49 
+ 2956      4E535546 
+ 2957              	.LASF398:
+ 2958 1b46 4359424C 		.ascii	"CYBLE_EVT_WPTSS_NOTIFICATION_ENABLED\000"
+ 2958      455F4556 
+ 2958      545F5750 
+ 2958      5453535F 
+ 2958      4E4F5449 
+ 2959              	.LASF132:
+ 2960 1b6b 4359424C 		.ascii	"CYBLE_GATT_ERR_PROCEDURE_ALREADY_IN_PROGRESS\000"
+ 2960      455F4741 
+ 2960      54545F45 
+ 2960      52525F50 
+ 2960      524F4345 
+ 2961              	.LASF349:
+ 2962 1b98 4359424C 		.ascii	"CYBLE_EVT_LNSC_WRITE_DESCR_RESPONSE\000"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 72
+
+
+ 2962      455F4556 
+ 2962      545F4C4E 
+ 2962      53435F57 
+ 2962      52495445 
+ 2963              	.LASF336:
+ 2964 1bbc 4359424C 		.ascii	"CYBLE_EVT_LLSC_READ_CHAR_RESPONSE\000"
+ 2964      455F4556 
+ 2964      545F4C4C 
+ 2964      53435F52 
+ 2964      4541445F 
+ 2965              	.LASF259:
+ 2966 1bde 4359424C 		.ascii	"CYBLE_EVT_CSCSS_INDICATION_CONFIRMATION\000"
+ 2966      455F4556 
+ 2966      545F4353 
+ 2966      4353535F 
+ 2966      494E4449 
+ 2967              	.LASF90:
+ 2968 1c06 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CHANNEL_NOT_FOUND\000"
+ 2968      455F4552 
+ 2968      524F525F 
+ 2968      4C324341 
+ 2968      505F4348 
+ 2969              	.LASF432:
+ 2970 1c2a 6379426C 		.ascii	"cyBle_gattDB\000"
+ 2970      655F6761 
+ 2970      74744442 
+ 2970      00
+ 2971              	.LASF81:
+ 2972 1c37 4359424C 		.ascii	"CYBLE_ERROR_REPEATED_ATTEMPTS\000"
+ 2972      455F4552 
+ 2972      524F525F 
+ 2972      52455045 
+ 2972      41544544 
+ 2973              	.LASF283:
+ 2974 1c55 4359424C 		.ascii	"CYBLE_EVT_ESSS_DESCR_WRITE\000"
+ 2974      455F4556 
+ 2974      545F4553 
+ 2974      53535F44 
+ 2974      45534352 
+ 2975              	.LASF278:
+ 2976 1c70 4359424C 		.ascii	"CYBLE_EVT_ESSS_INDICATION_ENABLED\000"
+ 2976      455F4556 
+ 2976      545F4553 
+ 2976      53535F49 
+ 2976      4E444943 
+ 2977              	.LASF282:
+ 2978 1c92 4359424C 		.ascii	"CYBLE_EVT_ESSS_EXEC_WRITE_REQ\000"
+ 2978      455F4556 
+ 2978      545F4553 
+ 2978      53535F45 
+ 2978      5845435F 
+ 2979              	.LASF12:
+ 2980 1cb0 666C6F61 		.ascii	"float\000"
+ 2980      7400
+ 2981              	.LASF376:
+ 2982 1cb6 4359424C 		.ascii	"CYBLE_EVT_SCPSC_NOTIFICATION\000"
+ 2982      455F4556 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 73
+
+
+ 2982      545F5343 
+ 2982      5053435F 
+ 2982      4E4F5449 
+ 2983              	.LASF305:
+ 2984 1cd3 4359424C 		.ascii	"CYBLE_EVT_HIDSS_REPORT_MODE_ENTER\000"
+ 2984      455F4556 
+ 2984      545F4849 
+ 2984      4453535F 
+ 2984      5245504F 
+ 2985              	.LASF284:
+ 2986 1cf5 4359424C 		.ascii	"CYBLE_EVT_ESSC_NOTIFICATION\000"
+ 2986      455F4556 
+ 2986      545F4553 
+ 2986      53435F4E 
+ 2986      4F544946 
+ 2987              	.LASF94:
+ 2988 1d11 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE_NOT_PERMITED\000"
+ 2988      455F4552 
+ 2988      524F525F 
+ 2988      464C4153 
+ 2988      485F5752 
+ 2989              	.LASF303:
+ 2990 1d36 4359424C 		.ascii	"CYBLE_EVT_HIDSS_NOTIFICATION_DISABLED\000"
+ 2990      455F4556 
+ 2990      545F4849 
+ 2990      4453535F 
+ 2990      4E4F5449 
+ 2991              	.LASF58:
+ 2992 1d5c 4359424C 		.ascii	"CYBLE_EVT_GATTS_READ_CHAR_VAL_ACCESS_REQ\000"
+ 2992      455F4556 
+ 2992      545F4741 
+ 2992      5454535F 
+ 2992      52454144 
+ 2993              	.LASF191:
+ 2994 1d85 4359424C 		.ascii	"CYBLE_EVT_ANCSC_READ_DESCR_RESPONSE\000"
+ 2994      455F4556 
+ 2994      545F414E 
+ 2994      4353435F 
+ 2994      52454144 
+ 2995              	.LASF431:
+ 2996 1da9 6379426C 		.ascii	"cyBle_gatts\000"
+ 2996      655F6761 
+ 2996      74747300 
+ 2997              	.LASF110:
+ 2998 1db5 4359424C 		.ascii	"CYBLE_GATT_ERR_INSUFFICIENT_AUTHORIZATION\000"
+ 2998      455F4741 
+ 2998      54545F45 
+ 2998      52525F49 
+ 2998      4E535546 
+ 2999              	.LASF142:
+ 3000 1ddf 61747472 		.ascii	"attrHandle\000"
+ 3000      48616E64 
+ 3000      6C6500
+ 3001              	.LASF393:
+ 3002 1dea 4359424C 		.ascii	"CYBLE_EVT_UDSC_NOTIFICATION\000"
+ 3002      455F4556 
+ 3002      545F5544 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 74
+
+
+ 3002      53435F4E 
+ 3002      4F544946 
+ 3003              	.LASF406:
+ 3004 1e06 4359424C 		.ascii	"CYBLE_EVT_WPTSC_WRITE_CHAR_RESPONSE\000"
+ 3004      455F4556 
+ 3004      545F5750 
+ 3004      5453435F 
+ 3004      57524954 
+ 3005              	.LASF146:
+ 3006 1e2a 4359424C 		.ascii	"CYBLE_GATTS_WRITE_REQ_PARAM_T\000"
+ 3006      455F4741 
+ 3006      5454535F 
+ 3006      57524954 
+ 3006      455F5245 
+ 3007              	.LASF8:
+ 3008 1e48 756E7369 		.ascii	"unsigned int\000"
+ 3008      676E6564 
+ 3008      20696E74 
+ 3008      00
+ 3009              	.LASF50:
+ 3010 1e55 4359424C 		.ascii	"CYBLE_EVT_GATTS_PREP_WRITE_REQ\000"
+ 3010      455F4556 
+ 3010      545F4741 
+ 3010      5454535F 
+ 3010      50524550 
+ 3011              	.LASF159:
+ 3012 1e74 61747445 		.ascii	"attEndHandle\000"
+ 3012      6E644861 
+ 3012      6E646C65 
+ 3012      00
+ 3013              	.LASF107:
+ 3014 1e81 4359424C 		.ascii	"CYBLE_GATT_ERR_INSUFFICIENT_AUTHENTICATION\000"
+ 3014      455F4741 
+ 3014      54545F45 
+ 3014      52525F49 
+ 3014      4E535546 
+ 3015              	.LASF226:
+ 3016 1eac 4359424C 		.ascii	"CYBLE_EVT_BMSC_WRITE_CHAR_RESPONSE\000"
+ 3016      455F4556 
+ 3016      545F424D 
+ 3016      53435F57 
+ 3016      52495445 
+ 3017              	.LASF268:
+ 3018 1ecf 4359424C 		.ascii	"CYBLE_EVT_CTSS_NOTIFICATION_DISABLED\000"
+ 3018      455F4556 
+ 3018      545F4354 
+ 3018      53535F4E 
+ 3018      4F544946 
+ 3019              	.LASF215:
+ 3020 1ef4 4359424C 		.ascii	"CYBLE_EVT_BLSS_INDICATION_DISABLED\000"
+ 3020      455F4556 
+ 3020      545F424C 
+ 3020      53535F49 
+ 3020      4E444943 
+ 3021              	.LASF374:
+ 3022 1f17 4359424C 		.ascii	"CYBLE_EVT_SCPSS_NOTIFICATION_DISABLED\000"
+ 3022      455F4556 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 75
+
+
+ 3022      545F5343 
+ 3022      5053535F 
+ 3022      4E4F5449 
+ 3023              	.LASF280:
+ 3024 1f3d 4359424C 		.ascii	"CYBLE_EVT_ESSS_INDICATION_CONFIRMATION\000"
+ 3024      455F4556 
+ 3024      545F4553 
+ 3024      53535F49 
+ 3024      4E444943 
+ 3025              	.LASF124:
+ 3026 1f64 4359424C 		.ascii	"CYBLE_GATTS_ERR_PROCEDURE_ALREADY_IN_PROGRESS\000"
+ 3026      455F4741 
+ 3026      5454535F 
+ 3026      4552525F 
+ 3026      50524F43 
+ 3027              	.LASF167:
+ 3028 1f92 4359424C 		.ascii	"CYBLE_AUTHENTICATION_REQUEST_REPLY\000"
+ 3028      455F4155 
+ 3028      5448454E 
+ 3028      54494341 
+ 3028      54494F4E 
+ 3029              	.LASF86:
+ 3030 1fb5 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_WRONG_ENCODING\000"
+ 3030      455F4552 
+ 3030      524F525F 
+ 3030      4C324341 
+ 3030      505F5053 
+ 3031              	.LASF218:
+ 3032 1fda 4359424C 		.ascii	"CYBLE_EVT_BLSS_NOTIFICATION_DISABLED\000"
+ 3032      455F4556 
+ 3032      545F424C 
+ 3032      53535F4E 
+ 3032      4F544946 
+ 3033              	.LASF112:
+ 3034 1fff 4359424C 		.ascii	"CYBLE_GATT_ERR_ATTRIBUTE_NOT_FOUND\000"
+ 3034      455F4741 
+ 3034      54545F45 
+ 3034      52525F41 
+ 3034      54545249 
+ 3035              	.LASF331:
+ 3036 2022 4359424C 		.ascii	"CYBLE_EVT_HTSC_WRITE_CHAR_RESPONSE\000"
+ 3036      455F4556 
+ 3036      545F4854 
+ 3036      53435F57 
+ 3036      52495445 
+ 3037              	.LASF72:
+ 3038 2045 4359424C 		.ascii	"CYBLE_EVT_MAX\000"
+ 3038      455F4556 
+ 3038      545F4D41 
+ 3038      5800
+ 3039              	.LASF33:
+ 3040 2053 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_START_STOP\000"
+ 3040      455F4556 
+ 3040      545F4741 
+ 3040      50435F53 
+ 3040      43414E5F 
+ 3041              	.LASF193:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 76
+
+
+ 3042 2072 4359424C 		.ascii	"CYBLE_EVT_ANSS_NOTIFICATION_ENABLED\000"
+ 3042      455F4556 
+ 3042      545F414E 
+ 3042      53535F4E 
+ 3042      4F544946 
+ 3043              	.LASF47:
+ 3044 2096 4359424C 		.ascii	"CYBLE_EVT_GATTS_WRITE_REQ\000"
+ 3044      455F4556 
+ 3044      545F4741 
+ 3044      5454535F 
+ 3044      57524954 
+ 3045              	.LASF395:
+ 3046 20b0 4359424C 		.ascii	"CYBLE_EVT_UDSC_WRITE_CHAR_RESPONSE\000"
+ 3046      455F4556 
+ 3046      545F5544 
+ 3046      53435F57 
+ 3046      52495445 
+ 3047              	.LASF405:
+ 3048 20d3 4359424C 		.ascii	"CYBLE_EVT_WPTSC_INDICATION\000"
+ 3048      455F4556 
+ 3048      545F5750 
+ 3048      5453435F 
+ 3048      494E4449 
+ 3049              	.LASF25:
+ 3050 20ee 4359424C 		.ascii	"CYBLE_EVT_GAP_PASSKEY_DISPLAY_REQUEST\000"
+ 3050      455F4556 
+ 3050      545F4741 
+ 3050      505F5041 
+ 3050      53534B45 
+ 3051              	.LASF98:
+ 3052 2114 4359424C 		.ascii	"CYBLE_ERROR_IND_DISABLED\000"
+ 3052      455F4552 
+ 3052      524F525F 
+ 3052      494E445F 
+ 3052      44495341 
+ 3053              	.LASF97:
+ 3054 212d 4359424C 		.ascii	"CYBLE_ERROR_NTF_DISABLED\000"
+ 3054      455F4552 
+ 3054      524F525F 
+ 3054      4E54465F 
+ 3054      44495341 
+ 3055              	.LASF44:
+ 3056 2146 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_RSP\000"
+ 3056      455F4556 
+ 3056      545F4741 
+ 3056      5454435F 
+ 3056      52454144 
+ 3057              	.LASF249:
+ 3058 215f 4359424C 		.ascii	"CYBLE_EVT_CPSC_INDICATION\000"
+ 3058      455F4556 
+ 3058      545F4350 
+ 3058      53435F49 
+ 3058      4E444943 
+ 3059              	.LASF109:
+ 3060 2179 4359424C 		.ascii	"CYBLE_GATT_ERR_INVALID_OFFSET\000"
+ 3060      455F4741 
+ 3060      54545F45 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 77
+
+
+ 3060      52525F49 
+ 3060      4E56414C 
+ 3061              	.LASF275:
+ 3062 2197 4359424C 		.ascii	"CYBLE_EVT_DISC_READ_CHAR_RESPONSE\000"
+ 3062      455F4556 
+ 3062      545F4449 
+ 3062      53435F52 
+ 3062      4541445F 
+ 3063              	.LASF63:
+ 3064 21b9 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_CNF\000"
+ 3064      455F4556 
+ 3064      545F4C32 
+ 3064      4341505F 
+ 3064      43424643 
+ 3065              	.LASF149:
+ 3066 21d7 4359424C 		.ascii	"CYBLE_GATTS_ATT_GEN_VAL_LEN_T\000"
+ 3066      455F4741 
+ 3066      5454535F 
+ 3066      4154545F 
+ 3066      47454E5F 
+ 3067              	.LASF332:
+ 3068 21f5 4359424C 		.ascii	"CYBLE_EVT_HTSC_READ_DESCR_RESPONSE\000"
+ 3068      455F4556 
+ 3068      545F4854 
+ 3068      53435F52 
+ 3068      4541445F 
+ 3069              	.LASF417:
+ 3070 2218 4359424C 		.ascii	"CYBLE_DEBUG_EVT_BLESS_INT\000"
+ 3070      455F4445 
+ 3070      4255475F 
+ 3070      4556545F 
+ 3070      424C4553 
+ 3071              	.LASF133:
+ 3072 2232 4359424C 		.ascii	"CYBLE_GATT_ERR_OUT_OF_RANGE\000"
+ 3072      455F4741 
+ 3072      54545F45 
+ 3072      52525F4F 
+ 3072      55545F4F 
+ 3073              	.LASF295:
+ 3074 224e 4359424C 		.ascii	"CYBLE_EVT_GLSS_WRITE_CHAR\000"
+ 3074      455F4556 
+ 3074      545F474C 
+ 3074      53535F57 
+ 3074      52495445 
+ 3075              	.LASF231:
+ 3076 2268 4359424C 		.ascii	"CYBLE_EVT_CGMSS_NOTIFICATION_ENABLED\000"
+ 3076      455F4556 
+ 3076      545F4347 
+ 3076      4D53535F 
+ 3076      4E4F5449 
+ 3077              	.LASF317:
+ 3078 228d 4359424C 		.ascii	"CYBLE_EVT_HRSC_NOTIFICATION\000"
+ 3078      455F4556 
+ 3078      545F4852 
+ 3078      53435F4E 
+ 3078      4F544946 
+ 3079              	.LASF363:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 78
+
+
+ 3080 22a9 4359424C 		.ascii	"CYBLE_EVT_RSCSS_INDICATION_CONFIRMATION\000"
+ 3080      455F4556 
+ 3080      545F5253 
+ 3080      4353535F 
+ 3080      494E4449 
+ 3081              	.LASF312:
+ 3082 22d1 4359424C 		.ascii	"CYBLE_EVT_HIDSC_READ_DESCR_RESPONSE\000"
+ 3082      455F4556 
+ 3082      545F4849 
+ 3082      4453435F 
+ 3082      52454144 
+ 3083              	.LASF318:
+ 3084 22f5 4359424C 		.ascii	"CYBLE_EVT_HRSC_READ_CHAR_RESPONSE\000"
+ 3084      455F4556 
+ 3084      545F4852 
+ 3084      53435F52 
+ 3084      4541445F 
+ 3085              	.LASF31:
+ 3086 2317 4359424C 		.ascii	"CYBLE_EVT_GAP_ENCRYPT_CHANGE\000"
+ 3086      455F4556 
+ 3086      545F4741 
+ 3086      505F454E 
+ 3086      43525950 
+ 3087              	.LASF350:
+ 3088 2334 4359424C 		.ascii	"CYBLE_EVT_NDCSC_READ_CHAR_RESPONSE\000"
+ 3088      455F4556 
+ 3088      545F4E44 
+ 3088      4353435F 
+ 3088      52454144 
+ 3089              	.LASF180:
+ 3090 2357 4359424C 		.ascii	"CYBLE_EVT_GATTC_DESCR_DUPLICATION\000"
+ 3090      455F4556 
+ 3090      545F4741 
+ 3090      5454435F 
+ 3090      44455343 
+ 3091              	.LASF424:
+ 3092 2379 4379426C 		.ascii	"CyBle_GattsReInitGattDb\000"
+ 3092      655F4761 
+ 3092      74747352 
+ 3092      65496E69 
+ 3092      74476174 
+ 3093              	.LASF38:
+ 3094 2391 4359424C 		.ascii	"CYBLE_EVT_GATTS_XCNHG_MTU_REQ\000"
+ 3094      455F4556 
+ 3094      545F4741 
+ 3094      5454535F 
+ 3094      58434E48 
+ 3095              	.LASF388:
+ 3096 23af 4359424C 		.ascii	"CYBLE_EVT_UDSS_NOTIFICATION_ENABLED\000"
+ 3096      455F4556 
+ 3096      545F5544 
+ 3096      53535F4E 
+ 3096      4F544946 
+ 3097              	.LASF340:
+ 3098 23d3 4359424C 		.ascii	"CYBLE_EVT_LNSS_INDICATION_CONFIRMED\000"
+ 3098      455F4556 
+ 3098      545F4C4E 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 79
+
+
+ 3098      53535F49 
+ 3098      4E444943 
+ 3099              	.LASF411:
+ 3100 23f7 4359424C 		.ascii	"CYBLE_EVT_WSSS_INDICATION_DISABLED\000"
+ 3100      455F4556 
+ 3100      545F5753 
+ 3100      53535F49 
+ 3100      4E444943 
+ 3101              	.LASF200:
+ 3102 241a 4359424C 		.ascii	"CYBLE_EVT_ANSC_WRITE_DESCR_RESPONSE\000"
+ 3102      455F4556 
+ 3102      545F414E 
+ 3102      53435F57 
+ 3102      52495445 
+ 3103              	.LASF346:
+ 3104 243e 4359424C 		.ascii	"CYBLE_EVT_LNSC_READ_CHAR_RESPONSE\000"
+ 3104      455F4556 
+ 3104      545F4C4E 
+ 3104      53435F52 
+ 3104      4541445F 
+ 3105              	.LASF292:
+ 3106 2460 4359424C 		.ascii	"CYBLE_EVT_GLSS_INDICATION_CONFIRMED\000"
+ 3106      455F4556 
+ 3106      545F474C 
+ 3106      53535F49 
+ 3106      4E444943 
+ 3107              	.LASF423:
+ 3108 2484 4359424C 		.ascii	"CYBLE_STATE_T\000"
+ 3108      455F5354 
+ 3108      4154455F 
+ 3108      5400
+ 3109              	.LASF171:
+ 3110 2492 4359424C 		.ascii	"CYBLE_EVT_GATTS_INDICATION_ENABLED\000"
+ 3110      455F4556 
+ 3110      545F4741 
+ 3110      5454535F 
+ 3110      494E4449 
+ 3111              	.LASF7:
+ 3112 24b5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3112      206C6F6E 
+ 3112      6720756E 
+ 3112      7369676E 
+ 3112      65642069 
+ 3113              	.LASF103:
+ 3114 24cc 4359424C 		.ascii	"CYBLE_GATT_ERR_INVALID_HANDLE\000"
+ 3114      455F4741 
+ 3114      54545F45 
+ 3114      52525F49 
+ 3114      4E56414C 
+ 3115              	.LASF18:
+ 3116 24ea 4359424C 		.ascii	"CYBLE_EVT_TIMEOUT\000"
+ 3116      455F4556 
+ 3116      545F5449 
+ 3116      4D454F55 
+ 3116      5400
+ 3117              	.LASF272:
+ 3118 24fc 4359424C 		.ascii	"CYBLE_EVT_CTSC_READ_DESCR_RESPONSE\000"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 80
+
+
+ 3118      455F4556 
+ 3118      545F4354 
+ 3118      53435F52 
+ 3118      4541445F 
+ 3119              	.LASF126:
+ 3120 251f 4359424C 		.ascii	"CYBLE_GATT_ERR_MISSING_CRC\000"
+ 3120      455F4741 
+ 3120      54545F45 
+ 3120      52525F4D 
+ 3120      49535349 
+ 3121              	.LASF100:
+ 3122 253a 4359424C 		.ascii	"CYBLE_ERROR_INVALID_STATE\000"
+ 3122      455F4552 
+ 3122      524F525F 
+ 3122      494E5641 
+ 3122      4C49445F 
+ 3123              	.LASF135:
+ 3124 2554 4359424C 		.ascii	"CYBLE_GATT_DB_ATTR_HANDLE_T\000"
+ 3124      455F4741 
+ 3124      54545F44 
+ 3124      425F4154 
+ 3124      54525F48 
+ 3125              	.LASF66:
+ 3126 2570 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_READ\000"
+ 3126      455F4556 
+ 3126      545F4C32 
+ 3126      4341505F 
+ 3126      43424643 
+ 3127              	.LASF102:
+ 3128 258f 4359424C 		.ascii	"CYBLE_GATT_ERR_NONE\000"
+ 3128      455F4741 
+ 3128      54545F45 
+ 3128      52525F4E 
+ 3128      4F4E4500 
+ 3129              	.LASF141:
+ 3130 25a3 76616C75 		.ascii	"value\000"
+ 3130      6500
+ 3131              	.LASF248:
+ 3132 25a9 4359424C 		.ascii	"CYBLE_EVT_CPSC_NOTIFICATION\000"
+ 3132      455F4556 
+ 3132      545F4350 
+ 3132      53435F4E 
+ 3132      4F544946 
+ 3133              	.LASF223:
+ 3134 25c5 4359424C 		.ascii	"CYBLE_EVT_BLSC_WRITE_DESCR_RESPONSE\000"
+ 3134      455F4556 
+ 3134      545F424C 
+ 3134      53435F57 
+ 3134      52495445 
+ 3135              	.LASF160:
+ 3136 25e9 61747456 		.ascii	"attValue\000"
+ 3136      616C7565 
+ 3136      00
+ 3137              	.LASF345:
+ 3138 25f2 4359424C 		.ascii	"CYBLE_EVT_LNSC_NOTIFICATION\000"
+ 3138      455F4556 
+ 3138      545F4C4E 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 81
+
+
+ 3138      53435F4E 
+ 3138      4F544946 
+ 3139              	.LASF429:
+ 3140 260e 4379426C 		.ascii	"CyBle_ApplCallback\000"
+ 3140      655F4170 
+ 3140      706C4361 
+ 3140      6C6C6261 
+ 3140      636B00
+ 3141              	.LASF270:
+ 3142 2621 4359424C 		.ascii	"CYBLE_EVT_CTSC_NOTIFICATION\000"
+ 3142      455F4556 
+ 3142      545F4354 
+ 3142      53435F4E 
+ 3142      4F544946 
+ 3143              	.LASF134:
+ 3144 263d 4359424C 		.ascii	"CYBLE_GATT_ERR_CODE_T\000"
+ 3144      455F4741 
+ 3144      54545F45 
+ 3144      52525F43 
+ 3144      4F44455F 
+ 3145              	.LASF291:
+ 3146 2653 4359424C 		.ascii	"CYBLE_EVT_GLSS_INDICATION_DISABLED\000"
+ 3146      455F4556 
+ 3146      545F474C 
+ 3146      53535F49 
+ 3146      4E444943 
+ 3147              	.LASF123:
+ 3148 2676 4359424C 		.ascii	"CYBLE_GATT_ERR_HTS_OUT_OF_RANGE\000"
+ 3148      455F4741 
+ 3148      54545F45 
+ 3148      52525F48 
+ 3148      54535F4F 
+ 3149              	.LASF164:
+ 3150 2696 73657276 		.ascii	"serviceChangedHandle\000"
+ 3150      69636543 
+ 3150      68616E67 
+ 3150      65644861 
+ 3150      6E646C65 
+ 3151              	.LASF338:
+ 3152 26ab 4359424C 		.ascii	"CYBLE_EVT_LNSS_INDICATION_ENABLED\000"
+ 3152      455F4556 
+ 3152      545F4C4E 
+ 3152      53535F49 
+ 3152      4E444943 
+ 3153              	.LASF438:
+ 3154 26cd 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 3154      4320342E 
+ 3154      392E3320 
+ 3154      32303135 
+ 3154      30333033 
+ 3155 2700 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 3155      20726576 
+ 3155      6973696F 
+ 3155      6E203232 
+ 3155      31323230 
+ 3156 2733 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 3156      66756E63 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 82
+
+
+ 3156      74696F6E 
+ 3156      2D736563 
+ 3156      74696F6E 
+ 3157              	.LASF186:
+ 3158 275b 4359424C 		.ascii	"CYBLE_EVT_ANCSS_NOTIFICATION_DISABLED\000"
+ 3158      455F4556 
+ 3158      545F414E 
+ 3158      4353535F 
+ 3158      4E4F5449 
+ 3159              	.LASF144:
+ 3160 2781 636F6E6E 		.ascii	"connHandle\000"
+ 3160      48616E64 
+ 3160      6C6500
+ 3161              	.LASF147:
+ 3162 278c 61637475 		.ascii	"actualLength\000"
+ 3162      616C4C65 
+ 3162      6E677468 
+ 3162      00
+ 3163              	.LASF202:
+ 3164 2799 4359424C 		.ascii	"CYBLE_EVT_BASS_NOTIFICATION_DISABLED\000"
+ 3164      455F4556 
+ 3164      545F4241 
+ 3164      53535F4E 
+ 3164      4F544946 
+ 3165              	.LASF240:
+ 3166 27be 4359424C 		.ascii	"CYBLE_EVT_CPSS_NOTIFICATION_ENABLED\000"
+ 3166      455F4556 
+ 3166      545F4350 
+ 3166      53535F4E 
+ 3166      4F544946 
+ 3167              	.LASF440:
+ 3168 27e2 433A5C55 		.ascii	"C:\\Users\\TTSS\\Dropbox\\Projects\\hackAIR\\AirQua"
+ 3168      73657273 
+ 3168      5C545453 
+ 3168      535C4472 
+ 3168      6F70626F 
+ 3169 280f 6C697479 		.ascii	"lityBeacons\\SerialLaserSensor_SEN0177.cydsn\000"
+ 3169      42656163 
+ 3169      6F6E735C 
+ 3169      53657269 
+ 3169      616C4C61 
+ 3170              	.LASF42:
+ 3171 283b 4359424C 		.ascii	"CYBLE_EVT_GATTC_FIND_INFO_RSP\000"
+ 3171      455F4556 
+ 3171      545F4741 
+ 3171      5454435F 
+ 3171      46494E44 
+ 3172              	.LASF41:
+ 3173 2859 4359424C 		.ascii	"CYBLE_EVT_GATTC_READ_BY_TYPE_RSP\000"
+ 3173      455F4556 
+ 3173      545F4741 
+ 3173      5454435F 
+ 3173      52454144 
+ 3174              	.LASF352:
+ 3175 287a 4359424C 		.ascii	"CYBLE_EVT_PASSS_NOTIFICATION_DISABLED\000"
+ 3175      455F4556 
+ 3175      545F5041 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 83
+
+
+ 3175      5353535F 
+ 3175      4E4F5449 
+ 3176              	.LASF238:
+ 3177 28a0 4359424C 		.ascii	"CYBLE_EVT_CGMSC_READ_DESCR_RESPONSE\000"
+ 3177      455F4556 
+ 3177      545F4347 
+ 3177      4D53435F 
+ 3177      52454144 
+ 3178              	.LASF310:
+ 3179 28c4 4359424C 		.ascii	"CYBLE_EVT_HIDSC_READ_CHAR_RESPONSE\000"
+ 3179      455F4556 
+ 3179      545F4849 
+ 3179      4453435F 
+ 3179      52454144 
+ 3180              	.LASF128:
+ 3181 28e7 4359424C 		.ascii	"CYBLE_GATTS_ERR_OPERATION_FAILED\000"
+ 3181      455F4741 
+ 3181      5454535F 
+ 3181      4552525F 
+ 3181      4F504552 
+ 3182              	.LASF426:
+ 3183 2908 61706952 		.ascii	"apiResult\000"
+ 3183      6573756C 
+ 3183      7400
+ 3184              	.LASF437:
+ 3185 2912 6379426C 		.ascii	"cyBle_state\000"
+ 3185      655F7374 
+ 3185      61746500 
+ 3186              	.LASF380:
+ 3187 291e 4359424C 		.ascii	"CYBLE_EVT_TPSS_NOTIFICATION_DISABLED\000"
+ 3187      455F4556 
+ 3187      545F5450 
+ 3187      53535F4E 
+ 3187      4F544946 
+ 3188              	.LASF377:
+ 3189 2943 4359424C 		.ascii	"CYBLE_EVT_SCPSC_READ_DESCR_RESPONSE\000"
+ 3189      455F4556 
+ 3189      545F5343 
+ 3189      5053435F 
+ 3189      52454144 
+ 3190              	.LASF321:
+ 3191 2967 4359424C 		.ascii	"CYBLE_EVT_HRSC_WRITE_DESCR_RESPONSE\000"
+ 3191      455F4556 
+ 3191      545F4852 
+ 3191      53435F57 
+ 3191      52495445 
+ 3192              	.LASF343:
+ 3193 298b 4359424C 		.ascii	"CYBLE_EVT_LNSS_WRITE_CHAR\000"
+ 3193      455F4556 
+ 3193      545F4C4E 
+ 3193      53535F57 
+ 3193      52495445 
+ 3194              	.LASF281:
+ 3195 29a5 4359424C 		.ascii	"CYBLE_EVT_ESSS_CHAR_WRITE\000"
+ 3195      455F4556 
+ 3195      545F4553 
+ 3195      53535F43 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 84
+
+
+ 3195      4841525F 
+ 3196              	.LASF48:
+ 3197 29bf 4359424C 		.ascii	"CYBLE_EVT_GATTC_WRITE_RSP\000"
+ 3197      455F4556 
+ 3197      545F4741 
+ 3197      5454435F 
+ 3197      57524954 
+ 3198              	.LASF276:
+ 3199 29d9 4359424C 		.ascii	"CYBLE_EVT_ESSS_NOTIFICATION_ENABLED\000"
+ 3199      455F4556 
+ 3199      545F4553 
+ 3199      53535F4E 
+ 3199      4F544946 
+ 3200              	.LASF422:
+ 3201 29fd 4359424C 		.ascii	"CYBLE_STATE_DISCONNECTED\000"
+ 3201      455F5354 
+ 3201      4154455F 
+ 3201      44495343 
+ 3201      4F4E4E45 
+ 3202              	.LASF155:
+ 3203 2a16 4359424C 		.ascii	"CYBLE_GATTS_ATT_VALUE_T\000"
+ 3203      455F4741 
+ 3203      5454535F 
+ 3203      4154545F 
+ 3203      56414C55 
+ 3204              	.LASF365:
+ 3205 2a2e 4359424C 		.ascii	"CYBLE_EVT_RSCSC_NOTIFICATION\000"
+ 3205      455F4556 
+ 3205      545F5253 
+ 3205      4353435F 
+ 3205      4E4F5449 
+ 3206              	.LASF152:
+ 3207 2a4b 4359424C 		.ascii	"CYBLE_GATTS_ATT_PACK_VAL_LEN_T\000"
+ 3207      455F4741 
+ 3207      5454535F 
+ 3207      4154545F 
+ 3207      5041434B 
+ 3208              	.LASF28:
+ 3209 2a6a 4359424C 		.ascii	"CYBLE_EVT_GAPP_ADVERTISEMENT_START_STOP\000"
+ 3209      455F4556 
+ 3209      545F4741 
+ 3209      50505F41 
+ 3209      44564552 
+ 3210              	.LASF216:
+ 3211 2a92 4359424C 		.ascii	"CYBLE_EVT_BLSS_INDICATION_CONFIRMED\000"
+ 3211      455F4556 
+ 3211      545F424C 
+ 3211      53535F49 
+ 3211      4E444943 
+ 3212              	.LASF408:
+ 3213 2ab6 4359424C 		.ascii	"CYBLE_EVT_WPTSC_READ_DESCR_RESPONSE\000"
+ 3213      455F4556 
+ 3213      545F5750 
+ 3213      5453435F 
+ 3213      52454144 
+ 3214              	.LASF188:
+ 3215 2ada 4359424C 		.ascii	"CYBLE_EVT_ANCSC_NOTIFICATION\000"
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 85
+
+
+ 3215      455F4556 
+ 3215      545F414E 
+ 3215      4353435F 
+ 3215      4E4F5449 
+ 3216              	.LASF148:
+ 3217 2af7 61747447 		.ascii	"attGenericVal\000"
+ 3217      656E6572 
+ 3217      69635661 
+ 3217      6C00
+ 3218              	.LASF237:
+ 3219 2b05 4359424C 		.ascii	"CYBLE_EVT_CGMSC_WRITE_CHAR_RESPONSE\000"
+ 3219      455F4556 
+ 3219      545F4347 
+ 3219      4D53435F 
+ 3219      57524954 
+ 3220              	.LASF9:
+ 3221 2b29 75696E74 		.ascii	"uint8\000"
+ 3221      3800
+ 3222              	.LASF330:
+ 3223 2b2f 4359424C 		.ascii	"CYBLE_EVT_HTSC_READ_CHAR_RESPONSE\000"
+ 3223      455F4556 
+ 3223      545F4854 
+ 3223      53435F52 
+ 3223      4541445F 
+ 3224              	.LASF358:
+ 3225 2b51 4359424C 		.ascii	"CYBLE_EVT_PASSC_WRITE_DESCR_RESPONSE\000"
+ 3225      455F4556 
+ 3225      545F5041 
+ 3225      5353435F 
+ 3225      57524954 
+ 3226              	.LASF2:
+ 3227 2b76 73686F72 		.ascii	"short int\000"
+ 3227      7420696E 
+ 3227      7400
+ 3228              	.LASF145:
+ 3229 2b80 68616E64 		.ascii	"handleValPair\000"
+ 3229      6C655661 
+ 3229      6C506169 
+ 3229      7200
+ 3230              	.LASF224:
+ 3231 2b8e 4359424C 		.ascii	"CYBLE_EVT_BMSS_WRITE_CHAR\000"
+ 3231      455F4556 
+ 3231      545F424D 
+ 3231      53535F57 
+ 3231      52495445 
+ 3232              	.LASF151:
+ 3233 2ba8 61747447 		.ascii	"attGenericValLen\000"
+ 3233      656E6572 
+ 3233      69635661 
+ 3233      6C4C656E 
+ 3233      00
+ 3234              	.LASF153:
+ 3235 2bb9 61747446 		.ascii	"attFormatValue\000"
+ 3235      6F726D61 
+ 3235      7456616C 
+ 3235      756500
+ 3236              	.LASF122:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 86
+
+
+ 3237 2bc8 4359424C 		.ascii	"CYBLE_GATT_ERR_CPS_INAPPROPRIATE_CONNECTION_PARAMET"
+ 3237      455F4741 
+ 3237      54545F45 
+ 3237      52525F43 
+ 3237      50535F49 
+ 3238 2bfb 45525300 		.ascii	"ERS\000"
+ 3239              	.LASF235:
+ 3240 2bff 4359424C 		.ascii	"CYBLE_EVT_CGMSC_NOTIFICATION\000"
+ 3240      455F4556 
+ 3240      545F4347 
+ 3240      4D53435F 
+ 3240      4E4F5449 
+ 3241              	.LASF108:
+ 3242 2c1c 4359424C 		.ascii	"CYBLE_GATT_ERR_REQUEST_NOT_SUPPORTED\000"
+ 3242      455F4741 
+ 3242      54545F45 
+ 3242      52525F52 
+ 3242      45515545 
+ 3243              	.LASF35:
+ 3244 2c41 4359424C 		.ascii	"CYBLE_EVT_GATTC_ERROR_RSP\000"
+ 3244      455F4556 
+ 3244      545F4741 
+ 3244      5454435F 
+ 3244      4552524F 
+ 3245              	.LASF287:
+ 3246 2c5b 4359424C 		.ascii	"CYBLE_EVT_ESSC_WRITE_CHAR_RESPONSE\000"
+ 3246      455F4556 
+ 3246      545F4553 
+ 3246      53435F57 
+ 3246      52495445 
+ 3247              	.LASF203:
+ 3248 2c7e 4359424C 		.ascii	"CYBLE_EVT_BASC_NOTIFICATION\000"
+ 3248      455F4556 
+ 3248      545F4241 
+ 3248      53435F4E 
+ 3248      4F544946 
+ 3249              	.LASF206:
+ 3250 2c9a 4359424C 		.ascii	"CYBLE_EVT_BASC_WRITE_DESCR_RESPONSE\000"
+ 3250      455F4556 
+ 3250      545F4241 
+ 3250      53435F57 
+ 3250      52495445 
+ 3251              	.LASF290:
+ 3252 2cbe 4359424C 		.ascii	"CYBLE_EVT_GLSS_INDICATION_ENABLED\000"
+ 3252      455F4556 
+ 3252      545F474C 
+ 3252      53535F49 
+ 3252      4E444943 
+ 3253              	.LASF195:
+ 3254 2ce0 4359424C 		.ascii	"CYBLE_EVT_ANSS_CHAR_WRITE\000"
+ 3254      455F4556 
+ 3254      545F414E 
+ 3254      53535F43 
+ 3254      4841525F 
+ 3255              	.LASF62:
+ 3256 2cfa 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_CONN_IND\000"
+ 3256      455F4556 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 87
+
+
+ 3256      545F4C32 
+ 3256      4341505F 
+ 3256      43424643 
+ 3257              	.LASF51:
+ 3258 2d18 4359424C 		.ascii	"CYBLE_EVT_GATTS_EXEC_WRITE_REQ\000"
+ 3258      455F4556 
+ 3258      545F4741 
+ 3258      5454535F 
+ 3258      45584543 
+ 3259              	.LASF22:
+ 3260 2d37 4359424C 		.ascii	"CYBLE_EVT_GAPC_SCAN_PROGRESS_RESULT\000"
+ 3260      455F4556 
+ 3260      545F4741 
+ 3260      50435F53 
+ 3260      43414E5F 
+ 3261              	.LASF269:
+ 3262 2d5b 4359424C 		.ascii	"CYBLE_EVT_CTSS_CHAR_WRITE\000"
+ 3262      455F4556 
+ 3262      545F4354 
+ 3262      53535F43 
+ 3262      4841525F 
+ 3263              	.LASF385:
+ 3264 2d75 4359424C 		.ascii	"CYBLE_EVT_UDSS_INDICATION_ENABLED\000"
+ 3264      455F4556 
+ 3264      545F5544 
+ 3264      53535F49 
+ 3264      4E444943 
+ 3265              	.LASF82:
+ 3266 2d97 4359424C 		.ascii	"CYBLE_ERROR_GAP_ROLE\000"
+ 3266      455F4552 
+ 3266      524F525F 
+ 3266      4741505F 
+ 3266      524F4C45 
+ 3267              	.LASF324:
+ 3268 2dac 4359424C 		.ascii	"CYBLE_EVT_HTSS_INDICATION_ENABLED\000"
+ 3268      455F4556 
+ 3268      545F4854 
+ 3268      53535F49 
+ 3268      4E444943 
+ 3269              	.LASF396:
+ 3270 2dce 4359424C 		.ascii	"CYBLE_EVT_UDSC_READ_DESCR_RESPONSE\000"
+ 3270      455F4556 
+ 3270      545F5544 
+ 3270      53435F52 
+ 3270      4541445F 
+ 3271              	.LASF204:
+ 3272 2df1 4359424C 		.ascii	"CYBLE_EVT_BASC_READ_CHAR_RESPONSE\000"
+ 3272      455F4556 
+ 3272      545F4241 
+ 3272      53435F52 
+ 3272      4541445F 
+ 3273              	.LASF297:
+ 3274 2e13 4359424C 		.ascii	"CYBLE_EVT_GLSC_NOTIFICATION\000"
+ 3274      455F4556 
+ 3274      545F474C 
+ 3274      53435F4E 
+ 3274      4F544946 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 88
+
+
+ 3275              	.LASF130:
+ 3276 2e2f 4359424C 		.ascii	"CYBLE_GATT_ERR_ANS_COMMAND_NOT_SUPPORTED\000"
+ 3276      455F4741 
+ 3276      54545F45 
+ 3276      52525F41 
+ 3276      4E535F43 
+ 3277              	.LASF375:
+ 3278 2e58 4359424C 		.ascii	"CYBLE_EVT_SCPSS_SCAN_INT_WIN_CHAR_WRITE\000"
+ 3278      455F4556 
+ 3278      545F5343 
+ 3278      5053535F 
+ 3278      5343414E 
+ 3279              	.LASF430:
+ 3280 2e80 6379426C 		.ascii	"cyBle_eventHandlerFlag\000"
+ 3280      655F6576 
+ 3280      656E7448 
+ 3280      616E646C 
+ 3280      6572466C 
+ 3281              	.LASF172:
+ 3282 2e97 4359424C 		.ascii	"CYBLE_EVT_GATTS_INDICATION_DISABLED\000"
+ 3282      455F4556 
+ 3282      545F4741 
+ 3282      5454535F 
+ 3282      494E4449 
+ 3283              	.LASF79:
+ 3284 2ebb 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
+ 3284      455F4552 
+ 3284      524F525F 
+ 3284      4E4F5F43 
+ 3284      4F4E4E45 
+ 3285              	.LASF258:
+ 3286 2ed5 4359424C 		.ascii	"CYBLE_EVT_CSCSS_INDICATION_DISABLED\000"
+ 3286      455F4556 
+ 3286      545F4353 
+ 3286      4353535F 
+ 3286      494E4449 
+ 3287              	.LASF227:
+ 3288 2ef9 4359424C 		.ascii	"CYBLE_EVT_BMSC_READ_DESCR_RESPONSE\000"
+ 3288      455F4556 
+ 3288      545F424D 
+ 3288      53435F52 
+ 3288      4541445F 
+ 3289              	.LASF71:
+ 3290 2f1c 4359424C 		.ascii	"CYBLE_EVT_LE_PING_AUTH_TIMEOUT\000"
+ 3290      455F4556 
+ 3290      545F4C45 
+ 3290      5F50494E 
+ 3290      475F4155 
+ 3291              	.LASF101:
+ 3292 2f3b 4359424C 		.ascii	"CYBLE_API_RESULT_T\000"
+ 3292      455F4150 
+ 3292      495F5245 
+ 3292      53554C54 
+ 3292      5F5400
+ 3293              	.LASF229:
+ 3294 2f4e 4359424C 		.ascii	"CYBLE_EVT_CGMSS_INDICATION_DISABLED\000"
+ 3294      455F4556 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 89
+
+
+ 3294      545F4347 
+ 3294      4D53535F 
+ 3294      494E4449 
+ 3295              	.LASF434:
+ 3296 2f72 6379426C 		.ascii	"cyBle_attValuesCCCD\000"
+ 3296      655F6174 
+ 3296      7456616C 
+ 3296      75657343 
+ 3296      43434400 
+ 3297              	.LASF184:
+ 3298 2f86 4359424C 		.ascii	"CYBLE_EVT_GATTC_DISCOVERY_COMPLETE\000"
+ 3298      455F4556 
+ 3298      545F4741 
+ 3298      5454435F 
+ 3298      44495343 
+ 3299              	.LASF233:
+ 3300 2fa9 4359424C 		.ascii	"CYBLE_EVT_CGMSS_WRITE_CHAR\000"
+ 3300      455F4556 
+ 3300      545F4347 
+ 3300      4D53535F 
+ 3300      57524954 
+ 3301              	.LASF301:
+ 3302 2fc4 4359424C 		.ascii	"CYBLE_EVT_GLSC_WRITE_DESCR_RESPONSE\000"
+ 3302      455F4556 
+ 3302      545F474C 
+ 3302      53435F57 
+ 3302      52495445 
+ 3303              	.LASF54:
+ 3304 2fe8 4359424C 		.ascii	"CYBLE_EVT_GATTC_HANDLE_VALUE_IND\000"
+ 3304      455F4556 
+ 3304      545F4741 
+ 3304      5454435F 
+ 3304      48414E44 
+ 3305              	.LASF254:
+ 3306 3009 4359424C 		.ascii	"CYBLE_EVT_CPSC_SCAN_PROGRESS_RESULT\000"
+ 3306      455F4556 
+ 3306      545F4350 
+ 3306      53435F53 
+ 3306      43414E5F 
+ 3307              	.LASF369:
+ 3308 302d 4359424C 		.ascii	"CYBLE_EVT_RSCSC_READ_DESCR_RESPONSE\000"
+ 3308      455F4556 
+ 3308      545F5253 
+ 3308      4353435F 
+ 3308      52454144 
+ 3309              	.LASF85:
+ 3310 3051 4359424C 		.ascii	"CYBLE_ERROR_SEC_FAILED\000"
+ 3310      455F4552 
+ 3310      524F525F 
+ 3310      5345435F 
+ 3310      4641494C 
+ 3311              	.LASF21:
+ 3312 3068 4359424C 		.ascii	"CYBLE_EVT_STACK_BUSY_STATUS\000"
+ 3312      455F4556 
+ 3312      545F5354 
+ 3312      41434B5F 
+ 3312      42555359 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 90
+
+
+ 3313              	.LASF333:
+ 3314 3084 4359424C 		.ascii	"CYBLE_EVT_HTSC_WRITE_DESCR_RESPONSE\000"
+ 3314      455F4556 
+ 3314      545F4854 
+ 3314      53435F57 
+ 3314      52495445 
+ 3315              	.LASF34:
+ 3316 30a8 4359424C 		.ascii	"CYBLE_EVT_GAP_KEYINFO_EXCHNGE_CMPLT\000"
+ 3316      455F4556 
+ 3316      545F4741 
+ 3316      505F4B45 
+ 3316      59494E46 
+ 3317              	.LASF409:
+ 3318 30cc 4359424C 		.ascii	"CYBLE_EVT_WPTSC_WRITE_DESCR_RESPONSE\000"
+ 3318      455F4556 
+ 3318      545F5750 
+ 3318      5453435F 
+ 3318      57524954 
+ 3319              	.LASF59:
+ 3320 30f1 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CONN_PARAM_UPDATE_REQ\000"
+ 3320      455F4556 
+ 3320      545F4C32 
+ 3320      4341505F 
+ 3320      434F4E4E 
+ 3321              	.LASF232:
+ 3322 3117 4359424C 		.ascii	"CYBLE_EVT_CGMSS_NOTIFICATION_DISABLED\000"
+ 3322      455F4556 
+ 3322      545F4347 
+ 3322      4D53535F 
+ 3322      4E4F5449 
+ 3323              	.LASF427:
+ 3324 313d 67617474 		.ascii	"gattErr\000"
+ 3324      45727200 
+ 3325              	.LASF175:
+ 3326 3145 4359424C 		.ascii	"CYBLE_EVT_GATTC_INCL_DISCOVERY_FAILED\000"
+ 3326      455F4556 
+ 3326      545F4741 
+ 3326      5454435F 
+ 3326      494E434C 
+ 3327              	.LASF105:
+ 3328 316b 4359424C 		.ascii	"CYBLE_GATT_ERR_WRITE_NOT_PERMITTED\000"
+ 3328      455F4741 
+ 3328      54545F45 
+ 3328      52525F57 
+ 3328      52495445 
+ 3329              	.LASF3:
+ 3330 318e 73686F72 		.ascii	"short unsigned int\000"
+ 3330      7420756E 
+ 3330      7369676E 
+ 3330      65642069 
+ 3330      6E7400
+ 3331              	.LASF117:
+ 3332 31a1 4359424C 		.ascii	"CYBLE_GATT_ERR_INSUFFICIENT_ENCRYPTION\000"
+ 3332      455F4741 
+ 3332      54545F45 
+ 3332      52525F49 
+ 3332      4E535546 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 91
+
+
+ 3333              	.LASF348:
+ 3334 31c8 4359424C 		.ascii	"CYBLE_EVT_LNSC_READ_DESCR_RESPONSE\000"
+ 3334      455F4556 
+ 3334      545F4C4E 
+ 3334      53435F52 
+ 3334      4541445F 
+ 3335              	.LASF420:
+ 3336 31eb 4359424C 		.ascii	"CYBLE_STATE_CONNECTED\000"
+ 3336      455F5354 
+ 3336      4154455F 
+ 3336      434F4E4E 
+ 3336      45435445 
+ 3337              	.LASF139:
+ 3338 3201 61637475 		.ascii	"actualLen\000"
+ 3338      616C4C65 
+ 3338      6E00
+ 3339              	.LASF439:
+ 3340 320b 47656E65 		.ascii	"Generated_Source\\PSoC4\\BLE_gatt.c\000"
+ 3340      72617465 
+ 3340      645F536F 
+ 3340      75726365 
+ 3340      5C50536F 
+ 3341              	.LASF165:
+ 3342 322d 63636364 		.ascii	"cccdHandle\000"
+ 3342      48616E64 
+ 3342      6C6500
+ 3343              	.LASF187:
+ 3344 3238 4359424C 		.ascii	"CYBLE_EVT_ANCSS_WRITE_CHAR\000"
+ 3344      455F4556 
+ 3344      545F414E 
+ 3344      4353535F 
+ 3344      57524954 
+ 3345              	.LASF296:
+ 3346 3253 4359424C 		.ascii	"CYBLE_EVT_GLSC_INDICATION\000"
+ 3346      455F4556 
+ 3346      545F474C 
+ 3346      53435F49 
+ 3346      4E444943 
+ 3347              	.LASF246:
+ 3348 326d 4359424C 		.ascii	"CYBLE_EVT_CPSS_BROADCAST_DISABLED\000"
+ 3348      455F4556 
+ 3348      545F4350 
+ 3348      53535F42 
+ 3348      524F4144 
+ 3349              	.LASF137:
+ 3350 328f 61747449 		.ascii	"attId\000"
+ 3350      6400
+ 3351              	.LASF75:
+ 3352 3295 4359424C 		.ascii	"CYBLE_ERROR_INVALID_OPERATION\000"
+ 3352      455F4552 
+ 3352      524F525F 
+ 3352      494E5641 
+ 3352      4C49445F 
+ 3353              	.LASF20:
+ 3354 32b3 4359424C 		.ascii	"CYBLE_EVT_HCI_STATUS\000"
+ 3354      455F4556 
+ 3354      545F4843 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 92
+
+
+ 3354      495F5354 
+ 3354      41545553 
+ 3355              	.LASF37:
+ 3356 32c8 4359424C 		.ascii	"CYBLE_EVT_GATT_DISCONNECT_IND\000"
+ 3356      455F4556 
+ 3356      545F4741 
+ 3356      54545F44 
+ 3356      4953434F 
+ 3357              	.LASF170:
+ 3358 32e6 4359424C 		.ascii	"CYBLE_KEY_EXCHANGE_INFO_REQUEST_REPLY\000"
+ 3358      455F4B45 
+ 3358      595F4558 
+ 3358      4348414E 
+ 3358      47455F49 
+ 3359              	.LASF69:
+ 3360 330c 4359424C 		.ascii	"CYBLE_EVT_L2CAP_CBFC_DATA_WRITE_IND\000"
+ 3360      455F4556 
+ 3360      545F4C32 
+ 3360      4341505F 
+ 3360      43424643 
+ 3361              	.LASF168:
+ 3362 3330 4359424C 		.ascii	"CYBLE_PASSKEY_ENTRY_REQUEST_REPLY\000"
+ 3362      455F5041 
+ 3362      53534B45 
+ 3362      595F454E 
+ 3362      5452595F 
+ 3363              	.LASF213:
+ 3364 3352 4359424C 		.ascii	"CYBLE_EVT_BCSC_WRITE_DESCR_RESPONSE\000"
+ 3364      455F4556 
+ 3364      545F4243 
+ 3364      53435F57 
+ 3364      52495445 
+ 3365              	.LASF414:
+ 3366 3376 4359424C 		.ascii	"CYBLE_EVT_WSSC_READ_CHAR_RESPONSE\000"
+ 3366      455F4556 
+ 3366      545F5753 
+ 3366      53435F52 
+ 3366      4541445F 
+ 3367              	.LASF196:
+ 3368 3398 4359424C 		.ascii	"CYBLE_EVT_ANSC_NOTIFICATION\000"
+ 3368      455F4556 
+ 3368      545F414E 
+ 3368      53435F4E 
+ 3368      4F544946 
+ 3369              	.LASF30:
+ 3370 33b4 4359424C 		.ascii	"CYBLE_EVT_GAP_DEVICE_DISCONNECTED\000"
+ 3370      455F4556 
+ 3370      545F4741 
+ 3370      505F4445 
+ 3370      56494345 
+ 3371              	.LASF304:
+ 3372 33d6 4359424C 		.ascii	"CYBLE_EVT_HIDSS_BOOT_MODE_ENTER\000"
+ 3372      455F4556 
+ 3372      545F4849 
+ 3372      4453535F 
+ 3372      424F4F54 
+ 3373              	.LASF55:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 93
+
+
+ 3374 33f6 4359424C 		.ascii	"CYBLE_EVT_GATTS_HANDLE_VALUE_CNF\000"
+ 3374      455F4556 
+ 3374      545F4741 
+ 3374      5454535F 
+ 3374      48414E44 
+ 3375              	.LASF265:
+ 3376 3417 4359424C 		.ascii	"CYBLE_EVT_CSCSC_READ_DESCR_RESPONSE\000"
+ 3376      455F4556 
+ 3376      545F4353 
+ 3376      4353435F 
+ 3376      52454144 
+ 3377              	.LASF10:
+ 3378 343b 75696E74 		.ascii	"uint16\000"
+ 3378      313600
+ 3379              	.LASF190:
+ 3380 3442 4359424C 		.ascii	"CYBLE_EVT_ANCSC_WRITE_CHAR_RESPONSE\000"
+ 3380      455F4556 
+ 3380      545F414E 
+ 3380      4353435F 
+ 3380      57524954 
+ 3381              	.LASF83:
+ 3382 3466 4359424C 		.ascii	"CYBLE_ERROR_TX_POWER_READ\000"
+ 3382      455F4552 
+ 3382      524F525F 
+ 3382      54585F50 
+ 3382      4F574552 
+ 3383              	.LASF359:
+ 3384 3480 4359424C 		.ascii	"CYBLE_EVT_RSCSS_NOTIFICATION_ENABLED\000"
+ 3384      455F4556 
+ 3384      545F5253 
+ 3384      4353535F 
+ 3384      4E4F5449 
+ 3385              	.LASF194:
+ 3386 34a5 4359424C 		.ascii	"CYBLE_EVT_ANSS_NOTIFICATION_DISABLED\000"
+ 3386      455F4556 
+ 3386      545F414E 
+ 3386      53535F4E 
+ 3386      4F544946 
+ 3387              	.LASF329:
+ 3388 34ca 4359424C 		.ascii	"CYBLE_EVT_HTSC_INDICATION\000"
+ 3388      455F4556 
+ 3388      545F4854 
+ 3388      53435F49 
+ 3388      4E444943 
+ 3389              	.LASF302:
+ 3390 34e4 4359424C 		.ascii	"CYBLE_EVT_HIDSS_NOTIFICATION_ENABLED\000"
+ 3390      455F4556 
+ 3390      545F4849 
+ 3390      4453535F 
+ 3390      4E4F5449 
+ 3391              	.LASF326:
+ 3392 3509 4359424C 		.ascii	"CYBLE_EVT_HTSS_INDICATION_CONFIRMED\000"
+ 3392      455F4556 
+ 3392      545F4854 
+ 3392      53535F49 
+ 3392      4E444943 
+ 3393              	.LASF402:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccOeam9b.s 			page 94
+
+
+ 3394 352d 4359424C 		.ascii	"CYBLE_EVT_WPTSS_INDICATION_CONFIRMED\000"
+ 3394      455F4556 
+ 3394      545F5750 
+ 3394      5453535F 
+ 3394      494E4449 
+ 3395              	.LASF316:
+ 3396 3552 4359424C 		.ascii	"CYBLE_EVT_HRSS_NOTIFICATION_DISABLED\000"
+ 3396      455F4556 
+ 3396      545F4852 
+ 3396      53535F4E 
+ 3396      4F544946 
+ 3397              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
