@@ -1,0 +1,72 @@
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/CortexM0/ARM_GCC_493/Debug/main.o : C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_HAL_PVT.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_STACK_PVT.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_Stack.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGap.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGatt.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGattClient.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGattDb.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGattServer.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackHostMain.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackL2cap.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_bless_isr.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_custom.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_eventHandler.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_gatt.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/Clock.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/CyFlash.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/CyLFClk.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/PWM_IN.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/PWM_IN_aliases.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/Timer.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/core_cm0.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/core_cm0_psoc4.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/core_cmFunc.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/core_cmInstr.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cyPm.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cydisabledsheets.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/project.h C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/main.c 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_HAL_PVT.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_STACK_PVT.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_Stack.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGap.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGatt.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGattClient.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGattDb.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackGattServer.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackHostMain.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_StackL2cap.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_bless_isr.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_custom.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_eventHandler.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/BLE_gatt.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/Clock.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/CyFlash.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/CyLFClk.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/CyLib.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/PWM_IN.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/PWM_IN_aliases.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/Timer.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/core_cm0.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/core_cm0_psoc4.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/core_cmFunc.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/core_cmInstr.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cyPm.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cydisabledsheets.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cyfitter.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cypins.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/cytypes.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/Generated_Source/PSoC4/project.h : 
+
+C:/Users/George/Dropbox/hackAIR/AirQualityBeacons/PwmLedSensor.cydsn/main.c : 
+

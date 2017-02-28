@@ -1,0 +1,1910 @@
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"Timeout.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.Timeout_Start,"ax",%progbits
+  18              		.align	2
+  19              		.global	Timeout_Start
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	Timeout_Start, %function
+  23              	Timeout_Start:
+  24              	.LFB2:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\Timeout.c"
+   1:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/Timeout.c **** * File Name: Timeout.c  
+   3:.\Generated_Source\PSoC4/Timeout.c **** * Version 1.70
+   4:.\Generated_Source\PSoC4/Timeout.c **** *
+   5:.\Generated_Source\PSoC4/Timeout.c **** *  Description:
+   6:.\Generated_Source\PSoC4/Timeout.c **** *   API for controlling the state of an interrupt.
+   7:.\Generated_Source\PSoC4/Timeout.c **** *
+   8:.\Generated_Source\PSoC4/Timeout.c **** *
+   9:.\Generated_Source\PSoC4/Timeout.c **** *  Note:
+  10:.\Generated_Source\PSoC4/Timeout.c **** *
+  11:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC4/Timeout.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/Timeout.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC4/Timeout.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC4/Timeout.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC4/Timeout.c **** 
+  18:.\Generated_Source\PSoC4/Timeout.c **** 
+  19:.\Generated_Source\PSoC4/Timeout.c **** #include <cydevice_trm.h>
+  20:.\Generated_Source\PSoC4/Timeout.c **** #include <CyLib.h>
+  21:.\Generated_Source\PSoC4/Timeout.c **** #include <Timeout.h>
+  22:.\Generated_Source\PSoC4/Timeout.c **** #include "cyapicallbacks.h"
+  23:.\Generated_Source\PSoC4/Timeout.c **** 
+  24:.\Generated_Source\PSoC4/Timeout.c **** #if !defined(Timeout__REMOVED) /* Check for removal by optimization */
+  25:.\Generated_Source\PSoC4/Timeout.c **** 
+  26:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+  27:.\Generated_Source\PSoC4/Timeout.c **** *  Place your includes, defines and code here 
+  28:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************/
+  29:.\Generated_Source\PSoC4/Timeout.c **** /* `#START Timeout_intc` */
+  30:.\Generated_Source\PSoC4/Timeout.c **** 
+  31:.\Generated_Source\PSoC4/Timeout.c **** /* `#END` */
+  32:.\Generated_Source\PSoC4/Timeout.c **** 
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/Timeout.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  34:.\Generated_Source\PSoC4/Timeout.c **** 
+  35:.\Generated_Source\PSoC4/Timeout.c **** /* Declared in startup, used to set unused interrupts to. */
+  36:.\Generated_Source\PSoC4/Timeout.c **** CY_ISR_PROTO(IntDefaultHandler);
+  37:.\Generated_Source\PSoC4/Timeout.c **** 
+  38:.\Generated_Source\PSoC4/Timeout.c **** 
+  39:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+  40:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_Start
+  41:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+  42:.\Generated_Source\PSoC4/Timeout.c **** *
+  43:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+  44:.\Generated_Source\PSoC4/Timeout.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  45:.\Generated_Source\PSoC4/Timeout.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  46:.\Generated_Source\PSoC4/Timeout.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  47:.\Generated_Source\PSoC4/Timeout.c **** *  interrupt controller.
+  48:.\Generated_Source\PSoC4/Timeout.c **** *
+  49:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:  
+  50:.\Generated_Source\PSoC4/Timeout.c **** *   None
+  51:.\Generated_Source\PSoC4/Timeout.c **** *
+  52:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+  53:.\Generated_Source\PSoC4/Timeout.c **** *   None
+  54:.\Generated_Source\PSoC4/Timeout.c **** *
+  55:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+  56:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_Start(void)
+  57:.\Generated_Source\PSoC4/Timeout.c **** {
+  26              		.loc 1 57 0
+  27              		.cfi_startproc
+  28 0000 80B5     		push	{r7, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 7, -8
+  31              		.cfi_offset 14, -4
+  32 0002 00AF     		add	r7, sp, #0
+  33              		.cfi_def_cfa_register 7
+  58:.\Generated_Source\PSoC4/Timeout.c ****     /* For all we know the interrupt is active. */
+  59:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_Disable();
+  34              		.loc 1 59 0
+  35 0004 FFF7FEFF 		bl	Timeout_Disable
+  60:.\Generated_Source\PSoC4/Timeout.c **** 
+  61:.\Generated_Source\PSoC4/Timeout.c ****     /* Set the ISR to point to the Timeout Interrupt. */
+  62:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_SetVector(&Timeout_Interrupt);
+  36              		.loc 1 62 0
+  37 0008 054B     		ldr	r3, .L2
+  38 000a 181C     		mov	r0, r3
+  39 000c FFF7FEFF 		bl	Timeout_SetVector
+  63:.\Generated_Source\PSoC4/Timeout.c **** 
+  64:.\Generated_Source\PSoC4/Timeout.c ****     /* Set the priority. */
+  65:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_SetPriority((uint8)Timeout_INTC_PRIOR_NUMBER);
+  40              		.loc 1 65 0
+  41 0010 0320     		mov	r0, #3
+  42 0012 FFF7FEFF 		bl	Timeout_SetPriority
+  66:.\Generated_Source\PSoC4/Timeout.c **** 
+  67:.\Generated_Source\PSoC4/Timeout.c ****     /* Enable it. */
+  68:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_Enable();
+  43              		.loc 1 68 0
+  44 0016 FFF7FEFF 		bl	Timeout_Enable
+  69:.\Generated_Source\PSoC4/Timeout.c **** }
+  45              		.loc 1 69 0
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 3
+
+
+  46 001a BD46     		mov	sp, r7
+  47              		@ sp needed
+  48 001c 80BD     		pop	{r7, pc}
+  49              	.L3:
+  50 001e C046     		.align	2
+  51              	.L2:
+  52 0020 00000000 		.word	Timeout_Interrupt
+  53              		.cfi_endproc
+  54              	.LFE2:
+  55              		.size	Timeout_Start, .-Timeout_Start
+  56              		.section	.text.Timeout_StartEx,"ax",%progbits
+  57              		.align	2
+  58              		.global	Timeout_StartEx
+  59              		.code	16
+  60              		.thumb_func
+  61              		.type	Timeout_StartEx, %function
+  62              	Timeout_StartEx:
+  63              	.LFB3:
+  70:.\Generated_Source\PSoC4/Timeout.c **** 
+  71:.\Generated_Source\PSoC4/Timeout.c **** 
+  72:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+  73:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_StartEx
+  74:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+  75:.\Generated_Source\PSoC4/Timeout.c **** *
+  76:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+  77:.\Generated_Source\PSoC4/Timeout.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  78:.\Generated_Source\PSoC4/Timeout.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  79:.\Generated_Source\PSoC4/Timeout.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  80:.\Generated_Source\PSoC4/Timeout.c **** *  the interrupt to the interrupt controller.
+  81:.\Generated_Source\PSoC4/Timeout.c **** *  
+  82:.\Generated_Source\PSoC4/Timeout.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  83:.\Generated_Source\PSoC4/Timeout.c **** *  used to provide consistent definition across compilers:
+  84:.\Generated_Source\PSoC4/Timeout.c **** *  
+  85:.\Generated_Source\PSoC4/Timeout.c **** *  Function definition example:
+  86:.\Generated_Source\PSoC4/Timeout.c **** *   CY_ISR(MyISR)
+  87:.\Generated_Source\PSoC4/Timeout.c **** *   {
+  88:.\Generated_Source\PSoC4/Timeout.c **** *   }
+  89:.\Generated_Source\PSoC4/Timeout.c **** *   Function prototype example:
+  90:.\Generated_Source\PSoC4/Timeout.c **** *   CY_ISR_PROTO(MyISR);
+  91:.\Generated_Source\PSoC4/Timeout.c **** *
+  92:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:  
+  93:.\Generated_Source\PSoC4/Timeout.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  94:.\Generated_Source\PSoC4/Timeout.c **** *
+  95:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+  96:.\Generated_Source\PSoC4/Timeout.c **** *   None
+  97:.\Generated_Source\PSoC4/Timeout.c **** *
+  98:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+  99:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_StartEx(cyisraddress address)
+ 100:.\Generated_Source\PSoC4/Timeout.c **** {
+  64              		.loc 1 100 0
+  65              		.cfi_startproc
+  66 0000 80B5     		push	{r7, lr}
+  67              		.cfi_def_cfa_offset 8
+  68              		.cfi_offset 7, -8
+  69              		.cfi_offset 14, -4
+  70 0002 82B0     		sub	sp, sp, #8
+  71              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 4
+
+
+  72 0004 00AF     		add	r7, sp, #0
+  73              		.cfi_def_cfa_register 7
+  74 0006 7860     		str	r0, [r7, #4]
+ 101:.\Generated_Source\PSoC4/Timeout.c ****     /* For all we know the interrupt is active. */
+ 102:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_Disable();
+  75              		.loc 1 102 0
+  76 0008 FFF7FEFF 		bl	Timeout_Disable
+ 103:.\Generated_Source\PSoC4/Timeout.c **** 
+ 104:.\Generated_Source\PSoC4/Timeout.c ****     /* Set the ISR to point to the Timeout Interrupt. */
+ 105:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_SetVector(address);
+  77              		.loc 1 105 0
+  78 000c 7B68     		ldr	r3, [r7, #4]
+  79 000e 181C     		mov	r0, r3
+  80 0010 FFF7FEFF 		bl	Timeout_SetVector
+ 106:.\Generated_Source\PSoC4/Timeout.c **** 
+ 107:.\Generated_Source\PSoC4/Timeout.c ****     /* Set the priority. */
+ 108:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_SetPriority((uint8)Timeout_INTC_PRIOR_NUMBER);
+  81              		.loc 1 108 0
+  82 0014 0320     		mov	r0, #3
+  83 0016 FFF7FEFF 		bl	Timeout_SetPriority
+ 109:.\Generated_Source\PSoC4/Timeout.c **** 
+ 110:.\Generated_Source\PSoC4/Timeout.c ****     /* Enable it. */
+ 111:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_Enable();
+  84              		.loc 1 111 0
+  85 001a FFF7FEFF 		bl	Timeout_Enable
+ 112:.\Generated_Source\PSoC4/Timeout.c **** }
+  86              		.loc 1 112 0
+  87 001e BD46     		mov	sp, r7
+  88 0020 02B0     		add	sp, sp, #8
+  89              		@ sp needed
+  90 0022 80BD     		pop	{r7, pc}
+  91              		.cfi_endproc
+  92              	.LFE3:
+  93              		.size	Timeout_StartEx, .-Timeout_StartEx
+  94              		.section	.text.Timeout_Stop,"ax",%progbits
+  95              		.align	2
+  96              		.global	Timeout_Stop
+  97              		.code	16
+  98              		.thumb_func
+  99              		.type	Timeout_Stop, %function
+ 100              	Timeout_Stop:
+ 101              	.LFB4:
+ 113:.\Generated_Source\PSoC4/Timeout.c **** 
+ 114:.\Generated_Source\PSoC4/Timeout.c **** 
+ 115:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 116:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_Stop
+ 117:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 118:.\Generated_Source\PSoC4/Timeout.c **** *
+ 119:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 120:.\Generated_Source\PSoC4/Timeout.c **** *   Disables and removes the interrupt.
+ 121:.\Generated_Source\PSoC4/Timeout.c **** *
+ 122:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:  
+ 123:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 124:.\Generated_Source\PSoC4/Timeout.c **** *
+ 125:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 126:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 127:.\Generated_Source\PSoC4/Timeout.c **** *
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 5
+
+
+ 128:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 129:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_Stop(void)
+ 130:.\Generated_Source\PSoC4/Timeout.c **** {
+ 102              		.loc 1 130 0
+ 103              		.cfi_startproc
+ 104 0000 80B5     		push	{r7, lr}
+ 105              		.cfi_def_cfa_offset 8
+ 106              		.cfi_offset 7, -8
+ 107              		.cfi_offset 14, -4
+ 108 0002 00AF     		add	r7, sp, #0
+ 109              		.cfi_def_cfa_register 7
+ 131:.\Generated_Source\PSoC4/Timeout.c ****     /* Disable this interrupt. */
+ 132:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_Disable();
+ 110              		.loc 1 132 0
+ 111 0004 FFF7FEFF 		bl	Timeout_Disable
+ 133:.\Generated_Source\PSoC4/Timeout.c **** 
+ 134:.\Generated_Source\PSoC4/Timeout.c ****     /* Set the ISR to point to the passive one. */
+ 135:.\Generated_Source\PSoC4/Timeout.c ****     Timeout_SetVector(&IntDefaultHandler);
+ 112              		.loc 1 135 0
+ 113 0008 024B     		ldr	r3, .L6
+ 114 000a 181C     		mov	r0, r3
+ 115 000c FFF7FEFF 		bl	Timeout_SetVector
+ 136:.\Generated_Source\PSoC4/Timeout.c **** }
+ 116              		.loc 1 136 0
+ 117 0010 BD46     		mov	sp, r7
+ 118              		@ sp needed
+ 119 0012 80BD     		pop	{r7, pc}
+ 120              	.L7:
+ 121              		.align	2
+ 122              	.L6:
+ 123 0014 00000000 		.word	IntDefaultHandler
+ 124              		.cfi_endproc
+ 125              	.LFE4:
+ 126              		.size	Timeout_Stop, .-Timeout_Stop
+ 127              		.section	.text.Timeout_Interrupt,"ax",%progbits
+ 128              		.align	2
+ 129              		.global	Timeout_Interrupt
+ 130              		.code	16
+ 131              		.thumb_func
+ 132              		.type	Timeout_Interrupt, %function
+ 133              	Timeout_Interrupt:
+ 134              	.LFB5:
+ 137:.\Generated_Source\PSoC4/Timeout.c **** 
+ 138:.\Generated_Source\PSoC4/Timeout.c **** 
+ 139:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 140:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_Interrupt
+ 141:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 142:.\Generated_Source\PSoC4/Timeout.c **** *
+ 143:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 144:.\Generated_Source\PSoC4/Timeout.c **** *   The default Interrupt Service Routine for Timeout.
+ 145:.\Generated_Source\PSoC4/Timeout.c **** *
+ 146:.\Generated_Source\PSoC4/Timeout.c **** *   Add custom code between the START and END comments to keep the next version
+ 147:.\Generated_Source\PSoC4/Timeout.c **** *   of this file from over-writing your code.
+ 148:.\Generated_Source\PSoC4/Timeout.c **** *
+ 149:.\Generated_Source\PSoC4/Timeout.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 150:.\Generated_Source\PSoC4/Timeout.c **** *   your own separate ISR through ISR_StartEx().
+ 151:.\Generated_Source\PSoC4/Timeout.c **** *
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 6
+
+
+ 152:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:  
+ 153:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 154:.\Generated_Source\PSoC4/Timeout.c **** *
+ 155:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 156:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 157:.\Generated_Source\PSoC4/Timeout.c **** *
+ 158:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 159:.\Generated_Source\PSoC4/Timeout.c **** CY_ISR(Timeout_Interrupt)
+ 160:.\Generated_Source\PSoC4/Timeout.c **** {
+ 135              		.loc 1 160 0
+ 136              		.cfi_startproc
+ 137 0000 80B5     		push	{r7, lr}
+ 138              		.cfi_def_cfa_offset 8
+ 139              		.cfi_offset 7, -8
+ 140              		.cfi_offset 14, -4
+ 141 0002 00AF     		add	r7, sp, #0
+ 142              		.cfi_def_cfa_register 7
+ 161:.\Generated_Source\PSoC4/Timeout.c ****     #ifdef Timeout_INTERRUPT_INTERRUPT_CALLBACK
+ 162:.\Generated_Source\PSoC4/Timeout.c ****         Timeout_Interrupt_InterruptCallback();
+ 163:.\Generated_Source\PSoC4/Timeout.c ****     #endif /* Timeout_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 164:.\Generated_Source\PSoC4/Timeout.c **** 
+ 165:.\Generated_Source\PSoC4/Timeout.c ****     /*  Place your Interrupt code here. */
+ 166:.\Generated_Source\PSoC4/Timeout.c ****     /* `#START Timeout_Interrupt` */
+ 167:.\Generated_Source\PSoC4/Timeout.c **** 
+ 168:.\Generated_Source\PSoC4/Timeout.c ****     /* `#END` */
+ 169:.\Generated_Source\PSoC4/Timeout.c **** }
+ 143              		.loc 1 169 0
+ 144 0004 BD46     		mov	sp, r7
+ 145              		@ sp needed
+ 146 0006 80BD     		pop	{r7, pc}
+ 147              		.cfi_endproc
+ 148              	.LFE5:
+ 149              		.size	Timeout_Interrupt, .-Timeout_Interrupt
+ 150              		.section	.text.Timeout_SetVector,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	Timeout_SetVector
+ 153              		.code	16
+ 154              		.thumb_func
+ 155              		.type	Timeout_SetVector, %function
+ 156              	Timeout_SetVector:
+ 157              	.LFB6:
+ 170:.\Generated_Source\PSoC4/Timeout.c **** 
+ 171:.\Generated_Source\PSoC4/Timeout.c **** 
+ 172:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 173:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_SetVector
+ 174:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 175:.\Generated_Source\PSoC4/Timeout.c **** *
+ 176:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 177:.\Generated_Source\PSoC4/Timeout.c **** *   Change the ISR vector for the Interrupt. Note calling Timeout_Start
+ 178:.\Generated_Source\PSoC4/Timeout.c **** *   will override any effect this method would have had. To set the vector 
+ 179:.\Generated_Source\PSoC4/Timeout.c **** *   before the component has been started use Timeout_StartEx instead.
+ 180:.\Generated_Source\PSoC4/Timeout.c **** * 
+ 181:.\Generated_Source\PSoC4/Timeout.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 182:.\Generated_Source\PSoC4/Timeout.c **** *   used to provide consistent definition across compilers:
+ 183:.\Generated_Source\PSoC4/Timeout.c **** *
+ 184:.\Generated_Source\PSoC4/Timeout.c **** *   Function definition example:
+ 185:.\Generated_Source\PSoC4/Timeout.c **** *   CY_ISR(MyISR)
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 7
+
+
+ 186:.\Generated_Source\PSoC4/Timeout.c **** *   {
+ 187:.\Generated_Source\PSoC4/Timeout.c **** *   }
+ 188:.\Generated_Source\PSoC4/Timeout.c **** *
+ 189:.\Generated_Source\PSoC4/Timeout.c **** *   Function prototype example:
+ 190:.\Generated_Source\PSoC4/Timeout.c **** *     CY_ISR_PROTO(MyISR);
+ 191:.\Generated_Source\PSoC4/Timeout.c **** *
+ 192:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 193:.\Generated_Source\PSoC4/Timeout.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 194:.\Generated_Source\PSoC4/Timeout.c **** *
+ 195:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 196:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 197:.\Generated_Source\PSoC4/Timeout.c **** *
+ 198:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 199:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_SetVector(cyisraddress address)
+ 200:.\Generated_Source\PSoC4/Timeout.c **** {
+ 158              		.loc 1 200 0
+ 159              		.cfi_startproc
+ 160 0000 80B5     		push	{r7, lr}
+ 161              		.cfi_def_cfa_offset 8
+ 162              		.cfi_offset 7, -8
+ 163              		.cfi_offset 14, -4
+ 164 0002 82B0     		sub	sp, sp, #8
+ 165              		.cfi_def_cfa_offset 16
+ 166 0004 00AF     		add	r7, sp, #0
+ 167              		.cfi_def_cfa_register 7
+ 168 0006 7860     		str	r0, [r7, #4]
+ 201:.\Generated_Source\PSoC4/Timeout.c ****     CyRamVectors[CYINT_IRQ_BASE + Timeout__INTC_NUMBER] = address;
+ 169              		.loc 1 201 0
+ 170 0008 034B     		ldr	r3, .L10
+ 171 000a 8421     		mov	r1, #132
+ 172 000c 7A68     		ldr	r2, [r7, #4]
+ 173 000e 5A50     		str	r2, [r3, r1]
+ 202:.\Generated_Source\PSoC4/Timeout.c **** }
+ 174              		.loc 1 202 0
+ 175 0010 BD46     		mov	sp, r7
+ 176 0012 02B0     		add	sp, sp, #8
+ 177              		@ sp needed
+ 178 0014 80BD     		pop	{r7, pc}
+ 179              	.L11:
+ 180 0016 C046     		.align	2
+ 181              	.L10:
+ 182 0018 00000000 		.word	CyRamVectors
+ 183              		.cfi_endproc
+ 184              	.LFE6:
+ 185              		.size	Timeout_SetVector, .-Timeout_SetVector
+ 186              		.section	.text.Timeout_GetVector,"ax",%progbits
+ 187              		.align	2
+ 188              		.global	Timeout_GetVector
+ 189              		.code	16
+ 190              		.thumb_func
+ 191              		.type	Timeout_GetVector, %function
+ 192              	Timeout_GetVector:
+ 193              	.LFB7:
+ 203:.\Generated_Source\PSoC4/Timeout.c **** 
+ 204:.\Generated_Source\PSoC4/Timeout.c **** 
+ 205:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 206:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_GetVector
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 8
+
+
+ 207:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 208:.\Generated_Source\PSoC4/Timeout.c **** *
+ 209:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 210:.\Generated_Source\PSoC4/Timeout.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 211:.\Generated_Source\PSoC4/Timeout.c **** *
+ 212:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 213:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 214:.\Generated_Source\PSoC4/Timeout.c **** *
+ 215:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 216:.\Generated_Source\PSoC4/Timeout.c **** *   Address of the ISR in the interrupt vector table.
+ 217:.\Generated_Source\PSoC4/Timeout.c **** *
+ 218:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 219:.\Generated_Source\PSoC4/Timeout.c **** cyisraddress Timeout_GetVector(void)
+ 220:.\Generated_Source\PSoC4/Timeout.c **** {
+ 194              		.loc 1 220 0
+ 195              		.cfi_startproc
+ 196 0000 80B5     		push	{r7, lr}
+ 197              		.cfi_def_cfa_offset 8
+ 198              		.cfi_offset 7, -8
+ 199              		.cfi_offset 14, -4
+ 200 0002 00AF     		add	r7, sp, #0
+ 201              		.cfi_def_cfa_register 7
+ 221:.\Generated_Source\PSoC4/Timeout.c ****     return CyRamVectors[CYINT_IRQ_BASE + Timeout__INTC_NUMBER];
+ 202              		.loc 1 221 0
+ 203 0004 024B     		ldr	r3, .L14
+ 204 0006 8422     		mov	r2, #132
+ 205 0008 9B58     		ldr	r3, [r3, r2]
+ 222:.\Generated_Source\PSoC4/Timeout.c **** }
+ 206              		.loc 1 222 0
+ 207 000a 181C     		mov	r0, r3
+ 208 000c BD46     		mov	sp, r7
+ 209              		@ sp needed
+ 210 000e 80BD     		pop	{r7, pc}
+ 211              	.L15:
+ 212              		.align	2
+ 213              	.L14:
+ 214 0010 00000000 		.word	CyRamVectors
+ 215              		.cfi_endproc
+ 216              	.LFE7:
+ 217              		.size	Timeout_GetVector, .-Timeout_GetVector
+ 218              		.section	.text.Timeout_SetPriority,"ax",%progbits
+ 219              		.align	2
+ 220              		.global	Timeout_SetPriority
+ 221              		.code	16
+ 222              		.thumb_func
+ 223              		.type	Timeout_SetPriority, %function
+ 224              	Timeout_SetPriority:
+ 225              	.LFB8:
+ 223:.\Generated_Source\PSoC4/Timeout.c **** 
+ 224:.\Generated_Source\PSoC4/Timeout.c **** 
+ 225:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 226:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_SetPriority
+ 227:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 228:.\Generated_Source\PSoC4/Timeout.c **** *
+ 229:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 230:.\Generated_Source\PSoC4/Timeout.c **** *   Sets the Priority of the Interrupt. 
+ 231:.\Generated_Source\PSoC4/Timeout.c **** *
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 9
+
+
+ 232:.\Generated_Source\PSoC4/Timeout.c **** *   Note calling Timeout_Start or Timeout_StartEx will 
+ 233:.\Generated_Source\PSoC4/Timeout.c **** *   override any effect this API would have had. This API should only be called
+ 234:.\Generated_Source\PSoC4/Timeout.c **** *   after Timeout_Start or Timeout_StartEx has been called. 
+ 235:.\Generated_Source\PSoC4/Timeout.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 236:.\Generated_Source\PSoC4/Timeout.c **** *   Interrupt Editor.
+ 237:.\Generated_Source\PSoC4/Timeout.c **** *
+ 238:.\Generated_Source\PSoC4/Timeout.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 239:.\Generated_Source\PSoC4/Timeout.c **** *
+ 240:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 241:.\Generated_Source\PSoC4/Timeout.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 242:.\Generated_Source\PSoC4/Timeout.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 243:.\Generated_Source\PSoC4/Timeout.c **** *             PSoC 4: Priority is from 0 to 3.
+ 244:.\Generated_Source\PSoC4/Timeout.c **** *
+ 245:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 246:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 247:.\Generated_Source\PSoC4/Timeout.c **** *
+ 248:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 249:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_SetPriority(uint8 priority)
+ 250:.\Generated_Source\PSoC4/Timeout.c **** {
+ 226              		.loc 1 250 0
+ 227              		.cfi_startproc
+ 228 0000 90B5     		push	{r4, r7, lr}
+ 229              		.cfi_def_cfa_offset 12
+ 230              		.cfi_offset 4, -12
+ 231              		.cfi_offset 7, -8
+ 232              		.cfi_offset 14, -4
+ 233 0002 85B0     		sub	sp, sp, #20
+ 234              		.cfi_def_cfa_offset 32
+ 235 0004 00AF     		add	r7, sp, #0
+ 236              		.cfi_def_cfa_register 7
+ 237 0006 021C     		mov	r2, r0
+ 238 0008 FB1D     		add	r3, r7, #7
+ 239 000a 1A70     		strb	r2, [r3]
+ 251:.\Generated_Source\PSoC4/Timeout.c **** 	uint8 interruptState;
+ 252:.\Generated_Source\PSoC4/Timeout.c ****     uint32 priorityOffset = ((Timeout__INTC_NUMBER % 4u) * 8u) + 6u;
+ 240              		.loc 1 252 0
+ 241 000c 0E23     		mov	r3, #14
+ 242 000e FB60     		str	r3, [r7, #12]
+ 253:.\Generated_Source\PSoC4/Timeout.c ****     
+ 254:.\Generated_Source\PSoC4/Timeout.c **** 	interruptState = CyEnterCriticalSection();
+ 243              		.loc 1 254 0
+ 244 0010 0B23     		mov	r3, #11
+ 245 0012 FC18     		add	r4, r7, r3
+ 246 0014 FFF7FEFF 		bl	CyEnterCriticalSection
+ 247 0018 031C     		mov	r3, r0
+ 248 001a 2370     		strb	r3, [r4]
+ 255:.\Generated_Source\PSoC4/Timeout.c ****     *Timeout_INTC_PRIOR = (*Timeout_INTC_PRIOR & (uint32)(~Timeout__INTC_PRIOR_MASK)) |
+ 249              		.loc 1 255 0
+ 250 001c 0A4B     		ldr	r3, .L17
+ 251 001e 0A4A     		ldr	r2, .L17
+ 252 0020 1268     		ldr	r2, [r2]
+ 253 0022 0A49     		ldr	r1, .L17+4
+ 254 0024 1140     		and	r1, r2
+ 256:.\Generated_Source\PSoC4/Timeout.c ****                                     ((uint32)priority << priorityOffset);
+ 255              		.loc 1 256 0
+ 256 0026 FA1D     		add	r2, r7, #7
+ 257 0028 1078     		ldrb	r0, [r2]
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 10
+
+
+ 258 002a FA68     		ldr	r2, [r7, #12]
+ 259 002c 9040     		lsl	r0, r0, r2
+ 260 002e 021C     		mov	r2, r0
+ 255:.\Generated_Source\PSoC4/Timeout.c ****     *Timeout_INTC_PRIOR = (*Timeout_INTC_PRIOR & (uint32)(~Timeout__INTC_PRIOR_MASK)) |
+ 261              		.loc 1 255 0
+ 262 0030 0A43     		orr	r2, r1
+ 263 0032 1A60     		str	r2, [r3]
+ 257:.\Generated_Source\PSoC4/Timeout.c **** 	CyExitCriticalSection(interruptState);
+ 264              		.loc 1 257 0
+ 265 0034 0B23     		mov	r3, #11
+ 266 0036 FB18     		add	r3, r7, r3
+ 267 0038 1B78     		ldrb	r3, [r3]
+ 268 003a 181C     		mov	r0, r3
+ 269 003c FFF7FEFF 		bl	CyExitCriticalSection
+ 258:.\Generated_Source\PSoC4/Timeout.c **** }
+ 270              		.loc 1 258 0
+ 271 0040 BD46     		mov	sp, r7
+ 272 0042 05B0     		add	sp, sp, #20
+ 273              		@ sp needed
+ 274 0044 90BD     		pop	{r4, r7, pc}
+ 275              	.L18:
+ 276 0046 C046     		.align	2
+ 277              	.L17:
+ 278 0048 10E400E0 		.word	-536812528
+ 279 004c FF3FFFFF 		.word	-49153
+ 280              		.cfi_endproc
+ 281              	.LFE8:
+ 282              		.size	Timeout_SetPriority, .-Timeout_SetPriority
+ 283              		.section	.text.Timeout_GetPriority,"ax",%progbits
+ 284              		.align	2
+ 285              		.global	Timeout_GetPriority
+ 286              		.code	16
+ 287              		.thumb_func
+ 288              		.type	Timeout_GetPriority, %function
+ 289              	Timeout_GetPriority:
+ 290              	.LFB9:
+ 259:.\Generated_Source\PSoC4/Timeout.c **** 
+ 260:.\Generated_Source\PSoC4/Timeout.c **** 
+ 261:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 262:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_GetPriority
+ 263:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 264:.\Generated_Source\PSoC4/Timeout.c **** *
+ 265:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 266:.\Generated_Source\PSoC4/Timeout.c **** *   Gets the Priority of the Interrupt.
+ 267:.\Generated_Source\PSoC4/Timeout.c **** *
+ 268:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 269:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 270:.\Generated_Source\PSoC4/Timeout.c **** *
+ 271:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 272:.\Generated_Source\PSoC4/Timeout.c **** *   Priority of the interrupt, 0 being the highest priority
+ 273:.\Generated_Source\PSoC4/Timeout.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 274:.\Generated_Source\PSoC4/Timeout.c **** *    PSoC 4: Priority is from 0 to 3.
+ 275:.\Generated_Source\PSoC4/Timeout.c **** *
+ 276:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 277:.\Generated_Source\PSoC4/Timeout.c **** uint8 Timeout_GetPriority(void)
+ 278:.\Generated_Source\PSoC4/Timeout.c **** {
+ 291              		.loc 1 278 0
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 11
+
+
+ 292              		.cfi_startproc
+ 293 0000 80B5     		push	{r7, lr}
+ 294              		.cfi_def_cfa_offset 8
+ 295              		.cfi_offset 7, -8
+ 296              		.cfi_offset 14, -4
+ 297 0002 82B0     		sub	sp, sp, #8
+ 298              		.cfi_def_cfa_offset 16
+ 299 0004 00AF     		add	r7, sp, #0
+ 300              		.cfi_def_cfa_register 7
+ 279:.\Generated_Source\PSoC4/Timeout.c ****     uint32 priority;
+ 280:.\Generated_Source\PSoC4/Timeout.c **** 	uint32 priorityOffset = ((Timeout__INTC_NUMBER % 4u) * 8u) + 6u;
+ 301              		.loc 1 280 0
+ 302 0006 0E23     		mov	r3, #14
+ 303 0008 7B60     		str	r3, [r7, #4]
+ 281:.\Generated_Source\PSoC4/Timeout.c **** 
+ 282:.\Generated_Source\PSoC4/Timeout.c ****     priority = (*Timeout_INTC_PRIOR & Timeout__INTC_PRIOR_MASK) >> priorityOffset;
+ 304              		.loc 1 282 0
+ 305 000a 074B     		ldr	r3, .L21
+ 306 000c 1A68     		ldr	r2, [r3]
+ 307 000e C023     		mov	r3, #192
+ 308 0010 1B02     		lsl	r3, r3, #8
+ 309 0012 1A40     		and	r2, r3
+ 310 0014 7B68     		ldr	r3, [r7, #4]
+ 311 0016 DA40     		lsr	r2, r2, r3
+ 312 0018 131C     		mov	r3, r2
+ 313 001a 3B60     		str	r3, [r7]
+ 283:.\Generated_Source\PSoC4/Timeout.c **** 
+ 284:.\Generated_Source\PSoC4/Timeout.c ****     return (uint8)priority;
+ 314              		.loc 1 284 0
+ 315 001c 3B68     		ldr	r3, [r7]
+ 316 001e DBB2     		uxtb	r3, r3
+ 285:.\Generated_Source\PSoC4/Timeout.c **** }
+ 317              		.loc 1 285 0
+ 318 0020 181C     		mov	r0, r3
+ 319 0022 BD46     		mov	sp, r7
+ 320 0024 02B0     		add	sp, sp, #8
+ 321              		@ sp needed
+ 322 0026 80BD     		pop	{r7, pc}
+ 323              	.L22:
+ 324              		.align	2
+ 325              	.L21:
+ 326 0028 10E400E0 		.word	-536812528
+ 327              		.cfi_endproc
+ 328              	.LFE9:
+ 329              		.size	Timeout_GetPriority, .-Timeout_GetPriority
+ 330              		.section	.text.Timeout_Enable,"ax",%progbits
+ 331              		.align	2
+ 332              		.global	Timeout_Enable
+ 333              		.code	16
+ 334              		.thumb_func
+ 335              		.type	Timeout_Enable, %function
+ 336              	Timeout_Enable:
+ 337              	.LFB10:
+ 286:.\Generated_Source\PSoC4/Timeout.c **** 
+ 287:.\Generated_Source\PSoC4/Timeout.c **** 
+ 288:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 289:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_Enable
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 12
+
+
+ 290:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 291:.\Generated_Source\PSoC4/Timeout.c **** *
+ 292:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 293:.\Generated_Source\PSoC4/Timeout.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 294:.\Generated_Source\PSoC4/Timeout.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 295:.\Generated_Source\PSoC4/Timeout.c **** *   function, which sets the vector and the priority, has been called.
+ 296:.\Generated_Source\PSoC4/Timeout.c **** *
+ 297:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 298:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 299:.\Generated_Source\PSoC4/Timeout.c **** *
+ 300:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 301:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 302:.\Generated_Source\PSoC4/Timeout.c **** *
+ 303:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 304:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_Enable(void)
+ 305:.\Generated_Source\PSoC4/Timeout.c **** {
+ 338              		.loc 1 305 0
+ 339              		.cfi_startproc
+ 340 0000 80B5     		push	{r7, lr}
+ 341              		.cfi_def_cfa_offset 8
+ 342              		.cfi_offset 7, -8
+ 343              		.cfi_offset 14, -4
+ 344 0002 00AF     		add	r7, sp, #0
+ 345              		.cfi_def_cfa_register 7
+ 306:.\Generated_Source\PSoC4/Timeout.c ****     /* Enable the general interrupt. */
+ 307:.\Generated_Source\PSoC4/Timeout.c ****     *Timeout_INTC_SET_EN = Timeout__INTC_MASK;
+ 346              		.loc 1 307 0
+ 347 0004 024B     		ldr	r3, .L24
+ 348 0006 8022     		mov	r2, #128
+ 349 0008 9202     		lsl	r2, r2, #10
+ 350 000a 1A60     		str	r2, [r3]
+ 308:.\Generated_Source\PSoC4/Timeout.c **** }
+ 351              		.loc 1 308 0
+ 352 000c BD46     		mov	sp, r7
+ 353              		@ sp needed
+ 354 000e 80BD     		pop	{r7, pc}
+ 355              	.L25:
+ 356              		.align	2
+ 357              	.L24:
+ 358 0010 00E100E0 		.word	-536813312
+ 359              		.cfi_endproc
+ 360              	.LFE10:
+ 361              		.size	Timeout_Enable, .-Timeout_Enable
+ 362              		.section	.text.Timeout_GetState,"ax",%progbits
+ 363              		.align	2
+ 364              		.global	Timeout_GetState
+ 365              		.code	16
+ 366              		.thumb_func
+ 367              		.type	Timeout_GetState, %function
+ 368              	Timeout_GetState:
+ 369              	.LFB11:
+ 309:.\Generated_Source\PSoC4/Timeout.c **** 
+ 310:.\Generated_Source\PSoC4/Timeout.c **** 
+ 311:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 312:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_GetState
+ 313:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 314:.\Generated_Source\PSoC4/Timeout.c **** *
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 13
+
+
+ 315:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 316:.\Generated_Source\PSoC4/Timeout.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 317:.\Generated_Source\PSoC4/Timeout.c **** *
+ 318:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 319:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 320:.\Generated_Source\PSoC4/Timeout.c **** *
+ 321:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 322:.\Generated_Source\PSoC4/Timeout.c **** *   1 if enabled, 0 if disabled.
+ 323:.\Generated_Source\PSoC4/Timeout.c **** *
+ 324:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 325:.\Generated_Source\PSoC4/Timeout.c **** uint8 Timeout_GetState(void)
+ 326:.\Generated_Source\PSoC4/Timeout.c **** {
+ 370              		.loc 1 326 0
+ 371              		.cfi_startproc
+ 372 0000 80B5     		push	{r7, lr}
+ 373              		.cfi_def_cfa_offset 8
+ 374              		.cfi_offset 7, -8
+ 375              		.cfi_offset 14, -4
+ 376 0002 00AF     		add	r7, sp, #0
+ 377              		.cfi_def_cfa_register 7
+ 327:.\Generated_Source\PSoC4/Timeout.c ****     /* Get the state of the general interrupt. */
+ 328:.\Generated_Source\PSoC4/Timeout.c ****     return ((*Timeout_INTC_SET_EN & (uint32)Timeout__INTC_MASK) != 0u) ? 1u:0u;
+ 378              		.loc 1 328 0
+ 379 0004 054B     		ldr	r3, .L30
+ 380 0006 1A68     		ldr	r2, [r3]
+ 381 0008 8023     		mov	r3, #128
+ 382 000a 9B02     		lsl	r3, r3, #10
+ 383 000c 1340     		and	r3, r2
+ 384 000e 01D0     		beq	.L27
+ 385              		.loc 1 328 0 is_stmt 0 discriminator 1
+ 386 0010 0123     		mov	r3, #1
+ 387 0012 00E0     		b	.L28
+ 388              	.L27:
+ 389              		.loc 1 328 0 discriminator 2
+ 390 0014 0023     		mov	r3, #0
+ 391              	.L28:
+ 329:.\Generated_Source\PSoC4/Timeout.c **** }
+ 392              		.loc 1 329 0 is_stmt 1 discriminator 4
+ 393 0016 181C     		mov	r0, r3
+ 394 0018 BD46     		mov	sp, r7
+ 395              		@ sp needed
+ 396 001a 80BD     		pop	{r7, pc}
+ 397              	.L31:
+ 398              		.align	2
+ 399              	.L30:
+ 400 001c 00E100E0 		.word	-536813312
+ 401              		.cfi_endproc
+ 402              	.LFE11:
+ 403              		.size	Timeout_GetState, .-Timeout_GetState
+ 404              		.section	.text.Timeout_Disable,"ax",%progbits
+ 405              		.align	2
+ 406              		.global	Timeout_Disable
+ 407              		.code	16
+ 408              		.thumb_func
+ 409              		.type	Timeout_Disable, %function
+ 410              	Timeout_Disable:
+ 411              	.LFB12:
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 14
+
+
+ 330:.\Generated_Source\PSoC4/Timeout.c **** 
+ 331:.\Generated_Source\PSoC4/Timeout.c **** 
+ 332:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 333:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_Disable
+ 334:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 335:.\Generated_Source\PSoC4/Timeout.c **** *
+ 336:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 337:.\Generated_Source\PSoC4/Timeout.c **** *   Disables the Interrupt in the interrupt controller.
+ 338:.\Generated_Source\PSoC4/Timeout.c **** *
+ 339:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 340:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 341:.\Generated_Source\PSoC4/Timeout.c **** *
+ 342:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 343:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 344:.\Generated_Source\PSoC4/Timeout.c **** *
+ 345:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 346:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_Disable(void)
+ 347:.\Generated_Source\PSoC4/Timeout.c **** {
+ 412              		.loc 1 347 0
+ 413              		.cfi_startproc
+ 414 0000 80B5     		push	{r7, lr}
+ 415              		.cfi_def_cfa_offset 8
+ 416              		.cfi_offset 7, -8
+ 417              		.cfi_offset 14, -4
+ 418 0002 00AF     		add	r7, sp, #0
+ 419              		.cfi_def_cfa_register 7
+ 348:.\Generated_Source\PSoC4/Timeout.c ****     /* Disable the general interrupt. */
+ 349:.\Generated_Source\PSoC4/Timeout.c ****     *Timeout_INTC_CLR_EN = Timeout__INTC_MASK;
+ 420              		.loc 1 349 0
+ 421 0004 024B     		ldr	r3, .L33
+ 422 0006 8022     		mov	r2, #128
+ 423 0008 9202     		lsl	r2, r2, #10
+ 424 000a 1A60     		str	r2, [r3]
+ 350:.\Generated_Source\PSoC4/Timeout.c **** }
+ 425              		.loc 1 350 0
+ 426 000c BD46     		mov	sp, r7
+ 427              		@ sp needed
+ 428 000e 80BD     		pop	{r7, pc}
+ 429              	.L34:
+ 430              		.align	2
+ 431              	.L33:
+ 432 0010 80E100E0 		.word	-536813184
+ 433              		.cfi_endproc
+ 434              	.LFE12:
+ 435              		.size	Timeout_Disable, .-Timeout_Disable
+ 436              		.section	.text.Timeout_SetPending,"ax",%progbits
+ 437              		.align	2
+ 438              		.global	Timeout_SetPending
+ 439              		.code	16
+ 440              		.thumb_func
+ 441              		.type	Timeout_SetPending, %function
+ 442              	Timeout_SetPending:
+ 443              	.LFB13:
+ 351:.\Generated_Source\PSoC4/Timeout.c **** 
+ 352:.\Generated_Source\PSoC4/Timeout.c **** 
+ 353:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ 354:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_SetPending
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 15
+
+
+ 355:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 356:.\Generated_Source\PSoC4/Timeout.c **** *
+ 357:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 358:.\Generated_Source\PSoC4/Timeout.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 359:.\Generated_Source\PSoC4/Timeout.c **** *   generating the interrupt.
+ 360:.\Generated_Source\PSoC4/Timeout.c **** *
+ 361:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 362:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 363:.\Generated_Source\PSoC4/Timeout.c **** *
+ 364:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 365:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 366:.\Generated_Source\PSoC4/Timeout.c **** *
+ 367:.\Generated_Source\PSoC4/Timeout.c **** * Side Effects:
+ 368:.\Generated_Source\PSoC4/Timeout.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 369:.\Generated_Source\PSoC4/Timeout.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 370:.\Generated_Source\PSoC4/Timeout.c **** *   interrupts).
+ 371:.\Generated_Source\PSoC4/Timeout.c **** *
+ 372:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 373:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_SetPending(void)
+ 374:.\Generated_Source\PSoC4/Timeout.c **** {
+ 444              		.loc 1 374 0
+ 445              		.cfi_startproc
+ 446 0000 80B5     		push	{r7, lr}
+ 447              		.cfi_def_cfa_offset 8
+ 448              		.cfi_offset 7, -8
+ 449              		.cfi_offset 14, -4
+ 450 0002 00AF     		add	r7, sp, #0
+ 451              		.cfi_def_cfa_register 7
+ 375:.\Generated_Source\PSoC4/Timeout.c ****     *Timeout_INTC_SET_PD = Timeout__INTC_MASK;
+ 452              		.loc 1 375 0
+ 453 0004 024B     		ldr	r3, .L36
+ 454 0006 8022     		mov	r2, #128
+ 455 0008 9202     		lsl	r2, r2, #10
+ 456 000a 1A60     		str	r2, [r3]
+ 376:.\Generated_Source\PSoC4/Timeout.c **** }
+ 457              		.loc 1 376 0
+ 458 000c BD46     		mov	sp, r7
+ 459              		@ sp needed
+ 460 000e 80BD     		pop	{r7, pc}
+ 461              	.L37:
+ 462              		.align	2
+ 463              	.L36:
+ 464 0010 00E200E0 		.word	-536813056
+ 465              		.cfi_endproc
+ 466              	.LFE13:
+ 467              		.size	Timeout_SetPending, .-Timeout_SetPending
+ 468              		.section	.text.Timeout_ClearPending,"ax",%progbits
+ 469              		.align	2
+ 470              		.global	Timeout_ClearPending
+ 471              		.code	16
+ 472              		.thumb_func
+ 473              		.type	Timeout_ClearPending, %function
+ 474              	Timeout_ClearPending:
+ 475              	.LFB14:
+ 377:.\Generated_Source\PSoC4/Timeout.c **** 
+ 378:.\Generated_Source\PSoC4/Timeout.c **** 
+ 379:.\Generated_Source\PSoC4/Timeout.c **** /*******************************************************************************
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 16
+
+
+ 380:.\Generated_Source\PSoC4/Timeout.c **** * Function Name: Timeout_ClearPending
+ 381:.\Generated_Source\PSoC4/Timeout.c **** ********************************************************************************
+ 382:.\Generated_Source\PSoC4/Timeout.c **** *
+ 383:.\Generated_Source\PSoC4/Timeout.c **** * Summary:
+ 384:.\Generated_Source\PSoC4/Timeout.c **** *   Clears a pending interrupt in the interrupt controller.
+ 385:.\Generated_Source\PSoC4/Timeout.c **** *
+ 386:.\Generated_Source\PSoC4/Timeout.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 387:.\Generated_Source\PSoC4/Timeout.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 388:.\Generated_Source\PSoC4/Timeout.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 389:.\Generated_Source\PSoC4/Timeout.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 390:.\Generated_Source\PSoC4/Timeout.c **** *
+ 391:.\Generated_Source\PSoC4/Timeout.c **** * Parameters:
+ 392:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 393:.\Generated_Source\PSoC4/Timeout.c **** *
+ 394:.\Generated_Source\PSoC4/Timeout.c **** * Return:
+ 395:.\Generated_Source\PSoC4/Timeout.c **** *   None
+ 396:.\Generated_Source\PSoC4/Timeout.c **** *
+ 397:.\Generated_Source\PSoC4/Timeout.c **** *******************************************************************************/
+ 398:.\Generated_Source\PSoC4/Timeout.c **** void Timeout_ClearPending(void)
+ 399:.\Generated_Source\PSoC4/Timeout.c **** {
+ 476              		.loc 1 399 0
+ 477              		.cfi_startproc
+ 478 0000 80B5     		push	{r7, lr}
+ 479              		.cfi_def_cfa_offset 8
+ 480              		.cfi_offset 7, -8
+ 481              		.cfi_offset 14, -4
+ 482 0002 00AF     		add	r7, sp, #0
+ 483              		.cfi_def_cfa_register 7
+ 400:.\Generated_Source\PSoC4/Timeout.c ****     *Timeout_INTC_CLR_PD = Timeout__INTC_MASK;
+ 484              		.loc 1 400 0
+ 485 0004 024B     		ldr	r3, .L39
+ 486 0006 8022     		mov	r2, #128
+ 487 0008 9202     		lsl	r2, r2, #10
+ 488 000a 1A60     		str	r2, [r3]
+ 401:.\Generated_Source\PSoC4/Timeout.c **** }
+ 489              		.loc 1 401 0
+ 490 000c BD46     		mov	sp, r7
+ 491              		@ sp needed
+ 492 000e 80BD     		pop	{r7, pc}
+ 493              	.L40:
+ 494              		.align	2
+ 495              	.L39:
+ 496 0010 80E200E0 		.word	-536812928
+ 497              		.cfi_endproc
+ 498              	.LFE14:
+ 499              		.size	Timeout_ClearPending, .-Timeout_ClearPending
+ 500              		.text
+ 501              	.Letext0:
+ 502              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 503              		.section	.debug_info,"",%progbits
+ 504              	.Ldebug_info0:
+ 505 0000 42020000 		.4byte	0x242
+ 506 0004 0400     		.2byte	0x4
+ 507 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 508 000a 04       		.byte	0x4
+ 509 000b 01       		.uleb128 0x1
+ 510 000c 06000000 		.4byte	.LASF33
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 17
+
+
+ 511 0010 01       		.byte	0x1
+ 512 0011 91020000 		.4byte	.LASF34
+ 513 0015 8C010000 		.4byte	.LASF35
+ 514 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 515 001d 00000000 		.4byte	0
+ 516 0021 00000000 		.4byte	.Ldebug_line0
+ 517 0025 02       		.uleb128 0x2
+ 518 0026 01       		.byte	0x1
+ 519 0027 06       		.byte	0x6
+ 520 0028 B4020000 		.4byte	.LASF0
+ 521 002c 02       		.uleb128 0x2
+ 522 002d 01       		.byte	0x1
+ 523 002e 08       		.byte	0x8
+ 524 002f EC000000 		.4byte	.LASF1
+ 525 0033 02       		.uleb128 0x2
+ 526 0034 02       		.byte	0x2
+ 527 0035 05       		.byte	0x5
+ 528 0036 6F020000 		.4byte	.LASF2
+ 529 003a 02       		.uleb128 0x2
+ 530 003b 02       		.byte	0x2
+ 531 003c 07       		.byte	0x7
+ 532 003d C5000000 		.4byte	.LASF3
+ 533 0041 02       		.uleb128 0x2
+ 534 0042 04       		.byte	0x4
+ 535 0043 05       		.byte	0x5
+ 536 0044 88020000 		.4byte	.LASF4
+ 537 0048 02       		.uleb128 0x2
+ 538 0049 04       		.byte	0x4
+ 539 004a 07       		.byte	0x7
+ 540 004b 1C010000 		.4byte	.LASF5
+ 541 004f 02       		.uleb128 0x2
+ 542 0050 08       		.byte	0x8
+ 543 0051 05       		.byte	0x5
+ 544 0052 29020000 		.4byte	.LASF6
+ 545 0056 02       		.uleb128 0x2
+ 546 0057 08       		.byte	0x8
+ 547 0058 07       		.byte	0x7
+ 548 0059 FC010000 		.4byte	.LASF7
+ 549 005d 03       		.uleb128 0x3
+ 550 005e 04       		.byte	0x4
+ 551 005f 05       		.byte	0x5
+ 552 0060 696E7400 		.ascii	"int\000"
+ 553 0064 02       		.uleb128 0x2
+ 554 0065 04       		.byte	0x4
+ 555 0066 07       		.byte	0x7
+ 556 0067 E7010000 		.4byte	.LASF8
+ 557 006b 04       		.uleb128 0x4
+ 558 006c 2E010000 		.4byte	.LASF9
+ 559 0070 02       		.byte	0x2
+ 560 0071 3801     		.2byte	0x138
+ 561 0073 2C000000 		.4byte	0x2c
+ 562 0077 04       		.uleb128 0x4
+ 563 0078 CF010000 		.4byte	.LASF10
+ 564 007c 02       		.byte	0x2
+ 565 007d 3A01     		.2byte	0x13a
+ 566 007f 48000000 		.4byte	0x48
+ 567 0083 02       		.uleb128 0x2
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 18
+
+
+ 568 0084 04       		.byte	0x4
+ 569 0085 04       		.byte	0x4
+ 570 0086 E6000000 		.4byte	.LASF11
+ 571 008a 02       		.uleb128 0x2
+ 572 008b 08       		.byte	0x8
+ 573 008c 04       		.byte	0x4
+ 574 008d 4F010000 		.4byte	.LASF12
+ 575 0091 02       		.uleb128 0x2
+ 576 0092 01       		.byte	0x1
+ 577 0093 08       		.byte	0x8
+ 578 0094 37020000 		.4byte	.LASF13
+ 579 0098 04       		.uleb128 0x4
+ 580 0099 00000000 		.4byte	.LASF14
+ 581 009d 02       		.byte	0x2
+ 582 009e E401     		.2byte	0x1e4
+ 583 00a0 A4000000 		.4byte	0xa4
+ 584 00a4 05       		.uleb128 0x5
+ 585 00a5 77000000 		.4byte	0x77
+ 586 00a9 04       		.uleb128 0x4
+ 587 00aa 13020000 		.4byte	.LASF15
+ 588 00ae 02       		.byte	0x2
+ 589 00af F401     		.2byte	0x1f4
+ 590 00b1 B5000000 		.4byte	0xb5
+ 591 00b5 06       		.uleb128 0x6
+ 592 00b6 04       		.byte	0x4
+ 593 00b7 BB000000 		.4byte	0xbb
+ 594 00bb 07       		.uleb128 0x7
+ 595 00bc 02       		.uleb128 0x2
+ 596 00bd 04       		.byte	0x4
+ 597 00be 07       		.byte	0x7
+ 598 00bf 20020000 		.4byte	.LASF16
+ 599 00c3 08       		.uleb128 0x8
+ 600 00c4 D8000000 		.4byte	.LASF17
+ 601 00c8 01       		.byte	0x1
+ 602 00c9 38       		.byte	0x38
+ 603 00ca 00000000 		.4byte	.LFB2
+ 604 00ce 24000000 		.4byte	.LFE2-.LFB2
+ 605 00d2 01       		.uleb128 0x1
+ 606 00d3 9C       		.byte	0x9c
+ 607 00d4 09       		.uleb128 0x9
+ 608 00d5 5F020000 		.4byte	.LASF20
+ 609 00d9 01       		.byte	0x1
+ 610 00da 63       		.byte	0x63
+ 611 00db 00000000 		.4byte	.LFB3
+ 612 00df 24000000 		.4byte	.LFE3-.LFB3
+ 613 00e3 01       		.uleb128 0x1
+ 614 00e4 9C       		.byte	0x9c
+ 615 00e5 F8000000 		.4byte	0xf8
+ 616 00e9 0A       		.uleb128 0xa
+ 617 00ea F4010000 		.4byte	.LASF22
+ 618 00ee 01       		.byte	0x1
+ 619 00ef 63       		.byte	0x63
+ 620 00f0 A9000000 		.4byte	0xa9
+ 621 00f4 02       		.uleb128 0x2
+ 622 00f5 91       		.byte	0x91
+ 623 00f6 74       		.sleb128 -12
+ 624 00f7 00       		.byte	0
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 19
+
+
+ 625 00f8 08       		.uleb128 0x8
+ 626 00f9 6B010000 		.4byte	.LASF18
+ 627 00fd 01       		.byte	0x1
+ 628 00fe 81       		.byte	0x81
+ 629 00ff 00000000 		.4byte	.LFB4
+ 630 0103 18000000 		.4byte	.LFE4-.LFB4
+ 631 0107 01       		.uleb128 0x1
+ 632 0108 9C       		.byte	0x9c
+ 633 0109 0B       		.uleb128 0xb
+ 634 010a 3D010000 		.4byte	.LASF19
+ 635 010e 01       		.byte	0x1
+ 636 010f 9F       		.byte	0x9f
+ 637 0110 00000000 		.4byte	.LFB5
+ 638 0114 08000000 		.4byte	.LFE5-.LFB5
+ 639 0118 01       		.uleb128 0x1
+ 640 0119 9C       		.byte	0x9c
+ 641 011a 0C       		.uleb128 0xc
+ 642 011b 94000000 		.4byte	.LASF21
+ 643 011f 01       		.byte	0x1
+ 644 0120 C7       		.byte	0xc7
+ 645 0121 00000000 		.4byte	.LFB6
+ 646 0125 1C000000 		.4byte	.LFE6-.LFB6
+ 647 0129 01       		.uleb128 0x1
+ 648 012a 9C       		.byte	0x9c
+ 649 012b 3E010000 		.4byte	0x13e
+ 650 012f 0A       		.uleb128 0xa
+ 651 0130 F4010000 		.4byte	.LASF22
+ 652 0134 01       		.byte	0x1
+ 653 0135 C7       		.byte	0xc7
+ 654 0136 A9000000 		.4byte	0xa9
+ 655 013a 02       		.uleb128 0x2
+ 656 013b 91       		.byte	0x91
+ 657 013c 74       		.sleb128 -12
+ 658 013d 00       		.byte	0
+ 659 013e 0D       		.uleb128 0xd
+ 660 013f B3000000 		.4byte	.LASF28
+ 661 0143 01       		.byte	0x1
+ 662 0144 DB       		.byte	0xdb
+ 663 0145 A9000000 		.4byte	0xa9
+ 664 0149 00000000 		.4byte	.LFB7
+ 665 014d 14000000 		.4byte	.LFE7-.LFB7
+ 666 0151 01       		.uleb128 0x1
+ 667 0152 9C       		.byte	0x9c
+ 668 0153 09       		.uleb128 0x9
+ 669 0154 4B020000 		.4byte	.LASF23
+ 670 0158 01       		.byte	0x1
+ 671 0159 F9       		.byte	0xf9
+ 672 015a 00000000 		.4byte	.LFB8
+ 673 015e 50000000 		.4byte	.LFE8-.LFB8
+ 674 0162 01       		.uleb128 0x1
+ 675 0163 9C       		.byte	0x9c
+ 676 0164 93010000 		.4byte	0x193
+ 677 0168 0A       		.uleb128 0xa
+ 678 0169 34010000 		.4byte	.LASF24
+ 679 016d 01       		.byte	0x1
+ 680 016e F9       		.byte	0xf9
+ 681 016f 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 20
+
+
+ 682 0173 02       		.uleb128 0x2
+ 683 0174 91       		.byte	0x91
+ 684 0175 67       		.sleb128 -25
+ 685 0176 0E       		.uleb128 0xe
+ 686 0177 0D010000 		.4byte	.LASF25
+ 687 017b 01       		.byte	0x1
+ 688 017c FB       		.byte	0xfb
+ 689 017d 6B000000 		.4byte	0x6b
+ 690 0181 02       		.uleb128 0x2
+ 691 0182 91       		.byte	0x91
+ 692 0183 6B       		.sleb128 -21
+ 693 0184 0E       		.uleb128 0xe
+ 694 0185 79020000 		.4byte	.LASF26
+ 695 0189 01       		.byte	0x1
+ 696 018a FC       		.byte	0xfc
+ 697 018b 77000000 		.4byte	0x77
+ 698 018f 02       		.uleb128 0x2
+ 699 0190 91       		.byte	0x91
+ 700 0191 6C       		.sleb128 -20
+ 701 0192 00       		.byte	0
+ 702 0193 0F       		.uleb128 0xf
+ 703 0194 78010000 		.4byte	.LASF36
+ 704 0198 01       		.byte	0x1
+ 705 0199 1501     		.2byte	0x115
+ 706 019b 6B000000 		.4byte	0x6b
+ 707 019f 00000000 		.4byte	.LFB9
+ 708 01a3 2C000000 		.4byte	.LFE9-.LFB9
+ 709 01a7 01       		.uleb128 0x1
+ 710 01a8 9C       		.byte	0x9c
+ 711 01a9 CC010000 		.4byte	0x1cc
+ 712 01ad 10       		.uleb128 0x10
+ 713 01ae 34010000 		.4byte	.LASF24
+ 714 01b2 01       		.byte	0x1
+ 715 01b3 1701     		.2byte	0x117
+ 716 01b5 77000000 		.4byte	0x77
+ 717 01b9 02       		.uleb128 0x2
+ 718 01ba 91       		.byte	0x91
+ 719 01bb 70       		.sleb128 -16
+ 720 01bc 10       		.uleb128 0x10
+ 721 01bd 79020000 		.4byte	.LASF26
+ 722 01c1 01       		.byte	0x1
+ 723 01c2 1801     		.2byte	0x118
+ 724 01c4 77000000 		.4byte	0x77
+ 725 01c8 02       		.uleb128 0x2
+ 726 01c9 91       		.byte	0x91
+ 727 01ca 74       		.sleb128 -12
+ 728 01cb 00       		.byte	0
+ 729 01cc 11       		.uleb128 0x11
+ 730 01cd 3C020000 		.4byte	.LASF27
+ 731 01d1 01       		.byte	0x1
+ 732 01d2 3001     		.2byte	0x130
+ 733 01d4 00000000 		.4byte	.LFB10
+ 734 01d8 14000000 		.4byte	.LFE10-.LFB10
+ 735 01dc 01       		.uleb128 0x1
+ 736 01dd 9C       		.byte	0x9c
+ 737 01de 12       		.uleb128 0x12
+ 738 01df D6010000 		.4byte	.LASF29
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 21
+
+
+ 739 01e3 01       		.byte	0x1
+ 740 01e4 4501     		.2byte	0x145
+ 741 01e6 6B000000 		.4byte	0x6b
+ 742 01ea 00000000 		.4byte	.LFB11
+ 743 01ee 20000000 		.4byte	.LFE11-.LFB11
+ 744 01f2 01       		.uleb128 0x1
+ 745 01f3 9C       		.byte	0x9c
+ 746 01f4 11       		.uleb128 0x11
+ 747 01f5 C0020000 		.4byte	.LASF30
+ 748 01f9 01       		.byte	0x1
+ 749 01fa 5A01     		.2byte	0x15a
+ 750 01fc 00000000 		.4byte	.LFB12
+ 751 0200 14000000 		.4byte	.LFE12-.LFB12
+ 752 0204 01       		.uleb128 0x1
+ 753 0205 9C       		.byte	0x9c
+ 754 0206 11       		.uleb128 0x11
+ 755 0207 FA000000 		.4byte	.LASF31
+ 756 020b 01       		.byte	0x1
+ 757 020c 7501     		.2byte	0x175
+ 758 020e 00000000 		.4byte	.LFB13
+ 759 0212 14000000 		.4byte	.LFE13-.LFB13
+ 760 0216 01       		.uleb128 0x1
+ 761 0217 9C       		.byte	0x9c
+ 762 0218 11       		.uleb128 0x11
+ 763 0219 56010000 		.4byte	.LASF32
+ 764 021d 01       		.byte	0x1
+ 765 021e 8E01     		.2byte	0x18e
+ 766 0220 00000000 		.4byte	.LFB14
+ 767 0224 14000000 		.4byte	.LFE14-.LFB14
+ 768 0228 01       		.uleb128 0x1
+ 769 0229 9C       		.byte	0x9c
+ 770 022a 13       		.uleb128 0x13
+ 771 022b A9000000 		.4byte	0xa9
+ 772 022f 3A020000 		.4byte	0x23a
+ 773 0233 14       		.uleb128 0x14
+ 774 0234 BC000000 		.4byte	0xbc
+ 775 0238 2F       		.byte	0x2f
+ 776 0239 00       		.byte	0
+ 777 023a 15       		.uleb128 0x15
+ 778 023b A6000000 		.4byte	.LASF37
+ 779 023f 01       		.byte	0x1
+ 780 0240 21       		.byte	0x21
+ 781 0241 2A020000 		.4byte	0x22a
+ 782 0245 00       		.byte	0
+ 783              		.section	.debug_abbrev,"",%progbits
+ 784              	.Ldebug_abbrev0:
+ 785 0000 01       		.uleb128 0x1
+ 786 0001 11       		.uleb128 0x11
+ 787 0002 01       		.byte	0x1
+ 788 0003 25       		.uleb128 0x25
+ 789 0004 0E       		.uleb128 0xe
+ 790 0005 13       		.uleb128 0x13
+ 791 0006 0B       		.uleb128 0xb
+ 792 0007 03       		.uleb128 0x3
+ 793 0008 0E       		.uleb128 0xe
+ 794 0009 1B       		.uleb128 0x1b
+ 795 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 22
+
+
+ 796 000b 55       		.uleb128 0x55
+ 797 000c 17       		.uleb128 0x17
+ 798 000d 11       		.uleb128 0x11
+ 799 000e 01       		.uleb128 0x1
+ 800 000f 10       		.uleb128 0x10
+ 801 0010 17       		.uleb128 0x17
+ 802 0011 00       		.byte	0
+ 803 0012 00       		.byte	0
+ 804 0013 02       		.uleb128 0x2
+ 805 0014 24       		.uleb128 0x24
+ 806 0015 00       		.byte	0
+ 807 0016 0B       		.uleb128 0xb
+ 808 0017 0B       		.uleb128 0xb
+ 809 0018 3E       		.uleb128 0x3e
+ 810 0019 0B       		.uleb128 0xb
+ 811 001a 03       		.uleb128 0x3
+ 812 001b 0E       		.uleb128 0xe
+ 813 001c 00       		.byte	0
+ 814 001d 00       		.byte	0
+ 815 001e 03       		.uleb128 0x3
+ 816 001f 24       		.uleb128 0x24
+ 817 0020 00       		.byte	0
+ 818 0021 0B       		.uleb128 0xb
+ 819 0022 0B       		.uleb128 0xb
+ 820 0023 3E       		.uleb128 0x3e
+ 821 0024 0B       		.uleb128 0xb
+ 822 0025 03       		.uleb128 0x3
+ 823 0026 08       		.uleb128 0x8
+ 824 0027 00       		.byte	0
+ 825 0028 00       		.byte	0
+ 826 0029 04       		.uleb128 0x4
+ 827 002a 16       		.uleb128 0x16
+ 828 002b 00       		.byte	0
+ 829 002c 03       		.uleb128 0x3
+ 830 002d 0E       		.uleb128 0xe
+ 831 002e 3A       		.uleb128 0x3a
+ 832 002f 0B       		.uleb128 0xb
+ 833 0030 3B       		.uleb128 0x3b
+ 834 0031 05       		.uleb128 0x5
+ 835 0032 49       		.uleb128 0x49
+ 836 0033 13       		.uleb128 0x13
+ 837 0034 00       		.byte	0
+ 838 0035 00       		.byte	0
+ 839 0036 05       		.uleb128 0x5
+ 840 0037 35       		.uleb128 0x35
+ 841 0038 00       		.byte	0
+ 842 0039 49       		.uleb128 0x49
+ 843 003a 13       		.uleb128 0x13
+ 844 003b 00       		.byte	0
+ 845 003c 00       		.byte	0
+ 846 003d 06       		.uleb128 0x6
+ 847 003e 0F       		.uleb128 0xf
+ 848 003f 00       		.byte	0
+ 849 0040 0B       		.uleb128 0xb
+ 850 0041 0B       		.uleb128 0xb
+ 851 0042 49       		.uleb128 0x49
+ 852 0043 13       		.uleb128 0x13
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 23
+
+
+ 853 0044 00       		.byte	0
+ 854 0045 00       		.byte	0
+ 855 0046 07       		.uleb128 0x7
+ 856 0047 15       		.uleb128 0x15
+ 857 0048 00       		.byte	0
+ 858 0049 27       		.uleb128 0x27
+ 859 004a 19       		.uleb128 0x19
+ 860 004b 00       		.byte	0
+ 861 004c 00       		.byte	0
+ 862 004d 08       		.uleb128 0x8
+ 863 004e 2E       		.uleb128 0x2e
+ 864 004f 00       		.byte	0
+ 865 0050 3F       		.uleb128 0x3f
+ 866 0051 19       		.uleb128 0x19
+ 867 0052 03       		.uleb128 0x3
+ 868 0053 0E       		.uleb128 0xe
+ 869 0054 3A       		.uleb128 0x3a
+ 870 0055 0B       		.uleb128 0xb
+ 871 0056 3B       		.uleb128 0x3b
+ 872 0057 0B       		.uleb128 0xb
+ 873 0058 27       		.uleb128 0x27
+ 874 0059 19       		.uleb128 0x19
+ 875 005a 11       		.uleb128 0x11
+ 876 005b 01       		.uleb128 0x1
+ 877 005c 12       		.uleb128 0x12
+ 878 005d 06       		.uleb128 0x6
+ 879 005e 40       		.uleb128 0x40
+ 880 005f 18       		.uleb128 0x18
+ 881 0060 9642     		.uleb128 0x2116
+ 882 0062 19       		.uleb128 0x19
+ 883 0063 00       		.byte	0
+ 884 0064 00       		.byte	0
+ 885 0065 09       		.uleb128 0x9
+ 886 0066 2E       		.uleb128 0x2e
+ 887 0067 01       		.byte	0x1
+ 888 0068 3F       		.uleb128 0x3f
+ 889 0069 19       		.uleb128 0x19
+ 890 006a 03       		.uleb128 0x3
+ 891 006b 0E       		.uleb128 0xe
+ 892 006c 3A       		.uleb128 0x3a
+ 893 006d 0B       		.uleb128 0xb
+ 894 006e 3B       		.uleb128 0x3b
+ 895 006f 0B       		.uleb128 0xb
+ 896 0070 27       		.uleb128 0x27
+ 897 0071 19       		.uleb128 0x19
+ 898 0072 11       		.uleb128 0x11
+ 899 0073 01       		.uleb128 0x1
+ 900 0074 12       		.uleb128 0x12
+ 901 0075 06       		.uleb128 0x6
+ 902 0076 40       		.uleb128 0x40
+ 903 0077 18       		.uleb128 0x18
+ 904 0078 9642     		.uleb128 0x2116
+ 905 007a 19       		.uleb128 0x19
+ 906 007b 01       		.uleb128 0x1
+ 907 007c 13       		.uleb128 0x13
+ 908 007d 00       		.byte	0
+ 909 007e 00       		.byte	0
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 24
+
+
+ 910 007f 0A       		.uleb128 0xa
+ 911 0080 05       		.uleb128 0x5
+ 912 0081 00       		.byte	0
+ 913 0082 03       		.uleb128 0x3
+ 914 0083 0E       		.uleb128 0xe
+ 915 0084 3A       		.uleb128 0x3a
+ 916 0085 0B       		.uleb128 0xb
+ 917 0086 3B       		.uleb128 0x3b
+ 918 0087 0B       		.uleb128 0xb
+ 919 0088 49       		.uleb128 0x49
+ 920 0089 13       		.uleb128 0x13
+ 921 008a 02       		.uleb128 0x2
+ 922 008b 18       		.uleb128 0x18
+ 923 008c 00       		.byte	0
+ 924 008d 00       		.byte	0
+ 925 008e 0B       		.uleb128 0xb
+ 926 008f 2E       		.uleb128 0x2e
+ 927 0090 00       		.byte	0
+ 928 0091 3F       		.uleb128 0x3f
+ 929 0092 19       		.uleb128 0x19
+ 930 0093 03       		.uleb128 0x3
+ 931 0094 0E       		.uleb128 0xe
+ 932 0095 3A       		.uleb128 0x3a
+ 933 0096 0B       		.uleb128 0xb
+ 934 0097 3B       		.uleb128 0x3b
+ 935 0098 0B       		.uleb128 0xb
+ 936 0099 27       		.uleb128 0x27
+ 937 009a 19       		.uleb128 0x19
+ 938 009b 11       		.uleb128 0x11
+ 939 009c 01       		.uleb128 0x1
+ 940 009d 12       		.uleb128 0x12
+ 941 009e 06       		.uleb128 0x6
+ 942 009f 40       		.uleb128 0x40
+ 943 00a0 18       		.uleb128 0x18
+ 944 00a1 9742     		.uleb128 0x2117
+ 945 00a3 19       		.uleb128 0x19
+ 946 00a4 00       		.byte	0
+ 947 00a5 00       		.byte	0
+ 948 00a6 0C       		.uleb128 0xc
+ 949 00a7 2E       		.uleb128 0x2e
+ 950 00a8 01       		.byte	0x1
+ 951 00a9 3F       		.uleb128 0x3f
+ 952 00aa 19       		.uleb128 0x19
+ 953 00ab 03       		.uleb128 0x3
+ 954 00ac 0E       		.uleb128 0xe
+ 955 00ad 3A       		.uleb128 0x3a
+ 956 00ae 0B       		.uleb128 0xb
+ 957 00af 3B       		.uleb128 0x3b
+ 958 00b0 0B       		.uleb128 0xb
+ 959 00b1 27       		.uleb128 0x27
+ 960 00b2 19       		.uleb128 0x19
+ 961 00b3 11       		.uleb128 0x11
+ 962 00b4 01       		.uleb128 0x1
+ 963 00b5 12       		.uleb128 0x12
+ 964 00b6 06       		.uleb128 0x6
+ 965 00b7 40       		.uleb128 0x40
+ 966 00b8 18       		.uleb128 0x18
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 25
+
+
+ 967 00b9 9742     		.uleb128 0x2117
+ 968 00bb 19       		.uleb128 0x19
+ 969 00bc 01       		.uleb128 0x1
+ 970 00bd 13       		.uleb128 0x13
+ 971 00be 00       		.byte	0
+ 972 00bf 00       		.byte	0
+ 973 00c0 0D       		.uleb128 0xd
+ 974 00c1 2E       		.uleb128 0x2e
+ 975 00c2 00       		.byte	0
+ 976 00c3 3F       		.uleb128 0x3f
+ 977 00c4 19       		.uleb128 0x19
+ 978 00c5 03       		.uleb128 0x3
+ 979 00c6 0E       		.uleb128 0xe
+ 980 00c7 3A       		.uleb128 0x3a
+ 981 00c8 0B       		.uleb128 0xb
+ 982 00c9 3B       		.uleb128 0x3b
+ 983 00ca 0B       		.uleb128 0xb
+ 984 00cb 27       		.uleb128 0x27
+ 985 00cc 19       		.uleb128 0x19
+ 986 00cd 49       		.uleb128 0x49
+ 987 00ce 13       		.uleb128 0x13
+ 988 00cf 11       		.uleb128 0x11
+ 989 00d0 01       		.uleb128 0x1
+ 990 00d1 12       		.uleb128 0x12
+ 991 00d2 06       		.uleb128 0x6
+ 992 00d3 40       		.uleb128 0x40
+ 993 00d4 18       		.uleb128 0x18
+ 994 00d5 9742     		.uleb128 0x2117
+ 995 00d7 19       		.uleb128 0x19
+ 996 00d8 00       		.byte	0
+ 997 00d9 00       		.byte	0
+ 998 00da 0E       		.uleb128 0xe
+ 999 00db 34       		.uleb128 0x34
+ 1000 00dc 00       		.byte	0
+ 1001 00dd 03       		.uleb128 0x3
+ 1002 00de 0E       		.uleb128 0xe
+ 1003 00df 3A       		.uleb128 0x3a
+ 1004 00e0 0B       		.uleb128 0xb
+ 1005 00e1 3B       		.uleb128 0x3b
+ 1006 00e2 0B       		.uleb128 0xb
+ 1007 00e3 49       		.uleb128 0x49
+ 1008 00e4 13       		.uleb128 0x13
+ 1009 00e5 02       		.uleb128 0x2
+ 1010 00e6 18       		.uleb128 0x18
+ 1011 00e7 00       		.byte	0
+ 1012 00e8 00       		.byte	0
+ 1013 00e9 0F       		.uleb128 0xf
+ 1014 00ea 2E       		.uleb128 0x2e
+ 1015 00eb 01       		.byte	0x1
+ 1016 00ec 3F       		.uleb128 0x3f
+ 1017 00ed 19       		.uleb128 0x19
+ 1018 00ee 03       		.uleb128 0x3
+ 1019 00ef 0E       		.uleb128 0xe
+ 1020 00f0 3A       		.uleb128 0x3a
+ 1021 00f1 0B       		.uleb128 0xb
+ 1022 00f2 3B       		.uleb128 0x3b
+ 1023 00f3 05       		.uleb128 0x5
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 26
+
+
+ 1024 00f4 27       		.uleb128 0x27
+ 1025 00f5 19       		.uleb128 0x19
+ 1026 00f6 49       		.uleb128 0x49
+ 1027 00f7 13       		.uleb128 0x13
+ 1028 00f8 11       		.uleb128 0x11
+ 1029 00f9 01       		.uleb128 0x1
+ 1030 00fa 12       		.uleb128 0x12
+ 1031 00fb 06       		.uleb128 0x6
+ 1032 00fc 40       		.uleb128 0x40
+ 1033 00fd 18       		.uleb128 0x18
+ 1034 00fe 9742     		.uleb128 0x2117
+ 1035 0100 19       		.uleb128 0x19
+ 1036 0101 01       		.uleb128 0x1
+ 1037 0102 13       		.uleb128 0x13
+ 1038 0103 00       		.byte	0
+ 1039 0104 00       		.byte	0
+ 1040 0105 10       		.uleb128 0x10
+ 1041 0106 34       		.uleb128 0x34
+ 1042 0107 00       		.byte	0
+ 1043 0108 03       		.uleb128 0x3
+ 1044 0109 0E       		.uleb128 0xe
+ 1045 010a 3A       		.uleb128 0x3a
+ 1046 010b 0B       		.uleb128 0xb
+ 1047 010c 3B       		.uleb128 0x3b
+ 1048 010d 05       		.uleb128 0x5
+ 1049 010e 49       		.uleb128 0x49
+ 1050 010f 13       		.uleb128 0x13
+ 1051 0110 02       		.uleb128 0x2
+ 1052 0111 18       		.uleb128 0x18
+ 1053 0112 00       		.byte	0
+ 1054 0113 00       		.byte	0
+ 1055 0114 11       		.uleb128 0x11
+ 1056 0115 2E       		.uleb128 0x2e
+ 1057 0116 00       		.byte	0
+ 1058 0117 3F       		.uleb128 0x3f
+ 1059 0118 19       		.uleb128 0x19
+ 1060 0119 03       		.uleb128 0x3
+ 1061 011a 0E       		.uleb128 0xe
+ 1062 011b 3A       		.uleb128 0x3a
+ 1063 011c 0B       		.uleb128 0xb
+ 1064 011d 3B       		.uleb128 0x3b
+ 1065 011e 05       		.uleb128 0x5
+ 1066 011f 27       		.uleb128 0x27
+ 1067 0120 19       		.uleb128 0x19
+ 1068 0121 11       		.uleb128 0x11
+ 1069 0122 01       		.uleb128 0x1
+ 1070 0123 12       		.uleb128 0x12
+ 1071 0124 06       		.uleb128 0x6
+ 1072 0125 40       		.uleb128 0x40
+ 1073 0126 18       		.uleb128 0x18
+ 1074 0127 9742     		.uleb128 0x2117
+ 1075 0129 19       		.uleb128 0x19
+ 1076 012a 00       		.byte	0
+ 1077 012b 00       		.byte	0
+ 1078 012c 12       		.uleb128 0x12
+ 1079 012d 2E       		.uleb128 0x2e
+ 1080 012e 00       		.byte	0
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 27
+
+
+ 1081 012f 3F       		.uleb128 0x3f
+ 1082 0130 19       		.uleb128 0x19
+ 1083 0131 03       		.uleb128 0x3
+ 1084 0132 0E       		.uleb128 0xe
+ 1085 0133 3A       		.uleb128 0x3a
+ 1086 0134 0B       		.uleb128 0xb
+ 1087 0135 3B       		.uleb128 0x3b
+ 1088 0136 05       		.uleb128 0x5
+ 1089 0137 27       		.uleb128 0x27
+ 1090 0138 19       		.uleb128 0x19
+ 1091 0139 49       		.uleb128 0x49
+ 1092 013a 13       		.uleb128 0x13
+ 1093 013b 11       		.uleb128 0x11
+ 1094 013c 01       		.uleb128 0x1
+ 1095 013d 12       		.uleb128 0x12
+ 1096 013e 06       		.uleb128 0x6
+ 1097 013f 40       		.uleb128 0x40
+ 1098 0140 18       		.uleb128 0x18
+ 1099 0141 9742     		.uleb128 0x2117
+ 1100 0143 19       		.uleb128 0x19
+ 1101 0144 00       		.byte	0
+ 1102 0145 00       		.byte	0
+ 1103 0146 13       		.uleb128 0x13
+ 1104 0147 01       		.uleb128 0x1
+ 1105 0148 01       		.byte	0x1
+ 1106 0149 49       		.uleb128 0x49
+ 1107 014a 13       		.uleb128 0x13
+ 1108 014b 01       		.uleb128 0x1
+ 1109 014c 13       		.uleb128 0x13
+ 1110 014d 00       		.byte	0
+ 1111 014e 00       		.byte	0
+ 1112 014f 14       		.uleb128 0x14
+ 1113 0150 21       		.uleb128 0x21
+ 1114 0151 00       		.byte	0
+ 1115 0152 49       		.uleb128 0x49
+ 1116 0153 13       		.uleb128 0x13
+ 1117 0154 2F       		.uleb128 0x2f
+ 1118 0155 0B       		.uleb128 0xb
+ 1119 0156 00       		.byte	0
+ 1120 0157 00       		.byte	0
+ 1121 0158 15       		.uleb128 0x15
+ 1122 0159 34       		.uleb128 0x34
+ 1123 015a 00       		.byte	0
+ 1124 015b 03       		.uleb128 0x3
+ 1125 015c 0E       		.uleb128 0xe
+ 1126 015d 3A       		.uleb128 0x3a
+ 1127 015e 0B       		.uleb128 0xb
+ 1128 015f 3B       		.uleb128 0x3b
+ 1129 0160 0B       		.uleb128 0xb
+ 1130 0161 49       		.uleb128 0x49
+ 1131 0162 13       		.uleb128 0x13
+ 1132 0163 3F       		.uleb128 0x3f
+ 1133 0164 19       		.uleb128 0x19
+ 1134 0165 3C       		.uleb128 0x3c
+ 1135 0166 19       		.uleb128 0x19
+ 1136 0167 00       		.byte	0
+ 1137 0168 00       		.byte	0
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 28
+
+
+ 1138 0169 00       		.byte	0
+ 1139              		.section	.debug_aranges,"",%progbits
+ 1140 0000 7C000000 		.4byte	0x7c
+ 1141 0004 0200     		.2byte	0x2
+ 1142 0006 00000000 		.4byte	.Ldebug_info0
+ 1143 000a 04       		.byte	0x4
+ 1144 000b 00       		.byte	0
+ 1145 000c 0000     		.2byte	0
+ 1146 000e 0000     		.2byte	0
+ 1147 0010 00000000 		.4byte	.LFB2
+ 1148 0014 24000000 		.4byte	.LFE2-.LFB2
+ 1149 0018 00000000 		.4byte	.LFB3
+ 1150 001c 24000000 		.4byte	.LFE3-.LFB3
+ 1151 0020 00000000 		.4byte	.LFB4
+ 1152 0024 18000000 		.4byte	.LFE4-.LFB4
+ 1153 0028 00000000 		.4byte	.LFB5
+ 1154 002c 08000000 		.4byte	.LFE5-.LFB5
+ 1155 0030 00000000 		.4byte	.LFB6
+ 1156 0034 1C000000 		.4byte	.LFE6-.LFB6
+ 1157 0038 00000000 		.4byte	.LFB7
+ 1158 003c 14000000 		.4byte	.LFE7-.LFB7
+ 1159 0040 00000000 		.4byte	.LFB8
+ 1160 0044 50000000 		.4byte	.LFE8-.LFB8
+ 1161 0048 00000000 		.4byte	.LFB9
+ 1162 004c 2C000000 		.4byte	.LFE9-.LFB9
+ 1163 0050 00000000 		.4byte	.LFB10
+ 1164 0054 14000000 		.4byte	.LFE10-.LFB10
+ 1165 0058 00000000 		.4byte	.LFB11
+ 1166 005c 20000000 		.4byte	.LFE11-.LFB11
+ 1167 0060 00000000 		.4byte	.LFB12
+ 1168 0064 14000000 		.4byte	.LFE12-.LFB12
+ 1169 0068 00000000 		.4byte	.LFB13
+ 1170 006c 14000000 		.4byte	.LFE13-.LFB13
+ 1171 0070 00000000 		.4byte	.LFB14
+ 1172 0074 14000000 		.4byte	.LFE14-.LFB14
+ 1173 0078 00000000 		.4byte	0
+ 1174 007c 00000000 		.4byte	0
+ 1175              		.section	.debug_ranges,"",%progbits
+ 1176              	.Ldebug_ranges0:
+ 1177 0000 00000000 		.4byte	.LFB2
+ 1178 0004 24000000 		.4byte	.LFE2
+ 1179 0008 00000000 		.4byte	.LFB3
+ 1180 000c 24000000 		.4byte	.LFE3
+ 1181 0010 00000000 		.4byte	.LFB4
+ 1182 0014 18000000 		.4byte	.LFE4
+ 1183 0018 00000000 		.4byte	.LFB5
+ 1184 001c 08000000 		.4byte	.LFE5
+ 1185 0020 00000000 		.4byte	.LFB6
+ 1186 0024 1C000000 		.4byte	.LFE6
+ 1187 0028 00000000 		.4byte	.LFB7
+ 1188 002c 14000000 		.4byte	.LFE7
+ 1189 0030 00000000 		.4byte	.LFB8
+ 1190 0034 50000000 		.4byte	.LFE8
+ 1191 0038 00000000 		.4byte	.LFB9
+ 1192 003c 2C000000 		.4byte	.LFE9
+ 1193 0040 00000000 		.4byte	.LFB10
+ 1194 0044 14000000 		.4byte	.LFE10
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 29
+
+
+ 1195 0048 00000000 		.4byte	.LFB11
+ 1196 004c 20000000 		.4byte	.LFE11
+ 1197 0050 00000000 		.4byte	.LFB12
+ 1198 0054 14000000 		.4byte	.LFE12
+ 1199 0058 00000000 		.4byte	.LFB13
+ 1200 005c 14000000 		.4byte	.LFE13
+ 1201 0060 00000000 		.4byte	.LFB14
+ 1202 0064 14000000 		.4byte	.LFE14
+ 1203 0068 00000000 		.4byte	0
+ 1204 006c 00000000 		.4byte	0
+ 1205              		.section	.debug_line,"",%progbits
+ 1206              	.Ldebug_line0:
+ 1207 0000 6B010000 		.section	.debug_str,"MS",%progbits,1
+ 1207      02005D00 
+ 1207      00000201 
+ 1207      FB0E0D00 
+ 1207      01010101 
+ 1208              	.LASF14:
+ 1209 0000 72656733 		.ascii	"reg32\000"
+ 1209      3200
+ 1210              	.LASF33:
+ 1211 0006 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1211      4320342E 
+ 1211      392E3320 
+ 1211      32303135 
+ 1211      30333033 
+ 1212 0039 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1212      20726576 
+ 1212      6973696F 
+ 1212      6E203232 
+ 1212      31323230 
+ 1213 006c 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1213      66756E63 
+ 1213      74696F6E 
+ 1213      2D736563 
+ 1213      74696F6E 
+ 1214              	.LASF21:
+ 1215 0094 54696D65 		.ascii	"Timeout_SetVector\000"
+ 1215      6F75745F 
+ 1215      53657456 
+ 1215      6563746F 
+ 1215      7200
+ 1216              	.LASF37:
+ 1217 00a6 43795261 		.ascii	"CyRamVectors\000"
+ 1217      6D566563 
+ 1217      746F7273 
+ 1217      00
+ 1218              	.LASF28:
+ 1219 00b3 54696D65 		.ascii	"Timeout_GetVector\000"
+ 1219      6F75745F 
+ 1219      47657456 
+ 1219      6563746F 
+ 1219      7200
+ 1220              	.LASF3:
+ 1221 00c5 73686F72 		.ascii	"short unsigned int\000"
+ 1221      7420756E 
+ 1221      7369676E 
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 30
+
+
+ 1221      65642069 
+ 1221      6E7400
+ 1222              	.LASF17:
+ 1223 00d8 54696D65 		.ascii	"Timeout_Start\000"
+ 1223      6F75745F 
+ 1223      53746172 
+ 1223      7400
+ 1224              	.LASF11:
+ 1225 00e6 666C6F61 		.ascii	"float\000"
+ 1225      7400
+ 1226              	.LASF1:
+ 1227 00ec 756E7369 		.ascii	"unsigned char\000"
+ 1227      676E6564 
+ 1227      20636861 
+ 1227      7200
+ 1228              	.LASF31:
+ 1229 00fa 54696D65 		.ascii	"Timeout_SetPending\000"
+ 1229      6F75745F 
+ 1229      53657450 
+ 1229      656E6469 
+ 1229      6E6700
+ 1230              	.LASF25:
+ 1231 010d 696E7465 		.ascii	"interruptState\000"
+ 1231      72727570 
+ 1231      74537461 
+ 1231      746500
+ 1232              	.LASF5:
+ 1233 011c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1233      20756E73 
+ 1233      69676E65 
+ 1233      6420696E 
+ 1233      7400
+ 1234              	.LASF9:
+ 1235 012e 75696E74 		.ascii	"uint8\000"
+ 1235      3800
+ 1236              	.LASF24:
+ 1237 0134 7072696F 		.ascii	"priority\000"
+ 1237      72697479 
+ 1237      00
+ 1238              	.LASF19:
+ 1239 013d 54696D65 		.ascii	"Timeout_Interrupt\000"
+ 1239      6F75745F 
+ 1239      496E7465 
+ 1239      72727570 
+ 1239      7400
+ 1240              	.LASF12:
+ 1241 014f 646F7562 		.ascii	"double\000"
+ 1241      6C6500
+ 1242              	.LASF32:
+ 1243 0156 54696D65 		.ascii	"Timeout_ClearPending\000"
+ 1243      6F75745F 
+ 1243      436C6561 
+ 1243      7250656E 
+ 1243      64696E67 
+ 1244              	.LASF18:
+ 1245 016b 54696D65 		.ascii	"Timeout_Stop\000"
+ 1245      6F75745F 
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 31
+
+
+ 1245      53746F70 
+ 1245      00
+ 1246              	.LASF36:
+ 1247 0178 54696D65 		.ascii	"Timeout_GetPriority\000"
+ 1247      6F75745F 
+ 1247      47657450 
+ 1247      72696F72 
+ 1247      69747900 
+ 1248              	.LASF35:
+ 1249 018c 433A5C55 		.ascii	"C:\\Users\\George\\Dropbox\\hackAIR\\AirBeaconSimpl"
+ 1249      73657273 
+ 1249      5C47656F 
+ 1249      7267655C 
+ 1249      44726F70 
+ 1250 01ba 655C5077 		.ascii	"e\\PwmLedSensor.cydsn\000"
+ 1250      6D4C6564 
+ 1250      53656E73 
+ 1250      6F722E63 
+ 1250      7964736E 
+ 1251              	.LASF10:
+ 1252 01cf 75696E74 		.ascii	"uint32\000"
+ 1252      333200
+ 1253              	.LASF29:
+ 1254 01d6 54696D65 		.ascii	"Timeout_GetState\000"
+ 1254      6F75745F 
+ 1254      47657453 
+ 1254      74617465 
+ 1254      00
+ 1255              	.LASF8:
+ 1256 01e7 756E7369 		.ascii	"unsigned int\000"
+ 1256      676E6564 
+ 1256      20696E74 
+ 1256      00
+ 1257              	.LASF22:
+ 1258 01f4 61646472 		.ascii	"address\000"
+ 1258      65737300 
+ 1259              	.LASF7:
+ 1260 01fc 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1260      206C6F6E 
+ 1260      6720756E 
+ 1260      7369676E 
+ 1260      65642069 
+ 1261              	.LASF15:
+ 1262 0213 63796973 		.ascii	"cyisraddress\000"
+ 1262      72616464 
+ 1262      72657373 
+ 1262      00
+ 1263              	.LASF16:
+ 1264 0220 73697A65 		.ascii	"sizetype\000"
+ 1264      74797065 
+ 1264      00
+ 1265              	.LASF6:
+ 1266 0229 6C6F6E67 		.ascii	"long long int\000"
+ 1266      206C6F6E 
+ 1266      6720696E 
+ 1266      7400
+ 1267              	.LASF13:
+ARM GAS  C:\Users\George\AppData\Local\Temp\cc4XNLsc.s 			page 32
+
+
+ 1268 0237 63686172 		.ascii	"char\000"
+ 1268      00
+ 1269              	.LASF27:
+ 1270 023c 54696D65 		.ascii	"Timeout_Enable\000"
+ 1270      6F75745F 
+ 1270      456E6162 
+ 1270      6C6500
+ 1271              	.LASF23:
+ 1272 024b 54696D65 		.ascii	"Timeout_SetPriority\000"
+ 1272      6F75745F 
+ 1272      53657450 
+ 1272      72696F72 
+ 1272      69747900 
+ 1273              	.LASF20:
+ 1274 025f 54696D65 		.ascii	"Timeout_StartEx\000"
+ 1274      6F75745F 
+ 1274      53746172 
+ 1274      74457800 
+ 1275              	.LASF2:
+ 1276 026f 73686F72 		.ascii	"short int\000"
+ 1276      7420696E 
+ 1276      7400
+ 1277              	.LASF26:
+ 1278 0279 7072696F 		.ascii	"priorityOffset\000"
+ 1278      72697479 
+ 1278      4F666673 
+ 1278      657400
+ 1279              	.LASF4:
+ 1280 0288 6C6F6E67 		.ascii	"long int\000"
+ 1280      20696E74 
+ 1280      00
+ 1281              	.LASF34:
+ 1282 0291 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\Timeout.c\000"
+ 1282      6E657261 
+ 1282      7465645F 
+ 1282      536F7572 
+ 1282      63655C50 
+ 1283              	.LASF0:
+ 1284 02b4 7369676E 		.ascii	"signed char\000"
+ 1284      65642063 
+ 1284      68617200 
+ 1285              	.LASF30:
+ 1286 02c0 54696D65 		.ascii	"Timeout_Disable\000"
+ 1286      6F75745F 
+ 1286      44697361 
+ 1286      626C6500 
+ 1287              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

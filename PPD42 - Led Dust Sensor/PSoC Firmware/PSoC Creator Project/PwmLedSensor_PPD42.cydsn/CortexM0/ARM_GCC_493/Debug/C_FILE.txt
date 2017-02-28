@@ -1,0 +1,1 @@
+'C:\Users\George\Dropbox\hackAIR\AirQualityBeacons\PwmLedSensor.cydsn\main.c' -o .o -T C_FILE -I 'C:\Users\George\Dropbox\hackAIR\AirQualityBeacons\PwmLedSensor.cydsn' -I 'C:\Users\George\Dropbox\hackAIR\AirQualityBeacons\PwmLedSensor.cydsn\Generated_Source\PSoC4' -f 'C:\Users\George\Dropbox\hackAIR\AirQualityBeacons\PwmLedSensor.cydsn\CortexM0\ARM_GCC_493\Debug\.deps\C_FILE.d'

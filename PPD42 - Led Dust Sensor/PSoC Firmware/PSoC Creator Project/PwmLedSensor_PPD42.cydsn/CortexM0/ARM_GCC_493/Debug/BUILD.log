@@ -1,0 +1,6 @@
+--------------- Build Started: 02/28/2017 10:43:19 Project: PwmLedSensor_PPD42, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-as.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -alh=.\CortexM0\ARM_GCC_493\Debug/CyBootAsmGnu.lst -g -W -lm -o .\CortexM0\ARM_GCC_493\Debug\CyBootAsmGnu.o Generated_Source\PSoC4\CyBootAsmGnu.s
+arm-none-eabi-as.exe: unrecognized option `-lm'
+The command 'arm-none-eabi-as.exe' failed with exit code '1'.
+--------------- Build Failed: 02/28/2017 10:43:20 ---------------

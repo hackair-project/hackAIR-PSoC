@@ -1,0 +1,22 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2017-02-28T08:45:03Z")
+ (DESIGN "PwmLedSensor_PPD42")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.0")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "PwmLedSensor_PPD42")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT ClockBlock.hfclk \\BLE\:bless_isr\\.clock (0.000:0.000:0.000))
+    (INTERCONNECT \\BLE\:cy_m0s8_ble\\.interrupt \\BLE\:bless_isr\\.interrupt (1.000:1.000:1.000))
+    (INTERCONNECT PWM_IN\(0\)_PAD PWM_IN\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT STATUS\(0\)_PAD STATUS\(0\).pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)
