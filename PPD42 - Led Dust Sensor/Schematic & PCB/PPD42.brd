@@ -146,6 +146,8 @@
 <wire x1="0" y1="83.49" x2="0" y2="0" width="0" layer="20"/>
 <hole x="13.97" y="2.54" drill="3.2"/>
 <hole x="29.21" y="2.54" drill="3.2"/>
+<text x="25.4" y="81.28" size="1.778" layer="16" font="vector" ratio="15" rot="MR270">hackAIR</text>
+<text x="21.59" y="80.01" size="1.778" layer="16" font="vector" ratio="15" rot="MR270">PPD42</text>
 </plain>
 <libraries>
 <library name="CYBLE">
