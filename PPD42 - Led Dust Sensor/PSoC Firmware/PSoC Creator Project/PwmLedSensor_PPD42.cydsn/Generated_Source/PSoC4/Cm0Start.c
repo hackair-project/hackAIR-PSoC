@@ -1,12 +1,12 @@
-/*******************************************************************************
-* File Name: Cm0Start.c
-* Version 5.30
+/***************************************************************************//**
+* \file Cm0Start.c
+* \version 5.60
 *
-*  Description:
-*  Startup code for the ARM CM0.
+* \brief Startup code for the ARM CM0.
 *
 ********************************************************************************
-* Copyright 2010-2015, Cypress Semiconductor Corporation.  All rights reserved.
+* \copyright
+* Copyright 2010-2017, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -21,11 +21,17 @@
 #include "cyapicallbacks.h"
 
 #define CY_NUM_VECTORS              (CY_INT_IRQ_BASE + CY_NUM_INTERRUPTS)
-#define CY_CPUSS_CONFIG_VECT_IN_RAM (( uint32 ) 0x01)
 
-/* CPUSS Configuration register */
-#define CY_CPUSS_CONFIG_REG         (*(reg32 *) CYREG_CPUSS_CONFIG)
-#define CY_CPUSS_CONFIG_PTR         ( (reg32 *) CYREG_CPUSS_CONFIG)
+#if (CY_IP_CPUSS_CM0)
+    #define CY_CPUSS_CONFIG_VECT_IN_RAM (( uint32 ) 0x01)
+#endif /* (CY_IP_CPUSS_CM0) */
+
+
+#if (CY_IP_CPUSS_CM0)
+    /* CPUSS Configuration register */
+    #define CY_CPUSS_CONFIG_REG         (*(reg32 *) CYREG_CPUSS_CONFIG)
+    #define CY_CPUSS_CONFIG_PTR         ( (reg32 *) CYREG_CPUSS_CONFIG)
+#endif /* (CY_IP_CPUSS_CM0) */
 
 
 #if defined (__ICCARM__)
@@ -34,6 +40,8 @@
     #define CY_NUM_ROM_VECTORS      (4u)
 #endif  /* defined (__ICCARM__) */
 
+/* Vector table address in SRAM */
+#define CY_CPUSS_CONFIG_VECT_ADDR_IN_RAM    (0x20000000u)
 
 #ifndef CY_SYS_INITIAL_STACK_POINTER
 
@@ -91,20 +99,10 @@ void initialize_psoc(void);
 
 /*******************************************************************************
 * Function Name: IntDefaultHandler
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
 *  This function is called for all interrupts, other than a reset that is called
 *  before the system is setup.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
-*
-* Theory:
-*   Any value other than zero is acceptable.
 *
 *******************************************************************************/
 CY_NORETURN
@@ -115,14 +113,32 @@ CY_ISR(IntDefaultHandler)
     * an infinite loop.
     ***************************************************************************/
 
-    #ifdef CY_BOOT_INT_DEFAULT_HANDLER_EXCEPTION_ENTRY_CALLBACK
-        CyBoot_IntDefaultHandler_Exception_EntryCallback();
-    #endif /* CY_BOOT_INT_DEFAULT_HANDLER_EXCEPTION_ENTRY_CALLBACK */
+    #if defined(__GNUC__)
+        if (errno == ENOMEM)
+        {
+            #ifdef CY_BOOT_INT_DEFAULT_HANDLER_ENOMEM_EXCEPTION_CALLBACK
+                CyBoot_IntDefaultHandler_Enomem_Exception_Callback();
+            #endif /* CY_BOOT_INT_DEFAULT_HANDLER_ENOMEM_EXCEPTION_CALLBACK */
+            
+            while(1)
+            {
+                /* Out Of Heap Space
+                 * This can be increased in the System tab of the Design Wide Resources.
+                 */
+            }
+        }
+        else
+    #endif
+        {
+            #ifdef CY_BOOT_INT_DEFAULT_HANDLER_EXCEPTION_ENTRY_CALLBACK
+                CyBoot_IntDefaultHandler_Exception_EntryCallback();
+            #endif /* CY_BOOT_INT_DEFAULT_HANDLER_EXCEPTION_ENTRY_CALLBACK */
 
-    while(1)
-    {
+            while(1)
+            {
 
-    }
+            }
+        }
 }
 
 #if defined(__ARMCC_VERSION)
@@ -142,17 +158,10 @@ extern int __main(void);
 
 /*******************************************************************************
 * Function Name: Reset
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
-*  This function handles the reset interrupt for the RVDS/MDK toolchains.
-*  This is the first bit of code that is executed at startup.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
+* This function handles the reset interrupt for the MDK toolchains.
+* This is the first bit of code that is executed at startup.
 *
 *******************************************************************************/
 void Reset(void)
@@ -180,16 +189,9 @@ void Reset(void)
 
 /*******************************************************************************
 * Function Name: $Sub$$main
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
-*  This function is called immediately before the users main
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
+* This function is called immediately before the users main
 *
 *******************************************************************************/
 __attribute__ ((noreturn, __noinline__))
@@ -239,18 +241,13 @@ extern const char __cy_region_num __attribute__((weak));
 
 /*******************************************************************************
 * Function Name: _exit
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
-*  Exit a program without cleaning up files. If your system doesn't provide
-*  this, it is best to avoid linking with subroutines that require it (exit,
-*  system).
+* Exit a program without cleaning up files. If your system doesn't provide
+* this, it is best to avoid linking with subroutines that require it (exit,
+* system).
 *
-* Parameters:
-*  status: Status caused program exit.
-*
-* Return:
-*  None
+* \param status: Status caused program exit.
 *
 *******************************************************************************/
 __attribute__((weak))
@@ -267,21 +264,16 @@ void _exit(int status)
 
 /*******************************************************************************
 * Function Name: _sbrk
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
-*  Increase program data space. As malloc and related functions depend on this,
-*  it is useful to have a working implementation. The following suffices for a
-*  standalone system; it exploits the symbol end automatically defined by the
-*  GNU linker.
+* Increase program data space. As malloc and related functions depend on this,
+* it is useful to have a working implementation. The following suffices for a
+* standalone system; it exploits the symbol end automatically defined by the
+* GNU linker.
 *
-* Parameters:
-*  nbytes: The number of bytes requested (if the parameter value is positive)
-*  from the heap or returned back to the heap (if the parameter value is
-*  negative).
-*
-* Return:
-*  None
+* \param nbytes: The number of bytes requested (if the parameter value is positive)
+* from the heap or returned back to the heap (if the parameter value is
+* negative).
 *
 *******************************************************************************/
 __attribute__((weak))
@@ -291,11 +283,11 @@ void * _sbrk (int nbytes)
     void *      returnValue;
 
     /* The statically held previous end of the heap, with its initialization. */
-    static void *heapPointer = (void *) &end;                 /* Previous end */
+    static uint8 *heapPointer = (uint8 *) &end;                 /* Previous end */
 
-    if (((heapPointer + nbytes) - (void *) &end) <= CYDEV_HEAP_SIZE)
+    if (((heapPointer + nbytes) - (uint8 *) &end) <= CYDEV_HEAP_SIZE)
     {
-        returnValue  = heapPointer;
+        returnValue  = (void *) heapPointer;
         heapPointer += nbytes;
     }
     else
@@ -310,18 +302,11 @@ void * _sbrk (int nbytes)
 
 /*******************************************************************************
 * Function Name: Start_c
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
-*  This function handles initializing the .data and .bss sections in
-*  preparation for running the standard c code.  Once initialization is complete
-*  it will call main().  This function will never return.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
+* This function handles initializing the .data and .bss sections in
+* preparation for running the standard c code.  Once initialization is complete
+* it will call main().  This function will never return.
 *
 *******************************************************************************/
 void Start_c(void)  __attribute__ ((noreturn, noinline));
@@ -372,17 +357,10 @@ void Start_c(void)
 
 /*******************************************************************************
 * Function Name: Reset
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
-*  This function handles the reset interrupt for the GCC toolchain.  This is
-*  the first bit of code that is executed at startup.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
+* This function handles the reset interrupt for the GCC toolchain.  This is
+* the first bit of code that is executed at startup.
 *
 *******************************************************************************/
 void Reset(void)
@@ -412,19 +390,14 @@ void Reset(void)
 
 /*******************************************************************************
 * Function Name: __low_level_init
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
-*  This function performs early initializations for the IAR Embedded
-*  Workbench IDE. It is executed in the context of reset interrupt handler
-*  before the data sections are initialized.
+* This function performs early initializations for the IAR Embedded
+* Workbench IDE. It is executed in the context of reset interrupt handler
+* before the data sections are initialized.
 *
-* Parameters:
-*  None
-*
-* Return:
-*  The value that determines whether or not data sections should be initialized
-*  by the system startup code:
+* \return The value that determines whether or not data sections should be
+* initialized by the system startup code:
 *    0 - skip data sections initialization;
 *    1 - initialize data sections;
 *
@@ -457,6 +430,11 @@ int __low_level_init(void)
 
 #if defined (__ICCARM__)
     #pragma location=".ramvectors"
+#elif defined (__ARMCC_VERSION)
+    #ifndef CY_SYS_RAM_VECTOR_SECTION
+        #define CY_SYS_RAM_VECTOR_SECTION __attribute__((section(".ramvectors"), zero_init))
+    #endif /* CY_SYS_RAM_VECTOR_SECTION */
+    CY_SYS_RAM_VECTOR_SECTION    
 #else
     #ifndef CY_SYS_RAM_VECTOR_SECTION
         #define CY_SYS_RAM_VECTOR_SECTION CY_SECTION(".ramvectors")
@@ -503,16 +481,9 @@ cyisraddress CyRamVectors[CY_NUM_VECTORS];
 
 /*******************************************************************************
 * Function Name: initialize_psoc
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
-*  This function is used to initialize the PSoC chip before calling main.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
+* This function is used to initialize the PSoC chip before calling main.
 *
 *******************************************************************************/
 #if(defined(__GNUC__) && !defined(__ARMCC_VERSION))
@@ -523,13 +494,15 @@ void initialize_psoc(void)
     uint32 indexInit;
 
     #if(CY_IP_CPUSSV2)
-        /***********************************************************************
-        * Make sure that Vector Table is located at 0000_0000 in Flash, before
-        * accessing RomVectors or calling functions that may be placed in
-        * .psocinit (cyfitter_cfg and ClockSetup). Note The CY_CPUSS_CONFIG_REG
-        * register is retention for the specified device family.
-        ***********************************************************************/
-        CY_CPUSS_CONFIG_REG &= (uint32) ~CY_CPUSS_CONFIG_VECT_IN_RAM;
+        #if (CY_IP_CPUSS_CM0)
+            /***********************************************************************
+            * Make sure that Vector Table is located at 0000_0000 in Flash, before
+            * accessing RomVectors or calling functions that may be placed in
+            * .psocinit (cyfitter_cfg and ClockSetup). Note The CY_CPUSS_CONFIG_REG
+            * register is retention for the specified device family.
+            ***********************************************************************/
+            CY_CPUSS_CONFIG_REG &= (uint32) ~CY_CPUSS_CONFIG_VECT_IN_RAM;
+        #endif /* (CY_IP_CPUSS_CM0) */
     #endif  /* (CY_IP_CPUSSV2) */
 
     /* Set Ram interrupt vectors to default functions. */
@@ -561,8 +534,12 @@ void initialize_psoc(void)
 
     #endif  /* (CYDEV_PROJ_TYPE != CYDEV_PROJ_TYPE_STANDARD) */
 
-    /* Vector Table is located at 0x2000:0000 in SRAM */
-    CY_CPUSS_CONFIG_REG |= CY_CPUSS_CONFIG_VECT_IN_RAM;
+    #if (CY_IP_CPUSS_CM0)
+        /* Vector Table is located at 0x2000:0000 in SRAM */
+        CY_CPUSS_CONFIG_REG |= CY_CPUSS_CONFIG_VECT_IN_RAM;
+	#else
+		(*(uint32 *)CYREG_CM0P_VTOR) = CY_CPUSS_CONFIG_VECT_ADDR_IN_RAM;
+    #endif /* (CY_IP_CPUSS_CM0) */
 }
 
 

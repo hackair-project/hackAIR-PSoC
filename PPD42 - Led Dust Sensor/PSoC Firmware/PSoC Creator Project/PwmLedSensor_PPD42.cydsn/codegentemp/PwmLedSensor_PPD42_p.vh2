@@ -1,6 +1,6 @@
 -- Project:   PwmLedSensor_PPD42
--- Generated: 02/28/2017 10:45:02
--- PSoC Creator  4.0
+-- Generated: 11/22/2017 18:23:39
+-- PSoC Creator  4.1 Update 1
 
 ENTITY PwmLedSensor_PPD42 IS
     PORT(
@@ -30,10 +30,10 @@ ARCHITECTURE __DEFAULT__ OF PwmLedSensor_PPD42 IS
     SIGNAL ClockBlock_Routed1 : bit;
     SIGNAL ClockBlock_SYSCLK : bit;
     SIGNAL ClockBlock_WCO : bit;
+    SIGNAL Net_2582 : bit;
     SIGNAL PWM_IN(0)__PA : bit;
     SIGNAL STATUS(0)__PA : bit;
     SIGNAL \BLE:Net_15\ : bit;
-    SIGNAL \BLE:Net_63\ : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
@@ -415,7 +415,7 @@ BEGIN
             cy_registers => "")
         PORT MAP(
             interrupt => \BLE:Net_15\,
-            rfctrl_extpa_en => \BLE:Net_63\);
+            rfctrl_extpa_en => Net_2582);
 
     \BLE:bless_isr\:interrupt
         GENERIC MAP(

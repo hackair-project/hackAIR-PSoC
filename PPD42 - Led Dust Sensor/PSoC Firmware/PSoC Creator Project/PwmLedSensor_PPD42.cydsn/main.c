@@ -34,8 +34,8 @@ int main()
         
         /* Dynamic payload will be continuously updated */
         advPayload[19] =  0x05; //Sensor ID: 0x05 for PPD42
-        advPayload[23] =  val>>8; //High byte of sensor measurement
-        advPayload[24] =  val&0xFF; //Low byte of sensor measurement
+        advPayload[25] =  val>>8; //High byte of sensor measurement
+        advPayload[26] =  val&0xFF; //Low byte of sensor measurement
         CyBle_GapUpdateAdvData(cyBle_discoveryModeInfo.advData, cyBle_discoveryModeInfo.scanRspData); //Update Advertisment Packet
         
         CyBle_ProcessEvents(); 

@@ -2,7 +2,7 @@
 --	Conversion of PwmLedSensor_PPD42.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Feb 28 10:45:01 2017
+--	Wed Nov 22 18:23:35 2017
 --
 
 USE cypress.cypress.all;
@@ -22,9 +22,9 @@ TERMINAL Net_2541 : bit;
 SIGNAL one : bit;
 SIGNAL tmpINTERRUPT_0__PWM_IN_net_0 : bit;
 SIGNAL \BLE:Net_15\ : bit;
-SIGNAL \BLE:Net_63\ : bit;
+SIGNAL Net_2582 : bit;
 SIGNAL \BLE:Net_53\ : bit;
-SIGNAL Net_2499 : bit;
+SIGNAL Net_2581 : bit;
 SIGNAL \BLE:Net_55\ : bit;
 SIGNAL tmpOE__STATUS_net_0 : bit;
 SIGNAL tmpFB_0__STATUS_net_0 : bit;
@@ -117,7 +117,7 @@ PWM_IN:cy_psoc3_pins_v1_10
 \BLE:cy_m0s8_ble\:cy_m0s8_ble_v1_0
 	GENERIC MAP(cy_registers=>"")
 	PORT MAP(interrupt=>\BLE:Net_15\,
-		rf_ext_pa_en=>\BLE:Net_63\);
+		rf_ext_pa_en=>Net_2582);
 \BLE:bless_isr\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')

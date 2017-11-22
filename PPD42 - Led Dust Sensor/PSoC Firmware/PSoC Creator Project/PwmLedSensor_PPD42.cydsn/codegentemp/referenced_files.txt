@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="us-ascii"?>
-<folder folderName="." />
+<ReferencedFiles>
+  <IncludeDirs />
+  <Defines />
+  <folder folderName="." />
+</ReferencedFiles>

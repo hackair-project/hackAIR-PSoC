@@ -1,0 +1,12 @@
+Last Modified Date & Time: 11/22/2017 18:30:07
+
+SerialLaserSensor_SEN0177: SerialLaserSensor_SEN0177.cydwr
+	cy_boot [v5.30] to [v5.60]
+	cy_lfclk [v1.0] to [v1.20]
+	LIN_Dynamic [v3.30] to [v4.0]
+
+SerialLaserSensor_SEN0177: TopDesign.cysch
+	BLE [v2.0] to [v3.40]
+	Serial [v3.10] to [v4.0]
+
+
