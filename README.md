@@ -1,6 +1,6 @@
 # hackAIR-PSoC
 
-[[http://www.hackair.eu/wp-content/uploads/2018/05/HackAir-200.png|hackAIR]]
+![hackAIR](http://www.hackair.eu/wp-content/uploads/2018/05/HackAir-200.png)
 
 hackAIR is an open technology platform that you can use to access, collect and improve air quality information in Europe.
 
