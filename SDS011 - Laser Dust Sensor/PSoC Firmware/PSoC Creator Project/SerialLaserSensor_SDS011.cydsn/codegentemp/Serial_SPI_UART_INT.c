@@ -1,15 +1,16 @@
-/*******************************************************************************
-* File Name: Serial_SPI_UART_INT.c
-* Version 3.10
+/***************************************************************************//**
+* \file Serial_SPI_UART_INT.c
+* \version 4.0
 *
-* Description:
+* \brief
 *  This file provides the source code to the Interrupt Service Routine for
 *  the SCB Component in SPI and UART modes.
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2013-2015, Cypress Semiconductor Corporation.  All rights reserved.
+* \copyright
+* Copyright 2013-2017, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -22,16 +23,9 @@
 #if (Serial_SCB_IRQ_INTERNAL)
 /*******************************************************************************
 * Function Name: Serial_SPI_UART_ISR
-********************************************************************************
+****************************************************************************//**
 *
-* Summary:
 *  Handles the Interrupt Service Routine for the SCB SPI or UART modes.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
 *
 *******************************************************************************/
 CY_ISR(Serial_SPI_UART_ISR)
@@ -53,7 +47,7 @@ CY_ISR(Serial_SPI_UART_ISR)
         Serial_customIntrHandler();
     }
 
-    #if (Serial_CHECK_SPI_WAKE_ENABLE)
+    #if(Serial_CHECK_SPI_WAKE_ENABLE)
     {
         /* Clear SPI wakeup source */
         Serial_ClearSpiExtClkInterruptSource(Serial_INTR_SPI_EC_WAKE_UP);
@@ -151,11 +145,11 @@ CY_ISR(Serial_SPI_UART_ISR)
         }
     }
     #endif
-    
+
 #ifdef Serial_SPI_UART_ISR_EXIT_CALLBACK
     Serial_SPI_UART_ISR_ExitCallback();
 #endif /* Serial_SPI_UART_ISR_EXIT_CALLBACK */
-    
+
 }
 
 #endif /* (Serial_SCB_IRQ_INTERNAL) */

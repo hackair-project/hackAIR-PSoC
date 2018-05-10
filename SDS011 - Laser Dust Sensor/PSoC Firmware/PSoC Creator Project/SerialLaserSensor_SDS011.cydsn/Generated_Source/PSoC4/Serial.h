@@ -1,14 +1,15 @@
-/*******************************************************************************
-* File Name: Serial.h
-* Version 3.10
+/***************************************************************************//**
+* \file Serial.h
+* \version 4.0
 *
-* Description:
+* \brief
 *  This file provides constants and parameter values for the SCB Component.
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2013-2015, Cypress Semiconductor Corporation.  All rights reserved.
+* \copyright
+* Copyright 2013-2017, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -29,14 +30,18 @@
 /* SCB IP block v2 is available in all other devices */
 #define Serial_CY_SCBIP_V2    (CYIPBLOCK_m0s8scb_VERSION >= 2u)
 
-#define Serial_SCB_MODE                     (4u)
+/** Component version major.minor */
+#define Serial_COMP_VERSION_MAJOR    (4)
+#define Serial_COMP_VERSION_MINOR    (0)
+    
+#define Serial_SCB_MODE           (4u)
 
 /* SCB modes enum */
-#define Serial_SCB_MODE_I2C                 (0x01u)
-#define Serial_SCB_MODE_SPI                 (0x02u)
-#define Serial_SCB_MODE_UART                (0x04u)
-#define Serial_SCB_MODE_EZI2C               (0x08u)
-#define Serial_SCB_MODE_UNCONFIG            (0xFFu)
+#define Serial_SCB_MODE_I2C       (0x01u)
+#define Serial_SCB_MODE_SPI       (0x02u)
+#define Serial_SCB_MODE_UART      (0x04u)
+#define Serial_SCB_MODE_EZI2C     (0x08u)
+#define Serial_SCB_MODE_UNCONFIG  (0xFFu)
 
 /* Condition compilation depends on operation mode: Unconfigured implies apply to all modes */
 #define Serial_SCB_MODE_I2C_CONST_CFG       (Serial_SCB_MODE_I2C       == Serial_SCB_MODE)
@@ -98,78 +103,595 @@ typedef struct
 *        Function Prototypes
 ***************************************/
 
+/**
+* \addtogroup group_general
+* @{
+*/
+
 /* Start and Stop APIs */
 void Serial_Init(void);
 void Serial_Enable(void);
 void Serial_Start(void);
 void Serial_Stop(void);
 
+/** @} general */
+
+/**
+* \addtogroup group_power
+* @{
+*/
 /* Sleep and Wakeup APis */
 void Serial_Sleep(void);
 void Serial_Wakeup(void);
+/** @} power */ 
 
+/**
+* \addtogroup group_interrupt
+* @{
+*/
 #if (Serial_SCB_IRQ_INTERNAL)
     /* Custom interrupt handler */
     void Serial_SetCustomInterruptHandler(void (*func)(void));
 #endif /* (Serial_SCB_IRQ_INTERNAL) */
+/** @} interrupt */
 
 /* Interface to internal interrupt component */
 #if (Serial_SCB_IRQ_INTERNAL)
-    #define Serial_EnableInt()        CyIntEnable      (Serial_ISR_NUMBER)
-    #define Serial_DisableInt()       CyIntDisable     (Serial_ISR_NUMBER)
+    /**
+    * \addtogroup group_interrupt
+    * @{
+    */    
+    /*******************************************************************************
+    * Function Name: Serial_EnableInt
+    ****************************************************************************//**
+    *
+    *  When using an Internal interrupt, this enables the interrupt in the NVIC. 
+    *  When using an external interrupt the API for the interrupt component must 
+    *  be used to enable the interrupt.
+    *
+    *******************************************************************************/
+    #define Serial_EnableInt()    CyIntEnable(Serial_ISR_NUMBER)
+    
+    
+    /*******************************************************************************
+    * Function Name: Serial_DisableInt
+    ****************************************************************************//**
+    *
+    *  When using an Internal interrupt, this disables the interrupt in the NVIC. 
+    *  When using an external interrupt the API for the interrupt component must 
+    *  be used to disable the interrupt.
+    *
+    *******************************************************************************/    
+    #define Serial_DisableInt()   CyIntDisable(Serial_ISR_NUMBER)
+    /** @} interrupt */
+
+    /*******************************************************************************
+    * Function Name: Serial_ClearPendingInt
+    ****************************************************************************//**
+    *
+    *  This function clears the interrupt pending status in the NVIC. 
+    *
+    *******************************************************************************/
     #define Serial_ClearPendingInt()  CyIntClearPending(Serial_ISR_NUMBER)
 #endif /* (Serial_SCB_IRQ_INTERNAL) */
 
 #if (Serial_UART_RX_WAKEUP_IRQ)
-    #define Serial_RxWakeEnableInt()        CyIntEnable      (Serial_RX_WAKE_ISR_NUMBER)
-    #define Serial_RxWakeDisableInt()       CyIntDisable     (Serial_RX_WAKE_ISR_NUMBER)
+    /*******************************************************************************
+    * Function Name: Serial_RxWakeEnableInt
+    ****************************************************************************//**
+    *
+    *  This function enables the interrupt (RX_WAKE) pending status in the NVIC. 
+    *
+    *******************************************************************************/    
+    #define Serial_RxWakeEnableInt()  CyIntEnable(Serial_RX_WAKE_ISR_NUMBER)
+    
+
+    /*******************************************************************************
+    * Function Name: Serial_RxWakeDisableInt
+    ****************************************************************************//**
+    *
+    *  This function disables the interrupt (RX_WAKE) pending status in the NVIC.  
+    *
+    *******************************************************************************/
+    #define Serial_RxWakeDisableInt() CyIntDisable(Serial_RX_WAKE_ISR_NUMBER)
+    
+    
+    /*******************************************************************************
+    * Function Name: Serial_RxWakeClearPendingInt
+    ****************************************************************************//**
+    *
+    *  This function clears the interrupt (RX_WAKE) pending status in the NVIC. 
+    *
+    *******************************************************************************/    
     #define Serial_RxWakeClearPendingInt()  CyIntClearPending(Serial_RX_WAKE_ISR_NUMBER)
 #endif /* (Serial_UART_RX_WAKEUP_IRQ) */
 
+/**
+* \addtogroup group_interrupt
+* @{
+*/
 /* Get interrupt cause */
+/*******************************************************************************
+* Function Name: Serial_GetInterruptCause
+****************************************************************************//**
+*
+*  Returns a mask of bits showing the source of the current triggered interrupt. 
+*  This is useful for modes of operation where an interrupt can be generated by 
+*  conditions in multiple interrupt source registers.
+*
+*  \return
+*   Mask with the OR of the following conditions that have been triggered.
+*    - Serial_INTR_CAUSE_MASTER - Interrupt from Master
+*    - Serial_INTR_CAUSE_SLAVE - Interrupt from Slave
+*    - Serial_INTR_CAUSE_TX - Interrupt from TX
+*    - Serial_INTR_CAUSE_RX - Interrupt from RX
+*
+*******************************************************************************/
 #define Serial_GetInterruptCause()    (Serial_INTR_CAUSE_REG)
 
+
 /* APIs to service INTR_RX register */
+/*******************************************************************************
+* Function Name: Serial_GetRxInterruptSource
+****************************************************************************//**
+*
+*  Returns RX interrupt request register. This register contains current status 
+*  of RX interrupt sources.
+*
+*  \return
+*   Current status of RX interrupt sources.
+*   Each constant is a bit field value. The value returned may have multiple 
+*   bits set to indicate the current status.
+*   - Serial_INTR_RX_FIFO_LEVEL - The number of data elements in the 
+      RX FIFO is greater than the value of RX FIFO level.
+*   - Serial_INTR_RX_NOT_EMPTY - Receiver FIFO is not empty.
+*   - Serial_INTR_RX_FULL - Receiver FIFO is full.
+*   - Serial_INTR_RX_OVERFLOW - Attempt to write to a full 
+*     receiver FIFO.
+*   - Serial_INTR_RX_UNDERFLOW - Attempt to read from an empty 
+*     receiver FIFO.
+*   - Serial_INTR_RX_FRAME_ERROR - UART framing error detected.
+*   - Serial_INTR_RX_PARITY_ERROR - UART parity error detected.
+*
+*******************************************************************************/
+#define Serial_GetRxInterruptSource() (Serial_INTR_RX_REG)
+
+
+/*******************************************************************************
+* Function Name: Serial_SetRxInterruptMode
+****************************************************************************//**
+*
+*  Writes RX interrupt mask register. This register configures which bits from 
+*  RX interrupt request register will trigger an interrupt event.
+*
+*  \param interruptMask: RX interrupt sources to be enabled (refer to 
+*   Serial_GetRxInterruptSource() function for bit fields values).
+*
+*******************************************************************************/
 #define Serial_SetRxInterruptMode(interruptMask)     Serial_WRITE_INTR_RX_MASK(interruptMask)
-#define Serial_ClearRxInterruptSource(interruptMask) Serial_CLEAR_INTR_RX(interruptMask)
-#define Serial_SetRxInterrupt(interruptMask)         Serial_SET_INTR_RX(interruptMask)
-#define Serial_GetRxInterruptSource()                (Serial_INTR_RX_REG)
-#define Serial_GetRxInterruptMode()                  (Serial_INTR_RX_MASK_REG)
-#define Serial_GetRxInterruptSourceMasked()          (Serial_INTR_RX_MASKED_REG)
+
+
+/*******************************************************************************
+* Function Name: Serial_GetRxInterruptMode
+****************************************************************************//**
+*
+*  Returns RX interrupt mask register This register specifies which bits from 
+*  RX interrupt request register will trigger an interrupt event.
+*
+*  \return 
+*   RX interrupt sources to be enabled (refer to 
+*   Serial_GetRxInterruptSource() function for bit fields values).
+*
+*******************************************************************************/
+#define Serial_GetRxInterruptMode()   (Serial_INTR_RX_MASK_REG)
+
+
+/*******************************************************************************
+* Function Name: Serial_GetRxInterruptSourceMasked
+****************************************************************************//**
+*
+*  Returns RX interrupt masked request register. This register contains logical
+*  AND of corresponding bits from RX interrupt request and mask registers.
+*  This function is intended to be used in the interrupt service routine to 
+*  identify which of enabled RX interrupt sources cause interrupt event.
+*
+*  \return 
+*   Current status of enabled RX interrupt sources (refer to 
+*   Serial_GetRxInterruptSource() function for bit fields values).
+*
+*******************************************************************************/
+#define Serial_GetRxInterruptSourceMasked()   (Serial_INTR_RX_MASKED_REG)
+
+
+/*******************************************************************************
+* Function Name: Serial_ClearRxInterruptSource
+****************************************************************************//**
+*
+*  Clears RX interrupt sources in the interrupt request register.
+*
+*  \param interruptMask: RX interrupt sources to be cleared (refer to 
+*   Serial_GetRxInterruptSource() function for bit fields values).
+*
+*  \sideeffects 
+*   The side effects are listed in the table below for each 
+*   affected interrupt source. Refer to section RX FIFO interrupt sources for 
+*   detailed description.
+*   - Serial_INTR_RX_FIFO_LEVEL Interrupt source is not cleared when 
+*     the receiver FIFO has more entries than level.
+*   - Serial_INTR_RX_NOT_EMPTY Interrupt source is not cleared when
+*     receiver FIFO is not empty.
+*   - Serial_INTR_RX_FULL Interrupt source is not cleared when 
+*      receiver FIFO is full.
+*
+*******************************************************************************/
+#define Serial_ClearRxInterruptSource(interruptMask)  Serial_CLEAR_INTR_RX(interruptMask)
+
+
+/*******************************************************************************
+* Function Name: Serial_SetRxInterrupt
+****************************************************************************//**
+*
+*  Sets RX interrupt sources in the interrupt request register.
+*
+*  \param interruptMask: RX interrupt sources to set in the RX interrupt request 
+*   register (refer to Serial_GetRxInterruptSource() function for bit 
+*   fields values).
+*
+*******************************************************************************/
+#define Serial_SetRxInterrupt(interruptMask)  Serial_SET_INTR_RX(interruptMask)
+
 void Serial_SetRxFifoLevel(uint32 level);
 
+
 /* APIs to service INTR_TX register */
-#define Serial_SetTxInterruptMode(interruptMask)     Serial_WRITE_INTR_TX_MASK(interruptMask)
-#define Serial_ClearTxInterruptSource(interruptMask) Serial_CLEAR_INTR_TX(interruptMask)
-#define Serial_SetTxInterrupt(interruptMask)         Serial_SET_INTR_TX(interruptMask)
-#define Serial_GetTxInterruptSource()                (Serial_INTR_TX_REG)
-#define Serial_GetTxInterruptMode()                  (Serial_INTR_TX_MASK_REG)
-#define Serial_GetTxInterruptSourceMasked()          (Serial_INTR_TX_MASKED_REG)
+/*******************************************************************************
+* Function Name: Serial_GetTxInterruptSource
+****************************************************************************//**
+*
+*  Returns TX interrupt request register. This register contains current status 
+*  of TX interrupt sources.
+* 
+*  \return 
+*   Current status of TX interrupt sources.
+*   Each constant is a bit field value. The value returned may have multiple 
+*   bits set to indicate the current status.
+*   - Serial_INTR_TX_FIFO_LEVEL - The number of data elements in the 
+*     TX FIFO is less than the value of TX FIFO level.
+*   - Serial_INTR_TX_NOT_FULL - Transmitter FIFO is not full.
+*   - Serial_INTR_TX_EMPTY - Transmitter FIFO is empty.
+*   - Serial_INTR_TX_OVERFLOW - Attempt to write to a full 
+*     transmitter FIFO.
+*   - Serial_INTR_TX_UNDERFLOW - Attempt to read from an empty 
+*     transmitter FIFO.
+*   - Serial_INTR_TX_UART_NACK - UART received a NACK in SmartCard 
+*   mode.
+*   - Serial_INTR_TX_UART_DONE - UART transfer is complete. 
+*     All data elements from the TX FIFO are sent.
+*   - Serial_INTR_TX_UART_ARB_LOST - Value on the TX line of the UART
+*     does not match the value on the RX line.
+*
+*******************************************************************************/
+#define Serial_GetTxInterruptSource() (Serial_INTR_TX_REG)
+
+
+/*******************************************************************************
+* Function Name: Serial_SetTxInterruptMode
+****************************************************************************//**
+*
+*  Writes TX interrupt mask register. This register configures which bits from 
+*  TX interrupt request register will trigger an interrupt event.
+*
+*  \param interruptMask: TX interrupt sources to be enabled (refer to 
+*   Serial_GetTxInterruptSource() function for bit field values).
+*
+*******************************************************************************/
+#define Serial_SetTxInterruptMode(interruptMask)  Serial_WRITE_INTR_TX_MASK(interruptMask)
+
+
+/*******************************************************************************
+* Function Name: Serial_GetTxInterruptMode
+****************************************************************************//**
+*
+*  Returns TX interrupt mask register This register specifies which bits from 
+*  TX interrupt request register will trigger an interrupt event.
+*
+*  \return 
+*   Enabled TX interrupt sources (refer to 
+*   Serial_GetTxInterruptSource() function for bit field values).
+*   
+*******************************************************************************/
+#define Serial_GetTxInterruptMode()   (Serial_INTR_TX_MASK_REG)
+
+
+/*******************************************************************************
+* Function Name: Serial_GetTxInterruptSourceMasked
+****************************************************************************//**
+*
+*  Returns TX interrupt masked request register. This register contains logical
+*  AND of corresponding bits from TX interrupt request and mask registers.
+*  This function is intended to be used in the interrupt service routine to identify 
+*  which of enabled TX interrupt sources cause interrupt event.
+*
+*  \return 
+*   Current status of enabled TX interrupt sources (refer to 
+*   Serial_GetTxInterruptSource() function for bit field values).
+*
+*******************************************************************************/
+#define Serial_GetTxInterruptSourceMasked()   (Serial_INTR_TX_MASKED_REG)
+
+
+/*******************************************************************************
+* Function Name: Serial_ClearTxInterruptSource
+****************************************************************************//**
+*
+*  Clears TX interrupt sources in the interrupt request register.
+*
+*  \param interruptMask: TX interrupt sources to be cleared (refer to 
+*   Serial_GetTxInterruptSource() function for bit field values).
+*
+*  \sideeffects 
+*   The side effects are listed in the table below for each affected interrupt 
+*   source. Refer to section TX FIFO interrupt sources for detailed description.
+*   - Serial_INTR_TX_FIFO_LEVEL - Interrupt source is not cleared when 
+*     transmitter FIFO has less entries than level.
+*   - Serial_INTR_TX_NOT_FULL - Interrupt source is not cleared when
+*     transmitter FIFO has empty entries.
+*   - Serial_INTR_TX_EMPTY - Interrupt source is not cleared when 
+*     transmitter FIFO is empty.
+*   - Serial_INTR_TX_UNDERFLOW - Interrupt source is not cleared when 
+*     transmitter FIFO is empty and I2C mode with clock stretching is selected. 
+*     Put data into the transmitter FIFO before clearing it. This behavior only 
+*     applicable for PSoC 4100/PSoC 4200 devices.
+*
+*******************************************************************************/
+#define Serial_ClearTxInterruptSource(interruptMask)  Serial_CLEAR_INTR_TX(interruptMask)
+
+
+/*******************************************************************************
+* Function Name: Serial_SetTxInterrupt
+****************************************************************************//**
+*
+*  Sets RX interrupt sources in the interrupt request register.
+*
+*  \param interruptMask: RX interrupt sources to set in the RX interrupt request 
+*   register (refer to Serial_GetRxInterruptSource() function for bit 
+*   fields values).
+*
+*******************************************************************************/
+#define Serial_SetTxInterrupt(interruptMask)  Serial_SET_INTR_TX(interruptMask)
+
 void Serial_SetTxFifoLevel(uint32 level);
 
+
 /* APIs to service INTR_MASTER register */
-#define Serial_SetMasterInterruptMode(interruptMask)    Serial_WRITE_INTR_MASTER_MASK(interruptMask)
-#define Serial_ClearMasterInterruptSource(interruptMask) Serial_CLEAR_INTR_MASTER(interruptMask)
-#define Serial_SetMasterInterrupt(interruptMask)         Serial_SET_INTR_MASTER(interruptMask)
-#define Serial_GetMasterInterruptSource()                (Serial_INTR_MASTER_REG)
-#define Serial_GetMasterInterruptMode()                  (Serial_INTR_MASTER_MASK_REG)
-#define Serial_GetMasterInterruptSourceMasked()          (Serial_INTR_MASTER_MASKED_REG)
+/*******************************************************************************
+* Function Name: Serial_GetMasterInterruptSource
+****************************************************************************//**
+*
+*  Returns Master interrupt request register. This register contains current 
+*  status of Master interrupt sources.
+*
+*  \return 
+*   Current status of Master interrupt sources. 
+*   Each constant is a bit field value. The value returned may have multiple 
+*   bits set to indicate the current status.
+*   - Serial_INTR_MASTER_SPI_DONE - SPI master transfer is complete.
+*     Refer to Interrupt sources section for detailed description.
+*   - Serial_INTR_MASTER_I2C_ARB_LOST - I2C master lost arbitration.
+*   - Serial_INTR_MASTER_I2C_NACK - I2C master received negative 
+*    acknowledgement (NAK).
+*   - Serial_INTR_MASTER_I2C_ACK - I2C master received acknowledgement.
+*   - Serial_INTR_MASTER_I2C_STOP - I2C master generated STOP.
+*   - Serial_INTR_MASTER_I2C_BUS_ERROR - I2C master bus error 
+*     (detection of unexpected START or STOP condition).
+*
+*******************************************************************************/
+#define Serial_GetMasterInterruptSource() (Serial_INTR_MASTER_REG)
+
+/*******************************************************************************
+* Function Name: Serial_SetMasterInterruptMode
+****************************************************************************//**
+*
+*  Writes Master interrupt mask register. This register configures which bits 
+*  from Master interrupt request register will trigger an interrupt event.
+*
+*  \param interruptMask: Master interrupt sources to be enabled (refer to 
+*   Serial_GetMasterInterruptSource() function for bit field values).
+*
+*******************************************************************************/
+#define Serial_SetMasterInterruptMode(interruptMask)  Serial_WRITE_INTR_MASTER_MASK(interruptMask)
+
+/*******************************************************************************
+* Function Name: Serial_GetMasterInterruptMode
+****************************************************************************//**
+*
+*  Returns Master interrupt mask register This register specifies which bits 
+*  from Master interrupt request register will trigger an interrupt event.
+*
+*  \return 
+*   Enabled Master interrupt sources (refer to 
+*   Serial_GetMasterInterruptSource() function for return values).
+*
+*******************************************************************************/
+#define Serial_GetMasterInterruptMode()   (Serial_INTR_MASTER_MASK_REG)
+
+/*******************************************************************************
+* Function Name: Serial_GetMasterInterruptSourceMasked
+****************************************************************************//**
+*
+*  Returns Master interrupt masked request register. This register contains 
+*  logical AND of corresponding bits from Master interrupt request and mask 
+*  registers.
+*  This function is intended to be used in the interrupt service routine to 
+*  identify which of enabled Master interrupt sources cause interrupt event.
+*
+*  \return 
+*   Current status of enabled Master interrupt sources (refer to 
+*   Serial_GetMasterInterruptSource() function for return values).
+*
+*******************************************************************************/
+#define Serial_GetMasterInterruptSourceMasked()   (Serial_INTR_MASTER_MASKED_REG)
+
+/*******************************************************************************
+* Function Name: Serial_ClearMasterInterruptSource
+****************************************************************************//**
+*
+*  Clears Master interrupt sources in the interrupt request register.
+*
+*  \param interruptMask: Master interrupt sources to be cleared (refer to 
+*   Serial_GetMasterInterruptSource() function for bit field values).
+*
+*******************************************************************************/
+#define Serial_ClearMasterInterruptSource(interruptMask)  Serial_CLEAR_INTR_MASTER(interruptMask)
+
+/*******************************************************************************
+* Function Name: Serial_SetMasterInterrupt
+****************************************************************************//**
+*
+*  Sets Master interrupt sources in the interrupt request register.
+*
+*  \param interruptMask: Master interrupt sources to set in the Master interrupt
+*   request register (refer to Serial_GetMasterInterruptSource() 
+*   function for bit field values).
+*
+*******************************************************************************/
+#define Serial_SetMasterInterrupt(interruptMask)  Serial_SET_INTR_MASTER(interruptMask)
+
 
 /* APIs to service INTR_SLAVE register */
-#define Serial_SetSlaveInterruptMode(interruptMask)     Serial_WRITE_INTR_SLAVE_MASK(interruptMask)
-#define Serial_ClearSlaveInterruptSource(interruptMask) Serial_CLEAR_INTR_SLAVE(interruptMask)
-#define Serial_SetSlaveInterrupt(interruptMask)         Serial_SET_INTR_SLAVE(interruptMask)
-#define Serial_GetSlaveInterruptSource()                (Serial_INTR_SLAVE_REG)
-#define Serial_GetSlaveInterruptMode()                  (Serial_INTR_SLAVE_MASK_REG)
-#define Serial_GetSlaveInterruptSourceMasked()          (Serial_INTR_SLAVE_MASKED_REG)
+/*******************************************************************************
+* Function Name: Serial_GetSlaveInterruptSource
+****************************************************************************//**
+*
+*  Returns Slave interrupt request register. This register contains current 
+*  status of Slave interrupt sources.
+*
+*  \return 
+*   Current status of Slave interrupt sources.
+*   Each constant is a bit field value. The value returned may have multiple 
+*   bits set to indicate the current status.
+*   - Serial_INTR_SLAVE_I2C_ARB_LOST - I2C slave lost arbitration: 
+*     the value driven on the SDA line is not the same as the value observed 
+*     on the SDA line.
+*   - Serial_INTR_SLAVE_I2C_NACK - I2C slave received negative 
+*     acknowledgement (NAK).
+*   - Serial_INTR_SLAVE_I2C_ACK - I2C slave received 
+*     acknowledgement (ACK).
+*   - Serial_INTR_SLAVE_I2C_WRITE_STOP - Stop or Repeated Start 
+*     event for write transfer intended for this slave (address matching 
+*     is performed).
+*   - Serial_INTR_SLAVE_I2C_STOP - Stop or Repeated Start event 
+*     for (read or write) transfer intended for this slave (address matching 
+*     is performed).
+*   - Serial_INTR_SLAVE_I2C_START - I2C slave received Start 
+*     condition.
+*   - Serial_INTR_SLAVE_I2C_ADDR_MATCH - I2C slave received matching 
+*     address.
+*   - Serial_INTR_SLAVE_I2C_GENERAL - I2C Slave received general 
+*     call address.
+*   - Serial_INTR_SLAVE_I2C_BUS_ERROR - I2C slave bus error (detection 
+*      of unexpected Start or Stop condition).
+*   - Serial_INTR_SLAVE_SPI_BUS_ERROR - SPI slave select line is 
+*      deselected at an expected time while the SPI transfer.
+*
+*******************************************************************************/
+#define Serial_GetSlaveInterruptSource()  (Serial_INTR_SLAVE_REG)
+
+/*******************************************************************************
+* Function Name: Serial_SetSlaveInterruptMode
+****************************************************************************//**
+*
+*  Writes Slave interrupt mask register. 
+*  This register configures which bits from Slave interrupt request register 
+*  will trigger an interrupt event.
+*
+*  \param interruptMask: Slave interrupt sources to be enabled (refer to 
+*   Serial_GetSlaveInterruptSource() function for bit field values).
+*
+*******************************************************************************/
+#define Serial_SetSlaveInterruptMode(interruptMask)   Serial_WRITE_INTR_SLAVE_MASK(interruptMask)
+
+/*******************************************************************************
+* Function Name: Serial_GetSlaveInterruptMode
+****************************************************************************//**
+*
+*  Returns Slave interrupt mask register.
+*  This register specifies which bits from Slave interrupt request register 
+*  will trigger an interrupt event.
+*
+*  \return 
+*   Enabled Slave interrupt sources(refer to 
+*   Serial_GetSlaveInterruptSource() function for bit field values).
+*
+*******************************************************************************/
+#define Serial_GetSlaveInterruptMode()    (Serial_INTR_SLAVE_MASK_REG)
+
+/*******************************************************************************
+* Function Name: Serial_GetSlaveInterruptSourceMasked
+****************************************************************************//**
+*
+*  Returns Slave interrupt masked request register. This register contains 
+*  logical AND of corresponding bits from Slave interrupt request and mask 
+*  registers.
+*  This function is intended to be used in the interrupt service routine to 
+*  identify which of enabled Slave interrupt sources cause interrupt event.
+*
+*  \return 
+*   Current status of enabled Slave interrupt sources (refer to 
+*   Serial_GetSlaveInterruptSource() function for return values).
+*
+*******************************************************************************/
+#define Serial_GetSlaveInterruptSourceMasked()    (Serial_INTR_SLAVE_MASKED_REG)
+
+/*******************************************************************************
+* Function Name: Serial_ClearSlaveInterruptSource
+****************************************************************************//**
+*
+*  Clears Slave interrupt sources in the interrupt request register.
+*
+*  \param interruptMask: Slave interrupt sources to be cleared (refer to 
+*   Serial_GetSlaveInterruptSource() function for return values).
+*
+*******************************************************************************/
+#define Serial_ClearSlaveInterruptSource(interruptMask)   Serial_CLEAR_INTR_SLAVE(interruptMask)
+
+/*******************************************************************************
+* Function Name: Serial_SetSlaveInterrupt
+****************************************************************************//**
+*
+*  Sets Slave interrupt sources in the interrupt request register.
+*
+*  \param interruptMask: Slave interrupt sources to set in the Slave interrupt 
+*   request register (refer to Serial_GetSlaveInterruptSource() 
+*   function for return values).
+*
+*******************************************************************************/
+#define Serial_SetSlaveInterrupt(interruptMask)   Serial_SET_INTR_SLAVE(interruptMask)
+
+/** @} interrupt */ 
 
 
 /***************************************
 *     Vars with External Linkage
 ***************************************/
 
-extern uint8 Serial_initVar;
+/**
+* \addtogroup group_globals
+* @{
+*/
 
+/** Serial_initVar indicates whether the Serial 
+*  component has been initialized. The variable is initialized to 0 
+*  and set to 1 the first time SCB_Start() is called. This allows 
+*  the component to restart without reinitialization after the first 
+*  call to the Serial_Start() routine.
+*
+*  If re-initialization of the component is required, then the 
+*  Serial_Init() function can be called before the 
+*  Serial_Start() or Serial_Enable() function.
+*/
+extern uint8 Serial_initVar;
+/** @} globals */
 
 /***************************************
 *              Registers
@@ -251,8 +773,13 @@ extern uint8 Serial_initVar;
 #define Serial_RX_FIFO_RD_SILENT_REG  (*(reg32 *) Serial_SCB__RX_FIFO_RD_SILENT)
 #define Serial_RX_FIFO_RD_SILENT_PTR  ( (reg32 *) Serial_SCB__RX_FIFO_RD_SILENT)
 
-#define Serial_EZBUF_DATA00_REG       (*(reg32 *) Serial_SCB__EZ_DATA00)
-#define Serial_EZBUF_DATA00_PTR       ( (reg32 *) Serial_SCB__EZ_DATA00)
+#ifdef Serial_SCB__EZ_DATA0
+    #define Serial_EZBUF_DATA0_REG    (*(reg32 *) Serial_SCB__EZ_DATA0)
+    #define Serial_EZBUF_DATA0_PTR    ( (reg32 *) Serial_SCB__EZ_DATA0)
+#else
+    #define Serial_EZBUF_DATA0_REG    (*(reg32 *) Serial_SCB__EZ_DATA00)
+    #define Serial_EZBUF_DATA0_PTR    ( (reg32 *) Serial_SCB__EZ_DATA00)
+#endif /* Serial_SCB__EZ_DATA00 */
 
 #define Serial_INTR_CAUSE_REG         (*(reg32 *) Serial_SCB__INTR_CAUSE)
 #define Serial_INTR_CAUSE_PTR         ( (reg32 *) Serial_SCB__INTR_CAUSE)
@@ -325,13 +852,12 @@ extern uint8 Serial_initVar;
 #define Serial_INTR_RX_MASKED_REG     (*(reg32 *) Serial_SCB__INTR_RX_MASKED)
 #define Serial_INTR_RX_MASKED_PTR     ( (reg32 *) Serial_SCB__INTR_RX_MASKED)
 
-#if (Serial_CY_SCBIP_V0 || Serial_CY_SCBIP_V1)
-    #define Serial_FF_DATA_NR_LOG2_PLUS1_MASK (0x0Fu) /* FF_DATA_NR_LOG2_PLUS1 = 4, MASK = 2^4 - 1 = 15 */
-    #define Serial_FF_DATA_NR_LOG2_MASK       (0x07u) /* FF_DATA_NR_LOG2 = 3, MASK = 2^3 - 1 = 7 */
-#else
-    #define Serial_FF_DATA_NR_LOG2_PLUS1_MASK (0x1Fu) /* FF_DATA_NR_LOG2_PLUS1 = 5, MASK = 2^5 - 1 = 31 */
-    #define Serial_FF_DATA_NR_LOG2_MASK       (0x0Fu) /* FF_DATA_NR_LOG2 = 4, MASK = 2^4 - 1 = 15 */
-#endif /* (Serial_CY_SCBIP_V0 || Serial_CY_SCBIP_V1) */
+/* Defines get from SCB IP parameters. */
+#define Serial_FIFO_SIZE      (8u)  /* TX or RX FIFO size. */
+#define Serial_EZ_DATA_NR     (32u)  /* Number of words in EZ memory. */ 
+#define Serial_ONE_BYTE_WIDTH (8u)            /* Number of bits in one byte. */
+#define Serial_FF_DATA_NR_LOG2_MASK       (0x0Fu)      /* Number of bits to represent a FIFO address. */
+#define Serial_FF_DATA_NR_LOG2_PLUS1_MASK (0x1Fu) /* Number of bits to represent #bytes in FIFO. */
 
 
 /***************************************
@@ -924,11 +1450,6 @@ extern uint8 Serial_initVar;
                                              Serial_INTR_RX_BAUD_DETECT  | \
                                              Serial_INTR_RX_BREAK_DETECT)
 
-/* General usage HW definitions */
-#define Serial_ONE_BYTE_WIDTH (8u)   /* Number of bits in one byte           */
-#define Serial_FIFO_SIZE      (8u)   /* Size of TX or RX FIFO: defined by HW */
-#define Serial_EZBUFFER_SIZE  (32u)  /* EZ Buffer size: defined by HW        */
-
 /* I2C and EZI2C slave address defines */
 #define Serial_I2C_SLAVE_ADDR_POS    (0x01u)    /* 7-bit address shift */
 #define Serial_I2C_SLAVE_ADDR_MASK   (0xFEu)    /* 8-bit address mask */
@@ -954,12 +1475,9 @@ extern uint8 Serial_initVar;
 * on the scb IP depending on the version:
 *  CY_SCBIP_V0: resets state, status, TX and RX FIFOs.
 *  CY_SCBIP_V1 or later: resets state, status, TX and RX FIFOs and interrupt sources.
+* Clear I2C command registers are because they are not impacted by re-enable.
 */
-#define Serial_SCB_SW_RESET \
-                        do{           \
-                            Serial_CTRL_REG &= ((uint32) ~Serial_CTRL_ENABLED); \
-                            Serial_CTRL_REG |= ((uint32)  Serial_CTRL_ENABLED); \
-                        }while(0)
+#define Serial_SCB_SW_RESET   Serial_I2CFwBlockReset()
 
 /* TX FIFO macro */
 #define Serial_CLEAR_TX_FIFO \
@@ -1253,6 +1771,14 @@ extern uint8 Serial_initVar;
                                                                   ~(Serial_I2C_CTRL_M_READY_DATA_ACK |       \
                                                                     Serial_I2C_CTRL_M_NOT_READY_DATA_NACK)); \
                             }while(0)
+/* Disables auto data ACK/NACK bits */
+#define Serial_DISABLE_AUTO_DATA \
+                do{                        \
+                    Serial_I2C_CTRL_REG &= ((uint32) ~(Serial_I2C_CTRL_M_READY_DATA_ACK      |  \
+                                                                 Serial_I2C_CTRL_M_NOT_READY_DATA_NACK |  \
+                                                                 Serial_I2C_CTRL_S_READY_DATA_ACK      |  \
+                                                                 Serial_I2C_CTRL_S_NOT_READY_DATA_NACK)); \
+                }while(0)
 
 /* Master commands */
 #define Serial_I2C_MASTER_GENERATE_START \
@@ -1470,6 +1996,10 @@ extern uint8 Serial_initVar;
 #define Serial_GET_UART_RX_CTRL_MP_MODE(mpMode)   ((0u != (mpMode)) ? \
                                                         (Serial_UART_RX_CTRL_MP_MODE) : (0u))
 
+#define Serial_GET_UART_RX_CTRL_BREAK_WIDTH(width)    (((uint32) ((uint32) (width) - 1u) << \
+                                                                    Serial_UART_RX_CTRL_BREAK_WIDTH_POS) & \
+                                                                    Serial_UART_RX_CTRL_BREAK_WIDTH_MASK)
+
 /* Serial_UART_TX_CTRL */
 #define Serial_GET_UART_TX_CTRL_MODE(stopBits)    (((uint32) (stopBits) - 1u) & \
                                                                 Serial_UART_RX_CTRL_STOP_BITS_MASK)
@@ -1517,7 +2047,7 @@ extern uint8 Serial_initVar;
 
 /* Serial_TX_CTRL */
 #define Serial_GET_TX_CTRL_DATA_WIDTH(dataWidth)  (((uint32) (dataWidth) - 1u) & \
-                                                                Serial_RX_CTRL_DATA_WIDTH_MASK)
+                                                                Serial_TX_CTRL_DATA_WIDTH_MASK)
 
 #define Serial_GET_TX_CTRL_BIT_ORDER(bitOrder)    ((0u != (bitOrder)) ? \
                                                                 (Serial_TX_CTRL_MSB_FIRST) : (0u))
@@ -1585,6 +2115,10 @@ extern uint8 Serial_initVar;
 #endif /* (!Serial_CY_SCBIP_V1) */
 
 #define Serial_CY_SCBIP_V1_I2C_ONLY   (Serial_CY_SCBIP_V1)
+#define Serial_EZBUFFER_SIZE          (Serial_EZ_DATA_NR)
+
+#define Serial_EZBUF_DATA00_REG   Serial_EZBUF_DATA0_REG
+#define Serial_EZBUF_DATA00_PTR   Serial_EZBUF_DATA0_PTR
 
 #endif /* (CY_SCB_Serial_H) */
 

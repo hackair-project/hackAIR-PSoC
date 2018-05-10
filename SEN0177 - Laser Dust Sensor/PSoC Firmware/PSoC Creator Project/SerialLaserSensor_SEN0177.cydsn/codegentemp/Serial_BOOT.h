@@ -1,15 +1,16 @@
-/*******************************************************************************
-* File Name: Serial_BOOT.h
-* Version 3.10
+/***************************************************************************//**
+* \file Serial_BOOT.h
+* \version 4.0
 *
-* Description:
+* \brief
 *  This file provides constants and parameter values of the bootloader
 *  communication APIs for the SCB Component.
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2014-2015, Cypress Semiconductor Corporation. All rights reserved.
+* \copyright
+* Copyright 2014-2017, Cypress Semiconductor Corporation. All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -165,6 +166,11 @@
 
 #endif /* defined(CYDEV_BOOTLOADER_IO_COMP) && (Serial_UART_BTLDR_COMM_ENABLED) */
 
+/**
+* \addtogroup group_bootloader
+* @{
+*/
+
 #if defined(CYDEV_BOOTLOADER_IO_COMP) && (Serial_BTLDR_COMM_ENABLED)
     #if (Serial_SCB_MODE_UNCONFIG_CONST_CFG)
         /* Bootloader physical layer functions */
@@ -186,6 +192,7 @@
 
 #endif /* defined(CYDEV_BOOTLOADER_IO_COMP) && (Serial_BTLDR_COMM_ENABLED) */
 
+/** @} group_bootloader */
 
 /***************************************
 *           API Constants

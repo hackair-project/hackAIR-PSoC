@@ -28,13 +28,13 @@ INCLUDE cycodeshareimport.ld
 
 MEMORY
 {
-    rom (rx) : ORIGIN = 0x0, LENGTH = 131072
-    ram (rwx) : ORIGIN = 0x20000000, LENGTH = 16384
+    rom (rx) : ORIGIN = 0x0, LENGTH = 262144
+    ram (rwx) : ORIGIN = 0x20000000, LENGTH = 32768
 }
 
 
 CY_APPL_ORIGIN                  = 0;
-CY_FLASH_ROW_SIZE               = 128;
+CY_FLASH_ROW_SIZE               = 256;
 CY_APPL_NUM                     = 1;
 CY_APPL_MAX                     = 1;
 CY_METADATA_SIZE                = 64;
@@ -51,6 +51,12 @@ EXTERN(Reset)
 
 /* Bring in the interrupt routines & vector */
 EXTERN(main)
+
+/* Bring in the romvector */
+EXTERN(RomVectors)
+
+/* Bring in the ramvector */
+EXTERN(CyRamVectors)
 
 /* Bring in the meta data */
 EXTERN(cy_meta_loader cy_bootloader cy_meta_loadable cy_meta_bootloader)
@@ -89,7 +95,7 @@ SECTIONS
       CREATE_OBJECT_SYMBOLS
       PROVIDE(__cy_interrupt_vector = RomVectors);
 
-      *(.romvectors)
+      KEEP(*(.romvectors))
 
       /* Make sure we pulled in an interrupt vector.  */
       ASSERT (. != __cy_interrupt_vector, "No interrupt vector");
