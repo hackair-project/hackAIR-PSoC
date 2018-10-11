@@ -1,6 +1,6 @@
 -- Project:   PwmLedSensor_PPD42
--- Generated: 11/22/2017 18:23:43
--- PSoC Creator  4.1 Update 1
+-- Generated: 05/10/2018 18:59:45
+-- PSoC Creator  4.2
 
 ENTITY PwmLedSensor_PPD42 IS
     PORT(
@@ -57,11 +57,11 @@ ARCHITECTURE __DEFAULT__ OF PwmLedSensor_PPD42 IS
     END COMPONENT;
     COMPONENT iocell
         PORT (
-            pin_input : IN std_ulogic;
             oe : IN std_ulogic;
             fb : OUT std_ulogic;
-            pad_in : IN std_ulogic;
             pa_out : OUT std_ulogic;
+            pin_input : IN std_ulogic;
+            pad_in : IN std_ulogic;
             pad_out : OUT std_ulogic;
             oe_reg : OUT std_ulogic;
             oe_internal : IN std_ulogic;

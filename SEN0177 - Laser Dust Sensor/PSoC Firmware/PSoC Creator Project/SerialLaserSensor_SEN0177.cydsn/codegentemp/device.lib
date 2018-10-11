@@ -1105,10 +1105,10 @@
                 intrinsic_fall : 0.0;
             }
         }
-        pin (cts) { direction : input; }
-        pin (rts) { direction : output; }
-        pin (rx) { direction : input; }
-        pin (tx) { direction : output; }
+        pin (uart_cts) { direction : input; }
+        pin (uart_rts) { direction : output; }
+        pin (uart_rx) { direction : input; }
+        pin (uart_tx) { direction : output; }
         pin (mosi_m) { direction : output; }
         pin (miso_m) { direction : input; }
         bundle (select) {
@@ -1120,10 +1120,10 @@
         pin (miso_s) { direction : output; }
         pin (select_s) { direction : input; }
         pin (sclk_s) { direction : input; }
-        pin (scl) { direction : inout; }
-        pin (sda) { direction : inout; }
-        pin (rx_req) { direction : output; }
-        pin (tx_req) { direction : output; }
+        pin (i2c_scl) { direction : inout; }
+        pin (i2c_sda) { direction : inout; }
+        pin (tr_rx_req) { direction : output; }
+        pin (tr_tx_req) { direction : output; }
     }
 
     cell (m0s8tcpwmcell) {
@@ -1163,7 +1163,7 @@
                 intrinsic_fall : 0.0;
             }
         }
-        pin (line_out) {
+        pin (line) {
             direction : output; 
             timing() {
                 timing_type : rising_edge;
@@ -1172,7 +1172,7 @@
                 intrinsic_fall : 0.0;
             }
         }
-        pin (line_out_compl) {
+        pin (line_compl) {
             direction : output; 
             timing() {
                 timing_type : rising_edge;
@@ -1314,7 +1314,7 @@
         pin (cfg_resolution) { direction : input; }
         pin (cfg_differential) { direction : input; }
         pin (data_hilo_sel) { direction : input; }
-        pin (trigger) { direction : input; }
+        pin (tr_sar_in) { direction : input; }
         pin (sample_done) {
             direction : output; 
             timing() {
@@ -1466,17 +1466,23 @@
         pin (en) { direction : input; }
     }
     
-    cell (m0s8spcifcell) {
-        pin (spcif_int) { direction : output; }
+    cell (m0s8srsscell) {
+        pin (clock_pump) { direction : input; }
+        pin (clock_ss) { direction : input; }
+        pin (dsi_ss_code) { direction : input; }
+        pin (dsi_ss_updown) { direction : output; }
+        pin (interrupt_wdt) { direction : output; }
+        pin (interrupt_pwr) { direction : output; }
     }
-    
-    cell (m0s8wdtcell) {
-        pin (wdt_int) { direction : output; }
+
+    cell (m0s8cpusscell) {
+        pin (interrupt_spcif) { direction : output; }
+        pin (interrupt_dma) { direction : output; }
     }
-    
-    cell (m0s8pmcell) {
-        pin (pm_int) { direction : output; }
-    }
+
+    cell (m0s8iosscell) {
+        pin (interrupt_gpio) { direction : output; }
+	}
     
     cell (p4lpcompcell) {
         pin (cmpout) { direction : output; }
@@ -1495,22 +1501,10 @@
         pin (ctb_dsi_comp) { direction : output; }
         pin (ctb_dsi_comp_n) { direction : output; }
     }
-    
-    cell (p4anapumpcell) {
-        pin (pump_clock) { direction : input; }
-    }
 
     cell (p4blecell) {
         pin (interrupt) { direction : output; }
         pin (rfctrl_extpa_en) { direction : output; }
-    }
-
-    cell (m0s8gangedpicucell) {
-        pin (interrupt) { direction : output; }
-	}
-
-    cell (m0s8dmacell) {
-        pin (interrupt) { direction : output; }
     }
 
     cell (cancell) {

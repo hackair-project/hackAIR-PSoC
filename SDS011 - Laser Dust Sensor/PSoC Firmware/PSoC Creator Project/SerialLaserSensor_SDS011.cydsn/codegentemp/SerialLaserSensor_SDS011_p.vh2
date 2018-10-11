@@ -1,6 +1,6 @@
 -- Project:   SerialLaserSensor_SDS011
--- Generated: 02/21/2017 15:13:34
--- PSoC Creator  4.0
+-- Generated: 05/10/2018 18:55:58
+-- PSoC Creator  4.2
 
 ENTITY SerialLaserSensor_SDS011 IS
     PORT(
@@ -30,25 +30,25 @@ ARCHITECTURE __DEFAULT__ OF SerialLaserSensor_SDS011 IS
     SIGNAL ClockBlock_Routed1 : bit;
     SIGNAL ClockBlock_SYSCLK : bit;
     SIGNAL ClockBlock_WCO : bit;
-    SIGNAL Net_3319 : bit;
-    SIGNAL Net_3321 : bit;
-    SIGNAL Net_3322 : bit;
+    SIGNAL Net_3326 : bit;
+    SIGNAL Net_3328 : bit;
+    SIGNAL Net_3329 : bit;
+    SIGNAL Net_3347 : bit;
     SIGNAL STATUS(0)__PA : bit;
     SIGNAL \BLE:Net_15\ : bit;
-    SIGNAL \BLE:Net_63\ : bit;
-    SIGNAL \Serial:Net_1053\ : bit;
-    SIGNAL \Serial:Net_1055\ : bit;
-    SIGNAL \Serial:Net_1059\ : bit;
-    SIGNAL \Serial:Net_1061\ : bit;
-    SIGNAL \Serial:Net_1062\ : bit;
-    SIGNAL \Serial:Net_654\ : bit;
     SIGNAL \Serial:Net_847_ff1\ : bit;
     ATTRIBUTE global_signal OF \Serial:Net_847_ff1\ : SIGNAL IS true;
+    SIGNAL \Serial:miso_s_wire\ : bit;
+    SIGNAL \Serial:mosi_m_wire\ : bit;
+    SIGNAL \Serial:rts_wire\ : bit;
     SIGNAL \\\Serial:rx(0)\\__PA\ : bit;
-    SIGNAL \Serial:ss_0\ : bit;
-    SIGNAL \Serial:ss_1\ : bit;
-    SIGNAL \Serial:ss_2\ : bit;
-    SIGNAL \Serial:ss_3\ : bit;
+    SIGNAL \Serial:rx_wire\ : bit;
+    SIGNAL \Serial:sclk_m_wire\ : bit;
+    SIGNAL \Serial:select_m_wire_0\ : bit;
+    SIGNAL \Serial:select_m_wire_1\ : bit;
+    SIGNAL \Serial:select_m_wire_2\ : bit;
+    SIGNAL \Serial:select_m_wire_3\ : bit;
+    SIGNAL \Serial:tx_wire\ : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
@@ -59,7 +59,9 @@ ARCHITECTURE __DEFAULT__ OF SerialLaserSensor_SDS011 IS
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     ATTRIBUTE Location OF ClockGenBlock : LABEL IS "F(CLK_GEN,0)";
     ATTRIBUTE lib_model OF \Serial:rx(0)\ : LABEL IS "iocell1";
+    ATTRIBUTE Location OF \Serial:rx(0)\ : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF STATUS(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF STATUS(0) : LABEL IS "P2[1]";
     COMPONENT interrupt
         PORT (
             interrupt : IN std_ulogic;
@@ -67,11 +69,11 @@ ARCHITECTURE __DEFAULT__ OF SerialLaserSensor_SDS011 IS
     END COMPONENT;
     COMPONENT iocell
         PORT (
-            pin_input : IN std_ulogic;
             oe : IN std_ulogic;
             fb : OUT std_ulogic;
-            pad_in : IN std_ulogic;
             pa_out : OUT std_ulogic;
+            pin_input : IN std_ulogic;
+            pad_in : IN std_ulogic;
             pad_out : OUT std_ulogic;
             oe_reg : OUT std_ulogic;
             oe_internal : IN std_ulogic;
@@ -223,10 +225,10 @@ ARCHITECTURE __DEFAULT__ OF SerialLaserSensor_SDS011 IS
         PORT (
             clock : IN std_ulogic;
             interrupt : OUT std_ulogic;
-            cts : IN std_ulogic;
-            rts : OUT std_ulogic;
-            rx : IN std_ulogic;
-            tx : OUT std_ulogic;
+            uart_cts : IN std_ulogic;
+            uart_rts : OUT std_ulogic;
+            uart_rx : IN std_ulogic;
+            uart_tx : OUT std_ulogic;
             mosi_m : OUT std_ulogic;
             miso_m : IN std_ulogic;
             select_m_0 : OUT std_ulogic;
@@ -238,10 +240,10 @@ ARCHITECTURE __DEFAULT__ OF SerialLaserSensor_SDS011 IS
             miso_s : OUT std_ulogic;
             select_s : IN std_ulogic;
             sclk_s : IN std_ulogic;
-            scl : IN std_ulogic;
-            sda : IN std_ulogic;
-            rx_req : OUT std_ulogic;
-            tx_req : OUT std_ulogic);
+            i2c_scl : IN std_ulogic;
+            i2c_sda : IN std_ulogic;
+            tr_rx_req : OUT std_ulogic;
+            tr_tx_req : OUT std_ulogic);
     END COMPONENT;
     COMPONENT p4blecell
         PORT (
@@ -352,7 +354,7 @@ BEGIN
         PORT MAP(
             pa_out => \\\Serial:rx(0)\\__PA\,
             oe => open,
-            fb => \Serial:Net_654\,
+            fb => \Serial:rx_wire\,
             pad_in => \Serial:rx(0)_PAD\,
             in_clock => open,
             in_clock_en => '1',
@@ -456,7 +458,7 @@ BEGIN
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_3319,
+            interrupt => Net_3326,
             clock => ClockBlock_HFCLK);
 
     \Serial:SCB\:m0s8scbcell
@@ -465,31 +467,31 @@ BEGIN
             scb_mode => 2)
         PORT MAP(
             clock => \Serial:Net_847_ff1\,
-            interrupt => Net_3319,
-            rx => \Serial:Net_654\,
-            tx => \Serial:Net_1062\,
-            cts => open,
-            rts => \Serial:Net_1053\,
-            mosi_m => \Serial:Net_1061\,
+            interrupt => Net_3326,
+            uart_rx => \Serial:rx_wire\,
+            uart_tx => \Serial:tx_wire\,
+            uart_cts => open,
+            uart_rts => \Serial:rts_wire\,
+            mosi_m => \Serial:mosi_m_wire\,
             miso_m => open,
-            select_m_3 => \Serial:ss_3\,
-            select_m_2 => \Serial:ss_2\,
-            select_m_1 => \Serial:ss_1\,
-            select_m_0 => \Serial:ss_0\,
-            sclk_m => \Serial:Net_1059\,
+            select_m_3 => \Serial:select_m_wire_3\,
+            select_m_2 => \Serial:select_m_wire_2\,
+            select_m_1 => \Serial:select_m_wire_1\,
+            select_m_0 => \Serial:select_m_wire_0\,
+            sclk_m => \Serial:sclk_m_wire\,
             mosi_s => open,
-            miso_s => \Serial:Net_1055\,
+            miso_s => \Serial:miso_s_wire\,
             select_s => open,
             sclk_s => open,
-            tx_req => Net_3322,
-            rx_req => Net_3321);
+            tr_tx_req => Net_3329,
+            tr_rx_req => Net_3328);
 
     \BLE:cy_m0s8_ble\:p4blecell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
             interrupt => \BLE:Net_15\,
-            rfctrl_extpa_en => \BLE:Net_63\);
+            rfctrl_extpa_en => Net_3347);
 
     \BLE:bless_isr\:interrupt
         GENERIC MAP(

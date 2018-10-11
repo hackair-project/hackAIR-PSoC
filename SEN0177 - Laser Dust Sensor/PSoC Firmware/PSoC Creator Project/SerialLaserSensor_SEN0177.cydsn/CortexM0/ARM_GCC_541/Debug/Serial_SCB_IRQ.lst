@@ -1,0 +1,1968 @@
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Serial_SCB_IRQ.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Serial_SCB_IRQ_Start,"ax",%progbits
+  20              		.align	2
+  21              		.global	Serial_SCB_IRQ_Start
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	Serial_SCB_IRQ_Start, %function
+  25              	Serial_SCB_IRQ_Start:
+  26              	.LFB2:
+  27              		.file 1 "Generated_Source\\PSoC4\\Serial_SCB_IRQ.c"
+   1:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * File Name: Serial_SCB_IRQ.c  
+   3:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Version 1.70
+   4:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+   5:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  Description:
+   6:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   API for controlling the state of an interrupt.
+   7:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+   8:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+   9:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  Note:
+  10:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  11:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  18:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  19:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** #include <cydevice_trm.h>
+  20:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** #include <CyLib.h>
+  21:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** #include <Serial_SCB_IRQ.h>
+  22:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** #include "cyapicallbacks.h"
+  23:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  24:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** #if !defined(Serial_SCB_IRQ__REMOVED) /* Check for removal by optimization */
+  25:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  26:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+  27:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  Place your includes, defines and code here 
+  28:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************/
+  29:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /* `#START Serial_SCB_IRQ_intc` */
+  30:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 2
+
+
+  31:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /* `#END` */
+  32:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  33:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  34:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  35:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /* Declared in startup, used to set unused interrupts to. */
+  36:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** CY_ISR_PROTO(IntDefaultHandler);
+  37:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  38:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  39:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+  40:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_Start
+  41:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+  42:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  43:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+  44:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  45:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  46:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  47:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  interrupt controller.
+  48:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  49:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:  
+  50:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+  51:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  52:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+  53:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+  54:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  55:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+  56:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_Start(void)
+  57:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+  28              		.loc 1 57 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  58:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* For all we know the interrupt is active. */
+  59:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_Disable();
+  38              		.loc 1 59 0
+  39 0004 FFF7FEFF 		bl	Serial_SCB_IRQ_Disable
+  60:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  61:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Set the ISR to point to the Serial_SCB_IRQ Interrupt. */
+  62:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_SetVector(&Serial_SCB_IRQ_Interrupt);
+  40              		.loc 1 62 0
+  41 0008 054B     		ldr	r3, .L2
+  42 000a 1800     		movs	r0, r3
+  43 000c FFF7FEFF 		bl	Serial_SCB_IRQ_SetVector
+  63:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  64:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Set the priority. */
+  65:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_SetPriority((uint8)Serial_SCB_IRQ_INTC_PRIOR_NUMBER);
+  44              		.loc 1 65 0
+  45 0010 0320     		movs	r0, #3
+  46 0012 FFF7FEFF 		bl	Serial_SCB_IRQ_SetPriority
+  66:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  67:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Enable it. */
+  68:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_Enable();
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 3
+
+
+  47              		.loc 1 68 0
+  48 0016 FFF7FEFF 		bl	Serial_SCB_IRQ_Enable
+  69:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+  49              		.loc 1 69 0
+  50 001a C046     		nop
+  51 001c BD46     		mov	sp, r7
+  52              		@ sp needed
+  53 001e 80BD     		pop	{r7, pc}
+  54              	.L3:
+  55              		.align	2
+  56              	.L2:
+  57 0020 00000000 		.word	Serial_SCB_IRQ_Interrupt
+  58              		.cfi_endproc
+  59              	.LFE2:
+  60              		.size	Serial_SCB_IRQ_Start, .-Serial_SCB_IRQ_Start
+  61              		.section	.text.Serial_SCB_IRQ_StartEx,"ax",%progbits
+  62              		.align	2
+  63              		.global	Serial_SCB_IRQ_StartEx
+  64              		.code	16
+  65              		.thumb_func
+  66              		.type	Serial_SCB_IRQ_StartEx, %function
+  67              	Serial_SCB_IRQ_StartEx:
+  68              	.LFB3:
+  70:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  71:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+  72:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+  73:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_StartEx
+  74:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+  75:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  76:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+  77:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  78:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  79:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  80:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  the interrupt to the interrupt controller.
+  81:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  
+  82:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  83:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  used to provide consistent definition across compilers:
+  84:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  
+  85:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *  Function definition example:
+  86:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   CY_ISR(MyISR)
+  87:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   {
+  88:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   }
+  89:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Function prototype example:
+  90:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   CY_ISR_PROTO(MyISR);
+  91:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  92:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:  
+  93:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  94:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  95:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+  96:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+  97:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+  98:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+  99:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_StartEx(cyisraddress address)
+ 100:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+  69              		.loc 1 100 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 4
+
+
+  72              		@ frame_needed = 1, uses_anonymous_args = 0
+  73 0000 80B5     		push	{r7, lr}
+  74              		.cfi_def_cfa_offset 8
+  75              		.cfi_offset 7, -8
+  76              		.cfi_offset 14, -4
+  77 0002 82B0     		sub	sp, sp, #8
+  78              		.cfi_def_cfa_offset 16
+  79 0004 00AF     		add	r7, sp, #0
+  80              		.cfi_def_cfa_register 7
+  81 0006 7860     		str	r0, [r7, #4]
+ 101:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* For all we know the interrupt is active. */
+ 102:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_Disable();
+  82              		.loc 1 102 0
+  83 0008 FFF7FEFF 		bl	Serial_SCB_IRQ_Disable
+ 103:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 104:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Set the ISR to point to the Serial_SCB_IRQ Interrupt. */
+ 105:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_SetVector(address);
+  84              		.loc 1 105 0
+  85 000c 7B68     		ldr	r3, [r7, #4]
+  86 000e 1800     		movs	r0, r3
+  87 0010 FFF7FEFF 		bl	Serial_SCB_IRQ_SetVector
+ 106:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 107:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Set the priority. */
+ 108:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_SetPriority((uint8)Serial_SCB_IRQ_INTC_PRIOR_NUMBER);
+  88              		.loc 1 108 0
+  89 0014 0320     		movs	r0, #3
+  90 0016 FFF7FEFF 		bl	Serial_SCB_IRQ_SetPriority
+ 109:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 110:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Enable it. */
+ 111:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_Enable();
+  91              		.loc 1 111 0
+  92 001a FFF7FEFF 		bl	Serial_SCB_IRQ_Enable
+ 112:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+  93              		.loc 1 112 0
+  94 001e C046     		nop
+  95 0020 BD46     		mov	sp, r7
+  96 0022 02B0     		add	sp, sp, #8
+  97              		@ sp needed
+  98 0024 80BD     		pop	{r7, pc}
+  99              		.cfi_endproc
+ 100              	.LFE3:
+ 101              		.size	Serial_SCB_IRQ_StartEx, .-Serial_SCB_IRQ_StartEx
+ 102 0026 C046     		.section	.text.Serial_SCB_IRQ_Stop,"ax",%progbits
+ 103              		.align	2
+ 104              		.global	Serial_SCB_IRQ_Stop
+ 105              		.code	16
+ 106              		.thumb_func
+ 107              		.type	Serial_SCB_IRQ_Stop, %function
+ 108              	Serial_SCB_IRQ_Stop:
+ 109              	.LFB4:
+ 113:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 114:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 115:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 116:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_Stop
+ 117:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 118:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 119:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 5
+
+
+ 120:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Disables and removes the interrupt.
+ 121:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 122:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:  
+ 123:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 124:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 125:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 126:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 127:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 128:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 129:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_Stop(void)
+ 130:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 110              		.loc 1 130 0
+ 111              		.cfi_startproc
+ 112              		@ args = 0, pretend = 0, frame = 0
+ 113              		@ frame_needed = 1, uses_anonymous_args = 0
+ 114 0000 80B5     		push	{r7, lr}
+ 115              		.cfi_def_cfa_offset 8
+ 116              		.cfi_offset 7, -8
+ 117              		.cfi_offset 14, -4
+ 118 0002 00AF     		add	r7, sp, #0
+ 119              		.cfi_def_cfa_register 7
+ 131:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Disable this interrupt. */
+ 132:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_Disable();
+ 120              		.loc 1 132 0
+ 121 0004 FFF7FEFF 		bl	Serial_SCB_IRQ_Disable
+ 133:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 134:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Set the ISR to point to the passive one. */
+ 135:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     Serial_SCB_IRQ_SetVector(&IntDefaultHandler);
+ 122              		.loc 1 135 0
+ 123 0008 034B     		ldr	r3, .L6
+ 124 000a 1800     		movs	r0, r3
+ 125 000c FFF7FEFF 		bl	Serial_SCB_IRQ_SetVector
+ 136:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 126              		.loc 1 136 0
+ 127 0010 C046     		nop
+ 128 0012 BD46     		mov	sp, r7
+ 129              		@ sp needed
+ 130 0014 80BD     		pop	{r7, pc}
+ 131              	.L7:
+ 132 0016 C046     		.align	2
+ 133              	.L6:
+ 134 0018 00000000 		.word	IntDefaultHandler
+ 135              		.cfi_endproc
+ 136              	.LFE4:
+ 137              		.size	Serial_SCB_IRQ_Stop, .-Serial_SCB_IRQ_Stop
+ 138              		.section	.text.Serial_SCB_IRQ_Interrupt,"ax",%progbits
+ 139              		.align	2
+ 140              		.global	Serial_SCB_IRQ_Interrupt
+ 141              		.code	16
+ 142              		.thumb_func
+ 143              		.type	Serial_SCB_IRQ_Interrupt, %function
+ 144              	Serial_SCB_IRQ_Interrupt:
+ 145              	.LFB5:
+ 137:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 138:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 139:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 140:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_Interrupt
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 6
+
+
+ 141:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 142:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 143:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 144:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   The default Interrupt Service Routine for Serial_SCB_IRQ.
+ 145:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 146:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Add custom code between the START and END comments to keep the next version
+ 147:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   of this file from over-writing your code.
+ 148:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 149:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 150:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   your own separate ISR through ISR_StartEx().
+ 151:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 152:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:  
+ 153:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 154:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 155:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 156:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 157:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 158:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 159:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** CY_ISR(Serial_SCB_IRQ_Interrupt)
+ 160:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 146              		.loc 1 160 0
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 1, uses_anonymous_args = 0
+ 150 0000 80B5     		push	{r7, lr}
+ 151              		.cfi_def_cfa_offset 8
+ 152              		.cfi_offset 7, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 00AF     		add	r7, sp, #0
+ 155              		.cfi_def_cfa_register 7
+ 161:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     #ifdef Serial_SCB_IRQ_INTERRUPT_INTERRUPT_CALLBACK
+ 162:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****         Serial_SCB_IRQ_Interrupt_InterruptCallback();
+ 163:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     #endif /* Serial_SCB_IRQ_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 164:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 165:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /*  Place your Interrupt code here. */
+ 166:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* `#START Serial_SCB_IRQ_Interrupt` */
+ 167:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 168:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* `#END` */
+ 169:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 156              		.loc 1 169 0
+ 157 0004 C046     		nop
+ 158 0006 BD46     		mov	sp, r7
+ 159              		@ sp needed
+ 160 0008 80BD     		pop	{r7, pc}
+ 161              		.cfi_endproc
+ 162              	.LFE5:
+ 163              		.size	Serial_SCB_IRQ_Interrupt, .-Serial_SCB_IRQ_Interrupt
+ 164              		.section	.text.Serial_SCB_IRQ_SetVector,"ax",%progbits
+ 165              		.align	2
+ 166              		.global	Serial_SCB_IRQ_SetVector
+ 167              		.code	16
+ 168              		.thumb_func
+ 169              		.type	Serial_SCB_IRQ_SetVector, %function
+ 170              	Serial_SCB_IRQ_SetVector:
+ 171              	.LFB6:
+ 170:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 171:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 7
+
+
+ 172:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 173:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_SetVector
+ 174:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 175:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 176:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 177:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Change the ISR vector for the Interrupt. Note calling Serial_SCB_IRQ_Start
+ 178:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   will override any effect this method would have had. To set the vector 
+ 179:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   before the component has been started use Serial_SCB_IRQ_StartEx instead.
+ 180:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * 
+ 181:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 182:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   used to provide consistent definition across compilers:
+ 183:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 184:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Function definition example:
+ 185:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   CY_ISR(MyISR)
+ 186:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   {
+ 187:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   }
+ 188:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 189:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Function prototype example:
+ 190:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *     CY_ISR_PROTO(MyISR);
+ 191:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 192:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 193:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 194:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 195:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 196:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 197:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 198:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 199:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_SetVector(cyisraddress address)
+ 200:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 172              		.loc 1 200 0
+ 173              		.cfi_startproc
+ 174              		@ args = 0, pretend = 0, frame = 8
+ 175              		@ frame_needed = 1, uses_anonymous_args = 0
+ 176 0000 80B5     		push	{r7, lr}
+ 177              		.cfi_def_cfa_offset 8
+ 178              		.cfi_offset 7, -8
+ 179              		.cfi_offset 14, -4
+ 180 0002 82B0     		sub	sp, sp, #8
+ 181              		.cfi_def_cfa_offset 16
+ 182 0004 00AF     		add	r7, sp, #0
+ 183              		.cfi_def_cfa_register 7
+ 184 0006 7860     		str	r0, [r7, #4]
+ 201:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     CyRamVectors[CYINT_IRQ_BASE + Serial_SCB_IRQ__INTC_NUMBER] = address;
+ 185              		.loc 1 201 0
+ 186 0008 034B     		ldr	r3, .L10
+ 187 000a 7A68     		ldr	r2, [r7, #4]
+ 188 000c 5A66     		str	r2, [r3, #100]
+ 202:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 189              		.loc 1 202 0
+ 190 000e C046     		nop
+ 191 0010 BD46     		mov	sp, r7
+ 192 0012 02B0     		add	sp, sp, #8
+ 193              		@ sp needed
+ 194 0014 80BD     		pop	{r7, pc}
+ 195              	.L11:
+ 196 0016 C046     		.align	2
+ 197              	.L10:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 8
+
+
+ 198 0018 00000000 		.word	CyRamVectors
+ 199              		.cfi_endproc
+ 200              	.LFE6:
+ 201              		.size	Serial_SCB_IRQ_SetVector, .-Serial_SCB_IRQ_SetVector
+ 202              		.section	.text.Serial_SCB_IRQ_GetVector,"ax",%progbits
+ 203              		.align	2
+ 204              		.global	Serial_SCB_IRQ_GetVector
+ 205              		.code	16
+ 206              		.thumb_func
+ 207              		.type	Serial_SCB_IRQ_GetVector, %function
+ 208              	Serial_SCB_IRQ_GetVector:
+ 209              	.LFB7:
+ 203:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 204:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 205:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 206:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_GetVector
+ 207:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 208:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 209:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 210:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 211:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 212:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 213:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 214:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 215:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 216:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Address of the ISR in the interrupt vector table.
+ 217:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 218:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 219:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** cyisraddress Serial_SCB_IRQ_GetVector(void)
+ 220:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 210              		.loc 1 220 0
+ 211              		.cfi_startproc
+ 212              		@ args = 0, pretend = 0, frame = 0
+ 213              		@ frame_needed = 1, uses_anonymous_args = 0
+ 214 0000 80B5     		push	{r7, lr}
+ 215              		.cfi_def_cfa_offset 8
+ 216              		.cfi_offset 7, -8
+ 217              		.cfi_offset 14, -4
+ 218 0002 00AF     		add	r7, sp, #0
+ 219              		.cfi_def_cfa_register 7
+ 221:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     return CyRamVectors[CYINT_IRQ_BASE + Serial_SCB_IRQ__INTC_NUMBER];
+ 220              		.loc 1 221 0
+ 221 0004 024B     		ldr	r3, .L14
+ 222 0006 5B6E     		ldr	r3, [r3, #100]
+ 222:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 223              		.loc 1 222 0
+ 224 0008 1800     		movs	r0, r3
+ 225 000a BD46     		mov	sp, r7
+ 226              		@ sp needed
+ 227 000c 80BD     		pop	{r7, pc}
+ 228              	.L15:
+ 229 000e C046     		.align	2
+ 230              	.L14:
+ 231 0010 00000000 		.word	CyRamVectors
+ 232              		.cfi_endproc
+ 233              	.LFE7:
+ 234              		.size	Serial_SCB_IRQ_GetVector, .-Serial_SCB_IRQ_GetVector
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 9
+
+
+ 235              		.section	.text.Serial_SCB_IRQ_SetPriority,"ax",%progbits
+ 236              		.align	2
+ 237              		.global	Serial_SCB_IRQ_SetPriority
+ 238              		.code	16
+ 239              		.thumb_func
+ 240              		.type	Serial_SCB_IRQ_SetPriority, %function
+ 241              	Serial_SCB_IRQ_SetPriority:
+ 242              	.LFB8:
+ 223:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 224:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 225:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 226:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_SetPriority
+ 227:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 228:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 229:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 230:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Sets the Priority of the Interrupt. 
+ 231:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 232:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Note calling Serial_SCB_IRQ_Start or Serial_SCB_IRQ_StartEx will 
+ 233:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   override any effect this API would have had. This API should only be called
+ 234:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   after Serial_SCB_IRQ_Start or Serial_SCB_IRQ_StartEx has been called. 
+ 235:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 236:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Interrupt Editor.
+ 237:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 238:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 239:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 240:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 241:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 242:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 243:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *             PSoC 4: Priority is from 0 to 3.
+ 244:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 245:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 246:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 247:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 248:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 249:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_SetPriority(uint8 priority)
+ 250:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 243              		.loc 1 250 0
+ 244              		.cfi_startproc
+ 245              		@ args = 0, pretend = 0, frame = 16
+ 246              		@ frame_needed = 1, uses_anonymous_args = 0
+ 247 0000 90B5     		push	{r4, r7, lr}
+ 248              		.cfi_def_cfa_offset 12
+ 249              		.cfi_offset 4, -12
+ 250              		.cfi_offset 7, -8
+ 251              		.cfi_offset 14, -4
+ 252 0002 85B0     		sub	sp, sp, #20
+ 253              		.cfi_def_cfa_offset 32
+ 254 0004 00AF     		add	r7, sp, #0
+ 255              		.cfi_def_cfa_register 7
+ 256 0006 0200     		movs	r2, r0
+ 257 0008 FB1D     		adds	r3, r7, #7
+ 258 000a 1A70     		strb	r2, [r3]
+ 251:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 	uint8 interruptState;
+ 252:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     uint32 priorityOffset = ((Serial_SCB_IRQ__INTC_NUMBER % 4u) * 8u) + 6u;
+ 259              		.loc 1 252 0
+ 260 000c 0E23     		movs	r3, #14
+ 261 000e FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 10
+
+
+ 253:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     
+ 254:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 	interruptState = CyEnterCriticalSection();
+ 262              		.loc 1 254 0
+ 263 0010 0B23     		movs	r3, #11
+ 264 0012 FC18     		adds	r4, r7, r3
+ 265 0014 FFF7FEFF 		bl	CyEnterCriticalSection
+ 266 0018 0300     		movs	r3, r0
+ 267 001a 2370     		strb	r3, [r4]
+ 255:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     *Serial_SCB_IRQ_INTC_PRIOR = (*Serial_SCB_IRQ_INTC_PRIOR & (uint32)(~Serial_SCB_IRQ__INTC_PRIOR
+ 268              		.loc 1 255 0
+ 269 001c 0A4B     		ldr	r3, .L17
+ 270 001e 0A4A     		ldr	r2, .L17
+ 271 0020 1268     		ldr	r2, [r2]
+ 272 0022 0A49     		ldr	r1, .L17+4
+ 273 0024 1140     		ands	r1, r2
+ 256:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****                                     ((uint32)priority << priorityOffset);
+ 274              		.loc 1 256 0
+ 275 0026 FA1D     		adds	r2, r7, #7
+ 276 0028 1078     		ldrb	r0, [r2]
+ 277 002a FA68     		ldr	r2, [r7, #12]
+ 278 002c 9040     		lsls	r0, r0, r2
+ 279 002e 0200     		movs	r2, r0
+ 255:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     *Serial_SCB_IRQ_INTC_PRIOR = (*Serial_SCB_IRQ_INTC_PRIOR & (uint32)(~Serial_SCB_IRQ__INTC_PRIOR
+ 280              		.loc 1 255 0
+ 281 0030 0A43     		orrs	r2, r1
+ 282 0032 1A60     		str	r2, [r3]
+ 257:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 	CyExitCriticalSection(interruptState);
+ 283              		.loc 1 257 0
+ 284 0034 0B23     		movs	r3, #11
+ 285 0036 FB18     		adds	r3, r7, r3
+ 286 0038 1B78     		ldrb	r3, [r3]
+ 287 003a 1800     		movs	r0, r3
+ 288 003c FFF7FEFF 		bl	CyExitCriticalSection
+ 258:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 289              		.loc 1 258 0
+ 290 0040 C046     		nop
+ 291 0042 BD46     		mov	sp, r7
+ 292 0044 05B0     		add	sp, sp, #20
+ 293              		@ sp needed
+ 294 0046 90BD     		pop	{r4, r7, pc}
+ 295              	.L18:
+ 296              		.align	2
+ 297              	.L17:
+ 298 0048 08E400E0 		.word	-536812536
+ 299 004c FF3FFFFF 		.word	-49153
+ 300              		.cfi_endproc
+ 301              	.LFE8:
+ 302              		.size	Serial_SCB_IRQ_SetPriority, .-Serial_SCB_IRQ_SetPriority
+ 303              		.section	.text.Serial_SCB_IRQ_GetPriority,"ax",%progbits
+ 304              		.align	2
+ 305              		.global	Serial_SCB_IRQ_GetPriority
+ 306              		.code	16
+ 307              		.thumb_func
+ 308              		.type	Serial_SCB_IRQ_GetPriority, %function
+ 309              	Serial_SCB_IRQ_GetPriority:
+ 310              	.LFB9:
+ 259:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 11
+
+
+ 260:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 261:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 262:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_GetPriority
+ 263:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 264:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 265:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 266:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Gets the Priority of the Interrupt.
+ 267:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 268:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 269:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 270:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 271:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 272:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Priority of the interrupt, 0 being the highest priority
+ 273:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 274:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *    PSoC 4: Priority is from 0 to 3.
+ 275:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 276:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 277:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** uint8 Serial_SCB_IRQ_GetPriority(void)
+ 278:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 311              		.loc 1 278 0
+ 312              		.cfi_startproc
+ 313              		@ args = 0, pretend = 0, frame = 8
+ 314              		@ frame_needed = 1, uses_anonymous_args = 0
+ 315 0000 80B5     		push	{r7, lr}
+ 316              		.cfi_def_cfa_offset 8
+ 317              		.cfi_offset 7, -8
+ 318              		.cfi_offset 14, -4
+ 319 0002 82B0     		sub	sp, sp, #8
+ 320              		.cfi_def_cfa_offset 16
+ 321 0004 00AF     		add	r7, sp, #0
+ 322              		.cfi_def_cfa_register 7
+ 279:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     uint32 priority;
+ 280:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 	uint32 priorityOffset = ((Serial_SCB_IRQ__INTC_NUMBER % 4u) * 8u) + 6u;
+ 323              		.loc 1 280 0
+ 324 0006 0E23     		movs	r3, #14
+ 325 0008 7B60     		str	r3, [r7, #4]
+ 281:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 282:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     priority = (*Serial_SCB_IRQ_INTC_PRIOR & Serial_SCB_IRQ__INTC_PRIOR_MASK) >> priorityOffset;
+ 326              		.loc 1 282 0
+ 327 000a 074B     		ldr	r3, .L21
+ 328 000c 1A68     		ldr	r2, [r3]
+ 329 000e C023     		movs	r3, #192
+ 330 0010 1B02     		lsls	r3, r3, #8
+ 331 0012 1A40     		ands	r2, r3
+ 332 0014 7B68     		ldr	r3, [r7, #4]
+ 333 0016 DA40     		lsrs	r2, r2, r3
+ 334 0018 1300     		movs	r3, r2
+ 335 001a 3B60     		str	r3, [r7]
+ 283:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 284:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     return (uint8)priority;
+ 336              		.loc 1 284 0
+ 337 001c 3B68     		ldr	r3, [r7]
+ 338 001e DBB2     		uxtb	r3, r3
+ 285:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 339              		.loc 1 285 0
+ 340 0020 1800     		movs	r0, r3
+ 341 0022 BD46     		mov	sp, r7
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 12
+
+
+ 342 0024 02B0     		add	sp, sp, #8
+ 343              		@ sp needed
+ 344 0026 80BD     		pop	{r7, pc}
+ 345              	.L22:
+ 346              		.align	2
+ 347              	.L21:
+ 348 0028 08E400E0 		.word	-536812536
+ 349              		.cfi_endproc
+ 350              	.LFE9:
+ 351              		.size	Serial_SCB_IRQ_GetPriority, .-Serial_SCB_IRQ_GetPriority
+ 352              		.section	.text.Serial_SCB_IRQ_Enable,"ax",%progbits
+ 353              		.align	2
+ 354              		.global	Serial_SCB_IRQ_Enable
+ 355              		.code	16
+ 356              		.thumb_func
+ 357              		.type	Serial_SCB_IRQ_Enable, %function
+ 358              	Serial_SCB_IRQ_Enable:
+ 359              	.LFB10:
+ 286:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 287:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 288:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 289:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_Enable
+ 290:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 291:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 292:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 293:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 294:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 295:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   function, which sets the vector and the priority, has been called.
+ 296:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 297:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 298:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 299:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 300:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 301:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 302:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 303:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 304:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_Enable(void)
+ 305:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 360              		.loc 1 305 0
+ 361              		.cfi_startproc
+ 362              		@ args = 0, pretend = 0, frame = 0
+ 363              		@ frame_needed = 1, uses_anonymous_args = 0
+ 364 0000 80B5     		push	{r7, lr}
+ 365              		.cfi_def_cfa_offset 8
+ 366              		.cfi_offset 7, -8
+ 367              		.cfi_offset 14, -4
+ 368 0002 00AF     		add	r7, sp, #0
+ 369              		.cfi_def_cfa_register 7
+ 306:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Enable the general interrupt. */
+ 307:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     *Serial_SCB_IRQ_INTC_SET_EN = Serial_SCB_IRQ__INTC_MASK;
+ 370              		.loc 1 307 0
+ 371 0004 034B     		ldr	r3, .L24
+ 372 0006 8022     		movs	r2, #128
+ 373 0008 9200     		lsls	r2, r2, #2
+ 374 000a 1A60     		str	r2, [r3]
+ 308:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 375              		.loc 1 308 0
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 13
+
+
+ 376 000c C046     		nop
+ 377 000e BD46     		mov	sp, r7
+ 378              		@ sp needed
+ 379 0010 80BD     		pop	{r7, pc}
+ 380              	.L25:
+ 381 0012 C046     		.align	2
+ 382              	.L24:
+ 383 0014 00E100E0 		.word	-536813312
+ 384              		.cfi_endproc
+ 385              	.LFE10:
+ 386              		.size	Serial_SCB_IRQ_Enable, .-Serial_SCB_IRQ_Enable
+ 387              		.section	.text.Serial_SCB_IRQ_GetState,"ax",%progbits
+ 388              		.align	2
+ 389              		.global	Serial_SCB_IRQ_GetState
+ 390              		.code	16
+ 391              		.thumb_func
+ 392              		.type	Serial_SCB_IRQ_GetState, %function
+ 393              	Serial_SCB_IRQ_GetState:
+ 394              	.LFB11:
+ 309:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 310:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 311:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 312:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_GetState
+ 313:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 314:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 315:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 316:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 317:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 318:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 319:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 320:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 321:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 322:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   1 if enabled, 0 if disabled.
+ 323:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 324:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 325:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** uint8 Serial_SCB_IRQ_GetState(void)
+ 326:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 395              		.loc 1 326 0
+ 396              		.cfi_startproc
+ 397              		@ args = 0, pretend = 0, frame = 0
+ 398              		@ frame_needed = 1, uses_anonymous_args = 0
+ 399 0000 80B5     		push	{r7, lr}
+ 400              		.cfi_def_cfa_offset 8
+ 401              		.cfi_offset 7, -8
+ 402              		.cfi_offset 14, -4
+ 403 0002 00AF     		add	r7, sp, #0
+ 404              		.cfi_def_cfa_register 7
+ 327:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Get the state of the general interrupt. */
+ 328:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     return ((*Serial_SCB_IRQ_INTC_SET_EN & (uint32)Serial_SCB_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+ 405              		.loc 1 328 0
+ 406 0004 054B     		ldr	r3, .L30
+ 407 0006 1A68     		ldr	r2, [r3]
+ 408 0008 8023     		movs	r3, #128
+ 409 000a 9B00     		lsls	r3, r3, #2
+ 410 000c 1340     		ands	r3, r2
+ 411 000e 01D0     		beq	.L27
+ 412              		.loc 1 328 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 14
+
+
+ 413 0010 0123     		movs	r3, #1
+ 414 0012 00E0     		b	.L28
+ 415              	.L27:
+ 416              		.loc 1 328 0 discriminator 2
+ 417 0014 0023     		movs	r3, #0
+ 418              	.L28:
+ 329:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 419              		.loc 1 329 0 is_stmt 1 discriminator 4
+ 420 0016 1800     		movs	r0, r3
+ 421 0018 BD46     		mov	sp, r7
+ 422              		@ sp needed
+ 423 001a 80BD     		pop	{r7, pc}
+ 424              	.L31:
+ 425              		.align	2
+ 426              	.L30:
+ 427 001c 00E100E0 		.word	-536813312
+ 428              		.cfi_endproc
+ 429              	.LFE11:
+ 430              		.size	Serial_SCB_IRQ_GetState, .-Serial_SCB_IRQ_GetState
+ 431              		.section	.text.Serial_SCB_IRQ_Disable,"ax",%progbits
+ 432              		.align	2
+ 433              		.global	Serial_SCB_IRQ_Disable
+ 434              		.code	16
+ 435              		.thumb_func
+ 436              		.type	Serial_SCB_IRQ_Disable, %function
+ 437              	Serial_SCB_IRQ_Disable:
+ 438              	.LFB12:
+ 330:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 331:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 332:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 333:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_Disable
+ 334:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 335:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 336:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 337:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Disables the Interrupt in the interrupt controller.
+ 338:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 339:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 340:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 341:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 342:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 343:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 344:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 345:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 346:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_Disable(void)
+ 347:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 439              		.loc 1 347 0
+ 440              		.cfi_startproc
+ 441              		@ args = 0, pretend = 0, frame = 0
+ 442              		@ frame_needed = 1, uses_anonymous_args = 0
+ 443 0000 80B5     		push	{r7, lr}
+ 444              		.cfi_def_cfa_offset 8
+ 445              		.cfi_offset 7, -8
+ 446              		.cfi_offset 14, -4
+ 447 0002 00AF     		add	r7, sp, #0
+ 448              		.cfi_def_cfa_register 7
+ 348:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     /* Disable the general interrupt. */
+ 349:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     *Serial_SCB_IRQ_INTC_CLR_EN = Serial_SCB_IRQ__INTC_MASK;
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 15
+
+
+ 449              		.loc 1 349 0
+ 450 0004 034B     		ldr	r3, .L33
+ 451 0006 8022     		movs	r2, #128
+ 452 0008 9200     		lsls	r2, r2, #2
+ 453 000a 1A60     		str	r2, [r3]
+ 350:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 454              		.loc 1 350 0
+ 455 000c C046     		nop
+ 456 000e BD46     		mov	sp, r7
+ 457              		@ sp needed
+ 458 0010 80BD     		pop	{r7, pc}
+ 459              	.L34:
+ 460 0012 C046     		.align	2
+ 461              	.L33:
+ 462 0014 80E100E0 		.word	-536813184
+ 463              		.cfi_endproc
+ 464              	.LFE12:
+ 465              		.size	Serial_SCB_IRQ_Disable, .-Serial_SCB_IRQ_Disable
+ 466              		.section	.text.Serial_SCB_IRQ_SetPending,"ax",%progbits
+ 467              		.align	2
+ 468              		.global	Serial_SCB_IRQ_SetPending
+ 469              		.code	16
+ 470              		.thumb_func
+ 471              		.type	Serial_SCB_IRQ_SetPending, %function
+ 472              	Serial_SCB_IRQ_SetPending:
+ 473              	.LFB13:
+ 351:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 352:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 353:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 354:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_SetPending
+ 355:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 356:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 357:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 358:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 359:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   generating the interrupt.
+ 360:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 361:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 362:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 363:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 364:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 365:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 366:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 367:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Side Effects:
+ 368:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 369:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 370:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   interrupts).
+ 371:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 372:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 373:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_SetPending(void)
+ 374:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 474              		.loc 1 374 0
+ 475              		.cfi_startproc
+ 476              		@ args = 0, pretend = 0, frame = 0
+ 477              		@ frame_needed = 1, uses_anonymous_args = 0
+ 478 0000 80B5     		push	{r7, lr}
+ 479              		.cfi_def_cfa_offset 8
+ 480              		.cfi_offset 7, -8
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 16
+
+
+ 481              		.cfi_offset 14, -4
+ 482 0002 00AF     		add	r7, sp, #0
+ 483              		.cfi_def_cfa_register 7
+ 375:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     *Serial_SCB_IRQ_INTC_SET_PD = Serial_SCB_IRQ__INTC_MASK;
+ 484              		.loc 1 375 0
+ 485 0004 034B     		ldr	r3, .L36
+ 486 0006 8022     		movs	r2, #128
+ 487 0008 9200     		lsls	r2, r2, #2
+ 488 000a 1A60     		str	r2, [r3]
+ 376:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 489              		.loc 1 376 0
+ 490 000c C046     		nop
+ 491 000e BD46     		mov	sp, r7
+ 492              		@ sp needed
+ 493 0010 80BD     		pop	{r7, pc}
+ 494              	.L37:
+ 495 0012 C046     		.align	2
+ 496              	.L36:
+ 497 0014 00E200E0 		.word	-536813056
+ 498              		.cfi_endproc
+ 499              	.LFE13:
+ 500              		.size	Serial_SCB_IRQ_SetPending, .-Serial_SCB_IRQ_SetPending
+ 501              		.section	.text.Serial_SCB_IRQ_ClearPending,"ax",%progbits
+ 502              		.align	2
+ 503              		.global	Serial_SCB_IRQ_ClearPending
+ 504              		.code	16
+ 505              		.thumb_func
+ 506              		.type	Serial_SCB_IRQ_ClearPending, %function
+ 507              	Serial_SCB_IRQ_ClearPending:
+ 508              	.LFB14:
+ 377:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 378:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** 
+ 379:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** /*******************************************************************************
+ 380:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Function Name: Serial_SCB_IRQ_ClearPending
+ 381:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** ********************************************************************************
+ 382:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 383:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Summary:
+ 384:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Clears a pending interrupt in the interrupt controller.
+ 385:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 386:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 387:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 388:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 389:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 390:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 391:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Parameters:
+ 392:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 393:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 394:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** * Return:
+ 395:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *   None
+ 396:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *
+ 397:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** *******************************************************************************/
+ 398:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** void Serial_SCB_IRQ_ClearPending(void)
+ 399:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** {
+ 509              		.loc 1 399 0
+ 510              		.cfi_startproc
+ 511              		@ args = 0, pretend = 0, frame = 0
+ 512              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 17
+
+
+ 513 0000 80B5     		push	{r7, lr}
+ 514              		.cfi_def_cfa_offset 8
+ 515              		.cfi_offset 7, -8
+ 516              		.cfi_offset 14, -4
+ 517 0002 00AF     		add	r7, sp, #0
+ 518              		.cfi_def_cfa_register 7
+ 400:Generated_Source\PSoC4/Serial_SCB_IRQ.c ****     *Serial_SCB_IRQ_INTC_CLR_PD = Serial_SCB_IRQ__INTC_MASK;
+ 519              		.loc 1 400 0
+ 520 0004 034B     		ldr	r3, .L39
+ 521 0006 8022     		movs	r2, #128
+ 522 0008 9200     		lsls	r2, r2, #2
+ 523 000a 1A60     		str	r2, [r3]
+ 401:Generated_Source\PSoC4/Serial_SCB_IRQ.c **** }
+ 524              		.loc 1 401 0
+ 525 000c C046     		nop
+ 526 000e BD46     		mov	sp, r7
+ 527              		@ sp needed
+ 528 0010 80BD     		pop	{r7, pc}
+ 529              	.L40:
+ 530 0012 C046     		.align	2
+ 531              	.L39:
+ 532 0014 80E200E0 		.word	-536812928
+ 533              		.cfi_endproc
+ 534              	.LFE14:
+ 535              		.size	Serial_SCB_IRQ_ClearPending, .-Serial_SCB_IRQ_ClearPending
+ 536              		.text
+ 537              	.Letext0:
+ 538              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 539              		.section	.debug_info,"",%progbits
+ 540              	.Ldebug_info0:
+ 541 0000 49020000 		.4byte	0x249
+ 542 0004 0400     		.2byte	0x4
+ 543 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 544 000a 04       		.byte	0x4
+ 545 000b 01       		.uleb128 0x1
+ 546 000c 24010000 		.4byte	.LASF34
+ 547 0010 0C       		.byte	0xc
+ 548 0011 41030000 		.4byte	.LASF35
+ 549 0015 FB010000 		.4byte	.LASF36
+ 550 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 551 001d 00000000 		.4byte	0
+ 552 0021 00000000 		.4byte	.Ldebug_line0
+ 553 0025 02       		.uleb128 0x2
+ 554 0026 01       		.byte	0x1
+ 555 0027 06       		.byte	0x6
+ 556 0028 7E030000 		.4byte	.LASF0
+ 557 002c 02       		.uleb128 0x2
+ 558 002d 01       		.byte	0x1
+ 559 002e 08       		.byte	0x8
+ 560 002f EF000000 		.4byte	.LASF1
+ 561 0033 02       		.uleb128 0x2
+ 562 0034 02       		.byte	0x2
+ 563 0035 05       		.byte	0x5
+ 564 0036 12030000 		.4byte	.LASF2
+ 565 003a 02       		.uleb128 0x2
+ 566 003b 02       		.byte	0x2
+ 567 003c 07       		.byte	0x7
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 18
+
+
+ 568 003d 91000000 		.4byte	.LASF3
+ 569 0041 02       		.uleb128 0x2
+ 570 0042 04       		.byte	0x4
+ 571 0043 05       		.byte	0x5
+ 572 0044 69030000 		.4byte	.LASF4
+ 573 0048 02       		.uleb128 0x2
+ 574 0049 04       		.byte	0x4
+ 575 004a 07       		.byte	0x7
+ 576 004b 0C010000 		.4byte	.LASF5
+ 577 004f 02       		.uleb128 0x2
+ 578 0050 08       		.byte	0x8
+ 579 0051 05       		.byte	0x5
+ 580 0052 E8020000 		.4byte	.LASF6
+ 581 0056 02       		.uleb128 0x2
+ 582 0057 08       		.byte	0x8
+ 583 0058 07       		.byte	0x7
+ 584 0059 A1020000 		.4byte	.LASF7
+ 585 005d 03       		.uleb128 0x3
+ 586 005e 04       		.byte	0x4
+ 587 005f 05       		.byte	0x5
+ 588 0060 696E7400 		.ascii	"int\000"
+ 589 0064 02       		.uleb128 0x2
+ 590 0065 04       		.byte	0x4
+ 591 0066 07       		.byte	0x7
+ 592 0067 8C020000 		.4byte	.LASF8
+ 593 006b 04       		.uleb128 0x4
+ 594 006c 1E010000 		.4byte	.LASF9
+ 595 0070 02       		.byte	0x2
+ 596 0071 D201     		.2byte	0x1d2
+ 597 0073 2C000000 		.4byte	0x2c
+ 598 0077 04       		.uleb128 0x4
+ 599 0078 F4010000 		.4byte	.LASF10
+ 600 007c 02       		.byte	0x2
+ 601 007d D401     		.2byte	0x1d4
+ 602 007f 48000000 		.4byte	0x48
+ 603 0083 02       		.uleb128 0x2
+ 604 0084 04       		.byte	0x4
+ 605 0085 04       		.byte	0x4
+ 606 0086 D0000000 		.4byte	.LASF11
+ 607 008a 02       		.uleb128 0x2
+ 608 008b 08       		.byte	0x8
+ 609 008c 04       		.byte	0x4
+ 610 008d CD010000 		.4byte	.LASF12
+ 611 0091 02       		.uleb128 0x2
+ 612 0092 01       		.byte	0x1
+ 613 0093 08       		.byte	0x8
+ 614 0094 F6020000 		.4byte	.LASF13
+ 615 0098 04       		.uleb128 0x4
+ 616 0099 00000000 		.4byte	.LASF14
+ 617 009d 02       		.byte	0x2
+ 618 009e 7E02     		.2byte	0x27e
+ 619 00a0 A4000000 		.4byte	0xa4
+ 620 00a4 05       		.uleb128 0x5
+ 621 00a5 77000000 		.4byte	0x77
+ 622 00a9 04       		.uleb128 0x4
+ 623 00aa B8020000 		.4byte	.LASF15
+ 624 00ae 02       		.byte	0x2
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 19
+
+
+ 625 00af 8E02     		.2byte	0x28e
+ 626 00b1 B5000000 		.4byte	0xb5
+ 627 00b5 06       		.uleb128 0x6
+ 628 00b6 04       		.byte	0x4
+ 629 00b7 BB000000 		.4byte	0xbb
+ 630 00bb 07       		.uleb128 0x7
+ 631 00bc 02       		.uleb128 0x2
+ 632 00bd 08       		.byte	0x8
+ 633 00be 04       		.byte	0x4
+ 634 00bf 72030000 		.4byte	.LASF16
+ 635 00c3 02       		.uleb128 0x2
+ 636 00c4 04       		.byte	0x4
+ 637 00c5 07       		.byte	0x7
+ 638 00c6 C5020000 		.4byte	.LASF17
+ 639 00ca 08       		.uleb128 0x8
+ 640 00cb 48000000 		.4byte	.LASF18
+ 641 00cf 01       		.byte	0x1
+ 642 00d0 38       		.byte	0x38
+ 643 00d1 00000000 		.4byte	.LFB2
+ 644 00d5 24000000 		.4byte	.LFE2-.LFB2
+ 645 00d9 01       		.uleb128 0x1
+ 646 00da 9C       		.byte	0x9c
+ 647 00db 09       		.uleb128 0x9
+ 648 00dc D4010000 		.4byte	.LASF21
+ 649 00e0 01       		.byte	0x1
+ 650 00e1 63       		.byte	0x63
+ 651 00e2 00000000 		.4byte	.LFB3
+ 652 00e6 26000000 		.4byte	.LFE3-.LFB3
+ 653 00ea 01       		.uleb128 0x1
+ 654 00eb 9C       		.byte	0x9c
+ 655 00ec FF000000 		.4byte	0xff
+ 656 00f0 0A       		.uleb128 0xa
+ 657 00f1 99020000 		.4byte	.LASF23
+ 658 00f5 01       		.byte	0x1
+ 659 00f6 63       		.byte	0x63
+ 660 00f7 A9000000 		.4byte	0xa9
+ 661 00fb 02       		.uleb128 0x2
+ 662 00fc 91       		.byte	0x91
+ 663 00fd 74       		.sleb128 -12
+ 664 00fe 00       		.byte	0
+ 665 00ff 08       		.uleb128 0x8
+ 666 0100 BC000000 		.4byte	.LASF19
+ 667 0104 01       		.byte	0x1
+ 668 0105 81       		.byte	0x81
+ 669 0106 00000000 		.4byte	.LFB4
+ 670 010a 1C000000 		.4byte	.LFE4-.LFB4
+ 671 010e 01       		.uleb128 0x1
+ 672 010f 9C       		.byte	0x9c
+ 673 0110 0B       		.uleb128 0xb
+ 674 0111 2F000000 		.4byte	.LASF20
+ 675 0115 01       		.byte	0x1
+ 676 0116 9F       		.byte	0x9f
+ 677 0117 00000000 		.4byte	.LFB5
+ 678 011b 0A000000 		.4byte	.LFE5-.LFB5
+ 679 011f 01       		.uleb128 0x1
+ 680 0120 9C       		.byte	0x9c
+ 681 0121 0C       		.uleb128 0xc
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 20
+
+
+ 682 0122 5D000000 		.4byte	.LASF22
+ 683 0126 01       		.byte	0x1
+ 684 0127 C7       		.byte	0xc7
+ 685 0128 00000000 		.4byte	.LFB6
+ 686 012c 1C000000 		.4byte	.LFE6-.LFB6
+ 687 0130 01       		.uleb128 0x1
+ 688 0131 9C       		.byte	0x9c
+ 689 0132 45010000 		.4byte	0x145
+ 690 0136 0A       		.uleb128 0xa
+ 691 0137 99020000 		.4byte	.LASF23
+ 692 013b 01       		.byte	0x1
+ 693 013c C7       		.byte	0xc7
+ 694 013d A9000000 		.4byte	0xa9
+ 695 0141 02       		.uleb128 0x2
+ 696 0142 91       		.byte	0x91
+ 697 0143 74       		.sleb128 -12
+ 698 0144 00       		.byte	0
+ 699 0145 0D       		.uleb128 0xd
+ 700 0146 D6000000 		.4byte	.LASF29
+ 701 014a 01       		.byte	0x1
+ 702 014b DB       		.byte	0xdb
+ 703 014c A9000000 		.4byte	0xa9
+ 704 0150 00000000 		.4byte	.LFB7
+ 705 0154 14000000 		.4byte	.LFE7-.LFB7
+ 706 0158 01       		.uleb128 0x1
+ 707 0159 9C       		.byte	0x9c
+ 708 015a 09       		.uleb128 0x9
+ 709 015b B2010000 		.4byte	.LASF24
+ 710 015f 01       		.byte	0x1
+ 711 0160 F9       		.byte	0xf9
+ 712 0161 00000000 		.4byte	.LFB8
+ 713 0165 50000000 		.4byte	.LFE8-.LFB8
+ 714 0169 01       		.uleb128 0x1
+ 715 016a 9C       		.byte	0x9c
+ 716 016b 9A010000 		.4byte	0x19a
+ 717 016f 0A       		.uleb128 0xa
+ 718 0170 EB010000 		.4byte	.LASF25
+ 719 0174 01       		.byte	0x1
+ 720 0175 F9       		.byte	0xf9
+ 721 0176 6B000000 		.4byte	0x6b
+ 722 017a 02       		.uleb128 0x2
+ 723 017b 91       		.byte	0x91
+ 724 017c 67       		.sleb128 -25
+ 725 017d 0E       		.uleb128 0xe
+ 726 017e FD000000 		.4byte	.LASF26
+ 727 0182 01       		.byte	0x1
+ 728 0183 FB       		.byte	0xfb
+ 729 0184 6B000000 		.4byte	0x6b
+ 730 0188 02       		.uleb128 0x2
+ 731 0189 91       		.byte	0x91
+ 732 018a 6B       		.sleb128 -21
+ 733 018b 0E       		.uleb128 0xe
+ 734 018c 32030000 		.4byte	.LASF27
+ 735 0190 01       		.byte	0x1
+ 736 0191 FC       		.byte	0xfc
+ 737 0192 77000000 		.4byte	0x77
+ 738 0196 02       		.uleb128 0x2
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 21
+
+
+ 739 0197 91       		.byte	0x91
+ 740 0198 6C       		.sleb128 -20
+ 741 0199 00       		.byte	0
+ 742 019a 0F       		.uleb128 0xf
+ 743 019b 76000000 		.4byte	.LASF37
+ 744 019f 01       		.byte	0x1
+ 745 01a0 1501     		.2byte	0x115
+ 746 01a2 6B000000 		.4byte	0x6b
+ 747 01a6 00000000 		.4byte	.LFB9
+ 748 01aa 2C000000 		.4byte	.LFE9-.LFB9
+ 749 01ae 01       		.uleb128 0x1
+ 750 01af 9C       		.byte	0x9c
+ 751 01b0 D3010000 		.4byte	0x1d3
+ 752 01b4 10       		.uleb128 0x10
+ 753 01b5 EB010000 		.4byte	.LASF25
+ 754 01b9 01       		.byte	0x1
+ 755 01ba 1701     		.2byte	0x117
+ 756 01bc 77000000 		.4byte	0x77
+ 757 01c0 02       		.uleb128 0x2
+ 758 01c1 91       		.byte	0x91
+ 759 01c2 70       		.sleb128 -16
+ 760 01c3 10       		.uleb128 0x10
+ 761 01c4 32030000 		.4byte	.LASF27
+ 762 01c8 01       		.byte	0x1
+ 763 01c9 1801     		.2byte	0x118
+ 764 01cb 77000000 		.4byte	0x77
+ 765 01cf 02       		.uleb128 0x2
+ 766 01d0 91       		.byte	0x91
+ 767 01d1 74       		.sleb128 -12
+ 768 01d2 00       		.byte	0
+ 769 01d3 11       		.uleb128 0x11
+ 770 01d4 1C030000 		.4byte	.LASF28
+ 771 01d8 01       		.byte	0x1
+ 772 01d9 3001     		.2byte	0x130
+ 773 01db 00000000 		.4byte	.LFB10
+ 774 01df 18000000 		.4byte	.LFE10-.LFB10
+ 775 01e3 01       		.uleb128 0x1
+ 776 01e4 9C       		.byte	0x9c
+ 777 01e5 12       		.uleb128 0x12
+ 778 01e6 A4000000 		.4byte	.LASF30
+ 779 01ea 01       		.byte	0x1
+ 780 01eb 4501     		.2byte	0x145
+ 781 01ed 6B000000 		.4byte	0x6b
+ 782 01f1 00000000 		.4byte	.LFB11
+ 783 01f5 20000000 		.4byte	.LFE11-.LFB11
+ 784 01f9 01       		.uleb128 0x1
+ 785 01fa 9C       		.byte	0x9c
+ 786 01fb 11       		.uleb128 0x11
+ 787 01fc FB020000 		.4byte	.LASF31
+ 788 0200 01       		.byte	0x1
+ 789 0201 5A01     		.2byte	0x15a
+ 790 0203 00000000 		.4byte	.LFB12
+ 791 0207 18000000 		.4byte	.LFE12-.LFB12
+ 792 020b 01       		.uleb128 0x1
+ 793 020c 9C       		.byte	0x9c
+ 794 020d 11       		.uleb128 0x11
+ 795 020e CE020000 		.4byte	.LASF32
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 22
+
+
+ 796 0212 01       		.byte	0x1
+ 797 0213 7501     		.2byte	0x175
+ 798 0215 00000000 		.4byte	.LFB13
+ 799 0219 18000000 		.4byte	.LFE13-.LFB13
+ 800 021d 01       		.uleb128 0x1
+ 801 021e 9C       		.byte	0x9c
+ 802 021f 11       		.uleb128 0x11
+ 803 0220 06000000 		.4byte	.LASF33
+ 804 0224 01       		.byte	0x1
+ 805 0225 8E01     		.2byte	0x18e
+ 806 0227 00000000 		.4byte	.LFB14
+ 807 022b 18000000 		.4byte	.LFE14-.LFB14
+ 808 022f 01       		.uleb128 0x1
+ 809 0230 9C       		.byte	0x9c
+ 810 0231 13       		.uleb128 0x13
+ 811 0232 A9000000 		.4byte	0xa9
+ 812 0236 41020000 		.4byte	0x241
+ 813 023a 14       		.uleb128 0x14
+ 814 023b C3000000 		.4byte	0xc3
+ 815 023f 2F       		.byte	0x2f
+ 816 0240 00       		.byte	0
+ 817 0241 15       		.uleb128 0x15
+ 818 0242 22000000 		.4byte	.LASF38
+ 819 0246 01       		.byte	0x1
+ 820 0247 21       		.byte	0x21
+ 821 0248 31020000 		.4byte	0x231
+ 822 024c 00       		.byte	0
+ 823              		.section	.debug_abbrev,"",%progbits
+ 824              	.Ldebug_abbrev0:
+ 825 0000 01       		.uleb128 0x1
+ 826 0001 11       		.uleb128 0x11
+ 827 0002 01       		.byte	0x1
+ 828 0003 25       		.uleb128 0x25
+ 829 0004 0E       		.uleb128 0xe
+ 830 0005 13       		.uleb128 0x13
+ 831 0006 0B       		.uleb128 0xb
+ 832 0007 03       		.uleb128 0x3
+ 833 0008 0E       		.uleb128 0xe
+ 834 0009 1B       		.uleb128 0x1b
+ 835 000a 0E       		.uleb128 0xe
+ 836 000b 55       		.uleb128 0x55
+ 837 000c 17       		.uleb128 0x17
+ 838 000d 11       		.uleb128 0x11
+ 839 000e 01       		.uleb128 0x1
+ 840 000f 10       		.uleb128 0x10
+ 841 0010 17       		.uleb128 0x17
+ 842 0011 00       		.byte	0
+ 843 0012 00       		.byte	0
+ 844 0013 02       		.uleb128 0x2
+ 845 0014 24       		.uleb128 0x24
+ 846 0015 00       		.byte	0
+ 847 0016 0B       		.uleb128 0xb
+ 848 0017 0B       		.uleb128 0xb
+ 849 0018 3E       		.uleb128 0x3e
+ 850 0019 0B       		.uleb128 0xb
+ 851 001a 03       		.uleb128 0x3
+ 852 001b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 23
+
+
+ 853 001c 00       		.byte	0
+ 854 001d 00       		.byte	0
+ 855 001e 03       		.uleb128 0x3
+ 856 001f 24       		.uleb128 0x24
+ 857 0020 00       		.byte	0
+ 858 0021 0B       		.uleb128 0xb
+ 859 0022 0B       		.uleb128 0xb
+ 860 0023 3E       		.uleb128 0x3e
+ 861 0024 0B       		.uleb128 0xb
+ 862 0025 03       		.uleb128 0x3
+ 863 0026 08       		.uleb128 0x8
+ 864 0027 00       		.byte	0
+ 865 0028 00       		.byte	0
+ 866 0029 04       		.uleb128 0x4
+ 867 002a 16       		.uleb128 0x16
+ 868 002b 00       		.byte	0
+ 869 002c 03       		.uleb128 0x3
+ 870 002d 0E       		.uleb128 0xe
+ 871 002e 3A       		.uleb128 0x3a
+ 872 002f 0B       		.uleb128 0xb
+ 873 0030 3B       		.uleb128 0x3b
+ 874 0031 05       		.uleb128 0x5
+ 875 0032 49       		.uleb128 0x49
+ 876 0033 13       		.uleb128 0x13
+ 877 0034 00       		.byte	0
+ 878 0035 00       		.byte	0
+ 879 0036 05       		.uleb128 0x5
+ 880 0037 35       		.uleb128 0x35
+ 881 0038 00       		.byte	0
+ 882 0039 49       		.uleb128 0x49
+ 883 003a 13       		.uleb128 0x13
+ 884 003b 00       		.byte	0
+ 885 003c 00       		.byte	0
+ 886 003d 06       		.uleb128 0x6
+ 887 003e 0F       		.uleb128 0xf
+ 888 003f 00       		.byte	0
+ 889 0040 0B       		.uleb128 0xb
+ 890 0041 0B       		.uleb128 0xb
+ 891 0042 49       		.uleb128 0x49
+ 892 0043 13       		.uleb128 0x13
+ 893 0044 00       		.byte	0
+ 894 0045 00       		.byte	0
+ 895 0046 07       		.uleb128 0x7
+ 896 0047 15       		.uleb128 0x15
+ 897 0048 00       		.byte	0
+ 898 0049 27       		.uleb128 0x27
+ 899 004a 19       		.uleb128 0x19
+ 900 004b 00       		.byte	0
+ 901 004c 00       		.byte	0
+ 902 004d 08       		.uleb128 0x8
+ 903 004e 2E       		.uleb128 0x2e
+ 904 004f 00       		.byte	0
+ 905 0050 3F       		.uleb128 0x3f
+ 906 0051 19       		.uleb128 0x19
+ 907 0052 03       		.uleb128 0x3
+ 908 0053 0E       		.uleb128 0xe
+ 909 0054 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 24
+
+
+ 910 0055 0B       		.uleb128 0xb
+ 911 0056 3B       		.uleb128 0x3b
+ 912 0057 0B       		.uleb128 0xb
+ 913 0058 27       		.uleb128 0x27
+ 914 0059 19       		.uleb128 0x19
+ 915 005a 11       		.uleb128 0x11
+ 916 005b 01       		.uleb128 0x1
+ 917 005c 12       		.uleb128 0x12
+ 918 005d 06       		.uleb128 0x6
+ 919 005e 40       		.uleb128 0x40
+ 920 005f 18       		.uleb128 0x18
+ 921 0060 9642     		.uleb128 0x2116
+ 922 0062 19       		.uleb128 0x19
+ 923 0063 00       		.byte	0
+ 924 0064 00       		.byte	0
+ 925 0065 09       		.uleb128 0x9
+ 926 0066 2E       		.uleb128 0x2e
+ 927 0067 01       		.byte	0x1
+ 928 0068 3F       		.uleb128 0x3f
+ 929 0069 19       		.uleb128 0x19
+ 930 006a 03       		.uleb128 0x3
+ 931 006b 0E       		.uleb128 0xe
+ 932 006c 3A       		.uleb128 0x3a
+ 933 006d 0B       		.uleb128 0xb
+ 934 006e 3B       		.uleb128 0x3b
+ 935 006f 0B       		.uleb128 0xb
+ 936 0070 27       		.uleb128 0x27
+ 937 0071 19       		.uleb128 0x19
+ 938 0072 11       		.uleb128 0x11
+ 939 0073 01       		.uleb128 0x1
+ 940 0074 12       		.uleb128 0x12
+ 941 0075 06       		.uleb128 0x6
+ 942 0076 40       		.uleb128 0x40
+ 943 0077 18       		.uleb128 0x18
+ 944 0078 9642     		.uleb128 0x2116
+ 945 007a 19       		.uleb128 0x19
+ 946 007b 01       		.uleb128 0x1
+ 947 007c 13       		.uleb128 0x13
+ 948 007d 00       		.byte	0
+ 949 007e 00       		.byte	0
+ 950 007f 0A       		.uleb128 0xa
+ 951 0080 05       		.uleb128 0x5
+ 952 0081 00       		.byte	0
+ 953 0082 03       		.uleb128 0x3
+ 954 0083 0E       		.uleb128 0xe
+ 955 0084 3A       		.uleb128 0x3a
+ 956 0085 0B       		.uleb128 0xb
+ 957 0086 3B       		.uleb128 0x3b
+ 958 0087 0B       		.uleb128 0xb
+ 959 0088 49       		.uleb128 0x49
+ 960 0089 13       		.uleb128 0x13
+ 961 008a 02       		.uleb128 0x2
+ 962 008b 18       		.uleb128 0x18
+ 963 008c 00       		.byte	0
+ 964 008d 00       		.byte	0
+ 965 008e 0B       		.uleb128 0xb
+ 966 008f 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 25
+
+
+ 967 0090 00       		.byte	0
+ 968 0091 3F       		.uleb128 0x3f
+ 969 0092 19       		.uleb128 0x19
+ 970 0093 03       		.uleb128 0x3
+ 971 0094 0E       		.uleb128 0xe
+ 972 0095 3A       		.uleb128 0x3a
+ 973 0096 0B       		.uleb128 0xb
+ 974 0097 3B       		.uleb128 0x3b
+ 975 0098 0B       		.uleb128 0xb
+ 976 0099 27       		.uleb128 0x27
+ 977 009a 19       		.uleb128 0x19
+ 978 009b 11       		.uleb128 0x11
+ 979 009c 01       		.uleb128 0x1
+ 980 009d 12       		.uleb128 0x12
+ 981 009e 06       		.uleb128 0x6
+ 982 009f 40       		.uleb128 0x40
+ 983 00a0 18       		.uleb128 0x18
+ 984 00a1 9742     		.uleb128 0x2117
+ 985 00a3 19       		.uleb128 0x19
+ 986 00a4 00       		.byte	0
+ 987 00a5 00       		.byte	0
+ 988 00a6 0C       		.uleb128 0xc
+ 989 00a7 2E       		.uleb128 0x2e
+ 990 00a8 01       		.byte	0x1
+ 991 00a9 3F       		.uleb128 0x3f
+ 992 00aa 19       		.uleb128 0x19
+ 993 00ab 03       		.uleb128 0x3
+ 994 00ac 0E       		.uleb128 0xe
+ 995 00ad 3A       		.uleb128 0x3a
+ 996 00ae 0B       		.uleb128 0xb
+ 997 00af 3B       		.uleb128 0x3b
+ 998 00b0 0B       		.uleb128 0xb
+ 999 00b1 27       		.uleb128 0x27
+ 1000 00b2 19       		.uleb128 0x19
+ 1001 00b3 11       		.uleb128 0x11
+ 1002 00b4 01       		.uleb128 0x1
+ 1003 00b5 12       		.uleb128 0x12
+ 1004 00b6 06       		.uleb128 0x6
+ 1005 00b7 40       		.uleb128 0x40
+ 1006 00b8 18       		.uleb128 0x18
+ 1007 00b9 9742     		.uleb128 0x2117
+ 1008 00bb 19       		.uleb128 0x19
+ 1009 00bc 01       		.uleb128 0x1
+ 1010 00bd 13       		.uleb128 0x13
+ 1011 00be 00       		.byte	0
+ 1012 00bf 00       		.byte	0
+ 1013 00c0 0D       		.uleb128 0xd
+ 1014 00c1 2E       		.uleb128 0x2e
+ 1015 00c2 00       		.byte	0
+ 1016 00c3 3F       		.uleb128 0x3f
+ 1017 00c4 19       		.uleb128 0x19
+ 1018 00c5 03       		.uleb128 0x3
+ 1019 00c6 0E       		.uleb128 0xe
+ 1020 00c7 3A       		.uleb128 0x3a
+ 1021 00c8 0B       		.uleb128 0xb
+ 1022 00c9 3B       		.uleb128 0x3b
+ 1023 00ca 0B       		.uleb128 0xb
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 26
+
+
+ 1024 00cb 27       		.uleb128 0x27
+ 1025 00cc 19       		.uleb128 0x19
+ 1026 00cd 49       		.uleb128 0x49
+ 1027 00ce 13       		.uleb128 0x13
+ 1028 00cf 11       		.uleb128 0x11
+ 1029 00d0 01       		.uleb128 0x1
+ 1030 00d1 12       		.uleb128 0x12
+ 1031 00d2 06       		.uleb128 0x6
+ 1032 00d3 40       		.uleb128 0x40
+ 1033 00d4 18       		.uleb128 0x18
+ 1034 00d5 9742     		.uleb128 0x2117
+ 1035 00d7 19       		.uleb128 0x19
+ 1036 00d8 00       		.byte	0
+ 1037 00d9 00       		.byte	0
+ 1038 00da 0E       		.uleb128 0xe
+ 1039 00db 34       		.uleb128 0x34
+ 1040 00dc 00       		.byte	0
+ 1041 00dd 03       		.uleb128 0x3
+ 1042 00de 0E       		.uleb128 0xe
+ 1043 00df 3A       		.uleb128 0x3a
+ 1044 00e0 0B       		.uleb128 0xb
+ 1045 00e1 3B       		.uleb128 0x3b
+ 1046 00e2 0B       		.uleb128 0xb
+ 1047 00e3 49       		.uleb128 0x49
+ 1048 00e4 13       		.uleb128 0x13
+ 1049 00e5 02       		.uleb128 0x2
+ 1050 00e6 18       		.uleb128 0x18
+ 1051 00e7 00       		.byte	0
+ 1052 00e8 00       		.byte	0
+ 1053 00e9 0F       		.uleb128 0xf
+ 1054 00ea 2E       		.uleb128 0x2e
+ 1055 00eb 01       		.byte	0x1
+ 1056 00ec 3F       		.uleb128 0x3f
+ 1057 00ed 19       		.uleb128 0x19
+ 1058 00ee 03       		.uleb128 0x3
+ 1059 00ef 0E       		.uleb128 0xe
+ 1060 00f0 3A       		.uleb128 0x3a
+ 1061 00f1 0B       		.uleb128 0xb
+ 1062 00f2 3B       		.uleb128 0x3b
+ 1063 00f3 05       		.uleb128 0x5
+ 1064 00f4 27       		.uleb128 0x27
+ 1065 00f5 19       		.uleb128 0x19
+ 1066 00f6 49       		.uleb128 0x49
+ 1067 00f7 13       		.uleb128 0x13
+ 1068 00f8 11       		.uleb128 0x11
+ 1069 00f9 01       		.uleb128 0x1
+ 1070 00fa 12       		.uleb128 0x12
+ 1071 00fb 06       		.uleb128 0x6
+ 1072 00fc 40       		.uleb128 0x40
+ 1073 00fd 18       		.uleb128 0x18
+ 1074 00fe 9742     		.uleb128 0x2117
+ 1075 0100 19       		.uleb128 0x19
+ 1076 0101 01       		.uleb128 0x1
+ 1077 0102 13       		.uleb128 0x13
+ 1078 0103 00       		.byte	0
+ 1079 0104 00       		.byte	0
+ 1080 0105 10       		.uleb128 0x10
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 27
+
+
+ 1081 0106 34       		.uleb128 0x34
+ 1082 0107 00       		.byte	0
+ 1083 0108 03       		.uleb128 0x3
+ 1084 0109 0E       		.uleb128 0xe
+ 1085 010a 3A       		.uleb128 0x3a
+ 1086 010b 0B       		.uleb128 0xb
+ 1087 010c 3B       		.uleb128 0x3b
+ 1088 010d 05       		.uleb128 0x5
+ 1089 010e 49       		.uleb128 0x49
+ 1090 010f 13       		.uleb128 0x13
+ 1091 0110 02       		.uleb128 0x2
+ 1092 0111 18       		.uleb128 0x18
+ 1093 0112 00       		.byte	0
+ 1094 0113 00       		.byte	0
+ 1095 0114 11       		.uleb128 0x11
+ 1096 0115 2E       		.uleb128 0x2e
+ 1097 0116 00       		.byte	0
+ 1098 0117 3F       		.uleb128 0x3f
+ 1099 0118 19       		.uleb128 0x19
+ 1100 0119 03       		.uleb128 0x3
+ 1101 011a 0E       		.uleb128 0xe
+ 1102 011b 3A       		.uleb128 0x3a
+ 1103 011c 0B       		.uleb128 0xb
+ 1104 011d 3B       		.uleb128 0x3b
+ 1105 011e 05       		.uleb128 0x5
+ 1106 011f 27       		.uleb128 0x27
+ 1107 0120 19       		.uleb128 0x19
+ 1108 0121 11       		.uleb128 0x11
+ 1109 0122 01       		.uleb128 0x1
+ 1110 0123 12       		.uleb128 0x12
+ 1111 0124 06       		.uleb128 0x6
+ 1112 0125 40       		.uleb128 0x40
+ 1113 0126 18       		.uleb128 0x18
+ 1114 0127 9742     		.uleb128 0x2117
+ 1115 0129 19       		.uleb128 0x19
+ 1116 012a 00       		.byte	0
+ 1117 012b 00       		.byte	0
+ 1118 012c 12       		.uleb128 0x12
+ 1119 012d 2E       		.uleb128 0x2e
+ 1120 012e 00       		.byte	0
+ 1121 012f 3F       		.uleb128 0x3f
+ 1122 0130 19       		.uleb128 0x19
+ 1123 0131 03       		.uleb128 0x3
+ 1124 0132 0E       		.uleb128 0xe
+ 1125 0133 3A       		.uleb128 0x3a
+ 1126 0134 0B       		.uleb128 0xb
+ 1127 0135 3B       		.uleb128 0x3b
+ 1128 0136 05       		.uleb128 0x5
+ 1129 0137 27       		.uleb128 0x27
+ 1130 0138 19       		.uleb128 0x19
+ 1131 0139 49       		.uleb128 0x49
+ 1132 013a 13       		.uleb128 0x13
+ 1133 013b 11       		.uleb128 0x11
+ 1134 013c 01       		.uleb128 0x1
+ 1135 013d 12       		.uleb128 0x12
+ 1136 013e 06       		.uleb128 0x6
+ 1137 013f 40       		.uleb128 0x40
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 28
+
+
+ 1138 0140 18       		.uleb128 0x18
+ 1139 0141 9742     		.uleb128 0x2117
+ 1140 0143 19       		.uleb128 0x19
+ 1141 0144 00       		.byte	0
+ 1142 0145 00       		.byte	0
+ 1143 0146 13       		.uleb128 0x13
+ 1144 0147 01       		.uleb128 0x1
+ 1145 0148 01       		.byte	0x1
+ 1146 0149 49       		.uleb128 0x49
+ 1147 014a 13       		.uleb128 0x13
+ 1148 014b 01       		.uleb128 0x1
+ 1149 014c 13       		.uleb128 0x13
+ 1150 014d 00       		.byte	0
+ 1151 014e 00       		.byte	0
+ 1152 014f 14       		.uleb128 0x14
+ 1153 0150 21       		.uleb128 0x21
+ 1154 0151 00       		.byte	0
+ 1155 0152 49       		.uleb128 0x49
+ 1156 0153 13       		.uleb128 0x13
+ 1157 0154 2F       		.uleb128 0x2f
+ 1158 0155 0B       		.uleb128 0xb
+ 1159 0156 00       		.byte	0
+ 1160 0157 00       		.byte	0
+ 1161 0158 15       		.uleb128 0x15
+ 1162 0159 34       		.uleb128 0x34
+ 1163 015a 00       		.byte	0
+ 1164 015b 03       		.uleb128 0x3
+ 1165 015c 0E       		.uleb128 0xe
+ 1166 015d 3A       		.uleb128 0x3a
+ 1167 015e 0B       		.uleb128 0xb
+ 1168 015f 3B       		.uleb128 0x3b
+ 1169 0160 0B       		.uleb128 0xb
+ 1170 0161 49       		.uleb128 0x49
+ 1171 0162 13       		.uleb128 0x13
+ 1172 0163 3F       		.uleb128 0x3f
+ 1173 0164 19       		.uleb128 0x19
+ 1174 0165 3C       		.uleb128 0x3c
+ 1175 0166 19       		.uleb128 0x19
+ 1176 0167 00       		.byte	0
+ 1177 0168 00       		.byte	0
+ 1178 0169 00       		.byte	0
+ 1179              		.section	.debug_aranges,"",%progbits
+ 1180 0000 7C000000 		.4byte	0x7c
+ 1181 0004 0200     		.2byte	0x2
+ 1182 0006 00000000 		.4byte	.Ldebug_info0
+ 1183 000a 04       		.byte	0x4
+ 1184 000b 00       		.byte	0
+ 1185 000c 0000     		.2byte	0
+ 1186 000e 0000     		.2byte	0
+ 1187 0010 00000000 		.4byte	.LFB2
+ 1188 0014 24000000 		.4byte	.LFE2-.LFB2
+ 1189 0018 00000000 		.4byte	.LFB3
+ 1190 001c 26000000 		.4byte	.LFE3-.LFB3
+ 1191 0020 00000000 		.4byte	.LFB4
+ 1192 0024 1C000000 		.4byte	.LFE4-.LFB4
+ 1193 0028 00000000 		.4byte	.LFB5
+ 1194 002c 0A000000 		.4byte	.LFE5-.LFB5
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 29
+
+
+ 1195 0030 00000000 		.4byte	.LFB6
+ 1196 0034 1C000000 		.4byte	.LFE6-.LFB6
+ 1197 0038 00000000 		.4byte	.LFB7
+ 1198 003c 14000000 		.4byte	.LFE7-.LFB7
+ 1199 0040 00000000 		.4byte	.LFB8
+ 1200 0044 50000000 		.4byte	.LFE8-.LFB8
+ 1201 0048 00000000 		.4byte	.LFB9
+ 1202 004c 2C000000 		.4byte	.LFE9-.LFB9
+ 1203 0050 00000000 		.4byte	.LFB10
+ 1204 0054 18000000 		.4byte	.LFE10-.LFB10
+ 1205 0058 00000000 		.4byte	.LFB11
+ 1206 005c 20000000 		.4byte	.LFE11-.LFB11
+ 1207 0060 00000000 		.4byte	.LFB12
+ 1208 0064 18000000 		.4byte	.LFE12-.LFB12
+ 1209 0068 00000000 		.4byte	.LFB13
+ 1210 006c 18000000 		.4byte	.LFE13-.LFB13
+ 1211 0070 00000000 		.4byte	.LFB14
+ 1212 0074 18000000 		.4byte	.LFE14-.LFB14
+ 1213 0078 00000000 		.4byte	0
+ 1214 007c 00000000 		.4byte	0
+ 1215              		.section	.debug_ranges,"",%progbits
+ 1216              	.Ldebug_ranges0:
+ 1217 0000 00000000 		.4byte	.LFB2
+ 1218 0004 24000000 		.4byte	.LFE2
+ 1219 0008 00000000 		.4byte	.LFB3
+ 1220 000c 26000000 		.4byte	.LFE3
+ 1221 0010 00000000 		.4byte	.LFB4
+ 1222 0014 1C000000 		.4byte	.LFE4
+ 1223 0018 00000000 		.4byte	.LFB5
+ 1224 001c 0A000000 		.4byte	.LFE5
+ 1225 0020 00000000 		.4byte	.LFB6
+ 1226 0024 1C000000 		.4byte	.LFE6
+ 1227 0028 00000000 		.4byte	.LFB7
+ 1228 002c 14000000 		.4byte	.LFE7
+ 1229 0030 00000000 		.4byte	.LFB8
+ 1230 0034 50000000 		.4byte	.LFE8
+ 1231 0038 00000000 		.4byte	.LFB9
+ 1232 003c 2C000000 		.4byte	.LFE9
+ 1233 0040 00000000 		.4byte	.LFB10
+ 1234 0044 18000000 		.4byte	.LFE10
+ 1235 0048 00000000 		.4byte	.LFB11
+ 1236 004c 20000000 		.4byte	.LFE11
+ 1237 0050 00000000 		.4byte	.LFB12
+ 1238 0054 18000000 		.4byte	.LFE12
+ 1239 0058 00000000 		.4byte	.LFB13
+ 1240 005c 18000000 		.4byte	.LFE13
+ 1241 0060 00000000 		.4byte	.LFB14
+ 1242 0064 18000000 		.4byte	.LFE14
+ 1243 0068 00000000 		.4byte	0
+ 1244 006c 00000000 		.4byte	0
+ 1245              		.section	.debug_line,"",%progbits
+ 1246              	.Ldebug_line0:
+ 1247 0000 59010000 		.section	.debug_str,"MS",%progbits,1
+ 1247      02004B00 
+ 1247      00000201 
+ 1247      FB0E0D00 
+ 1247      01010101 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 30
+
+
+ 1248              	.LASF14:
+ 1249 0000 72656733 		.ascii	"reg32\000"
+ 1249      3200
+ 1250              	.LASF33:
+ 1251 0006 53657269 		.ascii	"Serial_SCB_IRQ_ClearPending\000"
+ 1251      616C5F53 
+ 1251      43425F49 
+ 1251      52515F43 
+ 1251      6C656172 
+ 1252              	.LASF38:
+ 1253 0022 43795261 		.ascii	"CyRamVectors\000"
+ 1253      6D566563 
+ 1253      746F7273 
+ 1253      00
+ 1254              	.LASF20:
+ 1255 002f 53657269 		.ascii	"Serial_SCB_IRQ_Interrupt\000"
+ 1255      616C5F53 
+ 1255      43425F49 
+ 1255      52515F49 
+ 1255      6E746572 
+ 1256              	.LASF18:
+ 1257 0048 53657269 		.ascii	"Serial_SCB_IRQ_Start\000"
+ 1257      616C5F53 
+ 1257      43425F49 
+ 1257      52515F53 
+ 1257      74617274 
+ 1258              	.LASF22:
+ 1259 005d 53657269 		.ascii	"Serial_SCB_IRQ_SetVector\000"
+ 1259      616C5F53 
+ 1259      43425F49 
+ 1259      52515F53 
+ 1259      65745665 
+ 1260              	.LASF37:
+ 1261 0076 53657269 		.ascii	"Serial_SCB_IRQ_GetPriority\000"
+ 1261      616C5F53 
+ 1261      43425F49 
+ 1261      52515F47 
+ 1261      65745072 
+ 1262              	.LASF3:
+ 1263 0091 73686F72 		.ascii	"short unsigned int\000"
+ 1263      7420756E 
+ 1263      7369676E 
+ 1263      65642069 
+ 1263      6E7400
+ 1264              	.LASF30:
+ 1265 00a4 53657269 		.ascii	"Serial_SCB_IRQ_GetState\000"
+ 1265      616C5F53 
+ 1265      43425F49 
+ 1265      52515F47 
+ 1265      65745374 
+ 1266              	.LASF19:
+ 1267 00bc 53657269 		.ascii	"Serial_SCB_IRQ_Stop\000"
+ 1267      616C5F53 
+ 1267      43425F49 
+ 1267      52515F53 
+ 1267      746F7000 
+ 1268              	.LASF11:
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 31
+
+
+ 1269 00d0 666C6F61 		.ascii	"float\000"
+ 1269      7400
+ 1270              	.LASF29:
+ 1271 00d6 53657269 		.ascii	"Serial_SCB_IRQ_GetVector\000"
+ 1271      616C5F53 
+ 1271      43425F49 
+ 1271      52515F47 
+ 1271      65745665 
+ 1272              	.LASF1:
+ 1273 00ef 756E7369 		.ascii	"unsigned char\000"
+ 1273      676E6564 
+ 1273      20636861 
+ 1273      7200
+ 1274              	.LASF26:
+ 1275 00fd 696E7465 		.ascii	"interruptState\000"
+ 1275      72727570 
+ 1275      74537461 
+ 1275      746500
+ 1276              	.LASF5:
+ 1277 010c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1277      20756E73 
+ 1277      69676E65 
+ 1277      6420696E 
+ 1277      7400
+ 1278              	.LASF9:
+ 1279 011e 75696E74 		.ascii	"uint8\000"
+ 1279      3800
+ 1280              	.LASF34:
+ 1281 0124 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1281      43313120 
+ 1281      352E342E 
+ 1281      31203230 
+ 1281      31363036 
+ 1282 0157 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1282      20726576 
+ 1282      6973696F 
+ 1282      6E203233 
+ 1282      37373135 
+ 1283 018a 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1283      66756E63 
+ 1283      74696F6E 
+ 1283      2D736563 
+ 1283      74696F6E 
+ 1284              	.LASF24:
+ 1285 01b2 53657269 		.ascii	"Serial_SCB_IRQ_SetPriority\000"
+ 1285      616C5F53 
+ 1285      43425F49 
+ 1285      52515F53 
+ 1285      65745072 
+ 1286              	.LASF12:
+ 1287 01cd 646F7562 		.ascii	"double\000"
+ 1287      6C6500
+ 1288              	.LASF21:
+ 1289 01d4 53657269 		.ascii	"Serial_SCB_IRQ_StartEx\000"
+ 1289      616C5F53 
+ 1289      43425F49 
+ 1289      52515F53 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 32
+
+
+ 1289      74617274 
+ 1290              	.LASF25:
+ 1291 01eb 7072696F 		.ascii	"priority\000"
+ 1291      72697479 
+ 1291      00
+ 1292              	.LASF10:
+ 1293 01f4 75696E74 		.ascii	"uint32\000"
+ 1293      333200
+ 1294              	.LASF36:
+ 1295 01fb 433A5C55 		.ascii	"C:\\Users\\TTSS\\Documents\\Repositories\\hackAIR-P"
+ 1295      73657273 
+ 1295      5C545453 
+ 1295      535C446F 
+ 1295      63756D65 
+ 1296 0229 536F435C 		.ascii	"SoC\\SEN0177 - Laser Dust Sensor\\PSoC Firmware\\PS"
+ 1296      53454E30 
+ 1296      31373720 
+ 1296      2D204C61 
+ 1296      73657220 
+ 1297 0259 6F432043 		.ascii	"oC Creator Project\\SerialLaserSensor_SEN0177.cydsn"
+ 1297      72656174 
+ 1297      6F722050 
+ 1297      726F6A65 
+ 1297      63745C53 
+ 1298 028b 00       		.ascii	"\000"
+ 1299              	.LASF8:
+ 1300 028c 756E7369 		.ascii	"unsigned int\000"
+ 1300      676E6564 
+ 1300      20696E74 
+ 1300      00
+ 1301              	.LASF23:
+ 1302 0299 61646472 		.ascii	"address\000"
+ 1302      65737300 
+ 1303              	.LASF7:
+ 1304 02a1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1304      206C6F6E 
+ 1304      6720756E 
+ 1304      7369676E 
+ 1304      65642069 
+ 1305              	.LASF15:
+ 1306 02b8 63796973 		.ascii	"cyisraddress\000"
+ 1306      72616464 
+ 1306      72657373 
+ 1306      00
+ 1307              	.LASF17:
+ 1308 02c5 73697A65 		.ascii	"sizetype\000"
+ 1308      74797065 
+ 1308      00
+ 1309              	.LASF32:
+ 1310 02ce 53657269 		.ascii	"Serial_SCB_IRQ_SetPending\000"
+ 1310      616C5F53 
+ 1310      43425F49 
+ 1310      52515F53 
+ 1310      65745065 
+ 1311              	.LASF6:
+ 1312 02e8 6C6F6E67 		.ascii	"long long int\000"
+ 1312      206C6F6E 
+ARM GAS  C:\Users\TTSS\AppData\Local\Temp\ccBqvWNE.s 			page 33
+
+
+ 1312      6720696E 
+ 1312      7400
+ 1313              	.LASF13:
+ 1314 02f6 63686172 		.ascii	"char\000"
+ 1314      00
+ 1315              	.LASF31:
+ 1316 02fb 53657269 		.ascii	"Serial_SCB_IRQ_Disable\000"
+ 1316      616C5F53 
+ 1316      43425F49 
+ 1316      52515F44 
+ 1316      69736162 
+ 1317              	.LASF2:
+ 1318 0312 73686F72 		.ascii	"short int\000"
+ 1318      7420696E 
+ 1318      7400
+ 1319              	.LASF28:
+ 1320 031c 53657269 		.ascii	"Serial_SCB_IRQ_Enable\000"
+ 1320      616C5F53 
+ 1320      43425F49 
+ 1320      52515F45 
+ 1320      6E61626C 
+ 1321              	.LASF27:
+ 1322 0332 7072696F 		.ascii	"priorityOffset\000"
+ 1322      72697479 
+ 1322      4F666673 
+ 1322      657400
+ 1323              	.LASF35:
+ 1324 0341 47656E65 		.ascii	"Generated_Source\\PSoC4\\Serial_SCB_IRQ.c\000"
+ 1324      72617465 
+ 1324      645F536F 
+ 1324      75726365 
+ 1324      5C50536F 
+ 1325              	.LASF4:
+ 1326 0369 6C6F6E67 		.ascii	"long int\000"
+ 1326      20696E74 
+ 1326      00
+ 1327              	.LASF16:
+ 1328 0372 6C6F6E67 		.ascii	"long double\000"
+ 1328      20646F75 
+ 1328      626C6500 
+ 1329              	.LASF0:
+ 1330 037e 7369676E 		.ascii	"signed char\000"
+ 1330      65642063 
+ 1330      68617200 
+ 1331              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

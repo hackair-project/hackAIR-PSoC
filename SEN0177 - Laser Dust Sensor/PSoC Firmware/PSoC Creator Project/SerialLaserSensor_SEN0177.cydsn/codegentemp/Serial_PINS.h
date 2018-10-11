@@ -1,15 +1,16 @@
-/*******************************************************************************
-* File Name: Serial_PINS.h
-* Version 3.10
+/***************************************************************************//**
+* \file Serial_PINS.h
+* \version 4.0
 *
-* Description:
+* \brief
 *  This file provides constants and parameter values for the pin components
 *  buried into SCB Component.
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2013-2015, Cypress Semiconductor Corporation.  All rights reserved.
+* \copyright
+* Copyright 2013-2017, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -201,134 +202,292 @@
 *              Registers
 ***************************************/
 
-#if (Serial_RX_WAKE_SDA_MOSI_PIN)
-    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_REG \
-                            (*(reg32 *) Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM)
-    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_PTR \
-                            ( (reg32 *) Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM)
-    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_MASK \
-                            (Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM_MASK)
-    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_POS \
-                            (Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM_SHIFT)
-
-    #define Serial_RX_WAKE_SDA_MOSI_INTCFG_REG \
-                            (*(reg32 *) Serial_uart_rx_wake_i2c_sda_spi_mosi__0__INTCFG)
-    #define Serial_RX_WAKE_SDA_MOSI_INTCFG_PTR \
-                            ( (reg32 *) Serial_uart_rx_wake_i2c_sda_spi_mosi__0__INTCFG)
-    #define Serial_RX_WAKE_SDA_MOSI_INTCFG_TYPE_POS  (Serial_uart_rx_wake_i2c_sda_spi_mosi__SHIFT)
-    #define Serial_RX_WAKE_SDA_MOSI_INTCFG_TYPE_MASK \
-                            ((uint32) Serial_INTCFG_TYPE_MASK << \
-                                      Serial_RX_WAKE_SDA_MOSI_INTCFG_TYPE_POS)
-#endif /* (Serial_RX_WAKE_SDA_MOSI_PIN) */
-
 #if (Serial_RX_SDA_MOSI_PIN)
     #define Serial_RX_SDA_MOSI_HSIOM_REG   (*(reg32 *) Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM)
     #define Serial_RX_SDA_MOSI_HSIOM_PTR   ( (reg32 *) Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM)
-    #define Serial_RX_SDA_MOSI_HSIOM_MASK  (Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM_MASK)
-    #define Serial_RX_SDA_MOSI_HSIOM_POS   (Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM_SHIFT)
+    
+    #define Serial_RX_SDA_MOSI_HSIOM_MASK      (Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM_MASK)
+    #define Serial_RX_SDA_MOSI_HSIOM_POS       (Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM_SHIFT)
+    #define Serial_RX_SDA_MOSI_HSIOM_SEL_GPIO  (Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM_GPIO)
+    #define Serial_RX_SDA_MOSI_HSIOM_SEL_I2C   (Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM_I2C)
+    #define Serial_RX_SDA_MOSI_HSIOM_SEL_SPI   (Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM_SPI)
+    #define Serial_RX_SDA_MOSI_HSIOM_SEL_UART  (Serial_uart_rx_i2c_sda_spi_mosi__0__HSIOM_UART)
+    
+#elif (Serial_RX_WAKE_SDA_MOSI_PIN)
+    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_REG   (*(reg32 *) Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM)
+    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_PTR   ( (reg32 *) Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM)
+    
+    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_MASK      (Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM_MASK)
+    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_POS       (Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM_SHIFT)
+    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_SEL_GPIO  (Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM_GPIO)
+    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_SEL_I2C   (Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM_I2C)
+    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_SEL_SPI   (Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM_SPI)
+    #define Serial_RX_WAKE_SDA_MOSI_HSIOM_SEL_UART  (Serial_uart_rx_wake_i2c_sda_spi_mosi__0__HSIOM_UART)    
+   
+    #define Serial_RX_WAKE_SDA_MOSI_INTCFG_REG (*(reg32 *) Serial_uart_rx_wake_i2c_sda_spi_mosi__0__INTCFG)
+    #define Serial_RX_WAKE_SDA_MOSI_INTCFG_PTR ( (reg32 *) Serial_uart_rx_wake_i2c_sda_spi_mosi__0__INTCFG)
+    #define Serial_RX_WAKE_SDA_MOSI_INTCFG_TYPE_POS  (Serial_uart_rx_wake_i2c_sda_spi_mosi__SHIFT)
+    #define Serial_RX_WAKE_SDA_MOSI_INTCFG_TYPE_MASK ((uint32) Serial_INTCFG_TYPE_MASK << \
+                                                                           Serial_RX_WAKE_SDA_MOSI_INTCFG_TYPE_POS)
+#else
+    /* None of pins Serial_RX_SDA_MOSI_PIN or Serial_RX_WAKE_SDA_MOSI_PIN present.*/
 #endif /* (Serial_RX_SDA_MOSI_PIN) */
 
 #if (Serial_TX_SCL_MISO_PIN)
     #define Serial_TX_SCL_MISO_HSIOM_REG   (*(reg32 *) Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM)
     #define Serial_TX_SCL_MISO_HSIOM_PTR   ( (reg32 *) Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM)
-    #define Serial_TX_SCL_MISO_HSIOM_MASK  (Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM_MASK)
-    #define Serial_TX_SCL_MISO_HSIOM_POS   (Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM_SHIFT)
+    
+    #define Serial_TX_SCL_MISO_HSIOM_MASK      (Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM_MASK)
+    #define Serial_TX_SCL_MISO_HSIOM_POS       (Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM_SHIFT)
+    #define Serial_TX_SCL_MISO_HSIOM_SEL_GPIO  (Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM_GPIO)
+    #define Serial_TX_SCL_MISO_HSIOM_SEL_I2C   (Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM_I2C)
+    #define Serial_TX_SCL_MISO_HSIOM_SEL_SPI   (Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM_SPI)
+    #define Serial_TX_SCL_MISO_HSIOM_SEL_UART  (Serial_uart_tx_i2c_scl_spi_miso__0__HSIOM_UART)
 #endif /* (Serial_TX_SCL_MISO_PIN) */
 
 #if (Serial_CTS_SCLK_PIN)
     #define Serial_CTS_SCLK_HSIOM_REG   (*(reg32 *) Serial_uart_cts_spi_sclk__0__HSIOM)
     #define Serial_CTS_SCLK_HSIOM_PTR   ( (reg32 *) Serial_uart_cts_spi_sclk__0__HSIOM)
-    #define Serial_CTS_SCLK_HSIOM_MASK  (Serial_uart_cts_spi_sclk__0__HSIOM_MASK)
-    #define Serial_CTS_SCLK_HSIOM_POS   (Serial_uart_cts_spi_sclk__0__HSIOM_SHIFT)
+    
+    #define Serial_CTS_SCLK_HSIOM_MASK      (Serial_uart_cts_spi_sclk__0__HSIOM_MASK)
+    #define Serial_CTS_SCLK_HSIOM_POS       (Serial_uart_cts_spi_sclk__0__HSIOM_SHIFT)
+    #define Serial_CTS_SCLK_HSIOM_SEL_GPIO  (Serial_uart_cts_spi_sclk__0__HSIOM_GPIO)
+    #define Serial_CTS_SCLK_HSIOM_SEL_I2C   (Serial_uart_cts_spi_sclk__0__HSIOM_I2C)
+    #define Serial_CTS_SCLK_HSIOM_SEL_SPI   (Serial_uart_cts_spi_sclk__0__HSIOM_SPI)
+    #define Serial_CTS_SCLK_HSIOM_SEL_UART  (Serial_uart_cts_spi_sclk__0__HSIOM_UART)
 #endif /* (Serial_CTS_SCLK_PIN) */
 
 #if (Serial_RTS_SS0_PIN)
     #define Serial_RTS_SS0_HSIOM_REG   (*(reg32 *) Serial_uart_rts_spi_ss0__0__HSIOM)
     #define Serial_RTS_SS0_HSIOM_PTR   ( (reg32 *) Serial_uart_rts_spi_ss0__0__HSIOM)
-    #define Serial_RTS_SS0_HSIOM_MASK  (Serial_uart_rts_spi_ss0__0__HSIOM_MASK)
-    #define Serial_RTS_SS0_HSIOM_POS   (Serial_uart_rts_spi_ss0__0__HSIOM_SHIFT)
+    
+    #define Serial_RTS_SS0_HSIOM_MASK      (Serial_uart_rts_spi_ss0__0__HSIOM_MASK)
+    #define Serial_RTS_SS0_HSIOM_POS       (Serial_uart_rts_spi_ss0__0__HSIOM_SHIFT)
+    #define Serial_RTS_SS0_HSIOM_SEL_GPIO  (Serial_uart_rts_spi_ss0__0__HSIOM_GPIO)
+    #define Serial_RTS_SS0_HSIOM_SEL_I2C   (Serial_uart_rts_spi_ss0__0__HSIOM_I2C)
+    #define Serial_RTS_SS0_HSIOM_SEL_SPI   (Serial_uart_rts_spi_ss0__0__HSIOM_SPI)
+#if !(Serial_CY_SCBIP_V0 || Serial_CY_SCBIP_V1)
+    #define Serial_RTS_SS0_HSIOM_SEL_UART  (Serial_uart_rts_spi_ss0__0__HSIOM_UART)
+#endif /* !(Serial_CY_SCBIP_V0 || Serial_CY_SCBIP_V1) */
 #endif /* (Serial_RTS_SS0_PIN) */
 
 #if (Serial_SS1_PIN)
-    #define Serial_SS1_HSIOM_REG      (*(reg32 *) Serial_spi_ss1__0__HSIOM)
-    #define Serial_SS1_HSIOM_PTR      ( (reg32 *) Serial_spi_ss1__0__HSIOM)
+    #define Serial_SS1_HSIOM_REG  (*(reg32 *) Serial_spi_ss1__0__HSIOM)
+    #define Serial_SS1_HSIOM_PTR  ( (reg32 *) Serial_spi_ss1__0__HSIOM)
+    
     #define Serial_SS1_HSIOM_MASK     (Serial_spi_ss1__0__HSIOM_MASK)
     #define Serial_SS1_HSIOM_POS      (Serial_spi_ss1__0__HSIOM_SHIFT)
+    #define Serial_SS1_HSIOM_SEL_GPIO (Serial_spi_ss1__0__HSIOM_GPIO)
+    #define Serial_SS1_HSIOM_SEL_I2C  (Serial_spi_ss1__0__HSIOM_I2C)
+    #define Serial_SS1_HSIOM_SEL_SPI  (Serial_spi_ss1__0__HSIOM_SPI)
 #endif /* (Serial_SS1_PIN) */
 
 #if (Serial_SS2_PIN)
     #define Serial_SS2_HSIOM_REG     (*(reg32 *) Serial_spi_ss2__0__HSIOM)
     #define Serial_SS2_HSIOM_PTR     ( (reg32 *) Serial_spi_ss2__0__HSIOM)
-    #define Serial_SS2_HSIOM_MASK    (Serial_spi_ss2__0__HSIOM_MASK)
-    #define Serial_SS2_HSIOM_POS     (Serial_spi_ss2__0__HSIOM_SHIFT)
+    
+    #define Serial_SS2_HSIOM_MASK     (Serial_spi_ss2__0__HSIOM_MASK)
+    #define Serial_SS2_HSIOM_POS      (Serial_spi_ss2__0__HSIOM_SHIFT)
+    #define Serial_SS2_HSIOM_SEL_GPIO (Serial_spi_ss2__0__HSIOM_GPIO)
+    #define Serial_SS2_HSIOM_SEL_I2C  (Serial_spi_ss2__0__HSIOM_I2C)
+    #define Serial_SS2_HSIOM_SEL_SPI  (Serial_spi_ss2__0__HSIOM_SPI)
 #endif /* (Serial_SS2_PIN) */
 
 #if (Serial_SS3_PIN)
     #define Serial_SS3_HSIOM_REG     (*(reg32 *) Serial_spi_ss3__0__HSIOM)
     #define Serial_SS3_HSIOM_PTR     ( (reg32 *) Serial_spi_ss3__0__HSIOM)
-    #define Serial_SS3_HSIOM_MASK    (Serial_spi_ss3__0__HSIOM_MASK)
-    #define Serial_SS3_HSIOM_POS     (Serial_spi_ss3__0__HSIOM_SHIFT)
+    
+    #define Serial_SS3_HSIOM_MASK     (Serial_spi_ss3__0__HSIOM_MASK)
+    #define Serial_SS3_HSIOM_POS      (Serial_spi_ss3__0__HSIOM_SHIFT)
+    #define Serial_SS3_HSIOM_SEL_GPIO (Serial_spi_ss3__0__HSIOM_GPIO)
+    #define Serial_SS3_HSIOM_SEL_I2C  (Serial_spi_ss3__0__HSIOM_I2C)
+    #define Serial_SS3_HSIOM_SEL_SPI  (Serial_spi_ss3__0__HSIOM_SPI)
 #endif /* (Serial_SS3_PIN) */
 
 #if (Serial_I2C_PINS)
-    #define Serial_SCL_HSIOM_REG     (*(reg32 *) Serial_scl__0__HSIOM)
-    #define Serial_SCL_HSIOM_PTR     ( (reg32 *) Serial_scl__0__HSIOM)
-    #define Serial_SCL_HSIOM_MASK    (Serial_scl__0__HSIOM_MASK)
-    #define Serial_SCL_HSIOM_POS     (Serial_scl__0__HSIOM_SHIFT)
-
-    #define Serial_SDA_HSIOM_REG     (*(reg32 *) Serial_sda__0__HSIOM)
-    #define Serial_SDA_HSIOM_PTR     ( (reg32 *) Serial_sda__0__HSIOM)
-    #define Serial_SDA_HSIOM_MASK    (Serial_sda__0__HSIOM_MASK)
-    #define Serial_SDA_HSIOM_POS     (Serial_sda__0__HSIOM_SHIFT)
+    #define Serial_SCL_HSIOM_REG  (*(reg32 *) Serial_scl__0__HSIOM)
+    #define Serial_SCL_HSIOM_PTR  ( (reg32 *) Serial_scl__0__HSIOM)
+    
+    #define Serial_SCL_HSIOM_MASK     (Serial_scl__0__HSIOM_MASK)
+    #define Serial_SCL_HSIOM_POS      (Serial_scl__0__HSIOM_SHIFT)
+    #define Serial_SCL_HSIOM_SEL_GPIO (Serial_sda__0__HSIOM_GPIO)
+    #define Serial_SCL_HSIOM_SEL_I2C  (Serial_sda__0__HSIOM_I2C)
+    
+    #define Serial_SDA_HSIOM_REG  (*(reg32 *) Serial_sda__0__HSIOM)
+    #define Serial_SDA_HSIOM_PTR  ( (reg32 *) Serial_sda__0__HSIOM)
+    
+    #define Serial_SDA_HSIOM_MASK     (Serial_sda__0__HSIOM_MASK)
+    #define Serial_SDA_HSIOM_POS      (Serial_sda__0__HSIOM_SHIFT)
+    #define Serial_SDA_HSIOM_SEL_GPIO (Serial_sda__0__HSIOM_GPIO)
+    #define Serial_SDA_HSIOM_SEL_I2C  (Serial_sda__0__HSIOM_I2C)
 #endif /* (Serial_I2C_PINS) */
+
+#if (Serial_SPI_SLAVE_PINS)
+    #define Serial_SCLK_S_HSIOM_REG   (*(reg32 *) Serial_sclk_s__0__HSIOM)
+    #define Serial_SCLK_S_HSIOM_PTR   ( (reg32 *) Serial_sclk_s__0__HSIOM)
+    
+    #define Serial_SCLK_S_HSIOM_MASK      (Serial_sclk_s__0__HSIOM_MASK)
+    #define Serial_SCLK_S_HSIOM_POS       (Serial_sclk_s__0__HSIOM_SHIFT)
+    #define Serial_SCLK_S_HSIOM_SEL_GPIO  (Serial_sclk_s__0__HSIOM_GPIO)
+    #define Serial_SCLK_S_HSIOM_SEL_SPI   (Serial_sclk_s__0__HSIOM_SPI)
+    
+    #define Serial_SS0_S_HSIOM_REG    (*(reg32 *) Serial_ss0_s__0__HSIOM)
+    #define Serial_SS0_S_HSIOM_PTR    ( (reg32 *) Serial_ss0_s__0__HSIOM)
+    
+    #define Serial_SS0_S_HSIOM_MASK       (Serial_ss0_s__0__HSIOM_MASK)
+    #define Serial_SS0_S_HSIOM_POS        (Serial_ss0_s__0__HSIOM_SHIFT)
+    #define Serial_SS0_S_HSIOM_SEL_GPIO   (Serial_ss0_s__0__HSIOM_GPIO)  
+    #define Serial_SS0_S_HSIOM_SEL_SPI    (Serial_ss0_s__0__HSIOM_SPI)
+#endif /* (Serial_SPI_SLAVE_PINS) */
+
+#if (Serial_SPI_SLAVE_MOSI_PIN)
+    #define Serial_MOSI_S_HSIOM_REG   (*(reg32 *) Serial_mosi_s__0__HSIOM)
+    #define Serial_MOSI_S_HSIOM_PTR   ( (reg32 *) Serial_mosi_s__0__HSIOM)
+    
+    #define Serial_MOSI_S_HSIOM_MASK      (Serial_mosi_s__0__HSIOM_MASK)
+    #define Serial_MOSI_S_HSIOM_POS       (Serial_mosi_s__0__HSIOM_SHIFT)
+    #define Serial_MOSI_S_HSIOM_SEL_GPIO  (Serial_mosi_s__0__HSIOM_GPIO)
+    #define Serial_MOSI_S_HSIOM_SEL_SPI   (Serial_mosi_s__0__HSIOM_SPI)
+#endif /* (Serial_SPI_SLAVE_MOSI_PIN) */
+
+#if (Serial_SPI_SLAVE_MISO_PIN)
+    #define Serial_MISO_S_HSIOM_REG   (*(reg32 *) Serial_miso_s__0__HSIOM)
+    #define Serial_MISO_S_HSIOM_PTR   ( (reg32 *) Serial_miso_s__0__HSIOM)
+    
+    #define Serial_MISO_S_HSIOM_MASK      (Serial_miso_s__0__HSIOM_MASK)
+    #define Serial_MISO_S_HSIOM_POS       (Serial_miso_s__0__HSIOM_SHIFT)
+    #define Serial_MISO_S_HSIOM_SEL_GPIO  (Serial_miso_s__0__HSIOM_GPIO)
+    #define Serial_MISO_S_HSIOM_SEL_SPI   (Serial_miso_s__0__HSIOM_SPI)
+#endif /* (Serial_SPI_SLAVE_MISO_PIN) */
+
+#if (Serial_SPI_MASTER_MISO_PIN)
+    #define Serial_MISO_M_HSIOM_REG   (*(reg32 *) Serial_miso_m__0__HSIOM)
+    #define Serial_MISO_M_HSIOM_PTR   ( (reg32 *) Serial_miso_m__0__HSIOM)
+    
+    #define Serial_MISO_M_HSIOM_MASK      (Serial_miso_m__0__HSIOM_MASK)
+    #define Serial_MISO_M_HSIOM_POS       (Serial_miso_m__0__HSIOM_SHIFT)
+    #define Serial_MISO_M_HSIOM_SEL_GPIO  (Serial_miso_m__0__HSIOM_GPIO)
+    #define Serial_MISO_M_HSIOM_SEL_SPI   (Serial_miso_m__0__HSIOM_SPI)
+#endif /* (Serial_SPI_MASTER_MISO_PIN) */
+
+#if (Serial_SPI_MASTER_MOSI_PIN)
+    #define Serial_MOSI_M_HSIOM_REG   (*(reg32 *) Serial_mosi_m__0__HSIOM)
+    #define Serial_MOSI_M_HSIOM_PTR   ( (reg32 *) Serial_mosi_m__0__HSIOM)
+    
+    #define Serial_MOSI_M_HSIOM_MASK      (Serial_mosi_m__0__HSIOM_MASK)
+    #define Serial_MOSI_M_HSIOM_POS       (Serial_mosi_m__0__HSIOM_SHIFT)
+    #define Serial_MOSI_M_HSIOM_SEL_GPIO  (Serial_mosi_m__0__HSIOM_GPIO)
+    #define Serial_MOSI_M_HSIOM_SEL_SPI   (Serial_mosi_m__0__HSIOM_SPI)
+#endif /* (Serial_SPI_MASTER_MOSI_PIN) */
 
 #if (Serial_SPI_MASTER_SCLK_PIN)
     #define Serial_SCLK_M_HSIOM_REG   (*(reg32 *) Serial_sclk_m__0__HSIOM)
     #define Serial_SCLK_M_HSIOM_PTR   ( (reg32 *) Serial_sclk_m__0__HSIOM)
-    #define Serial_SCLK_M_HSIOM_MASK  (Serial_sclk_m__0__HSIOM_MASK)
-    #define Serial_SCLK_M_HSIOM_POS   (Serial_sclk_m__0__HSIOM_SHIFT)
+    
+    #define Serial_SCLK_M_HSIOM_MASK      (Serial_sclk_m__0__HSIOM_MASK)
+    #define Serial_SCLK_M_HSIOM_POS       (Serial_sclk_m__0__HSIOM_SHIFT)
+    #define Serial_SCLK_M_HSIOM_SEL_GPIO  (Serial_sclk_m__0__HSIOM_GPIO)
+    #define Serial_SCLK_M_HSIOM_SEL_SPI   (Serial_sclk_m__0__HSIOM_SPI)
 #endif /* (Serial_SPI_MASTER_SCLK_PIN) */
 
 #if (Serial_SPI_MASTER_SS0_PIN)
     #define Serial_SS0_M_HSIOM_REG    (*(reg32 *) Serial_ss0_m__0__HSIOM)
     #define Serial_SS0_M_HSIOM_PTR    ( (reg32 *) Serial_ss0_m__0__HSIOM)
-    #define Serial_SS0_M_HSIOM_MASK   (Serial_ss0_m__0__HSIOM_MASK)
-    #define Serial_SS0_M_HSIOM_POS    (Serial_ss0_m__0__HSIOM_SHIFT)
+    
+    #define Serial_SS0_M_HSIOM_MASK       (Serial_ss0_m__0__HSIOM_MASK)
+    #define Serial_SS0_M_HSIOM_POS        (Serial_ss0_m__0__HSIOM_SHIFT)
+    #define Serial_SS0_M_HSIOM_SEL_GPIO   (Serial_ss0_m__0__HSIOM_GPIO)
+    #define Serial_SS0_M_HSIOM_SEL_SPI    (Serial_ss0_m__0__HSIOM_SPI)
 #endif /* (Serial_SPI_MASTER_SS0_PIN) */
 
 #if (Serial_SPI_MASTER_SS1_PIN)
     #define Serial_SS1_M_HSIOM_REG    (*(reg32 *) Serial_ss1_m__0__HSIOM)
     #define Serial_SS1_M_HSIOM_PTR    ( (reg32 *) Serial_ss1_m__0__HSIOM)
-    #define Serial_SS1_M_HSIOM_MASK   (Serial_ss1_m__0__HSIOM_MASK)
-    #define Serial_SS1_M_HSIOM_POS    (Serial_ss1_m__0__HSIOM_SHIFT)
+    
+    #define Serial_SS1_M_HSIOM_MASK       (Serial_ss1_m__0__HSIOM_MASK)
+    #define Serial_SS1_M_HSIOM_POS        (Serial_ss1_m__0__HSIOM_SHIFT)
+    #define Serial_SS1_M_HSIOM_SEL_GPIO   (Serial_ss1_m__0__HSIOM_GPIO)
+    #define Serial_SS1_M_HSIOM_SEL_SPI    (Serial_ss1_m__0__HSIOM_SPI)
 #endif /* (Serial_SPI_MASTER_SS1_PIN) */
 
 #if (Serial_SPI_MASTER_SS2_PIN)
     #define Serial_SS2_M_HSIOM_REG    (*(reg32 *) Serial_ss2_m__0__HSIOM)
     #define Serial_SS2_M_HSIOM_PTR    ( (reg32 *) Serial_ss2_m__0__HSIOM)
-    #define Serial_SS2_M_HSIOM_MASK   (Serial_ss2_m__0__HSIOM_MASK)
-    #define Serial_SS2_M_HSIOM_POS    (Serial_ss2_m__0__HSIOM_SHIFT)
+    
+    #define Serial_SS2_M_HSIOM_MASK       (Serial_ss2_m__0__HSIOM_MASK)
+    #define Serial_SS2_M_HSIOM_POS        (Serial_ss2_m__0__HSIOM_SHIFT)
+    #define Serial_SS2_M_HSIOM_SEL_GPIO   (Serial_ss2_m__0__HSIOM_GPIO)
+    #define Serial_SS2_M_HSIOM_SEL_SPI    (Serial_ss2_m__0__HSIOM_SPI)
 #endif /* (Serial_SPI_MASTER_SS2_PIN) */
 
 #if (Serial_SPI_MASTER_SS3_PIN)
     #define Serial_SS3_M_HSIOM_REG    (*(reg32 *) Serial_ss3_m__0__HSIOM)
     #define Serial_SS3_M_HSIOM_PTR    ( (reg32 *) Serial_ss3_m__0__HSIOM)
-    #define Serial_SS3_M_HSIOM_MASK   (Serial_ss3_m__0__HSIOM_MASK)
-    #define Serial_SS3_M_HSIOM_POS    (Serial_ss3_m__0__HSIOM_SHIFT)
+    
+    #define Serial_SS3_M_HSIOM_MASK      (Serial_ss3_m__0__HSIOM_MASK)
+    #define Serial_SS3_M_HSIOM_POS       (Serial_ss3_m__0__HSIOM_SHIFT)
+    #define Serial_SS3_M_HSIOM_SEL_GPIO  (Serial_ss3_m__0__HSIOM_GPIO)
+    #define Serial_SS3_M_HSIOM_SEL_SPI   (Serial_ss3_m__0__HSIOM_SPI)
 #endif /* (Serial_SPI_MASTER_SS3_PIN) */
+
+#if (Serial_UART_RX_PIN)
+    #define Serial_RX_HSIOM_REG   (*(reg32 *) Serial_rx__0__HSIOM)
+    #define Serial_RX_HSIOM_PTR   ( (reg32 *) Serial_rx__0__HSIOM)
+    
+    #define Serial_RX_HSIOM_MASK      (Serial_rx__0__HSIOM_MASK)
+    #define Serial_RX_HSIOM_POS       (Serial_rx__0__HSIOM_SHIFT)
+    #define Serial_RX_HSIOM_SEL_GPIO  (Serial_rx__0__HSIOM_GPIO)
+    #define Serial_RX_HSIOM_SEL_UART  (Serial_rx__0__HSIOM_UART)
+#endif /* (Serial_UART_RX_PIN) */
+
+#if (Serial_UART_RX_WAKE_PIN)
+    #define Serial_RX_WAKE_HSIOM_REG   (*(reg32 *) Serial_rx_wake__0__HSIOM)
+    #define Serial_RX_WAKE_HSIOM_PTR   ( (reg32 *) Serial_rx_wake__0__HSIOM)
+    
+    #define Serial_RX_WAKE_HSIOM_MASK      (Serial_rx_wake__0__HSIOM_MASK)
+    #define Serial_RX_WAKE_HSIOM_POS       (Serial_rx_wake__0__HSIOM_SHIFT)
+    #define Serial_RX_WAKE_HSIOM_SEL_GPIO  (Serial_rx_wake__0__HSIOM_GPIO)
+    #define Serial_RX_WAKE_HSIOM_SEL_UART  (Serial_rx_wake__0__HSIOM_UART)
+#endif /* (Serial_UART_WAKE_RX_PIN) */
+
+#if (Serial_UART_CTS_PIN)
+    #define Serial_CTS_HSIOM_REG   (*(reg32 *) Serial_cts__0__HSIOM)
+    #define Serial_CTS_HSIOM_PTR   ( (reg32 *) Serial_cts__0__HSIOM)
+    
+    #define Serial_CTS_HSIOM_MASK      (Serial_cts__0__HSIOM_MASK)
+    #define Serial_CTS_HSIOM_POS       (Serial_cts__0__HSIOM_SHIFT)
+    #define Serial_CTS_HSIOM_SEL_GPIO  (Serial_cts__0__HSIOM_GPIO)
+    #define Serial_CTS_HSIOM_SEL_UART  (Serial_cts__0__HSIOM_UART)
+#endif /* (Serial_UART_CTS_PIN) */
 
 #if (Serial_UART_TX_PIN)
     #define Serial_TX_HSIOM_REG   (*(reg32 *) Serial_tx__0__HSIOM)
-    #define Serial_TX_HSIOM_PTR   ( (reg32 *) Serial_tx_0__HSIOM)
-    #define Serial_TX_HSIOM_MASK  (Serial_tx__0__HSIOM_MASK)
-    #define Serial_TX_HSIOM_POS   (Serial_tx__0__HSIOM_SHIFT)
+    #define Serial_TX_HSIOM_PTR   ( (reg32 *) Serial_tx__0__HSIOM)
+    
+    #define Serial_TX_HSIOM_MASK      (Serial_tx__0__HSIOM_MASK)
+    #define Serial_TX_HSIOM_POS       (Serial_tx__0__HSIOM_SHIFT)
+    #define Serial_TX_HSIOM_SEL_GPIO  (Serial_tx__0__HSIOM_GPIO)
+    #define Serial_TX_HSIOM_SEL_UART  (Serial_tx__0__HSIOM_UART)
 #endif /* (Serial_UART_TX_PIN) */
 
+#if (Serial_UART_RX_TX_PIN)
+    #define Serial_RX_TX_HSIOM_REG   (*(reg32 *) Serial_rx_tx__0__HSIOM)
+    #define Serial_RX_TX_HSIOM_PTR   ( (reg32 *) Serial_rx_tx__0__HSIOM)
+    
+    #define Serial_RX_TX_HSIOM_MASK      (Serial_rx_tx__0__HSIOM_MASK)
+    #define Serial_RX_TX_HSIOM_POS       (Serial_rx_tx__0__HSIOM_SHIFT)
+    #define Serial_RX_TX_HSIOM_SEL_GPIO  (Serial_rx_tx__0__HSIOM_GPIO)
+    #define Serial_RX_TX_HSIOM_SEL_UART  (Serial_rx_tx__0__HSIOM_UART)
+#endif /* (Serial_UART_RX_TX_PIN) */
+
 #if (Serial_UART_RTS_PIN)
-    #define Serial_RTS_HSIOM_REG  (*(reg32 *) Serial_rts__0__HSIOM)
-    #define Serial_RTS_HSIOM_PTR  ( (reg32 *) Serial_rts__0__HSIOM)
-    #define Serial_RTS_HSIOM_MASK (Serial_rts__0__HSIOM_MASK)
-    #define Serial_RTS_HSIOM_POS  (Serial_rts__0__HSIOM_SHIFT)
+    #define Serial_RTS_HSIOM_REG      (*(reg32 *) Serial_rts__0__HSIOM)
+    #define Serial_RTS_HSIOM_PTR      ( (reg32 *) Serial_rts__0__HSIOM)
+    
+    #define Serial_RTS_HSIOM_MASK     (Serial_rts__0__HSIOM_MASK)
+    #define Serial_RTS_HSIOM_POS      (Serial_rts__0__HSIOM_SHIFT)    
+    #define Serial_RTS_HSIOM_SEL_GPIO (Serial_rts__0__HSIOM_GPIO)
+    #define Serial_RTS_HSIOM_SEL_UART (Serial_rts__0__HSIOM_UART)    
 #endif /* (Serial_UART_RTS_PIN) */
 
 
@@ -336,13 +495,19 @@
 *        Registers Constants
 ***************************************/
 
-/* Pins constants */
+/* HSIOM switch values. */ 
 #define Serial_HSIOM_DEF_SEL      (0x00u)
 #define Serial_HSIOM_GPIO_SEL     (0x00u)
+/* The HSIOM values provided below are valid only for Serial_CY_SCBIP_V0 
+* and Serial_CY_SCBIP_V1. It is not recommended to use them for 
+* Serial_CY_SCBIP_V2. Use pin name specific HSIOM constants provided 
+* above instead for any SCB IP block version.
+*/
 #define Serial_HSIOM_UART_SEL     (0x09u)
 #define Serial_HSIOM_I2C_SEL      (0x0Eu)
 #define Serial_HSIOM_SPI_SEL      (0x0Fu)
 
+/* Pins settings index. */
 #define Serial_RX_WAKE_SDA_MOSI_PIN_INDEX   (0u)
 #define Serial_RX_SDA_MOSI_PIN_INDEX       (0u)
 #define Serial_TX_SCL_MISO_PIN_INDEX       (1u)
@@ -352,6 +517,7 @@
 #define Serial_SS2_PIN_INDEX                  (5u)
 #define Serial_SS3_PIN_INDEX                  (6u)
 
+/* Pins settings mask. */
 #define Serial_RX_WAKE_SDA_MOSI_PIN_MASK ((uint32) 0x01u << Serial_RX_WAKE_SDA_MOSI_PIN_INDEX)
 #define Serial_RX_SDA_MOSI_PIN_MASK     ((uint32) 0x01u << Serial_RX_SDA_MOSI_PIN_INDEX)
 #define Serial_TX_SCL_MISO_PIN_MASK     ((uint32) 0x01u << Serial_TX_SCL_MISO_PIN_INDEX)
@@ -361,11 +527,11 @@
 #define Serial_SS2_PIN_MASK                ((uint32) 0x01u << Serial_SS2_PIN_INDEX)
 #define Serial_SS3_PIN_MASK                ((uint32) 0x01u << Serial_SS3_PIN_INDEX)
 
-/* Pin interrupt constants */
+/* Pin interrupt constants. */
 #define Serial_INTCFG_TYPE_MASK           (0x03u)
 #define Serial_INTCFG_TYPE_FALLING_EDGE   (0x02u)
 
-/* Pin Drive Mode constants */
+/* Pin Drive Mode constants. */
 #define Serial_PIN_DM_ALG_HIZ  (0u)
 #define Serial_PIN_DM_DIG_HIZ  (1u)
 #define Serial_PIN_DM_OD_LO    (4u)
@@ -378,7 +544,7 @@
 
 /* Return drive mode of the pin */
 #define Serial_DM_MASK    (0x7u)
-#define Serial_DM_SIZE    (3)
+#define Serial_DM_SIZE    (3u)
 #define Serial_GET_P4_PIN_DM(reg, pos) \
     ( ((reg) & (uint32) ((uint32) Serial_DM_MASK << (Serial_DM_SIZE * (pos)))) >> \
                                                               (Serial_DM_SIZE * (pos)) )
@@ -455,10 +621,8 @@
     #define Serial_WAIT_SCL_SET_HIGH  (0u == Serial_uart_rx_i2c_sda_spi_mosi_Read())
 
 #else
-    #define Serial_SET_I2C_SCL_DR(val) \
-                                                    do{ /* Does nothing */ }while(0)
-    #define Serial_SET_I2C_SCL_HSIOM_SEL(sel) \
-                                                    do{ /* Does nothing */ }while(0)
+    #define Serial_SET_I2C_SCL_DR(val)        do{ /* Does nothing */ }while(0)
+    #define Serial_SET_I2C_SCL_HSIOM_SEL(sel) do{ /* Does nothing */ }while(0)
 
     #define Serial_WAIT_SCL_SET_HIGH  (0u)
 #endif /* (Serial_I2C_PINS) */
@@ -473,6 +637,24 @@
     #define Serial_WAIT_SDA_SET_HIGH  (0u)
 #endif /* (Serial_MOSI_SCL_RX_PIN) */
 #endif /* (Serial_CY_SCBIP_V0) */
+
+/* Clear UART wakeup source */
+#if (Serial_RX_SDA_MOSI_PIN)
+    #define Serial_CLEAR_UART_RX_WAKE_INTR        do{ /* Does nothing */ }while(0)
+    
+#elif (Serial_RX_WAKE_SDA_MOSI_PIN)
+    #define Serial_CLEAR_UART_RX_WAKE_INTR \
+            do{                                      \
+                (void) Serial_uart_rx_wake_i2c_sda_spi_mosi_ClearInterrupt(); \
+            }while(0)
+
+#elif(Serial_UART_RX_WAKE_PIN)
+    #define Serial_CLEAR_UART_RX_WAKE_INTR \
+            do{                                      \
+                (void) Serial_rx_wake_ClearInterrupt(); \
+            }while(0)
+#else
+#endif /* (Serial_RX_SDA_MOSI_PIN) */
 
 
 /***************************************

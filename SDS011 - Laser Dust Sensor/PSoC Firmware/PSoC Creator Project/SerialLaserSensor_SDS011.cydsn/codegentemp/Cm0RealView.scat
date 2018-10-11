@@ -3,16 +3,12 @@
 ; to pass a scatter file through a C preprocessor.
 
 ;********************************************************************************
-;* File Name: Cm0RealView.scat
-;* Version 5.30
+;* \file Cm0RealView.scat
+;* \version 5.60
 ;*
-;*  Description:
-;*  This Linker Descriptor file describes the memory layout of the PSOC4 device
-;*  family.  The memory layout of the final binary and hex images as well as
-;*  the placement in the PSOC4 memory is described.
-;*
-;*
-;*  Note:
+;* \brief This Linker Descriptor file describes the memory layout of the PSOC4
+;* device family.  The memory layout of the final binary and hex images as well
+;* as the placement in the PSOC4 memory is described.
 ;*
 ;*  romvectors: Cypress default Interrupt service routine vector table.
 ;*
@@ -23,9 +19,8 @@
 ;*
 ;*      This is the ISR vector table used by the application.
 ;*
-;*
 ;********************************************************************************
-;* Copyright 2010-2015, Cypress Semiconductor Corporation.  All rights reserved.
+;* Copyright 2010-2017, Cypress Semiconductor Corporation.  All rights reserved.
 ;* You may use this file only in accordance with the license, terms, conditions,
 ;* disclaimers, and limitations in the end user license agreement accompanying
 ;* the software package with which this file was provided.
@@ -33,9 +28,9 @@
 #include "cyfitter.h"
 #include "cycodeshareimport.scat"
 
-#define CY_FLASH_SIZE                   131072
+#define CY_FLASH_SIZE                   262144
 #define CY_APPL_ORIGIN                  0
-#define CY_FLASH_ROW_SIZE               128
+#define CY_FLASH_ROW_SIZE               256
 #define CY_METADATA_SIZE                64
 
 #define CY_APPL_FOR_STACK_AND_COPIER    0
@@ -121,11 +116,11 @@ APPLICATION APPL_START (CY_FLASH_SIZE - APPL_START)
         .ANY (+RW, +ZI)
     }
 
-    ARM_LIB_HEAP (0x20000000 + 16384 - 0x80 - 0x0800) EMPTY 0x80
+    ARM_LIB_HEAP (0x20000000 + 32768 - 0x80 - 0x0800) EMPTY 0x80
     {
     }
 
-    ARM_LIB_STACK (0x20000000 + 16384) EMPTY -0x0800
+    ARM_LIB_STACK (0x20000000 + 32768) EMPTY -0x0800
     {
     }
 }

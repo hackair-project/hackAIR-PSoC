@@ -1,45 +1,5 @@
---------------- Build Started: 11/22/2017 18:23:18 Project: PwmLedSensor_PPD42, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
-cydsfit.exe -.appdatapath "C:\Users\Toshiba\AppData\Local\Cypress Semiconductor\PSoC Creator\4.1" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "C:\Users\Toshiba\Documents\Repositories\hackAIR-PSoC\PPD42 - Led Dust Sensor\PSoC Firmware\PSoC Creator Project\PwmLedSensor_PPD42.cydsn\PwmLedSensor_PPD42.cyprj" -d CYBL10563-56LQXI -s "C:\Users\Toshiba\Documents\Repositories\hackAIR-PSoC\PPD42 - Led Dust Sensor\PSoC Firmware\PSoC Creator Project\PwmLedSensor_PPD42.cydsn\Generated_Source\PSoC4" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
-Elaborating Design...
-HDL Generation...
-Synthesis...
-Tech Mapping...
-Analog Placement...
-Analog Routing...
-Analog Code Generation...
-Digital Placement...
-Digital Routing...
-Bitstream Generation...
-Bitstream Verification...
-Static timing analysis...
-API Generation...
-Dependency Generation...
-Cleanup...
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/cyfitter_cfg.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\cyfitter_cfg.c -o .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/cymetadata.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\cymetadata.c -o .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/PWM_IN.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\PWM_IN.c -o .\CortexM0\ARM_GCC_541\Debug\PWM_IN.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/PWM_IN_PM.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\PWM_IN_PM.c -o .\CortexM0\ARM_GCC_541\Debug\PWM_IN_PM.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/BLE.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\BLE.c -o .\CortexM0\ARM_GCC_541\Debug\BLE.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/BLE_gatt.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\BLE_gatt.c -o .\CortexM0\ARM_GCC_541\Debug\BLE_gatt.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/BLE_eventHandler.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\BLE_eventHandler.c -o .\CortexM0\ARM_GCC_541\Debug\BLE_eventHandler.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/BLE_HAL_INT.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\BLE_HAL_INT.c -o .\CortexM0\ARM_GCC_541\Debug\BLE_HAL_INT.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/BLE_HAL_PVT.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\BLE_HAL_PVT.c -o .\CortexM0\ARM_GCC_541\Debug\BLE_HAL_PVT.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/BLE_bless_isr.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\BLE_bless_isr.c -o .\CortexM0\ARM_GCC_541\Debug\BLE_bless_isr.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/Cm0Start.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\Cm0Start.c -o .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/CyFlash.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\CyFlash.c -o .\CortexM0\ARM_GCC_541\Debug\CyFlash.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/CyLib.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\CyLib.c -o .\CortexM0\ARM_GCC_541\Debug\CyLib.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/cyPm.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\cyPm.c -o .\CortexM0\ARM_GCC_541\Debug\cyPm.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/cyutils.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\cyutils.c -o .\CortexM0\ARM_GCC_541\Debug\cyutils.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/CyLFClk.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\CyLFClk.c -o .\CortexM0\ARM_GCC_541\Debug\CyLFClk.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/STATUS.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\STATUS.c -o .\CortexM0\ARM_GCC_541\Debug\STATUS.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/STATUS_PM.lst -g -D DEBUG -Wall -ffunction-sections -ffat-lto-objects -O0 -c Generated_Source\PSoC4\STATUS_PM.c -o .\CortexM0\ARM_GCC_541\Debug\STATUS_PM.o
-arm-none-eabi-as.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -alh=.\CortexM0\ARM_GCC_541\Debug/CyBootAsmGnu.lst -g -W -o .\CortexM0\ARM_GCC_541\Debug\CyBootAsmGnu.o Generated_Source\PSoC4\CyBootAsmGnu.s
-arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_541\Debug\PwmLedSensor_PPD42.a .\CortexM0\ARM_GCC_541\Debug\PWM_IN.o .\CortexM0\ARM_GCC_541\Debug\PWM_IN_PM.o .\CortexM0\ARM_GCC_541\Debug\BLE.o .\CortexM0\ARM_GCC_541\Debug\BLE_gatt.o .\CortexM0\ARM_GCC_541\Debug\BLE_eventHandler.o .\CortexM0\ARM_GCC_541\Debug\BLE_HAL_INT.o .\CortexM0\ARM_GCC_541\Debug\BLE_HAL_PVT.o .\CortexM0\ARM_GCC_541\Debug\BLE_bless_isr.o .\CortexM0\ARM_GCC_541\Debug\CyFlash.o .\CortexM0\ARM_GCC_541\Debug\CyLib.o .\CortexM0\ARM_GCC_541\Debug\cyPm.o .\CortexM0\ARM_GCC_541\Debug\cyutils.o .\CortexM0\ARM_GCC_541\Debug\CyLFClk.o .\CortexM0\ARM_GCC_541\Debug\STATUS.o .\CortexM0\ARM_GCC_541\Debug\STATUS_PM.o .\CortexM0\ARM_GCC_541\Debug\CyBootAsmGnu.o
-arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_541\Debug\PwmLedSensor_PPD42.a
-arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\Toshiba\Documents\Repositories\hackAIR-PSoC\PPD42 - Led Dust Sensor\PSoC Firmware\PSoC Creator Project\PwmLedSensor_PPD42.cydsn\CortexM0\ARM_GCC_541\Debug\PwmLedSensor_PPD42.elf" .\CortexM0\ARM_GCC_541\Debug\main.o .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_541\Debug\cymetadata.o .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o .\CortexM0\ARM_GCC_541\Debug\PwmLedSensor_PPD42.a "..\..\..\..\..\..\PSoC Creator\4.1\Downloads ( 4.1).cylib\BLE_v3_40\Library\gccCyBLEStack_BLE_SOC_PERIPHERAL.a" "C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m0 -mthumb -L Generated_Source\PSoC4 -Wl,-Map,.\CortexM0\ARM_GCC_541\Debug/PwmLedSensor_PPD42.map -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -lm -g -ffunction-sections -O0 -ffat-lto-objects -Wl,--end-group
-cyelftool.exe -C "C:\Users\Toshiba\Documents\Repositories\hackAIR-PSoC\PPD42 - Led Dust Sensor\PSoC Firmware\PSoC Creator Project\PwmLedSensor_PPD42.cydsn\CortexM0\ARM_GCC_541\Debug\PwmLedSensor_PPD42.elf" --flash_row_size 128 --flash_size 131072 --flash_offset 0x00000000
-cyelftool.exe -S "C:\Users\Toshiba\Documents\Repositories\hackAIR-PSoC\PPD42 - Led Dust Sensor\PSoC Firmware\PSoC Creator Project\PwmLedSensor_PPD42.cydsn\CortexM0\ARM_GCC_541\Debug\PwmLedSensor_PPD42.elf"
-Flash used: 94448 of 131072 bytes (72.1 %).
-SRAM used: 10856 of 16384 bytes (66.3 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 11/22/2017 18:24:36 ---------------
+--------------- Build Started: 05/10/2018 19:09:52 Project: PwmLedSensor_PPD42, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+The compile step is up to date, no work needs to be done.
+The link step is up to date, no work needs to be done.
+--------------- Build Succeeded: 05/10/2018 19:09:52 ---------------

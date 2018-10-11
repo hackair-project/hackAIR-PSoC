@@ -1,10 +1,10 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2017-02-21T13:13:45Z")
+ (DATE "2018-05-10T15:48:19Z")
  (DESIGN "SerialLaserSensor_SEN0177")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
- (VERSION " 4.0")
+ (VERSION " 4.2")
  (DIVIDER .)
  (TIMESCALE 1 ns)
  (CELL
@@ -16,8 +16,8 @@
     (INTERCONNECT ClockBlock.hfclk \\BLE\:bless_isr\\.clock (0.000:0.000:0.000))
     (INTERCONNECT \\Serial\:SCB\\.interrupt \\Serial\:SCB_IRQ\\.interrupt (0.000:0.000:0.000))
     (INTERCONNECT \\BLE\:cy_m0s8_ble\\.interrupt \\BLE\:bless_isr\\.interrupt (1.000:1.000:1.000))
-    (INTERCONNECT \\Serial\:rx\(0\)\\.fb \\Serial\:SCB\\.rx (0.000:0.000:0.000))
     (INTERCONNECT ClockBlock.ff_div_1 \\Serial\:SCB\\.clock (0.000:0.000:0.000))
+    (INTERCONNECT \\Serial\:rx\(0\)\\.fb \\Serial\:SCB\\.uart_rx (0.000:0.000:0.000))
     (INTERCONNECT \\Serial\:rx\(0\)_PAD\\ \\Serial\:rx\(0\)\\.pad_in (0.000:0.000:0.000))
     (INTERCONNECT STATUS\(0\)_PAD STATUS\(0\).pad_in (0.000:0.000:0.000))
    )

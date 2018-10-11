@@ -2,7 +2,7 @@
 --	Conversion of SerialLaserSensor_SEN0177.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Feb 21 15:13:43 2017
+--	Thu May 10 18:48:17 2018
 --
 
 USE cypress.cypress.all;
@@ -13,58 +13,54 @@ END top_RTL;
 --------------------------------------------------------
 ARCHITECTURE R_T_L OF top_RTL IS
 SIGNAL \Serial:Net_847\ : bit;
-SIGNAL \Serial:Net_459\ : bit;
-SIGNAL \Serial:Net_652\ : bit;
-SIGNAL \Serial:Net_452\ : bit;
-SIGNAL \Serial:Net_1194\ : bit;
-SIGNAL \Serial:Net_1195\ : bit;
-SIGNAL \Serial:Net_1196\ : bit;
-SIGNAL \Serial:Net_654\ : bit;
-SIGNAL \Serial:Net_1197\ : bit;
+SIGNAL \Serial:select_s_wire\ : bit;
+SIGNAL \Serial:rx_wire\ : bit;
+SIGNAL \Serial:Net_1268\ : bit;
 SIGNAL \Serial:Net_1257\ : bit;
 SIGNAL \Serial:uncfg_rx_irq\ : bit;
 SIGNAL \Serial:Net_1170\ : bit;
-SIGNAL \Serial:Net_990\ : bit;
-SIGNAL \Serial:Net_909\ : bit;
-SIGNAL \Serial:Net_663\ : bit;
+SIGNAL \Serial:sclk_s_wire\ : bit;
+SIGNAL \Serial:mosi_s_wire\ : bit;
+SIGNAL \Serial:miso_m_wire\ : bit;
 SIGNAL \Serial:Net_1099\ : bit;
 SIGNAL \Serial:Net_1258\ : bit;
-SIGNAL Net_3319 : bit;
+SIGNAL Net_3325 : bit;
 SIGNAL \Serial:tmpOE__rx_net_0\ : bit;
 SIGNAL zero : bit;
 SIGNAL \Serial:tmpIO_0__rx_net_0\ : bit;
 TERMINAL \Serial:tmpSIOVREF__rx_net_0\ : bit;
 SIGNAL one : bit;
 SIGNAL \Serial:tmpINTERRUPT_0__rx_net_0\ : bit;
-SIGNAL \Serial:Net_1175\ : bit;
-SIGNAL \Serial:Net_747\ : bit;
-SIGNAL \Serial:Net_1062\ : bit;
-SIGNAL \Serial:Net_1053\ : bit;
-SIGNAL \Serial:Net_1061\ : bit;
-SIGNAL \Serial:ss_3\ : bit;
-SIGNAL \Serial:ss_2\ : bit;
-SIGNAL \Serial:ss_1\ : bit;
-SIGNAL \Serial:ss_0\ : bit;
-SIGNAL \Serial:Net_1059\ : bit;
-SIGNAL \Serial:Net_1055\ : bit;
-SIGNAL \Serial:Net_580\ : bit;
-SIGNAL \Serial:Net_581\ : bit;
-SIGNAL Net_3322 : bit;
-SIGNAL Net_3321 : bit;
-SIGNAL \Serial:Net_547\ : bit;
-SIGNAL \Serial:Net_1090\ : bit;
-SIGNAL \Serial:Net_891\ : bit;
-SIGNAL \Serial:Net_1089\ : bit;
-SIGNAL \Serial:Net_1001\ : bit;
-SIGNAL \Serial:Net_1086\ : bit;
-SIGNAL \Serial:Net_899\ : bit;
-SIGNAL \Serial:Net_916\ : bit;
+SIGNAL \Serial:cts_wire\ : bit;
+SIGNAL \Serial:tx_wire\ : bit;
+SIGNAL \Serial:rts_wire\ : bit;
+SIGNAL \Serial:mosi_m_wire\ : bit;
+SIGNAL \Serial:select_m_wire_3\ : bit;
+SIGNAL \Serial:select_m_wire_2\ : bit;
+SIGNAL \Serial:select_m_wire_1\ : bit;
+SIGNAL \Serial:select_m_wire_0\ : bit;
+SIGNAL \Serial:sclk_m_wire\ : bit;
+SIGNAL \Serial:miso_s_wire\ : bit;
+SIGNAL Net_3342 : bit;
+SIGNAL Net_3343 : bit;
+SIGNAL Net_3328 : bit;
+SIGNAL Net_3327 : bit;
 SIGNAL \Serial:Net_1000\ : bit;
+SIGNAL Net_3324 : bit;
+SIGNAL Net_3333 : bit;
+SIGNAL Net_3334 : bit;
+SIGNAL Net_3335 : bit;
+SIGNAL Net_3336 : bit;
+SIGNAL Net_3337 : bit;
+SIGNAL Net_3338 : bit;
+SIGNAL Net_3339 : bit;
+SIGNAL Net_3341 : bit;
+SIGNAL Net_3344 : bit;
 TERMINAL Net_3296 : bit;
 SIGNAL \BLE:Net_15\ : bit;
-SIGNAL \BLE:Net_63\ : bit;
+SIGNAL Net_3346 : bit;
 SIGNAL \BLE:Net_53\ : bit;
-SIGNAL Net_3302 : bit;
+SIGNAL Net_3345 : bit;
 SIGNAL \BLE:Net_55\ : bit;
 TERMINAL Net_3701 : bit;
 TERMINAL Net_3702 : bit;
@@ -92,7 +88,7 @@ one <=  ('1') ;
 \Serial:SCB_IRQ\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_3319);
+	PORT MAP(int_signal=>Net_3325);
 \Serial:rx\:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"43ec2fa1-bf22-4b71-9477-b6ca7b97f0b0/78e33e5d-45ea-4b75-88d5-73274e8a7ce4",
 		drive_mode=>"001",
@@ -151,7 +147,7 @@ one <=  ('1') ;
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>\Serial:Net_654\,
+		fb=>\Serial:rx_wire\,
 		analog=>(open),
 		io=>(\Serial:tmpIO_0__rx_net_0\),
 		siovref=>(\Serial:tmpSIOVREF__rx_net_0\),
@@ -167,23 +163,23 @@ one <=  ('1') ;
 	GENERIC MAP(cy_registers=>"",
 		scb_mode=>2)
 	PORT MAP(clock=>\Serial:Net_847\,
-		interrupt=>Net_3319,
-		rx=>\Serial:Net_654\,
-		tx=>\Serial:Net_1062\,
+		interrupt=>Net_3325,
+		rx=>\Serial:rx_wire\,
+		tx=>\Serial:tx_wire\,
 		cts=>zero,
-		rts=>\Serial:Net_1053\,
-		mosi_m=>\Serial:Net_1061\,
+		rts=>\Serial:rts_wire\,
+		mosi_m=>\Serial:mosi_m_wire\,
 		miso_m=>zero,
-		select_m=>(\Serial:ss_3\, \Serial:ss_2\, \Serial:ss_1\, \Serial:ss_0\),
-		sclk_m=>\Serial:Net_1059\,
+		select_m=>(\Serial:select_m_wire_3\, \Serial:select_m_wire_2\, \Serial:select_m_wire_1\, \Serial:select_m_wire_0\),
+		sclk_m=>\Serial:sclk_m_wire\,
 		mosi_s=>zero,
-		miso_s=>\Serial:Net_1055\,
+		miso_s=>\Serial:miso_s_wire\,
 		select_s=>zero,
 		sclk_s=>zero,
-		scl=>\Serial:Net_580\,
-		sda=>\Serial:Net_581\,
-		tx_req=>Net_3322,
-		rx_req=>Net_3321);
+		scl=>Net_3342,
+		sda=>Net_3343,
+		tx_req=>Net_3328,
+		rx_req=>Net_3327);
 GND_1:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"Gnd_v1_0",
 		port_names=>"T1",
@@ -192,7 +188,7 @@ GND_1:cy_annotation_universal_v1_0
 \BLE:cy_m0s8_ble\:cy_m0s8_ble_v1_0
 	GENERIC MAP(cy_registers=>"")
 	PORT MAP(interrupt=>\BLE:Net_15\,
-		rf_ext_pa_en=>\BLE:Net_63\);
+		rf_ext_pa_en=>Net_3346);
 \BLE:bless_isr\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')

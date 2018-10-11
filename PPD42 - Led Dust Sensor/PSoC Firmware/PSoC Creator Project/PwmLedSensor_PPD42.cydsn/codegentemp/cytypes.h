@@ -214,10 +214,10 @@
     /* Product uses FLASH-Lite or regular FLASH */
     #if (CY_IP_HOBTO_DEVICE)
         #if (CY_IP_CPUSSV2)
-            #define CY_IP_FM                (1 == 0)
-            #define CY_IP_FMLT              (1 == 1)
-            #define CY_IP_FS                (1 == 2)
-            #define CY_IP_FSLT              (1 == 3)
+            #define CY_IP_FM                (3 == 0)
+            #define CY_IP_FMLT              (3 == 1)
+            #define CY_IP_FS                (3 == 2)
+            #define CY_IP_FSLT              (3 == 3)
         #else   /* CY_IP_CPUSSV3 */
             #define CY_IP_FM                (-1 == 0)
             #define CY_IP_FMLT              (-1 == 1)
@@ -235,7 +235,7 @@
     /* Enable simultaneous execution/programming in multi-macro devices */
     #if (CY_IP_HOBTO_DEVICE)
         #if (CY_IP_CPUSSV2)
-            #define CY_IP_FLASH_PARALLEL_PGM_EN (-1 == 1)
+            #define CY_IP_FLASH_PARALLEL_PGM_EN (0 == 1)
         #else   /* CY_IP_CPUSSV3 */
             #define CY_IP_FLASH_PARALLEL_PGM_EN (-1 == 1)
         #endif  /* (CY_IP_CPUSSV2) */
@@ -291,7 +291,7 @@
     ***************************************************************************/
     #if (CY_IP_HOBTO_DEVICE)
         #if (CY_IP_CPUSSV2)
-            #define CY_IP_SPCIF_SYNCHRONOUS     (1 == 1)
+            #define CY_IP_SPCIF_SYNCHRONOUS     (0 == 1)
         #else   /* CY_IP_CPUSSV3 */
             #define CY_IP_SPCIF_SYNCHRONOUS     (-1 == 1)
         #endif  /* (CY_IP_CPUSSV2) */

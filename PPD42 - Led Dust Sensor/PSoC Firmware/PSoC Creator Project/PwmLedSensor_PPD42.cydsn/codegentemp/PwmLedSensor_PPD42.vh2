@@ -2,7 +2,7 @@
 --	Conversion of PwmLedSensor_PPD42.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Nov 22 18:23:35 2017
+--	Thu May 10 18:59:44 2018
 --
 
 USE cypress.cypress.all;

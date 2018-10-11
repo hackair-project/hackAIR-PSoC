@@ -5,22 +5,22 @@ net ClockBlock_HFCLK
 	switch ":m0s8clockblockcell.hfclk==>:interrupt_12.clock"
 	term   ":interrupt_12.clock"
 end ClockBlock_HFCLK
-net Net_3319
+net Net_3326
 	term   ":m0s8scbcell_0.interrupt"
 	switch ":m0s8scbcell_0.interrupt==>:interrupt_idmux_9.in_0"
 	switch ":interrupt_idmux_9.interrupt_idmux_9__out==>:interrupt_9.interrupt"
 	term   ":interrupt_9.interrupt"
-end Net_3319
+end Net_3326
 net \BLE:Net_15\
 	term   ":p4blecell.interrupt"
 	switch ":p4blecell.interrupt==>:interrupt_idmux_12.in_0"
 	switch ":interrupt_idmux_12.interrupt_idmux_12__out==>:interrupt_12.interrupt"
 	term   ":interrupt_12.interrupt"
 end \BLE:Net_15\
-net \Serial:Net_654\
+net \Serial:rx_wire\
 	term   ":ioport1:pin4.fb"
 	switch ":ioport1:pin4.fb==>:ioport1:hsiom_in4.hsiom4_in"
-	switch ":ioport1:hsiom_in4.fixed_ACT_1==>:m0s8scbcell_0__rx__hsiom_permute.ioport1__fixed_out_p4_ACT_1"
-	switch ":m0s8scbcell_0__rx__hsiom_permute.m0s8scbcell_0__rx==>:m0s8scbcell_0.rx"
-	term   ":m0s8scbcell_0.rx"
-end \Serial:Net_654\
+	switch ":ioport1:hsiom_in4.fixed_ACT_1==>:m0s8scbcell_0__uart_rx__hsiom_permute.ioport1__fixed_out_p4_ACT_1"
+	switch ":m0s8scbcell_0__uart_rx__hsiom_permute.m0s8scbcell_0__uart_rx==>:m0s8scbcell_0.uart_rx"
+	term   ":m0s8scbcell_0.uart_rx"
+end \Serial:rx_wire\
